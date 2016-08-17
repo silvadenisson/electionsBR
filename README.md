@@ -1,7 +1,7 @@
 electionsBR
 =====
 
-[![Package-License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![Travis-CI Build Status](https://travis-ci.org/silvadenisson/electionsBR.svg?branch=master)](https://travis-ci.org/silvadenisson/electionsBR) [![Package-License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 
 `electionsBR` contains a set of functions that automatically downloads and aggregates
 election data from Brazil, directly from the Superior [Electoral Court website (TSE)](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais).
