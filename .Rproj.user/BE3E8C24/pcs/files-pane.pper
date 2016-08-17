@@ -1,0 +1,9 @@
+{
+    "path" : "~/electionsBR",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
