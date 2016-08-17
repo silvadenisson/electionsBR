@@ -1,3 +1,6 @@
+electionsBR
+=====
+
 `electionsBR` contains a set of functions that automatically downloads and aggregates
 election data from Brazil, directly from the Superior [Electoral Court website (TSE)](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais).
 Among others, there are data available on local and federal elections for all positions (city councillor, mayor, state deputy, federal deputy, governor, and president) disaggregated by state of the Federation, city, zone, and polling stations.
