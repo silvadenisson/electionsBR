@@ -37,7 +37,7 @@ df <- candidate_fed(year = 2002)
 
 ### Authors
 
-Denisson Silva, Fernando Meireles, and Beatriz Costa.
+[Denisson Silva](http://denissonsilva.com), [Fernando Meireles](http://fmeireles.com), and Beatriz Costa.
 
 ### License
 
