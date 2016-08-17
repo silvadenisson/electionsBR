@@ -1,0 +1,23 @@
+Package: electionsBR
+Type: Package
+Title: R Functions to Download and Clean Brazilian Electoral Data
+Version: 0.1.0
+Authors@R: c(
+    person("Denisson", "Silva", , "denissonsilva@ufmg.br", c("aut", "cre")),
+    person("Fernando", "Meireles", , "fmeireles@ufmg.br", "aut"),
+    person("Beatriz", "Costa", ,"bea.s.costa@gmail.com", "ctb")
+    )
+Description: This package offers a set of functions that automatically downloads and aggregates
+    election data from Brazil, directly from the Superior Electoral Court website.
+    Among others, there are data available on local and federal elections for all positions
+    (city councillor, mayor, state deputy, federal deputy, governor, and president)
+    disaggregated by state of the Federation, city, zone, and polling stations.
+    In addition, data on the verification (blank votes, null votes, abstention) and the
+    candidates' background are also available.
+License: GPL (>= 2)
+Depends: R (>= 2.10)
+Imports: magrittr
+LazyData: TRUE
+URL: https://github.com/silvadenisson/electionsBR
+BugReports: https://github.com/silvadenisson/electionsBR/issues
+RoxygenNote: 5.0.1
