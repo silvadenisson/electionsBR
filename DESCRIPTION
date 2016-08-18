@@ -1,7 +1,7 @@
 Package: electionsBR
 Type: Package
 Title: R Functions to Download and Clean Brazilian Electoral Data
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Denisson", "Silva", , "denissonsilva@ufmg.br", c("aut", "cre")),
     person("Fernando", "Meireles", , "fmeireles@ufmg.br", "aut"),
