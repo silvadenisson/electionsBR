@@ -1,7 +1,9 @@
+We removed "This package..." from the beginning of the Description. Sorry about that.
+
 ## Test environments
 
 * Windows (R 3.3.1) Windows 10 (personal computer)
-* ubuntu 12.04 (R 3.1.3-patched), using travis-ci
+* Ubuntu 12.04 (R 3.1.3-patched), using travis-ci
 * Windows (R 3.3.1-patched) using AppVeyor
 * Win-builder (devel)
 

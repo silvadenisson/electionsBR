@@ -7,7 +7,7 @@ Authors@R: c(
     person("Fernando", "Meireles", , "fmeireles@ufmg.br", "aut"),
     person("Beatriz", "Costa", ,"bea.s.costa@gmail.com", "ctb")
     )
-Description: This package offers a set of functions that automatically downloads and aggregates
+Description: Offers a set of functions that automatically downloads and aggregates
     election data from Brazil, directly from the Superior Electoral Court website.
     Among others, there are data available on local and federal elections for all positions
     (city councillor, mayor, state deputy, federal deputy, governor, and president)
