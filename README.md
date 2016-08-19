@@ -9,7 +9,13 @@ Among others, there are data available on local and federal elections for all po
 
 ### Installation
 
-For the time being, `electionsBR` is only available at [GitHub](https://github.com/). You can install this pre-release version via:
+`electionsBR` is on [CRAN]() and can be installed with:
+
+``` {.r}
+install.packages("electionsBR")
+```
+
+`electionsBR` is also available at [GitHub](https://github.com/). You can install pre-release versions via:
 
 ``` {.r}
 if (!require("devtools")) install.packages("devtools")
