@@ -15,7 +15,7 @@ Among others, there are data available on local and federal elections for all po
 install.packages("electionsBR")
 ```
 
-`electionsBR` is also available at [GitHub](https://github.com/). You can install pre-release versions via:
+`electionsBR` is also available on [GitHub](https://github.com/). You can install pre-release versions via:
 
 ``` {.r}
 if (!require("devtools")) install.packages("devtools")
