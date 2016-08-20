@@ -123,7 +123,6 @@ candidate_local <- function(year){
                      "DESC_SIT_TOT_TURNO", "EMAIL_CANDIDATO")
     
   } else {
-    
     names(banco) <-c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                      "SIGLA_UF", "SIGLA_UE", "DESCRICAO_UE", "CODIGO_CARGO", "DESCRICAO_CARGO",
                      "NOME_CANDIDATO", "SEQUENCIAL_CANDIDATO", "NUMERO_CANDIDATO", "CPF_CANDIDATO",
