@@ -61,8 +61,8 @@ are available.}
   \item DESPESA_MAX_CAMPANHA: Maximum expenditure campaign declared by the party to that position. Values in Reais.
   \item COD_SIT_TOT_TURNO: Candidate's totalization status code in that election round.
   \item DESC_SIT_TOT_TURNO: Candidate's totalization status description in that round.
-  \item CODIGO_COR_RACA: Candidate's color/race code (self-declaration, only for 2014 election).
-  \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only for 2014 election).
+  \item CODIGO_COR_RACA: Candidate's color/race code (self-declaration, only for 2016 election).
+  \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only for 2016 election).
   \item EMAIL_CANDIDATO: Candidate's e-mail adress (only for 2014 election).
 }
 }
