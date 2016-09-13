@@ -9,6 +9,8 @@
 #' @param year Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, and 2012
 #' are available.
 #'
+#'@param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
+#'
 #' @return \code{candidate_local()} returns a \code{data.frame} with the following variables:
 #'
 #' \itemize{
@@ -66,13 +68,14 @@
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"
+#' @importFrom stringi stri_trans_general
 #' @export
 #' @examples
 #' \dontrun{
 #' df <- candidate_local(2000)
 #' }
 
-candidate_local <- function(year){
+candidate_local <- function(year, ascii = FALSE){
 
 
   # Input tests
@@ -136,7 +139,16 @@ candidate_local <- function(year){
                      "CODIGO_MUNICIPIO_NASCIMENTO", "NOME_MUNICIPIO_NASCIMENTO", "DESPESA_MAX_CAMPANHA",
                      "COD_SIT_TOT_TURNO", "DESC_SIT_TOT_TURNO", "EMAIL_CANDIDATO")
   }
-
+  
+  # Change to ascii
+  if(ascii == TRUE){
+    for(i in seq_along(colnames(banco))){
+      if(colnames(banco)[i] != "EMAIL_CANDIDATO"){
+        banco[, i] <- stringi::stri_trans_general(banco[, i], "Latin-ASCII")
+      }
+    }
+  }
+  
   cat("Done")
   return(banco)
 }

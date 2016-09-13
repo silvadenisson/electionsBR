@@ -4,11 +4,13 @@
 \alias{vote_mun_zone_local}
 \title{Download data on the polls by candidate from local elections in Brazil}
 \usage{
-vote_mun_zone_local(year)
+vote_mun_zone_local(year, ascii = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, and 2012
 are available.}
+
+\item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 }
 \value{
 \code{vote_mun_zone_local()} returns a \code{data.frame} with the following variables:
