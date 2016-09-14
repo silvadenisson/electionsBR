@@ -4,11 +4,13 @@
 \alias{legend_fed}
 \title{Download data on federal election coalitions in Brazil}
 \usage{
-legend_fed(year)
+legend_fed(year, ascii = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
 are available.}
+
+\item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 }
 \value{
 \code{legend_fed()} returns a \code{data.frame} with the following variables:

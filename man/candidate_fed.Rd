@@ -4,11 +4,13 @@
 \alias{candidate_fed}
 \title{Download data on the candidates' backgrounds in federal elections}
 \usage{
-candidate_fed(year)
+candidate_fed(year, ascii = FALSE)
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
 are available.}
+
+\item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 }
 \value{
 \code{candidate_fed()} returns a \code{data.frame} with the following variables:
