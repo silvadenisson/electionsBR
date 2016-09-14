@@ -4,7 +4,7 @@
 * Included `year = 2016` option for local elections.
 * Updated `candidate_local` documentation.
 * Included an option to convert electoral data from Latin-1 encoding to ASCII.
-* Remove the exportation of some internal functions.
+* Removed the exportation of some internal functions.
 
 
 
