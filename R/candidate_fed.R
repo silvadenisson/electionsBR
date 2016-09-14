@@ -68,7 +68,6 @@
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"
-#' @importFrom stringi stri_trans_general
 #' @export
 #' @examples
 #' \dontrun{
@@ -126,15 +125,9 @@ candidate_fed <- function(year, ascii = FALSE){
                       "DESPESA_MAX_CAMPANHA", "COD_SIT_TOT_TURNO", "DESC_SIT_TOT_TURNO", "EMAIL_CANDIDATO")
   }
   
-  # transform to ASCII
-  if(ascii == TRUE){
-    cat("transforming to ascii...")
-    for(i in seq_along(colnames(banco))){
-      banco[, i] <- stringi::stri_trans_general(banco[, i], "Latin-ASCII")
-    }
-  }
+  # Change to ascii
+  if(ascii == T) banco <- to_ascii(banco)
   
-
   cat("Done")
   return(banco)
 }

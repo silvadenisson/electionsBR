@@ -42,7 +42,6 @@
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"
-#' @importFrom stringi stri_trans_general
 #' @export
 #' @examples
 #' \dontrun{
@@ -79,13 +78,8 @@ party_mun_zone_local <- function(year, ascii = FALSE){
                       "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
                       "QTDE_VOTOS_LEGENDA", "SEQUENCIAL_LEGENDA")
     
-    # transform to ASCII
-    if(ascii == TRUE){
-      cat("transforming to ascii...")
-      for(i in seq_along(colnames(banco))){
-        banco[, i] <- stringi::stri_trans_general(banco[, i], "Latin-ASCII")
-      }
-    }
+  # Change to ascii
+  if(ascii == T) banco <- to_ascii(banco)
 
   cat("Done.")
   return(banco)

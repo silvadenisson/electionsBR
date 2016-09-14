@@ -9,7 +9,7 @@
 #' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
 #' are available.
 #'
-#'@param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
+#' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
 #' @return \code{details_mun_zone_fed()} returns a \code{data.frame} with the following variables:
 #'
@@ -47,7 +47,6 @@
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"
-#' @importFrom stringi stri_trans_general
 #' @export
 #' @examples
 #' \dontrun{
@@ -94,13 +93,8 @@ details_mun_zone_fed <- function(year, ascii = FALSE){
 
   }
   
-  # transform to ASCII
-  if(ascii == TRUE){
-    cat("transforming to ascii...")
-    for(i in seq_along(colnames(banco))){
-      banco[, i] <- stringi::stri_trans_general(banco[, i], "Latin-ASCII")
-    }
-  }
+  # Change to ascii
+  if(ascii == T) banco <- to_ascii(banco)
 
   cat("Done.")
   return(banco)

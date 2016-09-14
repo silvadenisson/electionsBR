@@ -15,34 +15,31 @@ juntaDados <- function(){
   banco
 }
 
-#' Calculates the mode of a distribution
-#'
-#' @param x A \code{numeric} vector
-#'
-#' @export
+# Calculates the mode of a distribution
 Moda <- function(x) names(sort(-table(unlist(x))))[1]
 
 
-#' Tests federal election year inputs
-#'
-#' @param year A \code{numeric} vector of length == 1
-#'
-#' @export
+# Tests federal election year inputs
 test_fed_year <- function(year){
 
   if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2014, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
-#' Tests federal election year inputs
-#'
-#' @param year A \code{numeric} vector of length == 1
-#'
-#' @export
+# Tests federal election year inputs
 test_local_year <- function(year){
 
   if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1996, 2016, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
+
+
+# Converts electoral data from Latin-1 to ASCII
+#' @import dplyr
+to_ascii <- function(banco){
+  
+  dplyr::mutate_if(banco, is.character, dplyr::funs(iconv(., from = "windows-1252", to = "ASCII//TRANSLIT")))
+}
+
 
 
 # Avoid the R CMD check note about magrittr's dot

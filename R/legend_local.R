@@ -9,7 +9,7 @@
 #' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, and 2012
 #' are available.
 #'
-#'@param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
+#' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
 #' @return \code{legend_local()} returns a \code{data.frame} with the following variables:
 #'
@@ -39,7 +39,6 @@
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"
-#' @importFrom stringi stri_trans_general
 #' @export
 #' @examples
 #' \dontrun{
@@ -73,14 +72,8 @@ legend_local <- function(year, ascii = FALSE){
                       "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
                       "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
     
-    # transform to ASCII
-    if(ascii == TRUE){
-      cat("transforming to ascii...")
-      for(i in seq_along(colnames(banco))){
-        banco[, i] <- stringi::stri_trans_general(banco[, i], "Latin-ASCII")
-      }
-    }
-
+  # Change to ascii
+  if(ascii == T) banco <- to_ascii(banco)
 
   cat("Done.")
   return(banco)
