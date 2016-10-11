@@ -38,6 +38,7 @@
 #'   \item QTDE_VOTOS_NOMINAIS: Total number of nominal votes that a party received in that city and zone.
 #'   \item QTDE_VOTOS_LEGENDA: Total number of votes that a coalitions received in that city and zone.
 #'   \item SEQUENCIAL_LEGENDA: Coalition's sequential number, generated internally by the electoral justice.
+#'   \item TRANSITO: Electoral result outside the candidates' district? (N for no).
 #' }
 #'
 #' @import utils
@@ -72,11 +73,20 @@ party_mun_zone_local <- function(year, ascii = FALSE){
   unlink(as.character(year), recursive = T)
 
   # Change variable names
+  if(year <= 2012){
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
                       "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
                       "QTDE_VOTOS_LEGENDA", "SEQUENCIAL_LEGENDA")
+  } else {
+    
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+                      "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
+                      "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
+                      "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
+                      "QTDE_VOTOS_LEGENDA", "SEQUENCIAL_LEGENDA", "TRANSITO")
+  }
     
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco)
