@@ -87,7 +87,7 @@ candidate_local <- function(year, ascii = FALSE){
   unzip(dados, exdir = paste0("./", year))
   unlink(dados)
 
-  cat("Processing the data...")
+  message("Processing the data...")
 
   # Cleans the data
   setwd(as.character(year))
@@ -142,6 +142,6 @@ candidate_local <- function(year, ascii = FALSE){
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco)
   
-  cat("Done")
+  message("Done")
   return(banco)
 }
