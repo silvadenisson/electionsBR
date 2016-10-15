@@ -43,6 +43,7 @@ are available.}
   \item NOME_COLIGACAO: COalition name.
   \item COMPOSICAO_LEGENDA: Coalition's composition.
   \item TOTAL_VOTOS: Total of votes.
+  \item TRANSITO: Electoral result outside the candidates' district? (N for no).
  }
 }
 \description{

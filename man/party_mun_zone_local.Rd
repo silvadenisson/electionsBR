@@ -40,6 +40,7 @@ are available.}
   \item QTDE_VOTOS_NOMINAIS: Total number of nominal votes that a party received in that city and zone.
   \item QTDE_VOTOS_LEGENDA: Total number of votes that a coalitions received in that city and zone.
   \item SEQUENCIAL_LEGENDA: Coalition's sequential number, generated internally by the electoral justice.
+  \item TRANSITO: Electoral result outside the candidates' district? (N for no).
 }
 }
 \description{

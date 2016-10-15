@@ -44,6 +44,8 @@ are available.}
   \item QTD_VOTOS_ANULADOS_APU_SEP: Amount of canceled votes and votes counted separately in that city and zone. This number reflects the votes coming from some ballot box that is sub-judice. They are not yet valid votes or null until the decision of the electoral court.
   \item DATA_ULT_TOTALIZACAO: Date of the last totalization in that city and zone.
   \item HORA_ULT_TOTALIZACAO: Time of the last totalization in that city and zone.
+  \item TRANSITO: Electoral result outside the candidates' district? (N for no).
+  \item QTD_VOTOS_ANULADOS: Total number of votes invalidated by Brazilian Electoral Supreme Court.
 }
 }
 \description{
