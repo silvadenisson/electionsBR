@@ -36,6 +36,7 @@ devtools::install_github("silvadenisson/electionsBR")
 * party_mun_zone_local()
 * vote_mun_zone_fed()
 * vote_mun_zone_local()
+* voter_affiliation()
 
 To download all the data from a given election, only the `year` argument must be passed to the function call:
 
