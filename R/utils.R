@@ -35,9 +35,9 @@ test_local_year <- function(year){
 
 # Converts electoral data from Latin-1 to ASCII
 #' @import dplyr
-to_ascii <- function(banco){
+to_ascii <- function(banco, encoding){
   
-  dplyr::mutate_if(banco, is.character, dplyr::funs(iconv(., from = "windows-1252", to = "ASCII//TRANSLIT")))
+  dplyr::mutate_if(banco, is.character, dplyr::funs(iconv(., from = encoding, to = "ASCII//TRANSLIT")))
 }
 
 

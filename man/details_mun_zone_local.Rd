@@ -4,13 +4,16 @@
 \alias{details_mun_zone_local}
 \title{Download data on the verification of local elections in Brazil}
 \usage{
-details_mun_zone_local(year, ascii = FALSE)
+details_mun_zone_local(year, ascii = FALSE, encoding = "windows-1252")
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, and 2012
 are available.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
+
+\item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+when \code{ascii = TRUE}.}
 }
 \value{
 \code{details_mun_zone_local()} returns a \code{data.frame} with the following variables:

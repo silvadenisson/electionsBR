@@ -11,6 +11,9 @@
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
+#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' when \code{ascii = TRUE}.
+#'
 #' @return \code{party_mun_zone_local()} returns a \code{data.frame} with the following variables:
 #'
 #' \itemize{
@@ -50,7 +53,7 @@
 #' }
 
 
-party_mun_zone_local <- function(year, ascii = FALSE){
+party_mun_zone_local <- function(year, ascii = FALSE, encoding = "windows-1252"){
 
 
   # Test the input
@@ -89,7 +92,7 @@ party_mun_zone_local <- function(year, ascii = FALSE){
   }
     
   # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco)
+  if(ascii == T) banco <- to_ascii(banco, encoding)
 
   cat("Done.")
   return(banco)
