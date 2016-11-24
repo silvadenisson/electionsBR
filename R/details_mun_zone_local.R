@@ -61,6 +61,7 @@ details_mun_zone_local <- function(year, ascii = FALSE, encoding = "windows-1252
 
 
   # Input tests
+  test_encoding(encoding)
   test_local_year(year)
 
   # Downloads the data
@@ -70,7 +71,7 @@ details_mun_zone_local <- function(year, ascii = FALSE, encoding = "windows-1252
   unzip(dados, exdir = paste0("./", year))
   unlink(dados)
 
-  cat("Processing the data...")
+  message("Processing the data...")
 
   # Cleans the data
   setwd(as.character(year))
@@ -110,6 +111,6 @@ details_mun_zone_local <- function(year, ascii = FALSE, encoding = "windows-1252
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
 
-  cat("Done.")
+  message("Done.")
   return(banco)
 }

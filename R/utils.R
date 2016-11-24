@@ -41,6 +41,12 @@ to_ascii <- function(banco, encoding){
 }
 
 
+# Converts electoral data from Latin-1 to ASCII
+test_encoding <- function(encoding){
+  
+  if(!encoding %in% iconvlist()) stop("Invalid encoding. Check iconvlist() to view a list with all valid encodings.")
+}
+
 
 # Avoid the R CMD check note about magrittr's dot
 utils::globalVariables(".")

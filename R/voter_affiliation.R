@@ -33,6 +33,7 @@ voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252
   
   # Inputs
   if(!is.logical(ascii)) stop("'ascii' must be TRUE or FALSE.")
+  test_encoding(encoding)
   party <- tolower(party)
   party <- gsub(" ", "_", party)
   uf <- tolower(uf)

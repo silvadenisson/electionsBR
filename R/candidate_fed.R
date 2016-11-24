@@ -81,6 +81,7 @@ candidate_fed <- function(year, ascii = FALSE, encoding = "windows-1252"){
 
 
   # Input tests
+  test_encoding(encoding)
   test_fed_year(year)
 
   # Download the data
@@ -90,7 +91,7 @@ candidate_fed <- function(year, ascii = FALSE, encoding = "windows-1252"){
   unzip(dados, exdir = paste0("./", year))
   unlink(dados)
 
-  cat("Processing the data...")
+  message("Processing the data...")
 
   # Cleans the data
   setwd(as.character(year))
@@ -131,6 +132,6 @@ candidate_fed <- function(year, ascii = FALSE, encoding = "windows-1252"){
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
   
-  cat("Done")
+  message("Done.")
   return(banco)
 }
