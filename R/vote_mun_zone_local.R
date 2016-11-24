@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2000, some information can be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, and 2012
+#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012, and 2016
 #' are available.
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
