@@ -8,7 +8,7 @@ voter_affiliation(party, uf, ascii = FALSE, encoding = "windows-1252")
 }
 \arguments{
 \item{party}{\code{character} vector containing the acronym of the parties with an official record on TSE.
-spaces in the name of some parties (i.g. PC do B) must be preserved.}
+Spaces in the name of some parties (i.g. PC do B) must be preserved.}
 
 \item{uf}{\code{character} vector containing the acronym of the states of the federation.}
 

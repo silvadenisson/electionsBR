@@ -7,7 +7,7 @@
 details_mun_zone_local(year, ascii = FALSE, encoding = "windows-1252")
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, and 2012
+\item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
 are available.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
