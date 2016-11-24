@@ -53,6 +53,7 @@ voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252
   
   # Join data
   message("Processing the data...")
+  orig <- getwd()
   setwd(paste0(local, "/aplic/sead/lista_filiados/uf/"))
   
   banco <- Sys.glob("*.csv") %>%
@@ -63,6 +64,7 @@ voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252
   
   unlink(dados)
   unlink(local, recursive = T)
+  setwd(orig)
   
   # Change to ascii
   if(ascii) banco <- to_ascii(banco, encoding)
