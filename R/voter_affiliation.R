@@ -81,7 +81,7 @@ voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252
   setwd(paste0(local, "/aplic/sead/lista_filiados/uf/"))
   
   banco <- Sys.glob("*.csv") %>%
-    lapply(function(x) tryCatch(read.csv2(x, stringsAsFactors = F, fileEncoding = encoding), error = function(e) NULL)) %>%
+    lapply(function(x) tryCatch(read.csv2(x, stringsAsFactors = F, fileEncoding =  "windows-1252"), error = function(e) NULL)) %>%
     do.call("rbind", .)
   
   names(banco) <- gsub("\\.", "_", names(banco))
