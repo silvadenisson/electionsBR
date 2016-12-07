@@ -3,6 +3,7 @@
 #' @export
 #' @import utils
 #' @importFrom magrittr %>%
+#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 juntaDados <- function(encoding){
 
   banco <- Sys.glob("*.txt") %>%
