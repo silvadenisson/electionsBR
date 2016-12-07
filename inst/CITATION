@@ -9,9 +9,9 @@ citEntry(entry = "Manual",
     organization = "Federal University of Minas Gerais (UFMG)",
     address = "Belo Horizonte, Brazil",
     year = "2016",
-    url = "https://www.academia.edu/30307653/electionsBR_R_Functions_to_Download_and_Clean_Brazilian_Electoral_Data",
-    textVersion  = paste("Meireles, F.; Silva, D.; Costa, B. (2013).",
+    url = "http://fmeireles.com/files/electionsbr.pdf",
+    textVersion  = paste("Meireles, F.; Silva, D.; Costa, B. (2016).",
         "electionsBR: R functions to download and clean Brazilian electoral data.",
         "Federal University of Minas Gerais (UFMG). Belo Horizonte, Brazil.",
-        "https://www.academia.edu/30307653/electionsBR_R_Functions_to_Download_and_Clean_Brazilian_Electoral_Data")
+        "http://fmeireles.com/files/electionsbr.pdf")
 )
