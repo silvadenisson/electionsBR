@@ -79,6 +79,6 @@ legend_local <- function(year, ascii = FALSE, encoding = "windows-1252"){
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
 
-  message("Done.")
+  message("Done.\n")
   return(banco)
 }

@@ -66,7 +66,7 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252"){
   # Change to ascii
   if(ascii) banco <- to_ascii(banco, encoding)
   
-  message("Done.")
+  message("Done.\n")
   banco
 }
 
