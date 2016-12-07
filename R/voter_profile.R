@@ -54,7 +54,7 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252"){
   orig <- getwd()
   setwd(local)
   banco <- Sys.glob("*.txt") %>%
-    read.table(header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding =  "windows-1252")
+    read.table(header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding =  encoding)
   
   setwd(orig)
   
