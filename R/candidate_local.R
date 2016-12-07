@@ -95,7 +95,7 @@ candidate_local <- function(year, ascii = FALSE, encoding = "windows-1252"){
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados()
+  banco <- juntaDados(encoding)
   setwd("..")
   unlink(as.character(year), recursive = T)
 
