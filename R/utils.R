@@ -1,8 +1,4 @@
-#' Reads and rbinds multiple data.frames in the same directory
-#'
-#' @export
-#' @import utils
-#' @importFrom magrittr %>%
+# Reads and rbinds multiple data.frames in the same directory
 juntaDados <- function(encoding){
 
   banco <- Sys.glob("*.txt") %>%
@@ -14,6 +10,7 @@ juntaDados <- function(encoding){
 
   banco
 }
+
 
 # Calculates the mode of a distribution
 Moda <- function(x) names(sort(-table(unlist(x))))[1]

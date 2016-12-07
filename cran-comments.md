@@ -1,10 +1,11 @@
-We removed "This package..." from the beginning of the Description. Sorry about that.
+This is a resubmission with minor improvements.
 
 ## Test environments
 
-* Windows (R 3.3.1) Windows 10 (personal computer)
+* Windows 10 (R 3.3.1), personal computer
+* OS X (R 3.3.1), personal computer
 * Ubuntu 12.04 (R 3.1.3-patched), using travis-ci
-* Windows (R 3.3.1-patched) using AppVeyor
+* Windows (R 3.3.1-patched), using AppVeyor
 * Win-builder (devel)
 
 ## R CMD check results
@@ -15,4 +16,4 @@ We removed "This package..." from the beginning of the Description. Sorry about 
 
 ## Reverse dependencies
 
-This is a new release, so there are no reverse dependencies.
+There are currently no reverse dependencies for this package.

@@ -1,0 +1,17 @@
+citHeader("To cite electionsBR in publications, please use:")
+
+
+citEntry(entry = "Manual",
+    title = "{electionsBR}: {R} Functions to Download and Clean {B}razilian Electoral Data",
+    author = personList(as.person("Fernando Meireles"), 
+	                      as.person("Denisson Silva"),
+                        as.person("Beatriz Costa")),
+    organization = "Federal University of Minas Gerais (UFMG)",
+    address = "Belo Horizonte, Brazil",
+    year = "2016",
+    url = "https://www.academia.edu/30307653/electionsBR_R_Functions_to_Download_and_Clean_Brazilian_Electoral_Data",
+    textVersion  = paste("Meireles, F.; Silva, D.; Costa, B. (2013).",
+        "electionsBR: R functions to download and clean Brazilian electoral data.",
+        "Federal University of Minas Gerais (UFMG). Belo Horizonte, Brazil.",
+        "https://www.academia.edu/30307653/electionsBR_R_Functions_to_Download_and_Clean_Brazilian_Electoral_Data")
+)
