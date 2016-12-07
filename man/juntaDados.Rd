@@ -4,7 +4,7 @@
 \alias{juntaDados}
 \title{Reads and rbinds multiple data.frames in the same directory}
 \usage{
-juntaDados()
+juntaDados(encoding)
 }
 \arguments{
 \item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
