@@ -3,6 +3,7 @@
 #' @export
 #' @import utils
 #' @importFrom magrittr %>%
+#' \code{encoding = "windows-1252"}
 #' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 juntaDados <- function(encoding){
 
