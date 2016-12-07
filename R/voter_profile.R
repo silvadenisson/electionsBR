@@ -56,7 +56,7 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252"){
   banco <- Sys.glob("*.txt") %>%
     read.table(header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding =  'windows-1252')
   
-  file.remove(dir(local, full.names=TRUE))
+  #file.remove(dir(local, full.names=TRUE))
   setwd(orig)
     
   # Change variable names
