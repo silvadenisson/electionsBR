@@ -44,9 +44,8 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252"){
   dados <- tempfile()
   local <- tempdir()
 
-  arq <- sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year)
-  
-  download.file(arq, dados)
+  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) %>%
+    download.file(dados)
   unzip(dados, exdir = local)
   unlink(dados)
   
