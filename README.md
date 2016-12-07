@@ -45,6 +45,14 @@ To download all the data from a given election, only the `year` argument must be
 df <- candidate_fed(year = 2002)
 ```
 
+### Citation
+
+To cite `electionsBR` in publications, please use:
+
+``` {.r}
+citation("electionsBR")
+```
+
 ### Authors
 
 [Denisson Silva](http://denissonsilva.com), [Fernando Meireles](http://fmeireles.com), and Beatriz Costa.
