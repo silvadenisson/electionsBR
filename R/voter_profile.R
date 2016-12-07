@@ -57,7 +57,6 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252"){
     read.table(header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding =  "windows-1252")
   
   setwd(orig)
-  unlink(local, recursive = T)
   
   # Change variable names
   names(banco) <- c("PERIODO", "UF", "MUNICIPIO", "COD_MUNICIPIO_TSE", "NR_ZONA",
