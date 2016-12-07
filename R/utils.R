@@ -3,7 +3,7 @@
 #' @export
 #' @import utils
 #' @importFrom magrittr %>%
-juntaDados <- function(){
+juntaDados <- function(encoding){
 
   banco <- Sys.glob("*.txt") %>%
     lapply(function(x) tryCatch(read.table(x, header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding = encoding), error = function(e) NULL))
