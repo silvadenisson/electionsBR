@@ -43,22 +43,22 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252"){
   # Download data
   dados <- tempfile()
   local <- tempdir()
-  end <- paste0(local, "\\sub")
-  dir.create(end)
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = end)
+
+  arq <- sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year)
+  
+  download.file(arq, dados)
+  unzip(dados, exdir = local)
   unlink(dados)
   
   # Join data
   message("Processing the data...")
   
   orig <- getwd()
-  setwd(end)
+  setwd(local)
   banco <- Sys.glob("*.txt") %>%
     read.table(header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding =  'windows-1252')
   
-  unlink(end, recursive = T)
+  unlink(Sys.glob("*.txt"))
   setwd(orig)
     
   # Change variable names
