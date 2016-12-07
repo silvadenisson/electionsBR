@@ -6,6 +6,10 @@
 \usage{
 juntaDados()
 }
+\arguments{
+\item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+when \code{ascii = TRUE}.}
+}
 \description{
 Reads and rbinds multiple data.frames in the same directory
 }
