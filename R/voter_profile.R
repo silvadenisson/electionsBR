@@ -58,6 +58,8 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252"){
   
   setwd(orig)
   
+file.remove(dir(local, full.names=TRUE))
+    
   # Change variable names
   names(banco) <- c("PERIODO", "UF", "MUNICIPIO", "COD_MUNICIPIO_TSE", "NR_ZONA",
                     "SEXO", "FAIXA_ETARIA", "GRAU_DE_ESCOLARIDADE", "QTD_ELEITORES_NO_PERFIL")
