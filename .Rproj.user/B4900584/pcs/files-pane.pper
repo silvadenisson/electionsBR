@@ -2,7 +2,7 @@
     "path" : "~/GitHub/electionsBR/R",
     "sortOrder" : [
         {
-            "ascending" : false,
+            "ascending" : true,
             "columnIndex" : 2
         }
     ]
