@@ -24,7 +24,7 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ### How does it work?
 
-`electionsBR` provides ten main functions to dowload and clean Brazilian electoral data:
+`electionsBR` provides twelve main functions to dowload and clean Brazilian electoral data:
 
 * candidate_fed()
 * candidate_local()

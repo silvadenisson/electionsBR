@@ -12,8 +12,8 @@ Description: Offers a set of functions that automatically downloads and aggregat
     Among others, there are data available on local and federal elections for all positions
     (city councillor, mayor, state deputy, federal deputy, governor, and president)
     disaggregated by state of the Federation, city, zone, and polling stations.
-    In addition, data on the verification (blank votes, null votes, abstention) and the
-    candidates' background are also available.
+    In addition, data on the verification (blank votes, null votes, abstention),
+    candidates' and voters' backgrounds are also available.
 License: GPL (>= 2)
 Depends: R (>= 2.10)
 Imports: magrittr,
