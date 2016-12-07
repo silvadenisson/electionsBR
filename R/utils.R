@@ -6,7 +6,7 @@
 juntaDados <- function(){
 
   banco <- Sys.glob("*.txt") %>%
-    lapply(function(x) tryCatch(read.table(x, header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding = "windows-1252"), error = function(e) NULL))
+    lapply(function(x) tryCatch(read.table(x, header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding = encoding), error = function(e) NULL))
 
   nCols <- sapply(banco, ncol)
   banco <- banco[nCols == Moda(nCols)] %>%
