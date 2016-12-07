@@ -73,7 +73,7 @@ vote_mun_zone_fed <- function(year, ascii = FALSE, encoding = "windows-1252"){
 
   # Clean the data
   setwd(as.character(year))
-  banco <- juntaDados()
+  banco <- juntaDados(encoding)
   setwd("..")
   unlink(as.character(year), recursive = T)
 
