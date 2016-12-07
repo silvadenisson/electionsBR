@@ -3,7 +3,6 @@
 #' @export
 #' @import utils
 #' @importFrom magrittr %>%
-
 juntaDados <- function(encoding){
 
   banco <- Sys.glob("*.txt") %>%
