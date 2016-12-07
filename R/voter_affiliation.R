@@ -87,6 +87,7 @@ voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252
   names(banco) <- gsub("\\.", "_", names(banco))
   
   unlink(dados)
+  file.remove(dir(local, full.names=TRUE))    
   setwd(orig)
   
   # Change to ascii
