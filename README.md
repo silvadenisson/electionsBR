@@ -8,7 +8,7 @@ election data from Brazil (1996-2016), directly from the Brazilian Superior Elec
 
 ### Installation
 
-`electionsBR` is on [CRAN]() and can be installed with:
+`electionsBR` is on CRAN and can be installed with:
 
 ``` {.r}
 install.packages("electionsBR")
