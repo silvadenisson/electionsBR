@@ -15,7 +15,7 @@ Description: Offers a set of functions that automatically downloads and aggregat
     In addition, data on the verification (blank votes, null votes, abstention),
     candidates' and voters' backgrounds are also available.
 License: GPL (>= 2)
-Depends: R (>= 2.10)
+Depends: R (>= 3.1.2)
 Imports: magrittr,
     dplyr
 LazyData: TRUE
