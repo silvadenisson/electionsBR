@@ -23,9 +23,9 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ### How does it work?
 
-`electionsBR` provides twelve main functions to dowload and clean Brazilian electoral data:
+`electionsBR` provides several functions to dowload and clean Brazilian electoral data:
 
-* candidate_fed()
+* `candidate_fed()`, to download...
 * candidate_local()
 * details_mun_zone_fed()
 * details_mun_zone_local()
@@ -43,6 +43,8 @@ To download all the data from a given election, only the `year` argument must be
 ``` {.r}
 df <- candidate_fed(year = 2002)
 ```
+
+For more information on how the package works, see the package vignette.
 
 ### Citation
 

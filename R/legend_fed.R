@@ -8,6 +8,8 @@
 #'
 #' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
 #' are available.
+#' 
+#' @param uf Federation Unit acronym (\code{character vector}).
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
@@ -48,12 +50,13 @@
 #' df <- legend_fed(2002)
 #' }
 
-legend_fed <- function(year, ascii = FALSE, encoding = "windows-1252"){
+legend_fed <- function(year, uf = "all", ascii = FALSE, encoding = "windows-1252"){
 
 
   # Test the input
   test_encoding(encoding)
   test_fed_year(year)
+  uf <- test_uf(uf)
 
   # Download the data
   dados <- tempfile()
@@ -66,7 +69,7 @@ legend_fed <- function(year, ascii = FALSE, encoding = "windows-1252"){
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(encoding)
+  banco <- juntaDados(uf)
   setwd("..")
   unlink(as.character(year), recursive = T)
 

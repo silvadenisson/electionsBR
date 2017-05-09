@@ -39,4 +39,3 @@ The function returns a \code{data.frame} where each observation corresponds to a
 df <- voter_profile(2002)
 }
 }
-

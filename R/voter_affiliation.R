@@ -46,7 +46,7 @@
 #' @examples
 #' \dontrun{
 #' df <- voter_affiliation("PT", "DF")
-#' 
+#'
 #' df <- voter_affiliation(c("PT", "PC do B"), "DF")
 #' 
 #' df <- voter_affiliation(c("PT", "PC do B"), c("DF", "MG", "AL"))

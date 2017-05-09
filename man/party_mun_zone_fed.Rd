@@ -4,11 +4,14 @@
 \alias{party_mun_zone_fed}
 \title{Download data on the polls by parties from federal elections in Brazil}
 \usage{
-party_mun_zone_fed(year, ascii = FALSE, encoding = "windows-1252")
+party_mun_zone_fed(year, uf = "all", ascii = FALSE,
+  encoding = "windows-1252")
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
 are available.}
+
+\item{uf}{Filter results by Federation Unit acronym (\code{character vector}).}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
@@ -59,4 +62,3 @@ For the elections prior to 2002, some information can be incomplete. For the 201
 df <- party_mun_zone_fed(2002)
 }
 }
-

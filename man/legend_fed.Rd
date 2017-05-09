@@ -4,11 +4,13 @@
 \alias{legend_fed}
 \title{Download data on federal election coalitions in Brazil}
 \usage{
-legend_fed(year, ascii = FALSE, encoding = "windows-1252")
+legend_fed(year, uf = "all", ascii = FALSE, encoding = "windows-1252")
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
 are available.}
+
+\item{uf}{Federation Unit acronym (\code{character vector}).}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
@@ -55,4 +57,3 @@ For elections prior to 2002, some information can be incomplete.
 df <- legend_fed(2002)
 }
 }
-

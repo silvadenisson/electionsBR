@@ -17,8 +17,14 @@ Description: Offers a set of functions that automatically downloads and aggregat
 License: GPL (>= 2)
 Depends: R (>= 3.1.2)
 Imports: magrittr,
-    dplyr
+    dplyr,
+    data.table,
+    haven,
+    stats
 LazyData: TRUE
 URL: https://github.com/silvadenisson/electionsBR
 BugReports: https://github.com/silvadenisson/electionsBR/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
