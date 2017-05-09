@@ -8,7 +8,7 @@ Authors@R: c(
     person("Beatriz", "Costa", ,"bea.s.costa@gmail.com", "ctb")
     )
 Description: Offers a set of functions that automatically downloads and aggregates
-    election data from Brazil, directly from the Superior Electoral Court website.
+    electoral data from Brazil, directly from the Superior Electoral Court website.
     Among others, there are data available on local and federal elections for all positions
     (city councillor, mayor, state deputy, federal deputy, governor, and president)
     disaggregated by state of the Federation, city, zone, and polling stations.

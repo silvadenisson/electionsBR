@@ -4,55 +4,85 @@ author: "Vignette Author"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Introduction to electionsBR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+# Overview
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+`electionsBR` is an `R` package used to automatically retrieve and clean electoral data from Brazil, directly from the Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, `electionsBR` provides functions to obtain data on electoral results, candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profile.
 
-## Vignette Info
+## How to install
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+Since the version `0.1.1`, `electionsBR` is on CRAN and can be installed with:
 
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r, eval=FALSE}
+install.packages("electionsBR")
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+Development versions of the package are also available on [GitHub](https://github.com/). You can install these pre-release versions with:
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r, eval=FALSE}
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("silvadenisson/electionsBR")
 ```
 
-Also a quote using `>`:
+## Usage
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+No previous experience with `R` is required to use the `electionsBR` package. In fact, one needs only two lines of code to download, clean and export (to Stata and SPSS formats) Brazilian electoral data. For instance, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
+
+```{r, eval=FALSE}
+install.packages("electionsBR")
+electionsBR::vote_mun_zone_fed(2010, export = TRUE)
+```
+
+By setting the `export` argument to `TRUE` in the `vote_mun_zone_fed` function, the package will download and clean the relevant data directly from the TSE website and save it in the `R` working directory (the function automatically tells the user where this directory is located) in two different files:
+
+1. `electoral_data.dta`, to be used with [Stata](http://www.stata.com/);
+2. `electoral_data.sav`, to be used with [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/).
+
+In the remaining of this vignette, we document all the functionality included in the package -- the table below sums up this information.
+
+## Data on electoral results
+
+```{r, eval=FALSE}
+# Load the package
+library(electionsBR)
+
+# Use vote_mun_zone_fed function to download 2014 electoral results
+df <- vote_mun_zone_fed(2014)
+```
+
+```{r, eval=FALSE}
+# Get results for the 2000 local election
+df <- vote_mun_zone_local(2000)
+```
+
+## Data on running candidates
+
+
+
+
+
+## Data on parties and electoral coalitions
+
+## Data on voters
+
+## A complete list of functions
+
+## Other options
+
+### Exporting Brazilian electoral data
+
+### Removing UTF-8 special characters from texts
+
+### Filtering results by state
+
+## An easier way to get Federal electoral results
+
+## Brazilian Electoral Supreme Court (TSE)
+
+### Official documentation
+
+## Citation

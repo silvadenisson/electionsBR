@@ -1,6 +1,8 @@
 #' Download, clean, and transform data on legislative electoral results by municipality
 #'
-#' \code{legislative_mun_vote()} ...
+#' \code{legislative_mun_vote()} downloads, cleans, and transforms data on legislative elections results by
+#' municipality. The electoral results are, by default, reported as percentages.
+#' The user can choose between Senate and Chamber of Deputies electoral results.
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
 #' are available.
@@ -74,7 +76,9 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 
 #' Download, clean, and transform data on legislative electoral results by state
 #'
-#' \code{legislative_state_vote()} ...
+#' \code{legislative_state_vote()} downloads, cleans, and transforms data on legislative elections results by
+#' state The electoral results are, by default, reported as percentages.
+#' The user can choose between Senate and Chamber of Deputies electoral results.
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
 #' are available.

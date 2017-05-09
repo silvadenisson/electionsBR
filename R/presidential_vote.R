@@ -1,6 +1,7 @@
 #' Download, clean, and transform data on presidential electoral runoff results by municipality
 #'
-#' \code{president_mun_vote()} ...
+#' \code{president_mun_vote()} downloads, cleans, and transforms data on presidential elections results
+#' in the second round (runnoff elections) by municipality. The electoral results are, by default, reported as percentages.
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
 #' are available.
@@ -66,7 +67,8 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "win
 
 #' Download, clean, and transform data on presidential electoral runoff results by state
 #'
-#' \code{president_state_vote()} ...
+#' \code{president_state_vote()} downloads, cleans, and transforms data on presidential elections results
+#' in the second round (runnoff elections) by state. The electoral results are, by default, reported as percentages.
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 2002, 2006, 2010, and 2014
 #' are available.
