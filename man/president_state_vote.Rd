@@ -33,7 +33,8 @@ when \code{ascii = TRUE}.}
 }
 }
 \description{
-\code{president_state_vote()} ...
+\code{president_state_vote()} downloads, cleans, and transforms data on presidential elections results
+in the second round (runnoff elections) by state. The electoral results are, by default, reported as percentages.
 }
 \details{
 This functions includes results to BR and ZZ state acronyms: the first one considers the entire

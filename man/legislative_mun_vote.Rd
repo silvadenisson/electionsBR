@@ -35,7 +35,9 @@ when \code{ascii = TRUE}.}
 }
 }
 \description{
-\code{legislative_mun_vote()} ...
+\code{legislative_mun_vote()} downloads, cleans, and transforms data on legislative elections results by
+municipality. The electoral results are, by default, reported as percentages.
+The user can choose between Senate and Chamber of Deputies electoral results.
 }
 \examples{
 \dontrun{

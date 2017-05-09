@@ -1,6 +1,6 @@
 ---
 title: "Introduction to the electionsBR package"
-author: "Vignette Author"
+author: "Fernando Meireles, Denisson Silva, Beatriz Costa"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -9,9 +9,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Overview
+```{r, echo=FALSE}
+library(electionsBR)
+```
 
-`electionsBR` is an `R` package used to automatically retrieve and clean electoral data from Brazil, directly from the Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, `electionsBR` provides functions to obtain data on electoral results, candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profile.
+
+## Overview
+
+`electionsBR` is an `R` package used to retrieve and clean electoral data from Brazil, directly from the Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, `electionsBR` provides functions to obtain data on electoral results, candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profile.
 
 ## How to install
 
@@ -28,7 +33,7 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("silvadenisson/electionsBR")
 ```
 
-## Usage
+## How to use
 
 No previous experience with `R` is required to use the `electionsBR` package. In fact, one needs only two lines of code to download, clean and export (to Stata and SPSS formats) Brazilian electoral data. For instance, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
 
@@ -59,30 +64,156 @@ df <- vote_mun_zone_fed(2014)
 df <- vote_mun_zone_local(2000)
 ```
 
+
+## Presidential and legislative electoral results
+
+```{r, eval=FALSE}
+# Get presidential electoral results by municipality in tidy format
+pres_mun <- president_mun_vote(2010, perc = TRUE)
+
+# Get presidential electoral results by state in tidy format
+pres_st <- president_state_vote(2010, perc = TRUE)
+```
+
+```
+legislative_mun_vote(year)
+legislative_state_vote(year)
+```
+
 ## Data on running candidates
 
+```{r, eval=FALSE}
+# Get data on candidates running in local elections
+df <- candidate_local(2016)
 
-
-
+# Get data on candidates running in federal elections
+df <- candidate_fed(2016)
+```
 
 ## Data on parties and electoral coalitions
 
+```{r, eval=FALSE}
+# Get data on parties' electoral performances in the federal election of 2006
+federal <- party_mun_zone_fed(2006)
+
+# Get data on parties' electoral performances in the local election of 2004
+municipal <- party_mun_zone_local(2004)
+```
+
+```
+legend_fed(year)
+legend_local(year)
+```
+
 ## Data on voters
 
-## A complete list of functions
+```{r, eval=FALSE}
+# Get data on voters' profile
+voters02 <- voter_profile(2002)
+voters04 <- voter_profile(2004)
+```
 
-## Other options
+
+```{r, eval=FALSE}
+# PT (Brazilian Workers' Party) in Distrito Federal (DF)
+df <- voter_affiliation("PT", "DF")
+
+# PSDB (Brazilian Social Democracy Party) in Sao Paulo (SP)
+df <- voter_affiliation("PSDB", "SP")
+
+# PT and PC do B (Brazilian Communist Party) in DF, MG and AL
+df <- voter_affiliation(c("PT", "PC do B"), c("DF", "MG", "AL"))
+```
+
+To consult state abbreviations, use:
+
+```{r}
+uf_br()
+```
+
+A `character` vector with a list os party abbreviations, valid for 2016 elections, can be obtained with:
+
+```{r}
+parties_br()
+```
+
+## Other functions
+
+```
+details_mun_zone_fed(year)
+details_mun_zone_local(year)
+```
+
+```
+seats_fed(year)
+seats_local(year)
+```
+
+## Optional arguments
+
+Most `electionsBR` functions accept optional arguments that may be used to customize its outputs.
 
 ### Exporting Brazilian electoral data
 
+```{r, eval=FALSE}
+df <- party_mun_zone_fed(2010, export = TRUE)
+```
+
 ### Removing UTF-8 special characters from texts
+
+```{r, eval=FALSE}
+df <- candidate_fed(2010, ascii = TRUE)
+```
+
+```{r, eval=FALSE}
+df <- candidate_fed(2010, ascii = TRUE, encoding = "latin1")
+```
 
 ### Filtering results by state
 
-## An easier way to get Federal electoral results
+Not case sensitive (MG, Mg, mG, and mg are all equally valid inputs)...
+
+It is faster...
+
+```{r, eval=FALSE}
+# Electoral results for the 2010 federal elections in Sao Paulo (SP)
+df <- vote_mun_zone_fed(2010, uf = "SP")
+
+# Electoral results for the 2010 federal elections in Minas Gerais (MS)
+df <- vote_mun_zone_fed(2010, uf = "mg")
+
+# Electoral results for the 2010 federal elections in RS, SC, and PR
+df <- vote_mun_zone_fed(2010, uf = c("RS", "SC", "PR"))
+```
+
+## A complete list of functions
+
+* `candidate_fed()`
+* `candidate_local()`
+* `details_mun_zone_fed()`
+* `details_mun_zone_local()`
+* `legend_fed()`
+* `legend_local()`
+* `legislative_mun_vote()`
+* `legislative_state_vote()`
+* `parties_br()`
+* `party_mun_zone_fed()`
+* `party_mun_zone_local()`
+* `president_mun_vote()`
+* `president_state_vote()`
+* `seats_fed()`
+* `seats_local()`
+* `uf_br()`
+* `vote_mun_zone_fed()`
+* `vote_mun_zone_local()`
+* `voter_affiliation()`
+* `voter_profile()`
+
 
 ## Brazilian Electoral Supreme Court (TSE)
 
+
 ### Official documentation
 
-## Citation
+
+## How to cite in publication

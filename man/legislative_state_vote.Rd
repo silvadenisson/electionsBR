@@ -35,7 +35,9 @@ when \code{ascii = TRUE}.}
 }
 }
 \description{
-\code{legislative_state_vote()} ...
+\code{legislative_state_vote()} downloads, cleans, and transforms data on legislative elections results by
+state The electoral results are, by default, reported as percentages.
+The user can choose between Senate and Chamber of Deputies electoral results.
 }
 \examples{
 \dontrun{

@@ -32,12 +32,21 @@ devtools::install_github("silvadenisson/electionsBR")
 * `details_mun_zone_local()`
 * `legend_fed()`
 * `legend_local()`
+* `legislative_mun_vote()`
+* `legislative_state_vote()`
+* `parties_br()`
 * `party_mun_zone_fed()`
 * `party_mun_zone_local()`
+* `president_mun_vote()`
+* `president_state_vote()`
+* `seats_fed()`
+* `seats_local()`
+* `uf_br()`
 * `vote_mun_zone_fed()`
 * `vote_mun_zone_local()`
 * `voter_affiliation()`
 * `voter_profile()`
+
 
 To download all the data from a given election, only the `year` argument must be passed to the function call:
 

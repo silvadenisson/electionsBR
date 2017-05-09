@@ -5,7 +5,6 @@ This is a major uptade. We changed central aspects of the package API, which aff
 * Updated the package API to (1) load and clean data faster (with data.tables' `fread()` and `rbindlist()`), (2) to make the package more robust to human errors (new internal functions to test inputs), and (3) to return a simples object (a dplyr `tbl`).
 * Included two new functions to summarize presidential runnoff results by state (`president_state_vote()`) and by municipality (`president_mun_vote()`).
 * Included two new functions to summarize legislative election results by state (`legislative_state_vote()`) and by municipality (`legislative_mun_vote()`).
-* Included a wrapper functions around ggplot2 to plot the results of `president_` and `legislative_` functions -- TODO
 * Included one new function to get data on the number of seats being disputed in each election (`available_seats()`).
 * Included an optional argument in most functions to export electoral data to Stata or SPSS.
 * Included an optional argument in most functions to filter results by state (`UF`).

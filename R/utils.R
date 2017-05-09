@@ -1,3 +1,30 @@
+#' Returns a vector with the abbreviations of all Brazilian states
+#'
+#' @export 
+
+uf_br <- function() {
+  
+  c("AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", 
+    "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", 
+    "RO", "RR", "RS", "SC", "SE", "SP", "TO")
+}
+
+
+#' Returns a vector with the abbreviations of all Brazilian parties
+#'
+#' The character vector includes only parties that ran in elections in 2016.
+#' 
+#' @export
+
+parties_br <- function() {
+  
+  c("PPS", "PSB", "PSOL", "PP", "PSL", "PR", "PSDB", "PDT", "PSDC", 
+    "PHS", "PT", "PROS", "PTC", "PSC", "PC do B", "PRB", "PMDB", 
+    "DEM", "PMB", "PTB", "PEN", "PTN", "SD", "PMN", "PT do B", "PSD", 
+    "PV", "PRP", "REDE", "PPL", "PRTB", "PSTU", "PCB", "PCO", "NOVO")
+}
+
+
 # Reads and rbinds multiple data.frames in the same directory
 juntaDados <- function(uf){
 
