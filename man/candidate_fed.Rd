@@ -4,7 +4,8 @@
 \alias{candidate_fed}
 \title{Download data on the candidates' backgrounds in federal elections}
 \usage{
-candidate_fed(year, uf = "all", ascii = FALSE, encoding = "windows-1252")
+candidate_fed(year, uf = "all", ascii = FALSE, encoding = "windows-1252",
+  export = FALSE)
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -16,6 +17,8 @@ are available.}
 
 \item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
+
+\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 }
 \value{
 \code{candidate_fed()} returns a \code{tbl, data.frame} with the following variables:
@@ -77,6 +80,10 @@ when \code{ascii = TRUE}.}
 \code{candidate_fed()} downloads and aggregates data on the candidates' background who ran in
 federal elections in Brazil. The function returns a \code{data.frame} where each observation
 corresponds to a candidate.
+}
+\details{
+If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+ files in the current directory.
 }
 \note{
 For the elections prior to 2002, some information can be incomplete. For the 2014 elections, three more variables are available.

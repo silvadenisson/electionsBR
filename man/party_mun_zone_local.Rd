@@ -5,7 +5,7 @@
 \title{Download data on the polls by parties from local elections in Brazil}
 \usage{
 party_mun_zone_local(year, uf = "all", ascii = FALSE,
-  encoding = "windows-1252")
+  encoding = "windows-1252", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012, and 2016
@@ -17,6 +17,8 @@ are available.}
 
 \item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
+
+\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 }
 \value{
 \code{party_mun_zone_local()} returns a \code{data.frame} with the following variables:
@@ -53,6 +55,10 @@ when \code{ascii = TRUE}.}
 \code{party_mun_zone_local()} downloads and aggregates data on the polls by parties from local elections in Brazil,
 disaggregated by electoral zone. The function returns a \code{data.frame} where each observation
 corresponds to a city/zone.
+}
+\details{
+If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+ files in the current directory.
 }
 \note{
 For the elections prior to 2000, some information can be incomplete.

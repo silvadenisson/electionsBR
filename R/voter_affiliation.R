@@ -15,6 +15,11 @@
 #' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
+#' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
+#'
+#' @details If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+#'  files in the current directory.
+#' 
 #' @return \code{voter_affiliation()} returns a \code{data.frame} with the following variables:
 #'
 #' \itemize{
@@ -52,7 +57,7 @@
 #' df <- voter_affiliation(c("PT", "PC do B"), c("DF", "MG", "AL"))
 #' }
 
-voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252"){
+voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252", export = FALSE){
   
   
   # Inputs
@@ -91,6 +96,9 @@ voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252
   
   # Change to ascii
   if(ascii) banco <- to_ascii(banco, encoding)
+  
+  # Export
+  if(export) export_data(banco)
   
   message("Done.\n")
   banco

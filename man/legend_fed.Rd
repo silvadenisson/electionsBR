@@ -4,7 +4,8 @@
 \alias{legend_fed}
 \title{Download data on federal election coalitions in Brazil}
 \usage{
-legend_fed(year, uf = "all", ascii = FALSE, encoding = "windows-1252")
+legend_fed(year, uf = "all", ascii = FALSE, encoding = "windows-1252",
+  export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -16,6 +17,8 @@ are available.}
 
 \item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
+
+\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 }
 \value{
 \code{legend_fed()} returns a \code{data.frame} with the following variables:
@@ -48,6 +51,10 @@ when \code{ascii = TRUE}.}
 \code{legend_fed()} downloads and aggregates the data on the party denomination (coalitions or parties) from the federal elections in Brazil,
 disaggregated bi cities. The function returns a \code{data.frame} where each observation
 corresponds to a city.
+}
+\details{
+If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+ files in the current directory.
 }
 \note{
 For elections prior to 2002, some information can be incomplete.

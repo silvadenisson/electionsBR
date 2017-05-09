@@ -4,7 +4,8 @@
 \alias{voter_profile}
 \title{Download data on the voters' profile}
 \usage{
-voter_profile(year, ascii = FALSE, encoding = "windows-1252")
+voter_profile(year, ascii = FALSE, encoding = "windows-1252",
+  export = FALSE)
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
@@ -14,6 +15,8 @@ voter_profile(year, ascii = FALSE, encoding = "windows-1252")
 
 \item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
+
+\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 }
 \value{
 \code{voter_profile()} returns a \code{data.frame} with the following variables:
@@ -33,6 +36,10 @@ when \code{ascii = TRUE}.}
 \description{
 \code{voter_profile()} downloads and cleans data on the voters' profile aggregated by state, city and electoral zone.
 The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
+}
+\details{
+If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+ files in the current directory.
 }
 \examples{
 \dontrun{

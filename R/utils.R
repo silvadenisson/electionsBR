@@ -66,6 +66,7 @@ export_data <- function(df) {
   
   haven::write_dta(df, "electoral_data.dta")
   haven::write_sav(df, "electoral_data.sav")
+  message(paste0("Electoral data files were saved on: ", getwd(), ".\n"))
 }
 
 

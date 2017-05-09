@@ -4,7 +4,8 @@
 \alias{voter_affiliation}
 \title{Download data on voters' affiliation to political parties}
 \usage{
-voter_affiliation(party, uf, ascii = FALSE, encoding = "windows-1252")
+voter_affiliation(party, uf, ascii = FALSE, encoding = "windows-1252",
+  export = FALSE)
 }
 \arguments{
 \item{party}{\code{character} vector containing the acronym of the parties with an official record on TSE.
@@ -16,6 +17,8 @@ Spaces in the name of some parties (i.g. PC do B) must be preserved.}
 
 \item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
+
+\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 }
 \value{
 \code{voter_affiliation()} returns a \code{data.frame} with the following variables:
@@ -45,6 +48,10 @@ when \code{ascii = TRUE}.}
 \description{
 \code{voter_affiliation()} downloads and cleans data on voters' affiliation to Brazilian political parties by state.
  The function returns a \code{data.frame} where each observation corresponds to a voter.
+}
+\details{
+If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+ files in the current directory.
 }
 \note{
 Data on party affiliation is uptadet on a daily basis, therefore it may vary depending on the day it is collected.
