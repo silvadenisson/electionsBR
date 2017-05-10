@@ -1,4 +1,4 @@
-#' Download data on the number of seats under dispute in federal elections 
+#' Download data on the number of seats under dispute in federal elections
 #'
 #' \code{seats_fed()} downloads and aggregates the data on the number of seats under dispute in
 #' federal elections in Brazil. The function returns a \code{tbl, data.frame} where each observation

@@ -153,7 +153,7 @@ parties_br()
 
 ## Other functions
 
-
+`electionsBR` also includes functions to download data on valid and residual votes and on the number of seats under dispute in each elections. The relevant functions are, respectivelly:
 
 ```
 details_mun_zone_fed(year)
