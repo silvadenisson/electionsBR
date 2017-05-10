@@ -1,4 +1,4 @@
-#' Download data on the polls by candidate from local elections in Brazil
+#' Download data on candidate electoral results in local elections in Brazil
 #'
 #' \code{vote_mun_zone_local()} downloads and aggregates data on the verification from local elections in Brazil,
 #' disaggregated by electoral zone. The function returns a \code{data.frame} where each observation

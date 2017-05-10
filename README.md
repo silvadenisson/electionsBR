@@ -54,6 +54,12 @@ To download all the data from a given election, only the `year` argument must be
 df <- candidate_fed(year = 2002)
 ```
 
+You may also export Brazilian electoral data with most functions in the package by setting the `export` optional argument to `TRUE`:
+
+``` {.r}
+df <- candidate_fed(year = 2002, export = TRUE)
+```
+
 For more information on how the package works, see the package vignette.
 
 ### Citation
@@ -67,7 +73,3 @@ citation("electionsBR")
 ### Authors
 
 [Denisson Silva](http://denissonsilva.com), [Fernando Meireles](http://fmeireles.com), and Beatriz Costa.
-
-### License
-
-GPL (>= 2)

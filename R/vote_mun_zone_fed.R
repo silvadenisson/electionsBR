@@ -1,4 +1,4 @@
-#' Download data on the polls by candidate from federal elections in Brazil
+#' Download data on candidate electoral results in federal elections in Brazil
 #'
 #' \code{vote_mun_zone_fed()} downloads and aggregates data on the verification of federal elections in Brazil,
 #' disaggregated by cities and electoral zone. The function returns a \code{data.frame} where each observation
