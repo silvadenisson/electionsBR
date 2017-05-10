@@ -2,7 +2,7 @@
 % Please edit documentation in R/vote_mun_zone_local.R
 \name{vote_mun_zone_local}
 \alias{vote_mun_zone_local}
-\title{Download data on the polls by candidate from local elections in Brazil}
+\title{Download data on candidate electoral results in local elections in Brazil}
 \usage{
 vote_mun_zone_local(year, uf = "all", ascii = FALSE,
   encoding = "windows-1252", export = FALSE)
