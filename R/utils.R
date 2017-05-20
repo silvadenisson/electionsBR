@@ -26,7 +26,7 @@ parties_br <- function() {
 
 
 # Reads and rbinds multiple data.frames in the same directory
-juntaDados <- function(uf){
+juntaDados <- function(uf, encoding){
 
   Sys.glob("*.txt")[grepl(uf, Sys.glob("*.txt"))] %>%
     lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F, encoding = encoding), 
