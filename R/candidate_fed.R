@@ -84,7 +84,7 @@
 #' df <- candidate_fed(2002)
 #' }
 
-candidate_fed <- function(year, uf = "all", ascii = FALSE, encoding = "windows-1252", export = FALSE){
+candidate_fed <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
 
 
   # Input tests
