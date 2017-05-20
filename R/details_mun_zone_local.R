@@ -13,7 +13,7 @@
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
@@ -64,7 +64,7 @@
 #' df <- details_mun_zone_local(2000)
 #' }
 
-details_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "windows-1252", export = FALSE){
+details_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
 
 
   # Input tests
@@ -83,7 +83,7 @@ details_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf)
+  banco <- juntaDados(uf, encoding)
   setwd("..")
   unlink(as.character(year), recursive = T)
 
