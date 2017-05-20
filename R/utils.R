@@ -68,6 +68,7 @@ test_local_year <- function(year){
 
 # Converts electoral data from Latin-1 to ASCII
 test_encoding <- function(encoding){
+  if(encoding == "Latin-1"){encoding = "latin1"} 
   
   if(!encoding %in% tolower(iconvlist())) stop("Invalid encoding. Check iconvlist() to view a list with all valid encodings.")
 }
