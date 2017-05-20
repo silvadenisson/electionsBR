@@ -29,7 +29,7 @@ parties_br <- function() {
 juntaDados <- function(uf){
 
   Sys.glob("*.txt")[grepl(uf, Sys.glob("*.txt"))] %>%
-    lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F), 
+    lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F, encoding="encoding"), 
                                 error = function(e) NULL)) %>%
     data.table::rbindlist() %>%
     dplyr::as.tbl()
