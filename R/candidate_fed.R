@@ -103,7 +103,7 @@ candidate_fed <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1",
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf)
+  banco <- juntaDados(uf, encoding)
   setwd("..")
   unlink(as.character(year), recursive = T)
 
