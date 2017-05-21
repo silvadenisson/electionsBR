@@ -12,7 +12,7 @@
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #' 
-#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
@@ -57,7 +57,7 @@
 #' df <- voter_affiliation(c("PT", "PC do B"), c("DF", "MG", "AL"))
 #' }
 
-voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "Latin-1", export = FALSE){
+voter_affiliation <- function(party, uf, ascii = FALSE, encoding = "windows-1252", export = FALSE){
   
   
   # Inputs
