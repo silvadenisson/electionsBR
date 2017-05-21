@@ -68,14 +68,14 @@ df <- vote_mun_zone_local(2000)
 
 ## Federal elections results
 
-There are also functions used to quickly access presidential and legislative elections results per state and per municipality -- with vote percentage reported. To get presidential runnoff (second round) results in runnoff, use `president_` functions:
+There are also functions used to quickly access presidential and legislative elections results per state and per municipality -- with vote proportions reported. To get presidential runnoff (second round) results in runnoff, use `president_` functions:
 
 ```{r, eval=FALSE}
 # Get presidential electoral results by municipality in tidy format
-pres_mun <- president_mun_vote(2010, perc = TRUE)
+pres_mun <- president_mun_vote(2010, prop = TRUE)
 
 # Get presidential electoral results by state in tidy format
-pres_st <- president_state_vote(2010, perc = TRUE)
+pres_st <- president_state_vote(2010, prop = TRUE)
 ```
 
 To get legislative election results, use instead:
@@ -184,7 +184,7 @@ df <- candidate_fed(2010, ascii = TRUE)
 ```
 
 ```{r, eval=FALSE}
-df <- candidate_fed(2010, ascii = TRUE, encoding = "latin1")
+df <- candidate_fed(2010, ascii = TRUE, encoding = "Latin-1")
 ```
 
 ### Filtering results by state
