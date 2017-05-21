@@ -13,7 +13,7 @@
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #'
 #' @return \code{legislative_mun_vote()} returns a \code{tbl, data.frame} with the following variables:.
@@ -39,7 +39,7 @@
 #' }
 
 
-legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
   if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
@@ -47,7 +47,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
   else house <- ifelse(match.arg(house) == "senate", "Senador", "Deputado Federal")
   
   # Download and clean the data
-  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii)) %>%
+  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding)) %>%
     dplyr::filter_(~NUM_TURNO == 1, ~DESCRICAO_CARGO == house) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_NOMINAIS)), "QTDE_VOTOS_NOMINAIS")) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_LEGENDA)), "QTDE_VOTOS_LEGENDA")) %>%
@@ -89,7 +89,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #'
 #' @return \code{legislative_state_vote()} returns a \code{tbl, data.frame} with the following variables:.
@@ -114,7 +114,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #' df <- legislative_state_vote(2002)
 #' }
 
-legislative_state_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+legislative_state_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
   if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
@@ -122,7 +122,7 @@ legislative_state_vote <- function(year, house = c("chamber", "senate"), perc = 
   else house <- ifelse(match.arg(house) == "senate", "Senador", "Deputado Federal")
   
   # Download and clean the data
-  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii)) %>%
+  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding)) %>%
     dplyr::filter_(~NUM_TURNO == 1, ~DESCRICAO_CARGO == house) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_NOMINAIS)), "QTDE_VOTOS_NOMINAIS")) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_LEGENDA)), "QTDE_VOTOS_LEGENDA")) %>%
