@@ -5,7 +5,7 @@
 \title{Download, clean, and transform data on legislative electoral results by state}
 \usage{
 legislative_state_vote(year, house = c("chamber", "senate"), perc = TRUE,
-  ascii = FALSE, encoding = "windows-1252")
+  ascii = FALSE, encoding = "Latin-1")
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -17,7 +17,7 @@ are available.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
-\item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+\item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 }
 \value{
