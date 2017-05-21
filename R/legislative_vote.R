@@ -9,7 +9,7 @@
 #' 
 #' @param house Report results from which legislative house? Options are \code{senate} and \code{chamber}.
 #' 
-#' @param perc Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
@@ -26,7 +26,7 @@
 #'   \item NUMERO_PARTIDO: Party number.
 #'   \item NOME_COLIGACAO: Coalition shortname.
 #'   \item COMPOSICAO_LEGENDA: Party's shortname composition.
-#'   \item TOTAL_VOTOS: Party proportion votes by state.
+#'   \item TOTAL_VOTOS: Party votos (or proportions) votes by state.
 #' }
 #' 
 #' @import dplyr
@@ -39,10 +39,10 @@
 #' }
 
 
-legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
+legislative_mun_vote <- function(year, house = c("chamber", "senate"), prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   if(year < 2014) house <- ifelse(match.arg(house) == "senate", "SENADOR", "DEPUTADO FEDERAL")
   else house <- ifelse(match.arg(house) == "senate", "Senador", "Deputado Federal")
   
@@ -57,7 +57,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
     dplyr::ungroup()
   
   # Conversion to proportion
-  if(perc){
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF, ~CODIGO_MUNICIPIO) %>%
@@ -85,7 +85,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #' 
 #' @param house Report results from which legislative house? Options are \code{senate} and \code{chamber}.
 #' 
-#' @param perc Shoud the votes be reported as proportions? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as proportions? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
@@ -102,7 +102,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #'   \item NUMERO_PARTIDO: Party number.
 #'   \item NOME_COLIGACAO: Coalition shortname.
 #'   \item COMPOSICAO_LEGENDA: Party's shortname composition.
-#'   \item TOTAL_VOTOS: Party proportions votes by state.
+#'   \item TOTAL_VOTOS: Party votos (or proportions) votes by state.
 #' }
 #' 
 #' @import dplyr
@@ -114,10 +114,10 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #' df <- legislative_state_vote(2002)
 #' }
 
-legislative_state_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
+legislative_state_vote <- function(year, house = c("chamber", "senate"), prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   if(year < 2014) house <- ifelse(match.arg(house) == "senate", "SENADOR", "DEPUTADO FEDERAL")
   else house <- ifelse(match.arg(house) == "senate", "Senador", "Deputado Federal")
   
@@ -132,7 +132,7 @@ legislative_state_vote <- function(year, house = c("chamber", "senate"), perc = 
     dplyr::ungroup()
   
   # Conversion to proportion
-  if(perc){
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF) %>%
