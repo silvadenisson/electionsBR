@@ -11,7 +11,7 @@ president_state_vote(year, prop = TRUE, ascii = FALSE,
 \item{year}{Election year (\code{integer}). For this function, only the years 2002, 2006, 2010, and 2014
 are available.}
 
-\item{prop}{Shoud the votes be reported as percentages? (Defaults to \code{TRUE}).}
+\item{prop}{Shoud the votes be reported as proportions? (Defaults to \code{TRUE}).}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
@@ -34,7 +34,7 @@ when \code{ascii = TRUE}.}
 }
 \description{
 \code{president_state_vote()} downloads, cleans, and transforms data on presidential elections results
-in the second round (runnoff elections) by state. The electoral results are, by default, reported as percentages.
+in the second round (runnoff elections) by state. The electoral results are, by default, reported as proportions.
 }
 \details{
 This functions includes results to BR and ZZ state acronyms: the first one considers the entire
