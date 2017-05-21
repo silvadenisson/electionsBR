@@ -6,7 +6,7 @@
 #' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
 #' are available.
 #' 
-#' @param perc Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #' 
@@ -32,10 +32,10 @@
 #' df <- president_mun_vote(2002)
 #' }
 
-president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
+president_mun_vote <- function(year, prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   test_fed_year(year)
   if(year == 1998) stop("There were no presidential runoff in 1998 election.")
   
@@ -48,7 +48,7 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Lat
     dplyr::ungroup()
   
   # Conversion to porportion
-  if(perc){
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF, ~CODIGO_MUNICIPIO) %>%
@@ -73,7 +73,7 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Lat
 #' @param year Election year (\code{integer}). For this function, only the years 2002, 2006, 2010, and 2014
 #' are available.
 #' 
-#' @param perc Shoud the votes be reported as porportion? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as porportion? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
@@ -94,7 +94,7 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Lat
 #'   \item NUMERO_PARTIDO: Party number.
 #'   \item NOME_COLIGACAO: Coalition shortname.
 #'   \item COMPOSICAO_LEGENDA: Party's shortname composition.
-#'   \item TOTAL_VOTOS: Party porportion votes by state.
+#'   \item TOTAL_VOTOS: Party votos (or porportion) votes by state.
 #' }
 #' 
 #' @import dplyr
@@ -106,10 +106,10 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Lat
 #' df <- president_state_vote(2002)
 #' }
 
-president_state_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
+president_state_vote <- function(year, prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   test_fed_year(year)
   if(year == 1998) stop("There were no presidential runoff in 1998 election.")
   
@@ -123,7 +123,7 @@ president_state_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "L
     
   
   # Conversion to proportion
-  if(perc){
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF) %>%
