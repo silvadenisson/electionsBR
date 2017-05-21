@@ -10,7 +10,7 @@
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #' 
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @details This functions includes results to BR and ZZ state acronyms: the first one considers the entire
@@ -32,7 +32,7 @@
 #' df <- president_mun_vote(2002)
 #' }
 
-president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
   if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
@@ -77,7 +77,7 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "win
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @details This functions includes results to BR and ZZ state acronyms: the first one considers the entire
@@ -106,7 +106,7 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "win
 #' df <- president_state_vote(2002)
 #' }
 
-president_state_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+president_state_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
   if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
