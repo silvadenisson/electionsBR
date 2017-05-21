@@ -97,7 +97,7 @@ party_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "La
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
                       "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
-                      "QTDE_VOTOS_LEGENDA", "SEQUENCIAL_LEGENDA", "TRANSITO")
+                      "QTDE_VOTOS_LEGENDA", "TRANSITO", "SEQUENCIAL_LEGENDA")
   }
     
   # Change to ascii
