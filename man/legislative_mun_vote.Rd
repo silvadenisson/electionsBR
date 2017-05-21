@@ -4,7 +4,7 @@
 \alias{legislative_mun_vote}
 \title{Download, clean, and transform data on legislative electoral results by municipality}
 \usage{
-legislative_mun_vote(year, house = c("chamber", "senate"), perc = TRUE,
+legislative_mun_vote(year, house = c("chamber", "senate"), prop = TRUE,
   ascii = FALSE, encoding = "Latin-1")
 }
 \arguments{
@@ -13,7 +13,7 @@ are available.}
 
 \item{house}{Report results from which legislative house? Options are \code{senate} and \code{chamber}.}
 
-\item{prop}{Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).}
+\item{prop}{Shoud the votes be reported as proportions? (Defaults to \code{TRUE}).}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
