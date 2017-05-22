@@ -6,12 +6,9 @@ citEntry(entry = "Manual",
     author = personList(as.person("Fernando Meireles"), 
 	                      as.person("Denisson Silva"),
                         as.person("Beatriz Costa")),
-    organization = "Federal University of Minas Gerais (UFMG)",
-    address = "Belo Horizonte, Brazil",
     year = "2016",
-    url = "http://fmeireles.com/files/electionsbr.pdf",
-    textVersion  = paste("Meireles, F.; Silva, D.; Costa, B. (2016).",
+    url = "http://electionsbr.com/",
+    textVersion  = paste("Meireles, Fernando; Silva, Denisson; Costa, Beatriz. (2016).",
         "electionsBR: R functions to download and clean Brazilian electoral data.",
-        "Federal University of Minas Gerais (UFMG). Belo Horizonte, Brazil.",
-        "http://fmeireles.com/files/electionsbr.pdf")
+        "URL: http://electionsbr.com/")
 )

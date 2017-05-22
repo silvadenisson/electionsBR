@@ -21,7 +21,7 @@ Imports: magrittr,
     haven (>= 1.0.0),
     stats
 LazyData: TRUE
-URL: https://github.com/silvadenisson/electionsBR
+URL: http://electionsbr.com/
 BugReports: https://github.com/silvadenisson/electionsBR/issues
 RoxygenNote: 6.0.1
 Suggests: knitr,
