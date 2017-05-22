@@ -8,14 +8,14 @@ seats_fed(year, uf = "all", ascii = FALSE, encoding = "windows-1252",
   export = FALSE)
 }
 \arguments{
-\item{year}{Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, 2012 and 2016
+\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012 and 2016
 are available.}
 
-\item{uf}{Federation Unit acronym (\code{character vector}).}
+\item{uf}{Federation Unit acronym (\code{character} vector).}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
-\item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+\item{encoding}{Data original encoding (defaults to windows-1252). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
@@ -29,7 +29,7 @@ when \code{ascii = TRUE}.}
   \item ANO_ELEICAO: Election year.
   \item DESCRICAO_ELEICAO: Description of the election.
   \item SIGLA_UF: Units of the Federation's acronym in which occurred the election.
-  \item SIGLA_UE: Units of the Federation's acronym (In case of major election is the FU's
+  \item SIGLA_UE: Units of the Federation's acronym (In case of major election is the FU's 
   acronym in which the candidate runs for (text) and in case of municipal election is the
   municipal's Supreme Electoral Court code (number)). Assume the special values BR, ZZ and
   VT to designate, respectively, Brazil, Overseas and Absentee Ballot.
@@ -40,12 +40,12 @@ when \code{ascii = TRUE}.}
 }
 }
 \description{
-\code{seats_fed()} downloads and aggregates the data on the number of seats under dispute in
+\code{seats_fed()} downloads and aggregates data on the number of seats under dispute in
 federal elections in Brazil. The function returns a \code{tbl, data.frame} where each observation
 corresponds to a district-office dyad.
 }
 \details{
-If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
@@ -55,4 +55,8 @@ For the elections prior to 2000, some information can be incomplete.
 \dontrun{
 df <- seats_fed(2000)
 }
+
+}
+\seealso{
+\code{\link{seats_local}} for local elections in Brazil.
 }

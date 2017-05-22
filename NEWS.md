@@ -1,8 +1,8 @@
-# electionsBR 1.2.0
+# electionsBR 0.3.0
 
-This is a major uptade. We changed central aspects of the package API, which affected all the functions in it. Beyond that, in this update we did our best to make the package more user friendly: we created a vignette, included more options to filter and customize functions' outputs, and added more specific functions (including one to easily export electoral data). With this new uptade, the package also gained a *website*. Overrall, this is what we did:
+We changed central aspects of the package, which affected all the functions in it (but without compromising backward compability). Beyond that, in this update we did our best to make the package more user friendly: we created a vignette, included more options to filter and customize functions' outputs, and added more specific functions (including one to easily export electoral data). With this new uptade, the package also gained a website. Overrall, this is what we did:
 
-* Updated the package API to (1) load and clean data faster (with data.tables' `fread()` and `rbindlist()`), (2) to make the package more robust to human errors (new internal functions to test inputs), and (3) to return a simples object (a dplyr `tbl`).
+* Updated the package to (1) load and clean data faster (with data.tables' `fread()` and `rbindlist()`), (2) to make the package more robust to human errors (new internal functions to test inputs), and (3) to return a simples object (a dplyr `tbl`).
 * Included two new functions to summarize presidential runnoff results by state (`president_state_vote()`) and by municipality (`president_mun_vote()`).
 * Included two new functions to summarize legislative election results by state (`legislative_state_vote()`) and by municipality (`legislative_mun_vote()`).
 * Included one new function to get data on the number of seats being disputed in each election (`available_seats()`).
@@ -24,6 +24,3 @@ This is a major uptade. We changed central aspects of the package API, which aff
 * Added a new internal function, `test_encoding`, to validate encodings passed to the functions' calls.
 * Replaced `cat` with `message` in all functions. Users are now free to supress unwanted messages.
 * Added a CITATION file to /inst.
-
-
-

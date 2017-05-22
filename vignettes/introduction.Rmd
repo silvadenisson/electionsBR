@@ -16,7 +16,7 @@ library(electionsBR)
 
 ## Overview
 
-`electionsBR` is an `R` package used to retrieve and clean Brazilian electoral data, directly from the Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, `electionsBR` provides functions to obtain data on electoral results, candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profile.
+`electionsBR` is an `R` package used to pull and clean Brazilian electoral data, directly from the Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, `electionsBR` provides functions to obtain data on electoral results, candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profile.
 
 ## How to install
 
@@ -26,7 +26,7 @@ Since the version `0.1.1`, `electionsBR` is on CRAN and can be installed with:
 install.packages("electionsBR")
 ```
 
-Development versions of the package are also available on [GitHub](https://github.com/). You can install these pre-release versions with:
+You can install these pre-release from [GitHub](https://github.com/) versions with:
 
 ```{r, eval=FALSE}
 if (!require("devtools")) install.packages("devtools")
@@ -35,7 +35,7 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ## How to use
 
-No previous experience with `R` is required to use the `electionsBR` package. In fact, one needs only two lines of code to download, clean and export (to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For instance, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
+No previous experience with `R` is required to use the `electionsBR` package. In fact, two lines of code only are needed to download, clean and export (to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For instance, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
 
 ```{r, eval=FALSE}
 install.packages("electionsBR")
@@ -51,7 +51,7 @@ In the remaining of this vignette, we document all the functionality included in
 
 ## Data on elections results
 
-The main functions in `electionsBR` are the ones used to get electoral results, which includes candidates' number of votes and electoral status (i.e., elected and non-elected), among many others. To get these data, use `vote_mun_zone_` functions: 
+Chief functions in `electionsBR` are the ones used to get electoral results, which includes candidates' number of votes and electoral status (i.e., elected and non-elected), among many others. To get these data, use `vote_mun_zone_` functions: 
 
 ```{r, eval=FALSE}
 # Load the package
@@ -68,7 +68,7 @@ df <- vote_mun_zone_local(2000)
 
 ## Federal elections results
 
-There are also functions used to quickly access presidential and legislative elections results per state and per municipality -- with vote percentage reported. To get presidential runnoff (second round) results in runnoff, use `president_` functions:
+There are also functions used to quickly access presidential and legislative elections results per state and per municipality -- with voting percentages reported. To get presidential runnoff (second round) results, use `president_` functions:
 
 ```{r, eval=FALSE}
 # Get presidential electoral results by municipality in tidy format
@@ -118,7 +118,7 @@ legend_local(year)
 
 ## Data on voters
 
-`electionsBR` also provides access to data on Brazilian voters: their sociodemographic characteristics and partisan affiliation statistics, this one in individual level. To get data on voters' profile in both local and federal elections, use the `voter_profile` function:
+To get data on voters' profile in both local and federal elections, use the `voter_profile` function:
 
 ```{r, eval=FALSE}
 # Get data on voters' profile
@@ -153,7 +153,7 @@ parties_br()
 
 ## Other functions
 
-`electionsBR` also includes functions to download data on valid and residual votes and on the number of seats under dispute in each elections. The relevant functions are, respectivelly:
+`electionsBR` also includes functions to download data on valid and residual votes and on the number of seats under dispute in each election. The relevant functions are, respectivelly:
 
 ```
 details_mun_zone_fed(year)
@@ -167,11 +167,9 @@ seats_local(year)
 
 ## Optional arguments
 
-Most `electionsBR` functions accept optional arguments that may be used to control its outputs.
-
 ### Exporting Brazilian electoral data
 
-Most `electionsBR`'s functions accept an `export` argument (`logical`, must be `TRUE` or `FALSE`; defaults to the latter) controlling whether the functions should export the retrieved data to Stata and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) files or not.
+Most `electionsBR`'s functions accept an `export` argument (`logical`, must be `TRUE` or `FALSE`; defaults to the latter) controlling whether the functions should export the retrieved data to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) files or not.
 
 ```{r, eval=FALSE}
 df <- party_mun_zone_fed(2010, export = TRUE)
@@ -179,19 +177,23 @@ df <- party_mun_zone_fed(2010, export = TRUE)
 
 ### Removing UTF-8 special characters from texts
 
+By default, `electionsBR`'s functions mantain the data's original encoding (`Latin-1`) with special characters. To convert strings to `ASCII`, set the `ascii` argument to `TRUE`.
+
 ```{r, eval=FALSE}
 df <- candidate_fed(2010, ascii = TRUE)
 ```
+
+In Mac computers, this option may cause errors (or may retrieve incomplete data for the 2016 elections). To avoid them, use the `encoding` optional argument as follows:
 
 ```{r, eval=FALSE}
 df <- candidate_fed(2010, ascii = TRUE, encoding = "latin1")
 ```
 
+`encoding` may also be `UTF-8` or other valid encodings.
+
 ### Filtering results by state
 
-Not case sensitive (MG, Mg, mG, and mg are all equally valid inputs)...
-
-It is faster...
+Sometimes, getting state electoral data, and not for the whole country, is what one needs. To achieve this, use the `uf` optional argument (available in most functions):
 
 ```{r, eval=FALSE}
 # Electoral results for the 2010 federal elections in Sao Paulo (SP)
@@ -203,6 +205,8 @@ df <- vote_mun_zone_fed(2010, uf = "mg")
 # Electoral results for the 2010 federal elections in RS, SC, and PR
 df <- vote_mun_zone_fed(2010, uf = c("RS", "SC", "PR"))
 ```
+
+Notice that the input must be a `character` vector -- with case insensitive state abbreviations (MG, Mg, mG, and mg are all equally valid inputs).
 
 ## A complete list of functions
 
@@ -228,13 +232,11 @@ df <- vote_mun_zone_fed(2010, uf = c("RS", "SC", "PR"))
 * `voter_profile()`
 
 
-## Brazilian Electoral Supreme Court (TSE)
+## Elections in Brazil
 
-All the data retrieved by `electionsBR` is made available online by the [Brazilian Superior Electoral Court (TSE)](http://english.tse.jus.br/the-electoral-justice/the-electoral-justice-1/the-electoral-justice).
+All the data retrieved by `electionsBR` is made available online by the [Brazilian Superior Electoral Court (TSE)](http://english.tse.jus.br/the-electoral-justice/the-electoral-justice-1/the-electoral-justice). As state in the [English version of the TSE website](http://english.tse.jus.br/the-brazilian-electoral-system/elections/elections), elections in Brazil are organized in the following way:
 
-... As state in the [English version of the TSE website](http://english.tse.jus.br/the-brazilian-electoral-system/elections/elections), elections in Brazil are organized as follows:
-
-> Are carried out together the federal elections and the state elections, for president and vice president, senator and alternates, governor and vice governor, federal deputies and state deputies. Two years later, will be municipal elections, of mayor and vice mayor and city councils. Note that the distinguishing criterion is by federal level and not by powers – the representatives from the executive and legislative are elected at the same time. 
+> Are carried out together the federal elections and the state elections, for president and vice president, senator and alternates, governor and vice governor, federal deputies and state deputies. Two years later, will be municipal elections, of mayor and vice mayor and city councils. Note that the distinguishing criterion is by federal level and not by powers -- the representatives from the executive and legislative are elected at the same time. 
 
 > In case of elections for president and vice president, governor and vice governor, senator and alternates and mayor and vice mayor, the system used is the majoritary, in which the most voted candidate will be elected. If none of candidates for president, governor or mayor from a municipality over 200,000 habitants reach the absolute majority of the valid votes, will be convened the second round with the two most voted.
 
@@ -247,13 +249,13 @@ All the data retrieved by `electionsBR` is made available online by the [Brazili
 
 ## Disclaimer
 
-The `electionsBR` package does not modify nor filter the data provided by the TSE -- despite its many tabulation and missing problems.^[The only exceptions are the `president_` and `legislative_` functions, which aggregates electoral data in a different unit than in the original files.] Additionally, users must be aware that the TSE updates its databases frequently, so it is important to register when a version of the electoral data is used. In any case, we are not responsible for problems with the data users may find.
+The `electionsBR` package does not modify nor filter the data provided by the TSE -- despite its many problems.^[The only exceptions are the `president_` and `legislative_` functions, which aggregates electoral data in a different unit than in the original files.] Additionally, users must be aware that the TSE updates its databases frequently, so it is important to register when a version of the electoral data is used. In any case, we are not responsible for problems with the data users may find.
 
 ## How to cite
 
 To cite `electionsBR` in publications, please use:
 
-``` {.r}
+``` {r}
 citation("electionsBR")
 ```
 

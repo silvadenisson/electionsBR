@@ -17,7 +17,7 @@ are available.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
-\item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+\item{encoding}{Data original encoding (defaults to windows-1252). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 }
 \value{
@@ -26,6 +26,8 @@ when \code{ascii = TRUE}.}
 \itemize{
   \item ANO_ELEICAO: Election year.
   \item SIGLA_UF: Unit of the Federation's acronym in which occurred the election.
+  \item CODIGO_MUNICIPIO: Supreme Electoral code from the city where occurred the election.
+  \item NOME_MUNICIPIO: Name of the city where occurred the election.
   \item SIGLA_PARTIDO: Party acronym.
   \item NOME_PARTIDO: Party name.
   \item NUMERO_PARTIDO: Party number.
@@ -43,4 +45,9 @@ The user can choose between Senate and Chamber of Deputies electoral results.
 \dontrun{
 df <- legislative_mun_vote(2002)
 }
+}
+\seealso{
+\code{\link{legislative_state_vote}} for legislative elections results by state;
+\code{\link{president_mun_vote}} for presidential elections results by municipality;
+and \code{\link{president_state_vote}} for presidential elections results by state.
 }

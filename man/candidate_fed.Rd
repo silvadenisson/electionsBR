@@ -30,7 +30,7 @@ when \code{ascii = TRUE}.}
   \item NUM_TURNO: Round number.
   \item DESCRICAO_ELEICAO: Description of the election.
   \item SIGLA_UF: Units of the Federation's acronym in which occurred the election.
-  \item SIGLA_UE: Units of the Federation's acronym (In case of major election is the FU's
+  \item SIGLA_UE: Units of the Federation's acronym (In case of major election is the FU's 
   acronym in which the candidate runs for (text) and in case of municipal election is the
   municipal's Supreme Electoral Court code (number)). Assume the special values BR, ZZ and
   VT to designate, respectively, Brazil, Overseas and Absentee Ballot.
@@ -82,7 +82,7 @@ federal elections in Brazil. The function returns a \code{data.frame} where each
 corresponds to a candidate.
 }
 \details{
-If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
@@ -92,4 +92,7 @@ For the elections prior to 2002, some information can be incomplete. For the 201
 \dontrun{
 df <- candidate_fed(2002)
 }
+}
+\seealso{
+\code{\link{candidate_local}} for local elections in Brazil.
 }

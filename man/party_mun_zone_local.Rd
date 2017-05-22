@@ -57,7 +57,7 @@ disaggregated by electoral zone. The function returns a \code{data.frame} where 
 corresponds to a city/zone.
 }
 \details{
-If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
@@ -67,4 +67,7 @@ For the elections prior to 2000, some information can be incomplete.
 \dontrun{
 df <- party_mun_zone_local(2000)
 }
+}
+\seealso{
+\code{\link{party_mun_zone_fed}} for local federal in Brazil.
 }

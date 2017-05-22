@@ -18,7 +18,7 @@
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
 #'
-#' @details If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+#' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
 #'
 #' @return \code{legend_local()} returns a \code{data.frame} with the following variables:
@@ -46,6 +46,8 @@
 #'   \item COMPOSICAO_COLIGACAO: Coalition's composition.
 #'   \item SEQUENCIAL_COLIGACAO: Coalition's sequential number, generated internally by the electoral justice.
 #' }
+#'
+#' @seealso \code{\link{legend_fed}} for federal elections in Brazil.
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"

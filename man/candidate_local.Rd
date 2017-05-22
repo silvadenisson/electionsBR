@@ -82,7 +82,7 @@ local elections in Brazil. The function returns a \code{data.frame} where each o
 corresponds to a candidate.
 }
 \details{
-If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
@@ -92,4 +92,7 @@ For the elections prior to 2000, some information can be incomplete.
 \dontrun{
 df <- candidate_local(2000)
 }
+}
+\seealso{
+\code{\link{candidate_fed}} for federal elections in Brazil.
 }

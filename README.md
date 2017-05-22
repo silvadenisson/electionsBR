@@ -4,8 +4,7 @@ electionsBR
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/electionsBR)](https://cran.r-project.org/package=electionsBR)
 [![Travis-CI Build Status](https://travis-ci.org/silvadenisson/electionsBR.svg?branch=master)](https://travis-ci.org/silvadenisson/electionsBR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/silvadenisson/electionsBR?branch=master&svg=true)](https://ci.appveyor.com/project/silvadenisson/electionsBR) [![Package-License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 
-`electionsBR` contains a set of functions that automatically downloads and aggregates
-election data from Brazil (1996-2016), directly from the Brazilian Superior Electoral Court website (TSE). Among others, there are data available on local and federal elections for all positions (city councillor, mayor, state deputy, federal deputy, governor, and president) disaggregated by state of the Federation, city, zone, and polling stations.
+`electionsBR` offers a set of functions to easily pull and clean Brazilian electoral data from the Brazilian Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, the package retrieves data on local and federal elections for all positions (city councilor, mayor, state deputy, federal deputy, governor, and president) aggregated by state, city, and electoral zones.
 
 ### Installation
 
@@ -48,7 +47,7 @@ devtools::install_github("silvadenisson/electionsBR")
 * `voter_profile()`
 
 
-To download all the data from a given election, only the `year` argument must be passed to the function call:
+To download data from a given election, only the `year` argument must be passed to the function call:
 
 ``` {.r}
 df <- candidate_fed(year = 2002)
@@ -57,10 +56,16 @@ df <- candidate_fed(year = 2002)
 You may also export Brazilian electoral data with most functions in the package by setting the `export` optional argument to `TRUE`:
 
 ``` {.r}
-df <- candidate_fed(year = 2002, export = TRUE)
+df <- candidate_fed(2002, export = TRUE)
 ```
 
-For more information on how the package works, see the package vignette.
+As well as subset your results by state using the `uf` argument:
+
+``` {.r}
+df <- vote_mun_zone_fed(2002, uf = "RS")
+```
+
+For more information on how the package works, see the vignette (`vignette("introduction", package = "electionsBR")`.
 
 ### Citation
 

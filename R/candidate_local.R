@@ -18,7 +18,7 @@
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
 #'
-#' @details If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+#' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
 #'
 #' @return \code{candidate_local()} returns a \code{data.frame} with the following variables:
@@ -75,6 +75,8 @@
 #'   \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only for 2016 election).
 #'   \item EMAIL_CANDIDATO: Candidate's e-mail adress (only for 2014 election).
 #' }
+#'
+#' @seealso \code{\link{candidate_fed}} for federal elections in Brazil.
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"

@@ -1,8 +1,8 @@
 #' Download data on the number of seats under dispute in local elections 
 #'
-#' \code{seats_local()} downloads and aggregates the data on the number of seats under dispute in
+#' \code{seats_local()} downloads and aggregates data on the number of seats under dispute in
 #' local elections in Brazil. The function returns a \code{tbl, data.frame} where each observation
-#' corresponds to a municipality-office dyad.
+#' corresponds to a municipality office dyad.
 #' 
 #' @note For the elections prior to 2000, some information can be incomplete.
 #'
@@ -13,12 +13,12 @@
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to windows-1252). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
 #'
-#' @details If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+#' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
 #'
 #' @return \code{seats_local()} returns a \code{data.frame} with the following variables:
@@ -38,6 +38,8 @@
 #'   \item DESCRICAO_CARGO: Description of the position that the candidate runs for.
 #'   \item QTDE_VAGAS: number of seats under dispute.
 #' }
+#' 
+#' @seealso \code{\link{seats_fed}} for federal elections in Brazil.
 #' 
 #' @import utils
 #' @importFrom magrittr "%>%"

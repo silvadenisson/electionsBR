@@ -44,3 +44,8 @@ The user can choose between Senate and Chamber of Deputies electoral results.
 df <- legislative_state_vote(2002)
 }
 }
+\seealso{
+\code{\link{legislative_mun_vote}} for legislative elections results by municipality;
+\code{\link{president_mun_vote}} for presidential elections results by municipality;
+and \code{\link{president_state_vote}} for presidential elections results by state.
+}

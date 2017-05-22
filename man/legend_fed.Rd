@@ -53,7 +53,7 @@ disaggregated bi cities. The function returns a \code{data.frame} where each obs
 corresponds to a city.
 }
 \details{
-If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
@@ -63,4 +63,7 @@ For elections prior to 2002, some information can be incomplete.
 \dontrun{
 df <- legend_fed(2002)
 }
+}
+\seealso{
+\code{\link{legend_local}} for local elections in Brazil.
 }

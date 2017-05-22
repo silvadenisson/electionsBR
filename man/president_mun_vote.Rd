@@ -22,7 +22,16 @@ when \code{ascii = TRUE}.}
 \code{president_mun_vote()} returns a \code{tbl, data.frame} with the following variables:
 
 \itemize{
-
+  \item ANO_ELEICAO: Election year.
+  \item SIGLA_UF: Unit of the Federation's acronym in which occurred the election.
+  \item CODIGO_MUNICIPIO: Supreme Electoral code from the city where occurred the election.
+  \item NOME_MUNICIPIO: Name of the city where occurred the election.
+  \item SIGLA_PARTIDO: Party acronym.
+  \item NOME_PARTIDO: Party name.
+  \item NUMERO_PARTIDO: Party number.
+  \item NOME_COLIGACAO: Coalition shortname.
+  \item COMPOSICAO_LEGENDA: Party's shortname composition.
+  \item TOTAL_VOTOS: Party total votes by state.
 }
 }
 \description{
@@ -38,4 +47,9 @@ results are only available for these two state acronyms.
 \dontrun{
 df <- president_mun_vote(2002)
 }
+}
+\seealso{
+\code{\link{president_state_vote}} for presidential elections results by state;
+\code{\link{legislative_mun_vote}} for legislative elections results by municipality;
+and \code{\link{legislative_state_vote}} for legislative elections results by state.
 }

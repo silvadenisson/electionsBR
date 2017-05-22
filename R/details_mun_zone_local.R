@@ -18,7 +18,7 @@
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
 #'
-#' @details If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+#' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
 #'
 #' @return \code{details_mun_zone_local()} returns a \code{data.frame} with the following variables:
@@ -55,6 +55,8 @@
 #'   \item TRANSITO: Electoral result outside the candidates' district? (N for no).
 #'   \item QTD_VOTOS_ANULADOS: Total number of votes invalidated by Brazilian Electoral Supreme Court.
 #' }
+#'
+#' @seealso \code{\link{details_mun_zone_fed}} for federal elections in Brazil.
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"

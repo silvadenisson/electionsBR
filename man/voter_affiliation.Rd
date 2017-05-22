@@ -50,7 +50,7 @@ when \code{ascii = TRUE}.}
  The function returns a \code{data.frame} where each observation corresponds to a voter.
 }
 \details{
-If export is set to \code{TRUE}, the downloaded data is saved as electoral_data.dta and electoral_data.sav
+If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{

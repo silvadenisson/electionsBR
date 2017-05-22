@@ -46,3 +46,8 @@ results are only available for these two state acronyms.
 df <- president_state_vote(2002)
 }
 }
+\seealso{
+\code{\link{president_mun_vote}} for presidential elections results by municipality;
+\code{\link{legislative_mun_vote}} for legislative elections results by municipality;
+and \code{\link{legislative_state_vote}} for legislative elections results by state.
+}
