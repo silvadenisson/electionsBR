@@ -16,7 +16,7 @@ library(electionsBR)
 
 ## Overview
 
-`electionsBR` is an `R` package used to pull and clean Brazilian electoral data, directly from the Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, `electionsBR` provides functions to obtain data on electoral results, candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profile.
+`electionsBR` is an `R` package used to pull and clean Brazilian electoral data, directly from the Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). Among others, `electionsBR` retrieves data on electoral results, candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profile.
 
 ## How to install
 
@@ -26,7 +26,7 @@ Since the version `0.1.1`, `electionsBR` is on CRAN and can be installed with:
 install.packages("electionsBR")
 ```
 
-You can install these pre-release from [GitHub](https://github.com/) versions with:
+You can install these pre-release versions from [GitHub](https://github.com/) with:
 
 ```{r, eval=FALSE}
 if (!require("devtools")) install.packages("devtools")
@@ -35,7 +35,7 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ## How to use
 
-No previous experience with `R` is required to use the `electionsBR` package. In fact, two lines of code only are needed to download, clean and export (to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For instance, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
+No previous experience with `R` is required to use the `electionsBR` package. In fact, it takes only two lines of code to download, clean and export (to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For example, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
 
 ```{r, eval=FALSE}
 install.packages("electionsBR")
@@ -47,11 +47,11 @@ By setting the `export` argument to `TRUE` in the `vote_mun_zone_fed` function, 
 1. `electoral_data.dta`, to be used with [Stata](http://www.stata.com/);
 2. `electoral_data.sav`, to be used with [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/).
 
-In the remaining of this vignette, we document all the functionality included in the package.
+In the remaining of this vignette, we present the functions included in the package.
 
 ## Data on elections results
 
-Chief functions in `electionsBR` are the ones used to get electoral results, which includes candidates' number of votes and electoral status (i.e., elected and non-elected), among many others. To get these data, use `vote_mun_zone_` functions: 
+`electionsBR`'s chief functions are the ones used to get electoral results, which includes candidates' number of votes and electoral status (i.e., elected and non-elected), among many others. To get these data, use `vote_mun_zone_` functions: 
 
 ```{r, eval=FALSE}
 # Load the package
@@ -68,7 +68,7 @@ df <- vote_mun_zone_local(2000)
 
 ## Federal elections results
 
-There are also functions used to quickly access presidential and legislative elections results per state and per municipality -- with vote proportions reported. To get presidential runnoff (second round) results in runnoff, use `president_` functions:
+There are also functions used to quickly access presidential and legislative elections results per state and per municipality -- with vote proportions (i.e., vote share) reported. To get presidential runoff (second round) results in runoff, use `president_` functions:
 
 ```{r, eval=FALSE}
 # Get presidential electoral results by municipality in tidy format
@@ -87,7 +87,7 @@ legislative_state_vote(year)
 
 ## Data on running candidates
 
-Data on candidates' party affiliation, ballot number, backgrounds and personal informations can be retrieved with `candidate_` functions:
+Data on candidates' party affiliation, ballot number, backgrounds and personal information can be retrieved with `candidate_` functions:
 
 ```{r, eval=FALSE}
 # Get data on candidates running in local elections
@@ -99,7 +99,7 @@ df <- candidate_fed(2016)
 
 ## Data on parties and electoral coalitions
 
-Parties' electoral perfomances in both local and federal elections, for all electoral positions, are extract with:
+Parties' electoral performances in both local and federal elections, for all electoral positions, are extracted with:
 
 ```{r, eval=FALSE}
 # Get data on parties' electoral performances in the federal election of 2006
@@ -109,7 +109,7 @@ federal <- party_mun_zone_fed(2006)
 municipal <- party_mun_zone_local(2004)
 ```
 
-To get the composition of electoral coalitions (very common in proportional elections), use instead:
+To get the composition of electoral coalitions (common in proportional elections), use instead:
 
 ```
 legend_fed(year)
@@ -153,7 +153,7 @@ parties_br()
 
 ## Other functions
 
-`electionsBR` also includes functions to download data on valid and residual votes and on the number of seats under dispute in each election. The relevant functions are, respectivelly:
+`electionsBR` also includes functions to download data on valid and residual votes and on the number of seats under dispute in each election. The relevant functions are, respectively:
 
 ```
 details_mun_zone_fed(year)
@@ -177,13 +177,13 @@ df <- party_mun_zone_fed(2010, export = TRUE)
 
 ### Removing UTF-8 special characters from texts
 
-By default, `electionsBR`'s functions mantain the data's original encoding (`Latin-1`) with special characters. To convert strings to `ASCII`, set the `ascii` argument to `TRUE`.
+By default, `electionsBR`'s functions maintain data's original encoding (`Latin-1`) in special characters. To convert strings to `ASCII`, set the `ascii` argument to `TRUE`.
 
 ```{r, eval=FALSE}
 df <- candidate_fed(2010, ascii = TRUE)
 ```
 
-In Mac computers, this option may cause errors (or may retrieve incomplete data for the 2016 elections). To avoid them, use the `encoding` optional argument as follows:
+In Mac computers, this option may cause errors (or may retrieve incomplete data for the 2016 elections). To avoid them, you may use the `encoding` optional argument as follows:
 
 ```{r, eval=FALSE}
 df <- candidate_fed(2010, ascii = TRUE, encoding = "Latin-1")

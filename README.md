@@ -23,37 +23,14 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ### How does it work?
 
-`electionsBR` provides several functions to dowload and clean Brazilian electoral data:
-
-* `candidate_fed()`
-* `candidate_local()`
-* `details_mun_zone_fed()`
-* `details_mun_zone_local()`
-* `legend_fed()`
-* `legend_local()`
-* `legislative_mun_vote()`
-* `legislative_state_vote()`
-* `parties_br()`
-* `party_mun_zone_fed()`
-* `party_mun_zone_local()`
-* `president_mun_vote()`
-* `president_state_vote()`
-* `seats_fed()`
-* `seats_local()`
-* `uf_br()`
-* `vote_mun_zone_fed()`
-* `vote_mun_zone_local()`
-* `voter_affiliation()`
-* `voter_profile()`
-
-
 To download data from a given election, only the `year` argument must be passed to the function call:
 
 ``` {.r}
+library(electionsBR)
 df <- candidate_fed(year = 2002)
 ```
 
-You may also export Brazilian electoral data with most functions in the package by setting the `export` optional argument to `TRUE`:
+You may also export Brazilian electoral data to Stata and SPSS by setting the `export` optional argument to `TRUE`:
 
 ``` {.r}
 df <- candidate_fed(2002, export = TRUE)
@@ -65,7 +42,7 @@ As well as subset your results by state using the `uf` argument:
 df <- vote_mun_zone_fed(2002, uf = "RS")
 ```
 
-For more information on how the package works, see the vignette (`vignette("introduction", package = "electionsBR")`.
+For more information on how the package works and for a complete list of functions, see the vignette `vignette("introduction", package = "electionsBR")`.
 
 ### Citation
 
