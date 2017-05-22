@@ -5,7 +5,7 @@
 \title{Download data on the verification of federal elections in Brazil}
 \usage{
 details_mun_zone_fed(year, uf = "all", ascii = FALSE,
-  encoding = "windows-1252", export = FALSE)
+  encoding = "Latin-1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -15,7 +15,7 @@ are available.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
-\item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+\item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}

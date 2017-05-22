@@ -1,7 +1,7 @@
 #' Download, clean, and transform data on legislative electoral results by municipality
 #'
 #' \code{legislative_mun_vote()} downloads, cleans, and transforms data on legislative elections results by
-#' municipality. The electoral results are, by default, reported as percentages.
+#' municipality. The electoral results are, by default, reported as proportions.
 #' The user can choose between Senate and Chamber of Deputies electoral results.
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -9,11 +9,11 @@
 #' 
 #' @param house Report results from which legislative house? Options are \code{senate} and \code{chamber}.
 #' 
-#' @param perc Shoud the votes be reported as percentages? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to windows-1252). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #'
 #' @return \code{legislative_mun_vote()} returns a \code{tbl, data.frame} with the following variables:.
@@ -28,7 +28,7 @@
 #'   \item NUMERO_PARTIDO: Party number.
 #'   \item NOME_COLIGACAO: Coalition shortname.
 #'   \item COMPOSICAO_LEGENDA: Party's shortname composition.
-#'   \item TOTAL_VOTOS: Party total votes by state.
+#'   \item TOTAL_VOTOS: Party votos (or proportions) votes by state.
 #' }
 #' 
 #' @seealso \code{\link{legislative_state_vote}} for legislative elections results by state;
@@ -45,15 +45,15 @@
 #' }
 
 
-legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+legislative_mun_vote <- function(year, house = c("chamber", "senate"), prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   if(year < 2014) house <- ifelse(match.arg(house) == "senate", "SENADOR", "DEPUTADO FEDERAL")
   else house <- ifelse(match.arg(house) == "senate", "Senador", "Deputado Federal")
   
   # Download and clean the data
-  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii)) %>%
+  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding)) %>%
     dplyr::filter_(~NUM_TURNO == 1, ~DESCRICAO_CARGO == house) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_NOMINAIS)), "QTDE_VOTOS_NOMINAIS")) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_LEGENDA)), "QTDE_VOTOS_LEGENDA")) %>%
@@ -62,8 +62,8 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
     dplyr::summarise_(.dots = stats::setNames(list(~sum(QTDE_VOTOS_NOMINAIS + QTDE_VOTOS_LEGENDA, na.rm = T)), "TOTAL_VOTOS")) %>%
     dplyr::ungroup()
   
-  # Conversion to percentage
-  if(perc){
+  # Conversion to proportion
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF, ~CODIGO_MUNICIPIO) %>%
@@ -83,7 +83,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #' Download, clean, and transform data on legislative electoral results by state
 #'
 #' \code{legislative_state_vote()} downloads, cleans, and transforms data on legislative elections results by
-#' state The electoral results are, by default, reported as percentages.
+#' state The electoral results are, by default, reported as proportions.
 #' The user can choose between Senate and Chamber of Deputies electoral results.
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -91,11 +91,11 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #' 
 #' @param house Report results from which legislative house? Options are \code{senate} and \code{chamber}.
 #' 
-#' @param perc Shoud the votes be reported as percentages? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as proportions? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #'
 #' @return \code{legislative_state_vote()} returns a \code{tbl, data.frame} with the following variables:.
@@ -108,7 +108,7 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #'   \item NUMERO_PARTIDO: Party number.
 #'   \item NOME_COLIGACAO: Coalition shortname.
 #'   \item COMPOSICAO_LEGENDA: Party's shortname composition.
-#'   \item TOTAL_VOTOS: Party total votes by state.
+#'   \item TOTAL_VOTOS: Party votos (or proportions) votes by state.
 #' }
 #' 
 #' @seealso \code{\link{legislative_mun_vote}} for legislative elections results by municipality;
@@ -124,15 +124,15 @@ legislative_mun_vote <- function(year, house = c("chamber", "senate"), perc = TR
 #' df <- legislative_state_vote(2002)
 #' }
 
-legislative_state_vote <- function(year, house = c("chamber", "senate"), perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+legislative_state_vote <- function(year, house = c("chamber", "senate"), prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   if(year < 2014) house <- ifelse(match.arg(house) == "senate", "SENADOR", "DEPUTADO FEDERAL")
   else house <- ifelse(match.arg(house) == "senate", "Senador", "Deputado Federal")
   
   # Download and clean the data
-  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii)) %>%
+  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding)) %>%
     dplyr::filter_(~NUM_TURNO == 1, ~DESCRICAO_CARGO == house) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_NOMINAIS)), "QTDE_VOTOS_NOMINAIS")) %>%
     dplyr::mutate_(.dots = stats::setNames(list(~as.numeric(QTDE_VOTOS_LEGENDA)), "QTDE_VOTOS_LEGENDA")) %>%
@@ -141,8 +141,8 @@ legislative_state_vote <- function(year, house = c("chamber", "senate"), perc = 
     dplyr::summarise_(.dots = stats::setNames(list(~sum(QTDE_VOTOS_NOMINAIS + QTDE_VOTOS_LEGENDA, na.rm = T)), "TOTAL_VOTOS")) %>%
     dplyr::ungroup()
   
-  # Conversion to percentage
-  if(perc){
+  # Conversion to proportion
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF) %>%

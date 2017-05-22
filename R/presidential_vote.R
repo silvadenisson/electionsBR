@@ -1,16 +1,16 @@
 #' Download, clean, and transform data on presidential electoral runoff results by municipality
 #'
 #' \code{president_mun_vote()} downloads, cleans, and transforms data on presidential elections results
-#' in the second round (runnoff elections) by municipality. The electoral results are, by default, reported as percentages.
+#' in the second round (runnoff elections) by municipality. The electoral results are, by default, reported as proportion.
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
 #' are available.
 #' 
-#' @param perc Shoud the votes be reported as percentages? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #' 
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @details This functions includes results to BR and ZZ state acronyms: the first one considers the entire
@@ -45,10 +45,10 @@
 #' df <- president_mun_vote(2002)
 #' }
 
-president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+president_mun_vote <- function(year, prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   test_fed_year(year)
   if(year == 1998) stop("There were no presidential runoff in 1998 election.")
   
@@ -60,8 +60,8 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "win
     dplyr::summarise_(.dots = stats::setNames(list(~sum(QTDE_VOTOS_NOMINAIS %>% as.numeric, na.rm = T)), "TOTAL_VOTOS")) %>%
     dplyr::ungroup()
   
-  # Conversion to percentage
-  if(perc){
+  # Conversion to porportion
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF, ~CODIGO_MUNICIPIO) %>%
@@ -81,16 +81,16 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "win
 #' Download, clean, and transform data on presidential electoral runoff results by state
 #'
 #' \code{president_state_vote()} downloads, cleans, and transforms data on presidential elections results
-#' in the second round (runnoff elections) by state. The electoral results are, by default, reported as percentages.
+#' in the second round (runnoff elections) by state. The electoral results are, by default, reported as proportion
 #' 
 #' @param year Election year (\code{integer}). For this function, only the years 2002, 2006, 2010, and 2014
 #' are available.
 #' 
-#' @param perc Shoud the votes be reported as percentages? (Defaults to \code{TRUE}).
+#' @param prop Shoud the votes be reported as porportion? (Defaults to \code{TRUE}).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @details This functions includes results to BR and ZZ state acronyms: the first one considers the entire
@@ -107,7 +107,7 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "win
 #'   \item NUMERO_PARTIDO: Party number.
 #'   \item NOME_COLIGACAO: Coalition shortname.
 #'   \item COMPOSICAO_LEGENDA: Party's shortname composition.
-#'   \item TOTAL_VOTOS: Party total votes by state.
+#'   \item TOTAL_VOTOS: Party votos (or porportion) votes by state.
 #' }
 #' 
 #' @seealso \code{\link{president_mun_vote}} for presidential elections results by municipality;
@@ -123,10 +123,10 @@ president_mun_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "win
 #' df <- president_state_vote(2002)
 #' }
 
-president_state_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "windows-1252"){
+president_state_vote <- function(year, prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
   
   # Input test
-  if(!is.logical(perc)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")
   test_fed_year(year)
   if(year == 1998) stop("There were no presidential runoff in 1998 election.")
   
@@ -139,8 +139,8 @@ president_state_vote <- function(year, perc = TRUE, ascii = FALSE, encoding = "w
       dplyr::ungroup()
     
   
-  # Conversion to percentage
-  if(perc){
+  # Conversion to proportion
+  if(prop){
     
     res <- res %>%
       dplyr::group_by_(~SIGLA_UF) %>%

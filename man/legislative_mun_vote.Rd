@@ -4,8 +4,8 @@
 \alias{legislative_mun_vote}
 \title{Download, clean, and transform data on legislative electoral results by municipality}
 \usage{
-legislative_mun_vote(year, house = c("chamber", "senate"), perc = TRUE,
-  ascii = FALSE, encoding = "windows-1252")
+legislative_mun_vote(year, house = c("chamber", "senate"), prop = TRUE,
+  ascii = FALSE, encoding = "Latin-1")
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -13,11 +13,11 @@ are available.}
 
 \item{house}{Report results from which legislative house? Options are \code{senate} and \code{chamber}.}
 
-\item{perc}{Shoud the votes be reported as percentages? (Defaults to \code{TRUE}).}
+\item{prop}{Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
-\item{encoding}{Data original encoding (defaults to windows-1252). This can be changed to avoid errors
+\item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 }
 \value{
@@ -33,12 +33,12 @@ when \code{ascii = TRUE}.}
   \item NUMERO_PARTIDO: Party number.
   \item NOME_COLIGACAO: Coalition shortname.
   \item COMPOSICAO_LEGENDA: Party's shortname composition.
-  \item TOTAL_VOTOS: Party total votes by state.
+  \item TOTAL_VOTOS: Party votos (or proportions) votes by state.
 }
 }
 \description{
 \code{legislative_mun_vote()} downloads, cleans, and transforms data on legislative elections results by
-municipality. The electoral results are, by default, reported as percentages.
+municipality. The electoral results are, by default, reported as proportions.
 The user can choose between Senate and Chamber of Deputies electoral results.
 }
 \examples{

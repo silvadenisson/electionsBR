@@ -26,10 +26,10 @@ parties_br <- function() {
 
 
 # Reads and rbinds multiple data.frames in the same directory
-juntaDados <- function(uf){
+juntaDados <- function(uf, encoding){
 
   Sys.glob("*.txt")[grepl(uf, Sys.glob("*.txt"))] %>%
-    lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F), 
+    lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F, encoding = encoding), 
                                 error = function(e) NULL)) %>%
     data.table::rbindlist() %>%
     dplyr::as.tbl()
@@ -68,6 +68,7 @@ test_local_year <- function(year){
 
 # Converts electoral data from Latin-1 to ASCII
 test_encoding <- function(encoding){
+  if(encoding == "Latin-1"){encoding = "latin1"} 
   
   if(!encoding %in% tolower(iconvlist())) stop("Invalid encoding. Check iconvlist() to view a list with all valid encodings.")
 }

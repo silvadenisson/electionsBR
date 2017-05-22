@@ -4,7 +4,7 @@
 \alias{seats_fed}
 \title{Download data on the number of seats under dispute in federal elections}
 \usage{
-seats_fed(year, uf = "all", ascii = FALSE, encoding = "windows-1252",
+seats_fed(year, uf = "all", ascii = FALSE, encoding = "Latin-1",
   export = FALSE)
 }
 \arguments{
@@ -15,7 +15,7 @@ are available.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
-\item{encoding}{Data original encoding (defaults to windows-1252). This can be changed to avoid errors
+\item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
@@ -55,7 +55,6 @@ For the elections prior to 2000, some information can be incomplete.
 \dontrun{
 df <- seats_fed(2000)
 }
-
 }
 \seealso{
 \code{\link{seats_local}} for local elections in Brazil.
