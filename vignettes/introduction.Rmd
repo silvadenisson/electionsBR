@@ -47,8 +47,6 @@ By setting the `export` argument to `TRUE` in the `vote_mun_zone_fed` function, 
 1. `electoral_data.dta`, to be used with [Stata](http://www.stata.com/);
 2. `electoral_data.sav`, to be used with [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/).
 
-In the remaining of this vignette, we present the functions included in the package.
-
 ## Data on elections results
 
 `electionsBR`'s chief functions are the ones used to get electoral results, which includes candidates' number of votes and electoral status (i.e., elected and non-elected), among many others. To get these data, use `vote_mun_zone_` functions: 
