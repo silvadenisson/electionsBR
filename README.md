@@ -42,7 +42,7 @@ As well as subset your results by state using the `uf` argument:
 df <- vote_mun_zone_fed(2002, uf = "RS")
 ```
 
-For more information on how the package works and for a complete list of functions, see the vignette `vignette("introduction", package = "electionsBR")`.
+For more information on how the package works and for a complete list of functions, see the vignette.
 
 ### Citation
 

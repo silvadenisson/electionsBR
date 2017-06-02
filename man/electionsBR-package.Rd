@@ -17,7 +17,7 @@ To learn more about electionsBR, check the package vignette and documentation.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/silvadenisson/electionsBR}
+  \item \url{http://electionsbr.com/}
   \item Report bugs at \url{https://github.com/silvadenisson/electionsBR/issues}
 }
 
