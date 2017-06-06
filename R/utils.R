@@ -1,3 +1,10 @@
+.onAttach <- 
+  function(libname, pkgname) {
+    packageStartupMessage("\nTo cite electionsBR in publications, use: citation(electionsBR)")
+    packageStartupMessage("To learn more, visit: http://electionsbr.com\n")
+  }
+
+
 #' Returns a vector with the abbreviations of all Brazilian states
 #'
 #' @export 
