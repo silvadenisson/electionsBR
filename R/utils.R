@@ -1,3 +1,4 @@
+# Startup message
 .onAttach <- 
   function(libname, pkgname) {
     packageStartupMessage("\nTo cite electionsBR in publications, use: citation(electionsBR)")
