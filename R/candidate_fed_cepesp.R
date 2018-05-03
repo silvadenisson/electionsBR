@@ -1,7 +1,7 @@
-#' Download data on the voters' profile
+#' Download data on the candidates' backgrounds in federal elections from Cepesp
 #'
-#' \code{voter_profile()} downloads and cleans data on the voters' profile aggregated by state, city and electoral zone.
-#' The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
+#' \code{candidate_fed_cepesp()} downloads and cleans data on candidates' backgrounds in federal elections from the API mantained by Cepesp/FVG.
+#' The function returns a \code{data.frame} where each observation corresponds to a candidate.
 #'
 #' @param year Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
 #' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014 and 2016.
@@ -35,21 +35,30 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' df <- voter_profile(2002)
+#' df <- candidate_fed_cepesp("presidente", 2002)
 #' }
 
-candidate_fed_cepesp <- function(position, year){
+candidate_fed_cepesp <- function(position, year, ascii = FALSE, encoding = "Latin-1", export = FALSE){
   
-  test_fed_possition(position)
+  
+  # Inputs
+  test_fed_position(position)
   test_fed_year(year)
   
+  # Download and parse data
   message("Processing the data...")
-  dados <-  GET(paste0("http://cepesp.io/api/consulta/candidatos?ano=", year ,"2014&cargo=",
-                       replace_position_cod(position))
+  dados <- httr::GET(paste0("http://cepesp.io/api/consulta/candidatos?ano=", year ,"2014&cargo=", replace_position_cod(position))) %>%
+  httr::content(dados)
   
-  dados = content(dados)
+  # Change to ascii
+  if(ascii) dados <- to_ascii(dados, encoding)
   
+  # Export
+  if(export) export_data(dados)
+  
+  # Return
   message("Done.\n")
   return(dados)
-  
 }
+  
+

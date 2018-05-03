@@ -1,8 +1,6 @@
-#' Download data on the verification of local elections in Brazil
+#' Download data on local candidates' personal financial disclosures
 #'
-#' \code{assets_candidate_local()} downloads and aggregates the data on the verification of local elections in Brazil,
-#' disaggregated by electoral zone. The function returns a \code{data.frame} where each observation
-#' corresponds to a town/zone.
+#' \code{personal_finances_local()} downloads and aggregates the data on local candidates' personal financial disclosures. The function returns a \code{data.frame} where each observation corresponds to a candidate's property.
 #'
 #' @note For the elections prior to 2000, some information can be incomplete.
 #'
@@ -29,31 +27,31 @@
 #'   \item ANO_ELEICAO: Election year.
 #'   \item DESCRICAO_ELEICAO: Description of the election.
 #'   \item SIGLA_UF: Units of the Federation's acronym in which occurred the election.
-#'   \item SQ_CANDIDATO: traduzir
-#'   \item CD_TIPO_BEM_CANDIDATO: traduzir
-#'   \item DS_TIPO_BEM_CANDIDATO: traduzir
-#'   \item DETALHE_BEM: traduzir
-#'   \item VALOR_BEM: traduzir
+#'   \item SQ_CANDIDATO: Candidate's ID ID attributed by TSE.
+#'   \item CD_TIPO_BEM_CANDIDATO: Code of the property.
+#'   \item DS_TIPO_BEM_CANDIDATO: Description of the property.
+#'   \item DETALHE_BEM: Addional details of the property.
+#'   \item VALOR_BEM: Value, in current Brazilian reais, of the property.
 #'   \item DATA_ULT_TOTALIZACAO: Date of the last totalization in that city and zone.
 #'   \item HORA_ULT_TOTALIZACAO: Time of the last totalization in that city and zone.
 #' }
 #'
-#' @seealso \code{\link{assets_candidate_local}} for local elections in Brazil.
+#' @seealso \code{\link{personal_finances_fed}} for personal financial disclosures of running candidates in federal elections.
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"
 #' @export
 #' @examples
 #' \dontrun{
-#' df <- assets_candidate_local(2000)
+#' df <- personal_finances_local(2000)
 #' }
 
-assets_candidate_local <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
+personal_finances_local <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
   
   
   # Input tests
   test_encoding(encoding)
-  test_fed_year(year)
+  test_local_year(year)
   uf <- test_uf(uf)
   
   # Downloads the data

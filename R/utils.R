@@ -74,7 +74,9 @@ test_local_year <- function(year){
   if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1996, 2016, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
-test_fed_possition <- function(position){
+
+# Test federal positions
+test_fed_position <- function(position){
   position <- tolower(position)
   if(!is.character(position) | length(position) != 1 | !position %in% c("presidente",
                                                                         "governador",
@@ -84,7 +86,9 @@ test_fed_possition <- function(position){
                                                                         "deputado distrital")) stop("Invalid input. Please, check the documentation and try again.")
 }
 
-test_local_possition <- function(position){
+
+# Test federal positions
+test_local_position <- function(position){
   position <- tolower(position)
   if(!is.character(position) | length(position) != 1 | !position %in% c("prefeito",
                                                                         "vereador")) stop("Invalid input. Please, check the documentation and try again.")
