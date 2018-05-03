@@ -74,6 +74,21 @@ test_local_year <- function(year){
   if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1996, 2016, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
+test_fed_possition <- function(position){
+  position <- tolower(position)
+  if(!is.character(position) | length(position) != 1 | !position %in% c("presidente",
+                                                                        "governador",
+                                                                        "senador",
+                                                                        "deputado federal",
+                                                                        "deputado estadual",
+                                                                        "deputado distrital")) stop("Invalid input. Please, check the documentation and try again.")
+}
+
+test_local_possition <- function(position){
+  position <- tolower(position)
+  if(!is.character(position) | length(position) != 1 | !position %in% c("prefeito",
+                                                                        "vereador")) stop("Invalid input. Please, check the documentation and try again.")
+}
 
 # Converts electoral data from Latin-1 to ASCII
 test_encoding <- function(encoding){
@@ -97,6 +112,18 @@ test_uf <- function(uf) {
   else return(paste(uf, collapse = "|"))
 }
 
+# replace position by cod position
+replace_position_cod <- function(position){
+  position <- tolower(position)
+  return(switch(position, "presidente" = 1,
+         "governador" = 3,
+         "senador" = 5,
+         "deputado federal" = 6,
+         "deputado estadual" = 7,
+         "deputado distrital" = 8,
+         "prefeito" = 11,
+         "vereador" = 13))
+}
 
 # Function to export data to .dta and .sav
 export_data <- function(df) {
