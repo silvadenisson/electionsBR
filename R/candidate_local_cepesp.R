@@ -45,7 +45,7 @@ candidate_local_cepesp <- function(position, year){
   
   message("Processing the data...")
   dados <-  GET(paste0("http://cepesp.io/api/consulta/candidatos?ano=", year ,"2014&cargo=",
-                       replace_position_cod(position))
+                       replace_position_cod(position)))
   
   dados = content(dados)
   
