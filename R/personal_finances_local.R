@@ -2,7 +2,7 @@
 #'
 #' \code{personal_finances_local()} downloads and aggregates the data on local candidates' personal financial disclosures. The function returns a \code{data.frame} where each observation corresponds to a candidate's property.
 #'
-#' @note For the elections prior to 2000, some information can be incomplete.
+#' @note For the elections prior to 2000, some information may be incomplete.
 #'
 #' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
 #' are available.

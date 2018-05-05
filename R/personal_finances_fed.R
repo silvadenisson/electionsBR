@@ -2,9 +2,9 @@
 #'
 #' \code{personal_finances_local()} downloads and aggregates the data on federal candidates' personal financial disclosures. The function returns a \code{data.frame} where each observation corresponds to a candidate's property.
 #'
-#' @note For the elections prior to 2000, some information can be incomplete.
+#' @note For the elections prior to 2000, some information may be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014 are available.
+#' @param year Election year. For this function, only the years 2006, 2010, and 2014 are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
 #'
