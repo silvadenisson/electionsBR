@@ -45,7 +45,7 @@
 #' }
 
 
-legislative_mun_vote <- function(year, house = c("chamber", "senate"), prop = TRUE, ascii = FALSE, encoding = "Latin-1"){
+legislative_mun_vote <- function(year, house = c("chamber", "senate"), prop = TRUE, ascii = FALSE, encoding = "latin1"){
   
   # Input test
   if(!is.logical(prop)) stop("Invalid input. Please, check the documentation and try again.")

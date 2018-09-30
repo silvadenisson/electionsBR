@@ -61,13 +61,14 @@
 #' df <- party_mun_zone_fed(2002)
 #' }
 
-party_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "Latin-1", export = FALSE){
+party_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
 
 
   # Test the input
   test_encoding(encoding)
   test_fed_year(year)
   uf <- test_uf(uf)
+  br_archive <- test_br(br_archive)
 
   # Download the data
   dados <- tempfile()

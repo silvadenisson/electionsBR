@@ -56,7 +56,7 @@ juntaDados <- function(uf, encoding, br_archive){
    }
      
    
-  lapply(archive, function(x) tryCatch(suppressWarnings(readr::read_delim("consulta_cand_1998_AC.txt", col_names = test_col_names, delim = ";", locale = readr::locale(encoding = encoding), col_types = readr::cols(), progress = F)), 
+  lapply(archive, function(x) tryCatch(suppressWarnings(readr::read_delim(x, col_names = test_col_names, delim = ";", locale = readr::locale(encoding = encoding), col_types = readr::cols(), progress = F)), 
                                 error = function(e) NULL)) %>%
   data.table::rbindlist() %>%
   dplyr::as.tbl()

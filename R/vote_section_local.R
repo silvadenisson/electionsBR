@@ -54,7 +54,7 @@
 #' df <- vote_section_local(2000)
 #' }
 
-vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FALSE, encoding = "Latin-1", export = FALSE){
+vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
   
   
   # Test the inputs
@@ -63,6 +63,7 @@ vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FAL
   stopifnot(is.character(uf))
   if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)
+  br_archive <- test_br(br_archive)
   
   # Download the data
   dados <- tempfile()

@@ -45,13 +45,14 @@
 #' df <- personal_finances_fed(2002)
 #' }
 
-personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "Latin-1", export = FALSE){
+personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
   
   
   # Input tests
   test_encoding(encoding)
   test_fed_year(year)
   uf <- test_uf(uf)
+  br_archive <- test_br(br_archive)
   
   # Downloads the data
   dados <- tempfile()

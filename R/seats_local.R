@@ -49,13 +49,14 @@
 #' df <- seats_local(2000)
 #' }
 
-seats_local <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "Latin-1", export = FALSE){
+seats_local <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
   
   
   # Input tests
   test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
+  br_archive <- test_br(br_archive)
   
   # Download the data
   dados <- tempfile()

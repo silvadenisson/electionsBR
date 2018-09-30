@@ -72,6 +72,7 @@ details_mun_zone_fed <- function(year, uf = "all", br_archive = FALSE, ascii = F
   test_encoding(encoding)
   test_fed_year(year)
   uf <- test_uf(uf)
+  br_archive <- test_br(br_archive)
 
   # Downloads the data
   dados <- tempfile()

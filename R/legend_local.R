@@ -64,6 +64,7 @@ legend_local <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, e
   test_encoding(encoding, br_archive)
   test_local_year(year)
   uf <- test_uf(uf)
+  br_archive <- test_br(br_archive)
 
   # Download the data
   dados <- tempfile()
