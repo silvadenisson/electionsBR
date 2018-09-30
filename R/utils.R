@@ -34,24 +34,19 @@ parties_br <- function() {
 
 
 # Reads and rbinds multiple data.frames in the same directory
+#' @import dplyr
 juntaDados <- function(uf, encoding){
 
     Sys.glob("*.txt")[grepl(uf, Sys.glob("*.txt"))] %>%
-           file.info() %>%
-           .[.$size > 200, ] %>%
-          row.names() %>%
+      file.info() %>%
+      .[.$size > 200, ] %>%
+      row.names() %>%
     lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F, encoding = encoding), 
                                 error = function(e) NULL)) %>%
     data.table::rbindlist() %>%
     dplyr::as.tbl()
   
-  #banco <- Sys.glob("*.txt") %>%
-  #  lapply(function(x) tryCatch(read.table(x, header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding = encoding), error = function(e) NULL))
-  #nCols <- sapply(banco, ncol)
-  #banco <- banco[nCols == Moda(nCols)] %>%
-  #  do.call("rbind", .)
-  #
-  #banco
+
 }
 
 
