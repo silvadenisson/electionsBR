@@ -11,9 +11,9 @@
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
 #' 
-#' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
+#' @param ascii (\code{logical}). Should the text be transformed from latin1 to ASCII format?
 #'
-#' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
+#' @param encoding Data original encoding (defaults to 'latin1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?

@@ -4,8 +4,8 @@
 \alias{seats_fed}
 \title{Download data on the number of seats under dispute in federal elections}
 \usage{
-seats_fed(year, uf = "all", ascii = FALSE, encoding = "Latin-1",
-  export = FALSE)
+seats_fed(year, uf = "all", br_archive = FALSE, ascii = FALSE,
+  encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012 and 2016

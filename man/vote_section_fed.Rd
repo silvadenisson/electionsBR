@@ -4,8 +4,8 @@
 \alias{vote_section_fed}
 \title{Download data on candidate electoral results in federal elections in Brazil by electoral section}
 \usage{
-vote_section_fed(year, uf = "AC", ascii = FALSE, encoding = "Latin-1",
-  export = FALSE)
+vote_section_fed(year, uf = "AC", br_archive = FALSE, ascii = FALSE,
+  encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014

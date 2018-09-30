@@ -5,7 +5,7 @@
 \title{Download, clean, and transform data on legislative electoral results by municipality}
 \usage{
 legislative_mun_vote(year, house = c("chamber", "senate"), prop = TRUE,
-  ascii = FALSE, encoding = "Latin-1")
+  ascii = FALSE, encoding = "latin1")
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014

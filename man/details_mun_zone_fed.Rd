@@ -4,8 +4,8 @@
 \alias{details_mun_zone_fed}
 \title{Download data on the verification of federal elections in Brazil}
 \usage{
-details_mun_zone_fed(year, uf = "all", ascii = FALSE,
-  encoding = "Latin-1", export = FALSE)
+details_mun_zone_fed(year, uf = "all", br_archive = FALSE, ascii = FALSE,
+  encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014

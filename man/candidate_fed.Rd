@@ -4,8 +4,8 @@
 \alias{candidate_fed}
 \title{Download data on the candidates' backgrounds in federal elections}
 \usage{
-candidate_fed(year, uf = "all", ascii = FALSE, encoding = "Latin-1",
-  export = FALSE)
+candidate_fed(year, uf = "all", br_archive = FALSE, ascii = FALSE,
+  encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -13,9 +13,9 @@ are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
 
-\item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
+\item{ascii}{(\code{logical}). Should the text be transformed from latin1 to ASCII format?}
 
-\item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
+\item{encoding}{Data original encoding (defaults to 'latin1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}

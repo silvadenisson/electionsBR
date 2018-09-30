@@ -19,6 +19,7 @@ Imports: magrittr,
     dplyr (>= 0.5.0),
     data.table (>= 1.9.8),
     haven (>= 1.0.0),
+    readr,
     stats
 LazyData: TRUE
 URL: http://electionsbr.com/

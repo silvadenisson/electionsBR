@@ -4,8 +4,8 @@
 \alias{legend_local}
 \title{Download data on local election coalitions in Brazil}
 \usage{
-legend_local(year, uf = "all", ascii = FALSE, encoding = "Latin-1",
-  export = FALSE)
+legend_local(year, uf = "all", br_archive = FALSE, ascii = FALSE,
+  encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016

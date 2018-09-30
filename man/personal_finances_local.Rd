@@ -4,8 +4,8 @@
 \alias{personal_finances_local}
 \title{Download data on local candidates' personal financial disclosures}
 \usage{
-personal_finances_local(year, uf = "all", ascii = FALSE,
-  encoding = "Latin-1", export = FALSE)
+personal_finances_local(year, uf = "all", br_archive = FALSE,
+  ascii = FALSE, encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
@@ -46,7 +46,7 @@ If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
-For the elections prior to 2000, some information can be incomplete.
+For the elections prior to 2000, some information may be incomplete.
 }
 \examples{
 \dontrun{

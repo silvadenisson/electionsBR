@@ -4,8 +4,8 @@
 \alias{party_mun_zone_local}
 \title{Download data on the polls by parties from local elections in Brazil}
 \usage{
-party_mun_zone_local(year, uf = "all", ascii = FALSE,
-  encoding = "Latin-1", export = FALSE)
+party_mun_zone_local(year, uf = "all", br_archive = FALSE, ascii = FALSE,
+  encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012, and 2016
