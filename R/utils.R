@@ -36,7 +36,10 @@ parties_br <- function() {
 # Reads and rbinds multiple data.frames in the same directory
 juntaDados <- function(uf, encoding){
 
-  Sys.glob("*.txt")[grepl(uf, Sys.glob("*.txt"))] %>%
+    Sys.glob("*.txt")[grepl(uf, Sys.glob("*.txt"))] %>%
+           file.info() %>%
+           .[.$size > 200, ] %>%
+          row.names() %>%
     lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F, encoding = encoding), 
                                 error = function(e) NULL)) %>%
     data.table::rbindlist() %>%
