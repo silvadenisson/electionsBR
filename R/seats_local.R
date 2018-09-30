@@ -49,7 +49,7 @@
 #' df <- seats_local(2000)
 #' }
 
-seats_local <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
+seats_local <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "Latin-1", export = FALSE){
   
   
   # Input tests
@@ -68,7 +68,7 @@ seats_local <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", e
   
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf, encoding)
+  banco <- juntaDados(uf, encoding, br_archive)
   setwd("..")
   unlink(as.character(year), recursive = T)
   

@@ -42,7 +42,7 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252", export
   
   
   # Inputs
-  if(!year %in% seq(1994, 2016, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
+  if(!year %in% seq(1994, 2018, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
   test_encoding(encoding)
   
   # Download data

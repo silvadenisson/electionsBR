@@ -66,7 +66,7 @@
 #' df <- details_mun_zone_local(2000)
 #' }
 
-details_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
+details_mun_zone_local <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
 
 
   # Input tests
@@ -85,7 +85,7 @@ details_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf, encoding)
+  banco <- juntaDados(uf, encoding, br_archive)
   setwd("..")
   unlink(as.character(year), recursive = T)
 

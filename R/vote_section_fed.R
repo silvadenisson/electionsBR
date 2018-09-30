@@ -54,7 +54,7 @@
 #' df <- vote_section_fed(2002)
 #' }
 
-vote_section_fed <- function(year, uf = "AC", ascii = FALSE, encoding = "Latin-1", export = FALSE){
+vote_section_fed <- function(year, uf = "AC", br_archive = FALSE, ascii = FALSE, encoding = "Latin-1", export = FALSE){
   
   
   # Test the inputs
@@ -75,7 +75,7 @@ vote_section_fed <- function(year, uf = "AC", ascii = FALSE, encoding = "Latin-1
   
   # Clean the data
   setwd(as.character(year))
-  banco <- juntaDados(uf, encoding)
+  banco <- juntaDados(uf, encoding, br_archive)
   setwd("..")
   unlink(as.character(year), recursive = T)
   

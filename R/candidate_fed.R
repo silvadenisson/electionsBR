@@ -86,13 +86,14 @@
 #' df <- candidate_fed(2002)
 #' }
 
-candidate_fed <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
+candidate_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
 
 
   # Input tests
   test_encoding(encoding)
   test_fed_year(year)
   uf <- test_uf(uf)
+  br_archive <- test_br(br_archive)
 
   # Download the data
   dados <- tempfile()
@@ -105,7 +106,7 @@ candidate_fed <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1",
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf, encoding)
+  banco <- juntaDados(uf, encoding, br_archive)
   setwd("..")
   unlink(as.character(year), recursive = T)
 

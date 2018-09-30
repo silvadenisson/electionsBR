@@ -57,11 +57,11 @@
 #' df <- legend_local(2000)
 #' }
 
-legend_local <- function(year, uf = "all", ascii = FALSE, encoding = "Latin-1", export = FALSE){
+legend_local <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
 
 
   # Test the input
-  test_encoding(encoding)
+  test_encoding(encoding, br_archive)
   test_local_year(year)
   uf <- test_uf(uf)
 

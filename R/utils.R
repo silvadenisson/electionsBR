@@ -35,17 +35,31 @@ parties_br <- function() {
 
 # Reads and rbinds multiple data.frames in the same directory
 #' @import dplyr
-juntaDados <- function(uf, encoding){
+juntaDados <- function(uf, encoding, br_archive){
 
-    Sys.glob("*.txt")[grepl(uf, Sys.glob("*.txt"))] %>%
+   archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == F] %>%
+      .[grepl(uf, .)] %>%
       file.info() %>%
       .[.$size > 200, ] %>%
-      row.names() %>%
-    lapply(function(x) tryCatch(data.table::fread(x, header = F, sep = ";", stringsAsFactors = F, data.table = F, verbose = F, showProgress = F, encoding = encoding), 
+      row.names()
+   
+   if(br_archive == FALSE){
+     archive <- archive[grepl("BR", archive) == FALSE]
+   }else{
+     archive <- archive[grepl("BR", archive) == TRUE]
+   }
+   
+   if(grepl(".csv", archive[1])){
+     test_col_names <- T
+   }else{
+     test_col_names <- F
+   }
+     
+   
+  lapply(archive, function(x) tryCatch(suppressWarnings(readr::read_delim("consulta_cand_1998_AC.txt", col_names = test_col_names, delim = ";", locale = readr::locale(encoding = encoding), col_types = readr::cols(), progress = F)), 
                                 error = function(e) NULL)) %>%
-    data.table::rbindlist() %>%
-    dplyr::as.tbl()
-  
+  data.table::rbindlist() %>%
+  dplyr::as.tbl()
 
 }
 
@@ -97,6 +111,19 @@ test_encoding <- function(encoding){
   if(encoding == "Latin-1") encoding <- "latin1"
   
   if(!encoding %in% tolower(iconvlist())) stop("Invalid encoding. Check iconvlist() to view a list with all valid encodings.")
+}
+
+test_br <- function(br_archive){
+  
+  if(is.logical(br_archive)){
+    if(br_archive == FALSE){
+      br_archive <- FALSE
+    } else{
+      br_archive <- TRUE
+    }
+  }else{
+    cat("not logical argument")
+  }
 }
 
 
