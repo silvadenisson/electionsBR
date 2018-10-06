@@ -73,9 +73,12 @@ personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii =
   unlink(as.character(year), recursive = T)
   
   # Changes variables names
+  if(year < 2018){
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SQ_CANDIDATO", "CD_TIPO_BEM_CANDIDATO", "DS_TIPO_BEM_CANDIDATO",
                       "DETALHE_BEM", "VALOR_BEM", "DATA_ULT_TOTALIZACAO", "HORA_ULT_TOTALIZACAO")
+  }
+    
  
   
   # Change to ascii
