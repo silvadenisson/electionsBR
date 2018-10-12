@@ -37,7 +37,7 @@ parties_br <- function() {
 #' @import dplyr
 juntaDados <- function(uf, encoding, br_archive){
 
-   archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == F] %>%
+   archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
       .[grepl(uf, .)] %>%
       file.info() %>%
       .[.$size > 200, ] %>%
@@ -50,9 +50,9 @@ juntaDados <- function(uf, encoding, br_archive){
    }
    
    if(grepl(".csv", archive[1])){
-     test_col_names <- T
+     test_col_names <- TRUE
    }else{
-     test_col_names <- F
+     test_col_names <- FALSE
    }
      
    
@@ -106,6 +106,7 @@ test_local_position <- function(position){
                                                                         "vereador")) stop("Invalid input. Please, check the documentation and try again.")
 }
 
+
 # Converts electoral data from Latin-1 to ASCII
 test_encoding <- function(encoding){
   if(encoding == "Latin-1") encoding <- "latin1"
@@ -113,6 +114,8 @@ test_encoding <- function(encoding){
   if(!encoding %in% tolower(iconvlist())) stop("Invalid encoding. Check iconvlist() to view a list with all valid encodings.")
 }
 
+
+# Test br types
 test_br <- function(br_archive){
   
   if(is.logical(br_archive)){
@@ -141,7 +144,7 @@ test_uf <- function(uf) {
   else return(paste(uf, collapse = "|"))
 }
 
-# replace position by cod position
+# Replace position by cod position
 replace_position_cod <- function(position){
   position <- tolower(position)
   return(switch(position, "presidente" = 1,

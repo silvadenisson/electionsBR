@@ -7,6 +7,9 @@
 #' @param year Election year. For this function, only the years 2006, 2010, and 2014 are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
+#' 
+#' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
+#' file. By setting this argumento to \code{TRUE}.
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'

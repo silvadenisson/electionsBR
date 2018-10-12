@@ -11,6 +11,9 @@
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
 #' 
+#' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
+#' file. By setting this argumento to \code{TRUE}.
+#' 
 #' @param ascii (\code{logical}). Should the text be transformed from latin1 to ASCII format?
 #'
 #' @param encoding Data original encoding (defaults to 'latin1'). This can be changed to avoid errors
@@ -20,6 +23,7 @@
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
+#'  
 #'
 #' @return \code{candidate_fed()} returns a \code{tbl, data.frame} with the following variables:
 #'

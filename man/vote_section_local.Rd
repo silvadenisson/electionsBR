@@ -4,14 +4,17 @@
 \alias{vote_section_local}
 \title{Download data on candidate electoral results in local elections in Brazil by electoral section}
 \usage{
-vote_section_local(year, uf = "AC", br_archive = FALSE, ascii = FALSE,
-  encoding = "latin1", export = FALSE)
+vote_section_local(year, uf = "AC", br_archive = FALSE,
+  ascii = FALSE, encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).}
+
+\item{br_archive}{In the TSE's data repository, some results can be obtained for the whole country by loading a single
+file. By setting this argumento to \code{TRUE}.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 

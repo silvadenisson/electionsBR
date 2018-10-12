@@ -10,6 +10,9 @@
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
+#' 
+#' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
+#' file. By setting this argumento to \code{TRUE}.
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
@@ -61,7 +64,7 @@ legend_local <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, e
 
 
   # Test the input
-  test_encoding(encoding, br_archive)
+  test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
   br_archive <- test_br(br_archive)

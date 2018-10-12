@@ -13,6 +13,9 @@ are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).}
 
+\item{br_archive}{In the TSE's data repository, some results can be obtained for the whole country by loading a single
+file. By setting this argumento to \code{TRUE}.}
+
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
 \item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors

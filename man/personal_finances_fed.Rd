@@ -4,13 +4,16 @@
 \alias{personal_finances_fed}
 \title{Download data on federal candidates' personal financial disclosures}
 \usage{
-personal_finances_fed(year, uf = "all", br_archive = FALSE, ascii = FALSE,
-  encoding = "latin1", export = FALSE)
+personal_finances_fed(year, uf = "all", br_archive = FALSE,
+  ascii = FALSE, encoding = "latin1", export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 2006, 2010, and 2014 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
+
+\item{br_archive}{In the TSE's data repository, some results can be obtained for the whole country by loading a single
+file. By setting this argumento to \code{TRUE}.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
