@@ -80,7 +80,7 @@ legend_local <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, e
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf, encoding)
+  banco <- juntaDados(uf, encoding, br_archive)
   setwd("..")
   unlink(as.character(year), recursive = T)
 
