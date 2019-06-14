@@ -4,9 +4,8 @@
 #' disaggregated by cities. The function returns a \code{data.frame} where each observation
 #' corresponds to a city.
 #'
-#' @note For the elections prior to 2000, some infomration can be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
+#' @param year Election year. For this function, only the years  2008, 2012 and 2016
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -68,34 +67,40 @@ legend_local <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, e
   test_local_year(year)
   uf <- test_uf(uf)
   br_archive <- test_br(br_archive)
-
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-
-  message("Processing the data...")
-
-  # Cleans the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
-
-  # Change variable names
+  
+  if(year > 2004){
+    # Download the data
+    dados <- tempfile()
+    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_%s.zip", year) %>%
+      download.file(dados)
+    unzip(dados, exdir = paste0("./", year))
+    unlink(dados)
+    
+    message("Processing the data...")
+    
+    # Cleans the data
+    setwd(as.character(year))
+    banco <- juntaDados(uf, encoding, br_archive)
+    setwd("..")
+    unlink(as.character(year), recursive = T)
+    
+    # Change variable names
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO",
                       "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
                       "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
     
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
+    # Change to ascii
+    if(ascii == T) banco <- to_ascii(banco, encoding)
     
-  # Export
-  if(export) export_data(banco)
+    # Export
+    if(export) export_data(banco)
+    
+    message("Done.\n")
+    return(banco)
+  }else{
+    message("Not disponible. Please, check the documentation and try again.\n")
+  }
 
-  message("Done.\n")
-  return(banco)
+ 
 }

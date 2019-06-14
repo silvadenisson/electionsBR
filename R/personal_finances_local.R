@@ -74,10 +74,16 @@ personal_finances_local <- function(year, uf = "all",  br_archive = FALSE, ascii
   unlink(as.character(year), recursive = T)
   
   # Changes variables names
-  if(year < 2014){
+  if(year < 2012){
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SQ_CANDIDATO", "CD_TIPO_BEM_CANDIDATO", "DS_TIPO_BEM_CANDIDATO",
                       "DETALHE_BEM", "VALOR_BEM", "DATA_ULT_TOTALIZACAO", "HORA_ULT_TOTALIZACAO")
+  } else{
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",      
+                      "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "SIGLA_UF", "SIGLA_UE",                
+                      "NOME_UE", "SQ_CANDIDATO", "NUMERO_ORDEM_CANDIDATO", "CD_TIPO_BEM_CANDIDATO",
+                      "DS_TIPO_BEM_CANDIDATO", "DETALHE_BEM", "VALOR_BEM", "DT_ULTIMA_ATUALIZACAO",
+                      "HH_ULTIMA_ATUALIZACAO")
   }
   
  
