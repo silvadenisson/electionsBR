@@ -3,7 +3,7 @@
 #' \code{president_mun_vote()} downloads, cleans, and transforms data on presidential elections results
 #' in the second round (runnoff elections) by municipality. The electoral results are, by default, reported as proportion.
 #' 
-#' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
+#' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, 2014 and 2018
 #' are available.
 #' 
 #' @param prop Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).
@@ -52,8 +52,9 @@ president_mun_vote <- function(year, prop = TRUE, ascii = FALSE, encoding = "lat
   test_fed_year(year)
   if(year == 1998) stop("There were no presidential runoff in 1998 election.")
   
+  
   # Download and clean the data
-  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding)) %>%
+  res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding, br_archive = T)) %>%
     dplyr::filter_(~NUM_TURNO == 2, ~DESCRICAO_CARGO %in% c("PRESIDENTE", "Presidente")) %>%
     dplyr::group_by_(~ANO_ELEICAO, ~SIGLA_UF, ~CODIGO_MUNICIPIO, ~NOME_MUNICIPIO, ~SIGLA_PARTIDO,
               ~NOME_PARTIDO, ~NUMERO_PARTIDO, ~NOME_COLIGACAO, ~COMPOSICAO_LEGENDA) %>%
@@ -83,7 +84,7 @@ president_mun_vote <- function(year, prop = TRUE, ascii = FALSE, encoding = "lat
 #' \code{president_state_vote()} downloads, cleans, and transforms data on presidential elections results
 #' in the second round (runnoff elections) by state. The electoral results are, by default, reported as proportion
 #' 
-#' @param year Election year (\code{integer}). For this function, only the years 2002, 2006, 2010, and 2014
+#' @param year Election year (\code{integer}). For this function, only the years 2002, 2006, 2010, 2014 and 2018
 #' are available.
 #' 
 #' @param prop Shoud the votes be reported as porportion? (Defaults to \code{TRUE}).
@@ -130,8 +131,9 @@ president_state_vote <- function(year, prop = TRUE, ascii = FALSE, encoding = "L
   test_fed_year(year)
   if(year == 1998) stop("There were no presidential runoff in 1998 election.")
   
+
   # Download and clean the data
-    res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding)) %>%
+    res <- suppressMessages(party_mun_zone_fed(year = year, ascii = ascii, encoding = encoding, br_archive = T)) %>%
       dplyr::filter_(~NUM_TURNO == 2, ~DESCRICAO_CARGO %in% c("PRESIDENTE", "Presidente")) %>%
       dplyr::group_by_(~ANO_ELEICAO, ~SIGLA_UF, ~SIGLA_PARTIDO, ~NOME_PARTIDO, ~NUMERO_PARTIDO,
                        ~NOME_COLIGACAO, ~COMPOSICAO_LEGENDA) %>%

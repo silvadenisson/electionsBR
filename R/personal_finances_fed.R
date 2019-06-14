@@ -45,7 +45,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' df <- personal_finances_fed(2002)
+#' df <- personal_finances_fed(2006)
 #' }
 
 personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
@@ -55,8 +55,8 @@ personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii =
   test_fed_year(year)
   uf <- test_uf(uf)
   br_archive <- test_br(br_archive)
-    
-  if(year > 2002){
+  
+  if(year < 2006) stop("Not disponible. Please, check the documentation and try again.\n")
     
     # Downloads the data
     dados <- tempfile()
@@ -95,8 +95,6 @@ personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii =
     
     message("Done.\n")
     return(banco)
-  } else{
-      message("Not disponible. Please, check the documentation and try again.\n")
-    }
-  }
+} 
+
   
