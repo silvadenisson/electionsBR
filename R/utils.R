@@ -76,7 +76,7 @@ to_ascii <- function(banco, encoding){
 # Tests federal election year inputs
 test_fed_year <- function(year){
 
-  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2018, 4)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1994, 2018, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 

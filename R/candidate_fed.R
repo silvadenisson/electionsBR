@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2002, some information can be incomplete. For the 2014 elections, three more variables are available.
 #'
-#' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
+#' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, 2014, and 2018
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -75,9 +75,9 @@
 #'   \item DESPESA_MAX_CAMPANHA: Maximum expenditure campaign declared by the party to that position. Values in Reais.
 #'   \item COD_SIT_TOT_TURNO: Candidate's totalization status code in that election round.
 #'   \item DESC_SIT_TOT_TURNO: Candidate's totalization status description in that round.
-#'   \item CODIGO_COR_RACA: Candidate's color/race code (self-declaration, only for 2014 election).
-#'   \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only for 2014 election).
-#'   \item EMAIL_CANDIDATO: Candidate's e-mail adress (only for 2014 election).
+#'   \item CODIGO_COR_RACA: Candidate's color/race code (self-declaration, only from 2014 election).
+#'   \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only from 2014 election).
+#'   \item EMAIL_CANDIDATO: Candidate's e-mail adress (only from 2014 election).
 #' }
 #' 
 #' @seealso \code{\link{candidate_local}} for local elections in Brazil.
@@ -129,7 +129,23 @@ candidate_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, e
                       "NOME_MUNICIPIO_NASCIMENTO", "DESPESA_MAX_CAMPANHA", "COD_SIT_TOT_TURNO",
                       "DESC_SIT_TOT_TURNO")
 
-  } 
+  }else{
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",
+                      "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", 
+                      "SIGLA_UF", "SIGLA_UE", "DESCRICAO_UE", "CODIGO_CARGO", "DESCRICAO_CARGO", 
+                      "SEQUENCIAL_CANDIDATO", "NUMERO_CANDIDATO", "NOME_CANDIDATO", "NOME_URNA_CANDIDATO", 
+                      "NOME_SOCIAL_CANDIDATO", "CPF_CANDIDATO", "EMAIL_CANDIDATO", "COD_SITUACAO_CANDIDATURA",
+                      "DES_SITUACAO_CANDIDATURA", "COD_DETALHE_SITUACAO_CAND", "DES_DETALHE_SITUACAO_CAND",
+                      "TIPO_AGREMIACAO", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "CODIGO_LEGENDA",
+                      "NOME_COLIGACAO", "COMPOSICAO_LEGENDA", "CODIGO_NACIONALIDADE", "DESCRICAO_NACIONALIDADE",
+                      "SIGLA_UF_NASCIMENTO", "CODIGO_MUNICIPIO_NASCIMENTO", "NOME_MUNICIPIO_NASCIMENTO",
+                      "DATA_NASCIMENTO", "IDADE_DATA_POSSE", "NUM_TITULO_ELEITORAL_CANDIDATO", "CODIGO_SEXO",
+                      "DESCRICAO_SEXO", "COD_GRAU_INSTRUCAO", "DESCRICAO_GRAU_INSTRUCAO", "CODIGO_ESTADO_CIVIL",
+                      "DESCRICAO_ESTADO_CIVIL", "CODIGO_COR_RACA", "DESCRICAO_COR_RACA", "CODIGO_OCUPACAO", 
+                      "DESCRICAO_OCUPACAO", "DESPESA_MAX_CAMPANHA", "COD_SIT_TOT_TURNO", "DESC_SIT_TOT_TURNO",
+                      "SITUACAO_REELEICAO", "SITUACAO_DECLARAR_BENS", "NUMERO_PROTOCOLO_CANDIDATURA", 
+                      "NUMERO_PROCESSO")
+  }
   
   # Change to ascii
   if(ascii) banco <- to_ascii(banco, encoding)
