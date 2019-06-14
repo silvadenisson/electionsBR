@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2002, some information can be incomplete. For the 2014 elections, one more variable is available.
 #'
-#' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
+#' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014 and 2018
 #' are available.
 #' 
 #' @param uf Filter results by Federation Unit acronym (\code{character vector}).
@@ -96,12 +96,19 @@ party_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FA
                       "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
                       "QTDE_VOTOS_LEGENDA", "SEQUENCIAL_LEGENDA")
 
-  } else {
+  } else if(year == 2014){
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
                       "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
                       "QTDE_VOTOS_LEGENDA", "TRANSITO", "SEQUENCIAL_LEGENDA")
+  } else{
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",
+                      "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA",
+                      "SIGLA_UF", "SIGLA_UE", "NOME_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
+                      "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO",
+                      "NOME_PARTIDO", "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA", 
+                      "TRANSITO", "QTDE_VOTOS_NOMINAIS", "QTDE_VOTOS_LEGENDA")
   }
   
   # Change to ascii
