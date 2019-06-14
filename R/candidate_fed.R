@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2002, some information can be incomplete. For the 2014 elections, three more variables are available.
 #'
-#' @param year Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, 2014, and 2018
+#' @param year Election year (\code{integer}). For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014, and 2018
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).

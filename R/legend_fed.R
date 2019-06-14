@@ -6,7 +6,7 @@
 #'
 #' @note For elections prior to 2002, some information can be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
+#' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -68,10 +68,17 @@ legend_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, enco
   test_fed_year(year)
   uf <- test_uf(uf)
   br_archive <- test_br(br_archive)
+  
+  
+  if(year < 2018) {
+    endereco <- "http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_%s.zip"
+  } else{
+    endereco <- "http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_%s.zip"
+  }
 
   # Download the data
   dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_%s.zip", year) %>%
+  sprintf(endereco, year) %>%
     download.file(dados)
   unzip(dados, exdir = paste0("./", year))
   unlink(dados)
@@ -85,11 +92,20 @@ legend_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, enco
   unlink(as.character(year), recursive = T)
 
   # Change variable names
+  if(year < 2018) {
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO",
                       "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
                       "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
-    
+  } else{
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NM_TIPO_ELEICAO",
+                      "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "SIGLA_UF",
+                      "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA",
+                      "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SEQUENCIAL_COLIGACAO",
+                      "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO")
+  }
+  
+  
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
     
