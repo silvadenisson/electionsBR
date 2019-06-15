@@ -47,27 +47,41 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252", export
   
   # Download data
   dados <- tempfile()
-  local <- tempdir()
 
   sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) %>%
     download.file(dados)
-  unzip(dados, exdir = local)
+  unzip(dados, exdir = paste0("./", year))
   unlink(dados)
   
   # Join data
   message("Processing the data...")
-  
-  orig <- getwd()
-  setwd(local)
-  banco <- Sys.glob("*.txt") %>%
-    read.table(header = F, sep = ";", stringsAsFactors = F, fill = T, fileEncoding = encoding)
-  
-  unlink(Sys.glob("*.txt"))
-  setwd(orig)
     
+  setwd(as.character(year))
+  
+  archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
+    file.info() %>%
+    .[.$size > 200, ] %>%
+    row.names()
+  
+  if(grepl(".csv", archive[1])){
+    test_col_names <- TRUE
+  }else{
+    test_col_names <- FALSE
+  }
+  
+  banco <- readr::read_delim(archive, col_names = test_col_names, delim = ";", locale = readr::locale(encoding = encoding), col_types = readr::cols(), progress = F) %>%
+    dplyr::as.tbl()
+  
+  setwd("..")
+  unlink(as.character(year), recursive = T)
+
+  
   # Change variable names
-  names(banco) <- c("PERIODO", "UF", "MUNICIPIO", "COD_MUNICIPIO_TSE", "NR_ZONA",
-                    "SEXO", "FAIXA_ETARIA", "GRAU_DE_ESCOLARIDADE", "QTD_ELEITORES_NO_PERFIL")
+  if(year < 2016){
+    names(banco) <- c("PERIODO", "UF", "MUNICIPIO", "COD_MUNICIPIO_TSE", "NR_ZONA",
+                      "SEXO", "FAIXA_ETARIA", "GRAU_DE_ESCOLARIDADE", "QTD_ELEITORES_NO_PERFIL")
+  } 
+  
   
   # Change to ascii
   if(ascii) banco <- to_ascii(banco, encoding)
