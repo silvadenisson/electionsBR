@@ -4,11 +4,11 @@
 \alias{personal_finances_fed}
 \title{Download data on federal candidates' personal financial disclosures}
 \usage{
-personal_finances_fed(year, uf = "all", br_archive = FALSE,
-  ascii = FALSE, encoding = "latin1", export = FALSE)
+personal_finances_fed(year, uf = "all", br_archive = FALSE, ascii = FALSE,
+  encoding = "latin1", export = FALSE)
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 2006, 2010, and 2014 are available.}
+\item{year}{Election year. For this function, only the years 2006, 2010, 2014 and 2018 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
 
@@ -52,7 +52,7 @@ For the elections prior to 2000, some information may be incomplete.
 }
 \examples{
 \dontrun{
-df <- personal_finances_fed(2002)
+df <- personal_finances_fed(2006)
 }
 }
 \seealso{

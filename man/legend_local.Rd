@@ -8,7 +8,7 @@ legend_local(year, uf = "all", br_archive = FALSE, ascii = FALSE,
   encoding = "latin1", export = FALSE)
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
+\item{year}{Election year. For this function, only the years  2008, 2012 and 2016
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
@@ -58,9 +58,6 @@ corresponds to a city.
 \details{
 If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
-}
-\note{
-For the elections prior to 2000, some infomration can be incomplete.
 }
 \examples{
 \dontrun{

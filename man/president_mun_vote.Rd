@@ -4,11 +4,10 @@
 \alias{president_mun_vote}
 \title{Download, clean, and transform data on presidential electoral runoff results by municipality}
 \usage{
-president_mun_vote(year, prop = TRUE, ascii = FALSE,
-  encoding = "latin1")
+president_mun_vote(year, prop = TRUE, ascii = FALSE, encoding = "latin1")
 }
 \arguments{
-\item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
+\item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, 2014 and 2018
 are available.}
 
 \item{prop}{Shoud the votes be reported as proportion? (Defaults to \code{TRUE}).}

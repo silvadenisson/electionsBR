@@ -8,7 +8,7 @@ legislative_mun_vote(year, house = c("chamber", "senate"), prop = TRUE,
   ascii = FALSE, encoding = "latin1")
 }
 \arguments{
-\item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
+\item{year}{Election year (\code{integer}). For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014 and 2018
 are available.}
 
 \item{house}{Report results from which legislative house? Options are \code{senate} and \code{chamber}.}

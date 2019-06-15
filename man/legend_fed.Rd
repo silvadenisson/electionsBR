@@ -8,7 +8,7 @@ legend_fed(year, uf = "all", br_archive = FALSE, ascii = FALSE,
   encoding = "latin1", export = FALSE)
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
+\item{year}{Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014 and 2018
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}

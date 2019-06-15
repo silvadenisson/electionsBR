@@ -8,7 +8,7 @@ candidate_fed(year, uf = "all", br_archive = FALSE, ascii = FALSE,
   encoding = "latin1", export = FALSE)
 }
 \arguments{
-\item{year}{Election year (\code{integer}). For this function, only the years 1998, 2002, 2006, 2010, and 2014
+\item{year}{Election year (\code{integer}). For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014, and 2018
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
@@ -74,9 +74,9 @@ when \code{ascii = TRUE}.}
   \item DESPESA_MAX_CAMPANHA: Maximum expenditure campaign declared by the party to that position. Values in Reais.
   \item COD_SIT_TOT_TURNO: Candidate's totalization status code in that election round.
   \item DESC_SIT_TOT_TURNO: Candidate's totalization status description in that round.
-  \item CODIGO_COR_RACA: Candidate's color/race code (self-declaration, only for 2014 election).
-  \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only for 2014 election).
-  \item EMAIL_CANDIDATO: Candidate's e-mail adress (only for 2014 election).
+  \item CODIGO_COR_RACA: Candidate's color/race code (self-declaration, only from 2014 election).
+  \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only from 2014 election).
+  \item EMAIL_CANDIDATO: Candidate's e-mail adress (only from 2014 election).
 }
 }
 \description{
