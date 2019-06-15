@@ -68,26 +68,71 @@ vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FAL
   uf <- test_uf(uf)
   br_archive <- test_br(br_archive)
   
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-  
-  message("Processing the data...")
-  
-  # Clean the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
+  if(year < 2012){
+    
+    # Download the data
+    dados <- tempfile()
+    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
+      download.file(dados)
+    unzip(dados, exdir = paste0("./", year))
+    unlink(dados)
+    
+    message("Processing the data...")
+    
+    # Clean the data
+    setwd(as.character(year))
+    banco <- juntaDados(uf, encoding, br_archive)
+    setwd("..")
+    unlink(as.character(year), recursive = T)
+    
+  } else{
+    message("Download the data One...")
+    
+    dados <- tempfile()
+    sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_1t_%s.zip", uf) %>%
+      download.file(dados)
+    unzip(dados, exdir = paste0("./", year))
+    unlink(dados)
+    
+    message("Processing the data one...")
+    
+    # Clean the data
+    setwd(as.character(year))
+    banco1 <- juntaDados(uf, encoding, br_archive)
+    setwd("..")
+    unlink(as.character(year), recursive = T)
+    
+    
+    if(!(uf %in% c("AL", "DF", "GO", "PE", "RR", "SE", "TO"))){
+      
+      message("Download the data two...")
+      
+      dados2 <- tempfile()
+      sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_2t_%s_30102012194527.zip", uf) %>%
+        download.file(dados2)
+      unzip(dados2, exdir = paste0("./", year, "2"))
+      unlink(dados2)
+      
+      message("Processing the data two...")
+      
+      # Clean the data
+      setwd(paste0("./", year, "2"))
+      banco2 <- juntaDados(uf, encoding, br_archive)
+      setwd("..")
+      unlink(paste0("./", year, "2"), recursive = T)
+      
+    }else{
+      banco2 <- NULL
+    }
+    
+    banco <- rbind(banco1, banco2)
+  }
   
   # Change variable names
-  names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF", "SIGLA_UE",
-                    "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", "DESCRICAO_CARGO",
-                    "NUM_VOTAVEL", "QTDE_VOTOS")
-  
+  names(vts_local) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
+                        "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", 
+                        "DESCRICAO_CARGO","NUM_VOTAVEL", "QTDE_VOTOS")
+
   
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
