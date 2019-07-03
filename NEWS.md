@@ -1,6 +1,10 @@
-# electionsBR 0.3.0
+# electionsBR 0.3.1
 
-* Fixed fill issues with fread when reading local data.
+This is a minor update with bug fixes and two improvements.
+
+* Fixed fill issues with data.table's fread when reading local data.
+* Included a new argument in most functions, br_archive, that allows users to load electoral for the whole country by loading a single file. This makes it faster to clean the data.
+* Updated documentation.
 
 # electionsBR 0.3.0
 
