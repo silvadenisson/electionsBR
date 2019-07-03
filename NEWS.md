@@ -1,9 +1,13 @@
 # electionsBR 0.3.1
 
-This is a minor update with bug fixes and two improvements.
+This is a minor update with bug fixes and some improvements.
 
 * Fixed fill issues with data.table's fread when reading local data.
-* Included a new argument in most functions, br_archive, that allows users to load electoral for the whole country by loading a single file. This makes it faster to clean the data.
+* Included a new argument in most functions that allows users to load 
+electoral data for different elections and levels.
+* Included new functions to download data in Rdata format directly from a private web server.
+* Replaced data.table's fread to read data (as the Brazilian Electoral Court started using
+other file formats). From this version on, all functions internally use tidyverse's read_delim to read electoral data.
 * Updated documentation.
 
 # electionsBR 0.3.0

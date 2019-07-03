@@ -12,7 +12,8 @@
 #' @param uf Federation Unit acronym (\code{character vector}).
 #' 
 #' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
-#' file. By setting this argumento to \code{TRUE}.
+#' within a single file by setting this argument to \code{TRUE} (may not work in for some elections and, in 
+#' other, it recoverns only electoral data for presidential elections, absent in other files).
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from latin1 to ASCII format?
 #'
@@ -97,7 +98,7 @@ candidate_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, e
   test_encoding(encoding)
   test_fed_year(year)
   uf <- test_uf(uf)
-  br_archive <- test_br(br_archive)
+  test_br(br_archive)
 
   # Download the data
   dados <- tempfile()

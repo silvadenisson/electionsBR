@@ -10,9 +10,6 @@
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).
-#' 
-#' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
-#' file. By setting this argumento to \code{TRUE}.
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
@@ -57,7 +54,7 @@
 #' df <- vote_section_local(2000)
 #' }
 
-vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
+vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin1", export = FALSE){
   
   
   # Test the inputs
@@ -66,7 +63,6 @@ vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FAL
   stopifnot(is.character(uf))
   if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)
-  br_archive <- test_br(br_archive)
   
   if(year < 2012){
     
@@ -81,7 +77,7 @@ vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FAL
     
     # Clean the data
     setwd(as.character(year))
-    banco <- juntaDados(uf, encoding, br_archive)
+    banco <- juntaDados(uf, encoding, FALSE)
     setwd("..")
     unlink(as.character(year), recursive = T)
     
@@ -98,7 +94,7 @@ vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FAL
     
     # Clean the data
     setwd(as.character(year))
-    banco1 <- juntaDados(uf, encoding, br_archive)
+    banco1 <- juntaDados(uf, encoding, FALSE)
     setwd("..")
     unlink(as.character(year), recursive = T)
     
@@ -117,7 +113,7 @@ vote_section_local <- function(year, uf = "AC",  br_archive = FALSE, ascii = FAL
       
       # Clean the data
       setwd(paste0("./", year, "2"))
-      banco2 <- juntaDados(uf, encoding, br_archive)
+      banco2 <- juntaDados(uf, encoding, FALSE)
       setwd("..")
       unlink(paste0("./", year, "2"), recursive = T)
       

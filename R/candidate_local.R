@@ -10,9 +10,6 @@
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
-#' 
-#' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
-#' file. By setting this argumento to \code{TRUE}.
 #'
 #' @param ascii (\code{logical}). Should the text be transformed from latin1 to ASCII format?
 #'
@@ -89,13 +86,12 @@
 #' df <- candidate_local(2000)
 #' }
 
-candidate_local <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
+candidate_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1", export = FALSE){
 
   # Input tests
   test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
-  br_archive <- test_br(br_archive)
   
   # Downloads the data
   dados <- tempfile()
@@ -108,7 +104,7 @@ candidate_local <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE,
 
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
+  banco <- juntaDados(uf, encoding, FALSE)
   setwd("..")
   unlink(as.character(year), recursive = T)
 

@@ -4,7 +4,7 @@
 \alias{party_mun_zone_local}
 \title{Download data on the polls by parties from local elections in Brazil}
 \usage{
-party_mun_zone_local(year, uf = "all", br_archive = FALSE, ascii = FALSE,
+party_mun_zone_local(year, uf = "all", ascii = FALSE,
   encoding = "latin1", export = FALSE)
 }
 \arguments{
@@ -12,9 +12,6 @@ party_mun_zone_local(year, uf = "all", br_archive = FALSE, ascii = FALSE,
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
-
-\item{br_archive}{In the TSE's data repository, some results can be obtained for the whole country by loading a single
-file. By setting this argumento to \code{TRUE}.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 

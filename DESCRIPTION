@@ -24,7 +24,7 @@ Imports: magrittr,
 LazyData: TRUE
 URL: http://electionsbr.com/
 BugReports: https://github.com/silvadenisson/electionsBR/issues
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

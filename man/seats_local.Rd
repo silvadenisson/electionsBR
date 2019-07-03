@@ -4,17 +4,14 @@
 \alias{seats_local}
 \title{Download data on the number of seats under dispute in local elections}
 \usage{
-seats_local(year, uf = "all", br_archive = FALSE, ascii = FALSE,
-  encoding = "latin1", export = FALSE)
+seats_local(year, uf = "all", ascii = FALSE, encoding = "latin1",
+  export = FALSE)
 }
 \arguments{
 \item{year}{Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, 2012 and 2016
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
-
-\item{br_archive}{In the TSE's data repository, some results can be obtained for the whole country by loading a single
-file. By setting this argumento to \code{TRUE}.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 

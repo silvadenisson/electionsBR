@@ -43,9 +43,12 @@ juntaDados <- function(uf, encoding, br_archive){
       .[.$size > 200, ] %>%
       row.names()
    
-   if(br_archive == FALSE){
+   if(!br_archive){
+     
      archive <- archive[grepl("BR", archive) == FALSE]
-   }else{
+     
+   } else {
+     
      archive <- archive[grepl("BR", archive) == TRUE]
    }
    
@@ -87,23 +90,23 @@ test_local_year <- function(year){
 
 
 # Test federal positions
-test_fed_position <- function(position){
-  position <- tolower(position)
-  if(!is.character(position) | length(position) != 1 | !position %in% c("presidente",
-                                                                        "governador",
-                                                                        "senador",
-                                                                        "deputado federal",
-                                                                        "deputado estadual",
-                                                                        "deputado distrital")) stop("Invalid input. Please, check the documentation and try again.")
-}
+#test_fed_position <- function(position){
+#  position <- tolower(position)
+#  if(!is.character(position) | length(position) != 1 | !position %in% c("presidente",
+#                                                                        "governador",
+#                                                                        "senador",
+#                                                                        "deputado federal",
+#                                                                        "deputado estadual",
+#                                                                        "deputado distrital")) stop("Invalid input. Please, check the documentation and try again.")
+#}
 
 
 # Test federal positions
-test_local_position <- function(position){
-  position <- tolower(position)
-  if(!is.character(position) | length(position) != 1 | !position %in% c("prefeito",
-                                                                        "vereador")) stop("Invalid input. Please, check the documentation and try again.")
-}
+#test_local_position <- function(position){
+#  position <- tolower(position)
+#  if(!is.character(position) | length(position) != 1 | !position %in% c("prefeito",
+#                                                                        "vereador")) stop("Invalid input. Please, check the documentation and try again.")
+#}
 
 
 # Converts electoral data from Latin-1 to ASCII
@@ -117,15 +120,7 @@ test_encoding <- function(encoding){
 # Test br types
 test_br <- function(br_archive){
   
-  if(is.logical(br_archive)){
-    if(br_archive == FALSE){
-      br_archive <- FALSE
-    } else{
-      br_archive <- TRUE
-    }
-  }else{
-    cat("not logical argument")
-  }
+  if(!is.logical(br_archive)) message("'br_archive' must be logical (TRUE or FALSE).")
 }
 
 
@@ -144,17 +139,17 @@ test_uf <- function(uf) {
 }
 
 # Replace position by cod position
-replace_position_cod <- function(position){
-  position <- tolower(position)
-  return(switch(position, "presidente" = 1,
-         "governador" = 3,
-         "senador" = 5,
-         "deputado federal" = 6,
-         "deputado estadual" = 7,
-         "deputado distrital" = 8,
-         "prefeito" = 11,
-         "vereador" = 13))
-}
+# replace_position_cod <- function(position){
+#  position <- tolower(position)
+#  return(switch(position, "presidente" = 1,
+#         "governador" = 3,
+#         "senador" = 5,
+#         "deputado federal" = 6,
+#         "deputado estadual" = 7,
+#         "deputado distrital" = 8,
+#         "prefeito" = 11,
+#         "vereador" = 13))
+# }
 
 # Function to export data to .dta and .sav
 export_data <- function(df) {

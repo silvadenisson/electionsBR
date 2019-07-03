@@ -11,10 +11,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' df <- electionsbr_rda(2018)
+#' df <- elections_rda(2018)
 #' }
 
-electionsbr_rda <- function(year, level = "fed", archive = "candidate"){
+elections_rda <- function(year, level = "fed", archive = "candidate"){
   
    if(level == "fed"){
      test_fed_year(year)
