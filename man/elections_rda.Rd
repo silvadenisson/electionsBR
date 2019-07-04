@@ -8,13 +8,15 @@ elections_rda(year, level = "fed", archive = "candidate")
 }
 \arguments{
 \item{year}{Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, 2012 and 2016
-are available for local level. 1994, 1998, 2002, 2006, 2010, 2014, 2018 are available for fed level.}
+are available for local level. 1994, 1998, 2002, 2006, 2010, 2014, 2018 are available for the federal level.}
 
 \item{level}{Election level podem ser fed (default) or local.}
 
-\item{archive}{archive corresponde a um da funcoes basicas do pacote, podem ser: candidate (default), vote_mun_zone,
-legend, party_mun_zone, personal_finances, details_mun_zone and seats
-atualizacao do arquivo a cada 1 ano}
+\item{archive}{Corresponds to one the following options: \code{candidate}, to download candidates' data; 
+\code{vote_mun_zone}, to download electoral results; \code{legend}, to download data on parties' labels;
+\code{party_mun_zone}, to download electoral results by party; \code{personal_finances}, to download
+candidates' personal finances; \code{details_mun_zone}, to download data on the verification of elections;
+and \code{seats}, to download data on available seats.}
 }
 \description{
 Download data on the candidates' background in local elections

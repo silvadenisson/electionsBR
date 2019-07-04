@@ -39,6 +39,19 @@
 #'   \item HORA_ULT_TOTALIZACAO: Time of the last totalization in that city and zone.
 #' }
 #'
+#' From 2018 on, some new variables are also available:
+#' \itemize{
+#'   \item COD_TIPO_ELEICAO: Election type code.
+#'   \item NOME_TIPO_ELEICAO: Election type.
+#'   \item COD_ELEICAO: Election code.
+#'   \item DATA_ELEICAO: Election date.
+#'   \item ABRANGENCIA: Election scope.
+#'   \item NOME_UE: Electoral unit name.
+#'   \item NUMERO_ORDEM_CANDIDATO: Candidate's ordinal number.
+#'   \item DT_ULTIMA_ATUALIZACAO: Date when last updated.
+#'   \item HH_ULTIMA_ATUALIZACAO: Hour when last updated.
+#'}
+#'
 #' @seealso \code{\link{personal_finances_local}} for personal financial disclosures of running candidates in local elections.
 #'
 #' @import utils

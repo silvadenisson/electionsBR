@@ -79,6 +79,27 @@ when \code{ascii = TRUE}.}
   \item DESCRICAO_COR_RACA: Candidate's color/race description (self-declaration, only from 2014 election).
   \item EMAIL_CANDIDATO: Candidate's e-mail adress (only from 2014 election).
 }
+
+From 2018 on, some new variables are also available:
+\itemize{
+  \item COD_TIPO_ELEICAO: Election type code.
+  \item NOME_TIPO_ELEICAO: Election type.
+  \item COD_ELEICAO: Election code.
+  \item DATA_ELEICAO: Election date.
+  \item ABRANGENCIA: Election scope.
+  \item NOME_SOCIAL_CANDIDATO: Candidate's social name.
+  \item EMAIL_CANDIDATO: Candidate's e-mail.
+  \item COD_DETALHE_SITUACAO_CAND: Details on the status of a candidate's elegibility.
+  \item DES_DETALHE_SITUACAO_CAND: Description of a candidate's elegibility.
+  \item TIPO_AGREMIACAO: Type of partisan ticket (electoral coalition or single party).
+  \item IDADE_DATA_POSSE: Candidate's age at the first day in the office.
+  \item CODIGO_COR_RACA: Candidates' skin color code.
+  \item DESCRICAO_COR_RACA: Candidates' skin color.
+  \item SITUACAO_REELEICAO: Candidate's reelection status (running for reelection or not).
+  \item SITUACAO_DECLARAR_BENS: Candidate's financial disclosure.
+  \item NUMERO_PROTOCOLO_CANDIDATURA: Candidate's electoral protocol number.
+  \item NUMERO_PROCESSO: Candidate's electoral process.
+}
 }
 \description{
 \code{candidate_fed()} downloads and aggregates data on the candidates' background who ran in
@@ -90,7 +111,7 @@ If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
-For the elections prior to 2002, some information can be incomplete. For the 2014 elections, three more variables are available.
+For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variables are available.
 }
 \examples{
 \dontrun{

@@ -54,6 +54,16 @@ when \code{ascii = TRUE}.}
   \item SEQUENCIAL_LEGENDA: Coalition's sequential number, generated internally by the electoral justice.
   \item TRANSITO: It informs whether the record relates or not to absentee ballot votes (only for 2014 election).
 }
+
+From 2018 on, some new variables are also available:
+\itemize{
+  \item COD_TIPO_ELEICAO: Election type code.
+  \item NOME_TIPO_ELEICAO: Election type.
+  \item COD_ELEICAO: Election code.
+  \item DATA_ELEICAO: Election date.
+  \item ABRANGENCIA: Election scope.
+  \item NOME_UE: Electoral unit name.
+}
 }
 \description{
 \code{party_mun_zone_fed()} downloads and aggregates the data on the polls by parties from the federal elections in Brazil,
@@ -65,7 +75,7 @@ If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
-For the elections prior to 2002, some information can be incomplete. For the 2014 elections, one more variable is available.
+For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variable are available.
 }
 \examples{
 \dontrun{

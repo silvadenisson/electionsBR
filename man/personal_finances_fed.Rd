@@ -40,6 +40,19 @@ when \code{ascii = TRUE}.}
   \item DATA_ULT_TOTALIZACAO: Date of the last totalization in that city and zone.
   \item HORA_ULT_TOTALIZACAO: Time of the last totalization in that city and zone.
 }
+
+From 2018 on, some new variables are also available:
+\itemize{
+  \item COD_TIPO_ELEICAO: Election type code.
+  \item NOME_TIPO_ELEICAO: Election type.
+  \item COD_ELEICAO: Election code.
+  \item DATA_ELEICAO: Election date.
+  \item ABRANGENCIA: Election scope.
+  \item NOME_UE: Electoral unit name.
+  \item NUMERO_ORDEM_CANDIDATO: Candidate's ordinal number.
+  \item DT_ULTIMA_ATUALIZACAO: Date when last updated.
+  \item HH_ULTIMA_ATUALIZACAO: Hour when last updated.
+}
 }
 \description{
 \code{personal_finances_local()} downloads and aggregates the data on federal candidates' personal financial disclosures. The function returns a \code{data.frame} where each observation corresponds to a candidate's property.

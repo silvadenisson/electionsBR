@@ -57,6 +57,18 @@ when \code{ascii = TRUE}.}
   \item TOTAL_VOTOS: Total of votes.
   \item TRANSITO: It informs whether the record relates or not to absentee ballot votes (only for 2014 election).
  }
+ 
+From 2018 on, some new variables are also available:
+\itemize{
+  \item COD_TIPO_ELEICAO: Election type code.
+  \item NOME_TIPO_ELEICAO: Election type.
+  \item COD_ELEICAO: Election code.
+  \item DATA_ELEICAO: Election date.
+  \item ABRANGENCIA: Election scope.
+  \item NOME_UE: Electoral unit name.
+  \item NOME_SOCIAL_CANDIDATO: Candidate's social name.
+  \item TIPO_AGREMIACAO: Type of partisan ticket (electoral coalition or single party).
+}
 }
 \description{
 \code{vote_mun_zone_fed()} downloads and aggregates data on the verification of federal elections in Brazil,
@@ -68,7 +80,7 @@ If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
-For the elections prior to 2002, some information can be incomplete. For the 2014 electios, one more variable is available.
+For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variable are available.
 }
 \examples{
 \dontrun{

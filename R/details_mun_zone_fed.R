@@ -4,7 +4,7 @@
 #' disaggregated by town and electoral zone. The function returns a \code{data.frame} where each observation
 #' corresponds to a town/zone.
 #'
-#' @note For the elections prior to 2002, some information can be incomplete. For the 2014 election, one more variable is available.
+#' @note For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variables are available.
 #'
 #' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014 and 2018
 #' are available.
@@ -58,6 +58,19 @@
 #'   \item HORA_ULT_TOTALIZACAO: Time of the last totalization in that city and zone.
 #'   \item TRANSITO: It informs if whether the record relates or not to absentee ballot votes (only for 2014 election).
 #' }
+#' 
+#' From 2018 on, some new variables are also available:
+#' \itemize{
+#'   \item COD_TIPO_ELEICAO: Election type code.
+#'   \item NOME_TIPO_ELEICAO: Election type.
+#'   \item COD_ELEICAO: Election code.
+#'   \item DATA_ELEICAO: Election date.
+#'   \item ABRANGENCIA: Election scope.
+#'   \item NOME_UE: Electoral unit name.
+#'   \item QTD_VOTOS_PENDENTES: Number of pending votes.
+#'   \item QTD_VOTOS_ANULADOS: Number of invalidated votes.
+#'}
+#'
 #'
 #' @seealso \code{\link{details_mun_zone_local}} for local elections in Brazil.
 #'

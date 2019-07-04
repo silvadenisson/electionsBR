@@ -49,6 +49,7 @@ when \code{ascii = TRUE}.}
   \item CODIGO_COLIGACAO: Coalition's code.
   \item COMPOSICAO_COLIGACAO: Coalition's composition.
   \item SEQUENCIAL_COLIGACAO: Coalition's sequential number, generated internally by the electoral justice.
+  \item SIGLA_COLIGACAO: Coalition's acronym.
 }
 }
 \description{
