@@ -3,7 +3,7 @@ Type: Package
 Title: R Functions to Download and Clean Brazilian Electoral Data
 Version: 0.3.1
 Authors@R: c(
-    person("Denisson", "Silva", , "denissonsilva@ufmg.br", c("aut", "cre")),
+    person("Denisson", "Silva", , "denissoncsol@gmail.com", c("aut", "cre")),
     person("Fernando", "Meireles", , "fmeireles@ufmg.br", "aut"),
     person("Beatriz", "Costa", ,"bea.s.costa@gmail.com", "ctb")
     )
