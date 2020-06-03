@@ -4,8 +4,13 @@
 \alias{voter_affiliation}
 \title{Download data on voters' affiliation to political parties}
 \usage{
-voter_affiliation(party, uf, ascii = FALSE, encoding = "windows-1252",
-  export = FALSE)
+voter_affiliation(
+  party,
+  uf,
+  ascii = FALSE,
+  encoding = "windows-1252",
+  export = FALSE
+)
 }
 \arguments{
 \item{party}{\code{character} vector containing the acronym of the parties with an official record on TSE.

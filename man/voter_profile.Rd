@@ -4,8 +4,7 @@
 \alias{voter_profile}
 \title{Download data on the voters' profile}
 \usage{
-voter_profile(year, ascii = FALSE, encoding = "windows-1252",
-  export = FALSE)
+voter_profile(year, ascii = FALSE, encoding = "windows-1252", export = FALSE)
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,

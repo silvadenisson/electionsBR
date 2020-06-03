@@ -4,8 +4,13 @@
 \alias{personal_finances_local}
 \title{Download data on local candidates' personal financial disclosures}
 \usage{
-personal_finances_local(year, uf = "all", ascii = FALSE,
-  encoding = "latin1", export = FALSE)
+personal_finances_local(
+  year,
+  uf = "all",
+  ascii = FALSE,
+  encoding = "latin1",
+  export = FALSE
+)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016

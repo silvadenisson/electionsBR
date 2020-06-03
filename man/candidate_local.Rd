@@ -4,8 +4,13 @@
 \alias{candidate_local}
 \title{Download data on the candidates' background in local elections}
 \usage{
-candidate_local(year, uf = "all", ascii = FALSE, encoding = "latin1",
-  export = FALSE)
+candidate_local(
+  year,
+  uf = "all",
+  ascii = FALSE,
+  encoding = "latin1",
+  export = FALSE
+)
 }
 \arguments{
 \item{year}{Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, 2012 and 2016

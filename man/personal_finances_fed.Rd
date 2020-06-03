@@ -4,8 +4,14 @@
 \alias{personal_finances_fed}
 \title{Download data on federal candidates' personal financial disclosures}
 \usage{
-personal_finances_fed(year, uf = "all", br_archive = FALSE,
-  ascii = FALSE, encoding = "latin1", export = FALSE)
+personal_finances_fed(
+  year,
+  uf = "all",
+  br_archive = FALSE,
+  ascii = FALSE,
+  encoding = "latin1",
+  export = FALSE
+)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 2006, 2010, 2014 and 2018 are available.}
