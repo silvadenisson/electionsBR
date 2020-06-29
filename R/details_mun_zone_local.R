@@ -68,18 +68,12 @@
 
 details_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1", export = FALSE){
 
-
   # Input tests
   test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
 
-  # Downloads the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  download_and_unzip_datafile(sprintf("odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_%s.zip", year), year)
 
   message("Processing the data...")
 

@@ -72,13 +72,8 @@ personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii =
   
   if(year < 2006) stop("Not disponible. Please, check the documentation and try again.\n")
     
-    # Downloads the data
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_%s.zip", year) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
-    
+    download_and_unzip_datafile(sprintf("odsele/bem_candidato/bem_candidato_%s.zip", year), year)
+  
     message("Processing the data...")
     
     # Cleans the data
@@ -109,6 +104,4 @@ personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii =
     
     message("Done.\n")
     return(banco)
-} 
-
-  
+}

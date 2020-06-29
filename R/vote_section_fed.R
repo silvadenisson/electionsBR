@@ -64,12 +64,7 @@ vote_section_fed <- function(year, uf = "AC", ascii = FALSE, encoding = "latin1"
   if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)
   
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  download_and_unzip_datafile(sprintf("odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf), year)
   
   message("Processing the data...")
   

@@ -121,12 +121,7 @@ candidate_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, e
   uf <- test_uf(uf)
   test_br(br_archive)
 
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  download_and_unzip_datafile(sprintf('odsele/consulta_cand/consulta_cand_%s.zip', year), year)
 
   message("Processing the data...")
 

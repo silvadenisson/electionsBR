@@ -70,20 +70,14 @@ legend_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, enco
   test_fed_year(year)
   uf <- test_uf(uf)
   test_br(br_archive)
-  
-  
+
   if(year < 2018) {
-    endereco <- "http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_%s.zip"
+    endereco <- "odsele/consulta_legendas/consulta_legendas_%s.zip"
   } else{
-    endereco <- "http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_%s.zip"
+    endereco <- "odsele/consulta_coligacao/consulta_coligacao_%s.zip"
   }
 
-  # Download the data
-  dados <- tempfile()
-  sprintf(endereco, year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  download_and_unzip_datafile(sprintf(endereco, year), year)
 
   message("Processing the data...")
 
@@ -106,8 +100,7 @@ legend_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, enco
                       "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SEQUENCIAL_COLIGACAO",
                       "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO")
   }
-  
-  
+
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
     

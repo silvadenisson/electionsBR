@@ -61,14 +61,9 @@ seats_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, enco
   test_fed_year(year)
   uf <- test_uf(uf)
   test_br(br_archive)
-  
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-  
+
+  download_and_unzip_datafile(sprintf("odsele/consulta_vagas/consulta_vagas_%s.zip", year), year)
+
   message("Processing the data...")
   
   # Cleans the data
@@ -89,7 +84,6 @@ seats_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, enco
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "QTDE_VAGAS" )
   }
 
-  
   # Change to ascii
   if(ascii) banco <- to_ascii(banco, encoding)
   
@@ -99,4 +93,3 @@ seats_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, enco
   message("Done.\n")
   return(banco)
 }
-

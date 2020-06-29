@@ -54,13 +54,8 @@ personal_finances_local <- function(year, uf = "all",  ascii = FALSE, encoding =
   test_local_year(year)
   uf <- test_uf(uf)
   
-  # Downloads the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-  
+  download_and_unzip_datafile(sprintf("odsele/bem_candidato/bem_candidato_%s.zip", year), year)
+
   message("Processing the data...")
   
   # Cleans the data

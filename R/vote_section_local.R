@@ -66,13 +66,8 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
   
   if(year < 2012){
     
-    # Download the data
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
-    
+    download_and_unzip_datafile(sprintf("odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf), year)
+
     message("Processing the data...")
     
     # Clean the data
@@ -84,12 +79,8 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
   } else{
     message("Download the data One...")
     
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_1t_%s.zip", uf) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
-    
+    download_and_unzip_datafile(sprintf("/eleicoes/eleicoes2012/votosecao/vsec_1t_%s.zip", uf), year)
+
     message("Processing the data one...")
     
     # Clean the data
@@ -100,15 +91,11 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
     
     
     if(!(uf %in% c("AL", "DF", "GO", "PE", "RR", "SE", "TO"))){
-      
+
       message("Download the data two...")
-      
-      dados2 <- tempfile()
-      sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_2t_%s_30102012194527.zip", uf) %>%
-        download.file(dados2)
-      unzip(dados2, exdir = paste0("./", year, "2"))
-      unlink(dados2)
-      
+
+      download_and_unzip_datafile(sprintf("eleicoes/eleicoes2012/votosecao/vsec_2t_%s_30102012194527.zip", uf), year)
+
       message("Processing the data two...")
       
       # Clean the data

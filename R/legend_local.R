@@ -65,13 +65,8 @@ legend_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1", e
   uf <- test_uf(uf)
   
   if(year > 2004){
-    # Download the data
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_%s.zip", year) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
-    
+    download_and_unzip_datafile(sprintf("odsele/consulta_legendas/consulta_legendas_%s.zip", year), year)
+
     message("Processing the data...")
     
     # Cleans the data

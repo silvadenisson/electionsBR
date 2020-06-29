@@ -70,15 +70,9 @@ party_mun_zone_local <- function(year, uf = "all", ascii = FALSE, encoding = "la
   test_local_year(year)
   uf <- test_uf(uf)
 
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  download_and_unzip_datafile(sprintf("odsele/votacao_partido_munzona/votacao_partido_munzona_%s.zip", year), year)
 
   message("Processing the data...")
-
 
   # Cleans the data
   setwd(as.character(year))

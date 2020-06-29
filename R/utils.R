@@ -159,6 +159,14 @@ export_data <- function(df) {
   message(paste0("Electoral data files were saved on: ", getwd(), ".\n"))
 }
 
+download_and_unzip_datafile <- function(str_endpoint, year) {
+  str_base_url <- 'http://agencia.tse.jus.br/estatistica/sead/%s'
+
+  tmp_data_file <- tempfile()
+  download.file(sprintf(str_base_url, str_endpoint), tmp_data_file)
+  unzip(tmp_data_file, exdir = paste0("./", year))
+  unlink(tmp_data_file)
+}
 
 # Avoid the R CMD check note about magrittr's dot
 utils::globalVariables(".")
