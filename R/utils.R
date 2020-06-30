@@ -85,7 +85,7 @@ test_fed_year <- function(year){
 # Tests federal election year inputs
 test_local_year <- function(year){
 
-  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1996, 2016, 4)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1996, 2020, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
