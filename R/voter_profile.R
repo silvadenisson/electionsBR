@@ -48,7 +48,14 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252", export
   # Download data
   dados <- tempfile()
 
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) %>%
+  if(year = 2020){
+    urldir = "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip"
+  } else{
+     urldir =  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) 
+    
+    }
+  
+  urldir %>%
     download.file(dados)
   unzip(dados, exdir = paste0("./", year))
   unlink(dados)
