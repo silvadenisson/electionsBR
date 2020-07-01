@@ -196,8 +196,6 @@ get_data <- function(str_data_name, year, uf, br_archive, ascii, encoding, expor
   str_remote_file_location <- gsub(pattern = '%year%', replacement = year, x = str_remote_file_location)
   str_remote_file_location <- gsub(pattern = '%uf%', replacement = uf, x = str_remote_file_location)
 
-  download_and_unzip_datafile(str_remote_file_location, year)
-
   str_tmp_dir <- tempdir()
   str_file_name <- basename(str_remote_file_location)
   
