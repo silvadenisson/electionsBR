@@ -64,7 +64,6 @@
 
 legend_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
 
-
   # Test the input
   test_encoding(encoding)
   test_fed_year(year)
@@ -72,41 +71,24 @@ legend_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, enco
   test_br(br_archive)
 
   if(year < 2018) {
-    endereco <- "odsele/consulta_legendas/consulta_legendas_%s.zip"
+    data_name <- "consulta_legendas"
   } else{
-    endereco <- "odsele/consulta_coligacao/consulta_coligacao_%s.zip"
+    data_name <- "consulta_coligacao"
   }
 
-  download_and_unzip_datafile(sprintf(endereco, year), year)
-
-  message("Processing the data...")
-
-  # Cleans the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
-
-  # Change variable names
+  # Variable names
   if(year < 2018) {
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO",
                       "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
                       "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
   } else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NM_TIPO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NM_TIPO_ELEICAO",
                       "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "SIGLA_UF",
                       "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA",
                       "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SEQUENCIAL_COLIGACAO",
                       "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO")
   }
 
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
-    
-  # Export
-  if(export) export_data(banco)
-
-  message("Done.\n")
-  return(banco)
+  get_data(data_name, year, uf, br_archive, ascii, encoding, export, data_names)
 }

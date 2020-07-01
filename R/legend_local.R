@@ -58,40 +58,20 @@
 
 legend_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1", export = FALSE){
 
+  if(year <= 2004){
+    stop("Not disponible. Please, check the documentation and try again.\n")
+  }
 
   # Test the input
   test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
   
-  if(year > 2004){
-    download_and_unzip_datafile(sprintf("odsele/consulta_legendas/consulta_legendas_%s.zip", year), year)
+  # Variable names
+  data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+                    "SIGLA_UF", "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO",
+                    "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
+                    "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
 
-    message("Processing the data...")
-    
-    # Cleans the data
-    setwd(as.character(year))
-    banco <- juntaDados(uf, encoding, FALSE)
-    setwd("..")
-    unlink(as.character(year), recursive = T)
-    
-    # Change variable names
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
-                      "SIGLA_UF", "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO",
-                      "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
-                      "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
-    
-    # Change to ascii
-    if(ascii == T) banco <- to_ascii(banco, encoding)
-    
-    # Export
-    if(export) export_data(banco)
-    
-    message("Done.\n")
-    return(banco)
-  }else{
-    message("Not disponible. Please, check the documentation and try again.\n")
-  }
-
- 
+  get_data('consulta_legendas', year, uf, FALSE, ascii, encoding, export, data_names)
 }

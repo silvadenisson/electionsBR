@@ -75,8 +75,7 @@
 #' df <- party_mun_zone_fed(2002)
 #' }
 
-party_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
-
+party_mun_zone_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
 
   # Test the input
   test_encoding(encoding)
@@ -84,45 +83,28 @@ party_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FA
   uf <- test_uf(uf)
   test_br(br_archive)
 
-  download_and_unzip_datafile(sprintf("odsele/votacao_partido_munzona/votacao_partido_munzona_%s.zip", year), year)
-
-  message("Processing the data...")
-
-  # Cleans the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
-
-  # Change variable names
+  # Variable names
   if(year < 2014){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
                       "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
                       "QTDE_VOTOS_LEGENDA", "SEQUENCIAL_LEGENDA")
 
   } else if(year == 2014){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
                       "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
                       "QTDE_VOTOS_LEGENDA", "TRANSITO", "SEQUENCIAL_LEGENDA")
   } else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",
                       "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA",
                       "SIGLA_UF", "SIGLA_UE", "NOME_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO",
                       "NOME_PARTIDO", "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA", 
                       "TRANSITO", "QTDE_VOTOS_NOMINAIS", "QTDE_VOTOS_LEGENDA")
   }
-  
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
-  
-  # Export
-  if(export) export_data(banco)
-
-  message("Done.\n")
-  return(banco)
+    
+  get_data('votacao_partido_munzona', year, uf, br_archive, ascii, encoding, export, data_names)
 }

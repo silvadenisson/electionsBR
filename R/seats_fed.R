@@ -53,8 +53,7 @@
 #' df <- seats_fed(2000)
 #' }
 
-seats_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
-  
+seats_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
   
   # Input tests
   test_encoding(encoding)
@@ -62,34 +61,17 @@ seats_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, enco
   uf <- test_uf(uf)
   test_br(br_archive)
 
-  download_and_unzip_datafile(sprintf("odsele/consulta_vagas/consulta_vagas_%s.zip", year), year)
-
-  message("Processing the data...")
-  
-  # Cleans the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
-  
-  # Change variable names
+  # Variable names
   if(year < 2014){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "NOME_UE", "CODIGO_CARGO", "DESCRICAO_CARGO",
                       "QTDE_VAGAS")
   }else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", 
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", 
                       "NOME_TIPO_ELEICAO", "COD_ELEICAO", "DESCRICAO_ELEICAO", 
                       "DATA_ELEICAO", "DATA_POSSE", "SIGLA_UF", "SIGLA_UE", "NOME_UE",        
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "QTDE_VAGAS" )
   }
 
-  # Change to ascii
-  if(ascii) banco <- to_ascii(banco, encoding)
-  
-  # Export
-  if(export) export_data(banco)
-  
-  message("Done.\n")
-  return(banco)
+  get_data('consulta_vagas', year, uf, br_archive, ascii, encoding, export, data_names)
 }

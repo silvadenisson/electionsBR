@@ -46,45 +46,25 @@
 #' df <- personal_finances_local(2000)
 #' }
 
-personal_finances_local <- function(year, uf = "all",  ascii = FALSE, encoding = "latin1", export = FALSE){
-  
+personal_finances_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1", export = FALSE){
   
   # Input tests
   test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
-  
-  download_and_unzip_datafile(sprintf("odsele/bem_candidato/bem_candidato_%s.zip", year), year)
 
-  message("Processing the data...")
-  
-  # Cleans the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, FALSE)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
-  
-  # Changes variables names
+  # Variables names
   if(year < 2012){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SQ_CANDIDATO", "CD_TIPO_BEM_CANDIDATO", "DS_TIPO_BEM_CANDIDATO",
                       "DETALHE_BEM", "VALOR_BEM", "DATA_ULT_TOTALIZACAO", "HORA_ULT_TOTALIZACAO")
   } else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",      
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",      
                       "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "SIGLA_UF", "SIGLA_UE",                
                       "NOME_UE", "SQ_CANDIDATO", "NUMERO_ORDEM_CANDIDATO", "CD_TIPO_BEM_CANDIDATO",
                       "DS_TIPO_BEM_CANDIDATO", "DETALHE_BEM", "VALOR_BEM", "DT_ULTIMA_ATUALIZACAO",
                       "HH_ULTIMA_ATUALIZACAO")
   }
-  
- 
-  
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
-  
-  # Export
-  if(export) export_data(banco)
-  
-  message("Done.\n")
-  return(banco)
+
+  get_data('bem_candidato', year, uf, FALSE, ascii, encoding, export, data_names)
 }
