@@ -35,13 +35,15 @@ parties_br <- function() {
 
 # Reads and rbinds multiple data.frames in the same directory
 #' @import dplyr
-juntaDados <- function(uf, encoding, br_archive){
-
-   archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
-      .[grepl(uf, .)] %>%
-      file.info() %>%
-      .[.$size > 200, ] %>%
-      row.names()
+juntaDados <- function(str_file_path, uf, encoding, br_archive){
+  str_file_path <- gsub(pattern = '(^.*?)(\\/$)',
+                        replacement = '\\1',
+                        x = str_file_path)
+  archive <- Sys.glob(paste0(str_file_path, "/*"))[grepl(".pdf", Sys.glob(paste0(str_file_path, "/*"))) == FALSE] %>%
+    .[grepl(uf, .)] %>%
+    file.info() %>%
+    .[.$size > 200,] %>%
+    row.names()
    
    if(!br_archive){
      
@@ -188,23 +190,46 @@ download_and_unzip_datafile <- function(str_endpoint, year) {
 }
 
 get_data <- function(str_data_name, year, uf, br_archive, ascii, encoding, export, data_names = NULL) {
+  str_data_path <- getOption('electionsBR-data-path')
+
   str_remote_file_location <- get_file_remote_location(str_data_name)
   str_remote_file_location <- gsub(pattern = '%year%', replacement = year, x = str_remote_file_location)
   str_remote_file_location <- gsub(pattern = '%uf%', replacement = uf, x = str_remote_file_location)
 
   download_and_unzip_datafile(str_remote_file_location, year)
 
-  message("Processing the data...")
-
+  str_tmp_dir <- tempdir()
+  str_file_name <- basename(str_remote_file_location)
+  
+  if (is.null(str_data_path)) {
+    message(
+      paste(
+        "Downloading data file to temporary path.",
+        "To customize data file location set option electionsBR-data-path",
+        "E.g. options('electionsBR-data-path' = 'my_data_path')",
+        sep = " \n"
+      )
+    )
+    str_file_name <- paste0(str_tmp_dir, "/", str_file_name)
+    downlaod_file(str_remote_file_location, str_file_name)
+  } else {
+    str_file_name <- paste0(str_data_path, "/", str_file_name)
+    if (!file.exists(str_file_name)) {
+      downlaod_file(str_remote_file_location, str_file_name)
+    }
+  }
+  
   br_archive <- (br_archive & (str_data_name %in% c("consulta_cand", "votacao_partido_munzona",
                                                     "bem_candidato", "consulta_vagas",
                                                     "detalhe_votacao_munzona", "consulta_legendas")))
 
-  # Cleans the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
-  setwd("..")
-  on.exit(unlink(as.character(year), recursive = T))
+  message("Processing the data...")
+  tmp_sub_dir <- paste0(str_tmp_dir, "/", year)
+  unzip(str_file_name, exdir = tmp_sub_dir)
+  
+  banco <- juntaDados(tmp_sub_dir, uf, encoding, br_archive)
+  
+  on.exit(unlink(str_tmp_dir, recursive = T))
 
   if (!is.null(data_names)) {
     names(banco) <- data_names
@@ -219,6 +244,11 @@ get_data <- function(str_data_name, year, uf, br_archive, ascii, encoding, expor
   return(banco)
 }
 
+downlaod_file <- function(str_url_part, str_data_path) {
+  str_url_base <- 'http://agencia.tse.jus.br/estatistica/sead/%s'
+  message(sprintf("Downloading data to: %s", str_data_path))
+  download.file(sprintf(str_url_base, str_url_part), str_data_path)
+}
 
 # Avoid the R CMD check note about magrittr's dot
 utils::globalVariables(".")
