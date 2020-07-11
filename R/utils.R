@@ -171,18 +171,17 @@ get_file_remote_location <- function(str_file_name) {
     list("name" = "votacao_partido_munzona", "url" = "odsele/votacao_partido_munzona/votacao_partido_munzona_%year%.zip"),
     list("name" = "detalhe_votacao_munzona", "url" = "odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_%year%.zip"),
     list("name" = "votacao_secao", "url" = "odsele/votacao_secao/votacao_secao_%year%_%uf%.zip"),
-    list("name" = "vsec_1t", "url" = "/eleicoes/eleicoes2012/votosecao/vsec_1t_%year%.zip"),
+    list("name" = "vsec_1t", "url" = "eleicoes/eleicoes2012/votosecao/vsec_1t_%year%.zip"),
     list("name" = "vsec_2t", "url" = "eleicoes/eleicoes2012/votosecao/vsec_2t_%uf%_30102012194527.zip"),
     list("name" = "bem_candidato", "url" = "odsele/bem_candidato/bem_candidato_%year%.zip")
   )
   df_file <- do.call(rbind, lapply(lst_file, data.frame))
   df_file$url <- as.character(df_file$url)
+  df_file$url <- paste0('http://agencia.tse.jus.br/estatistica/sead/', df_file$url)
   return(df_file[df_file$name == str_file_name, c('url')])
 }
 
 download_and_unzip_datafile <- function(str_endpoint, year) {
-  str_base_url <- 'http://agencia.tse.jus.br/estatistica/sead/%s'
-
   tmp_data_file <- tempfile()
   download.file(sprintf(str_base_url, str_endpoint), tmp_data_file)
   unzip(tmp_data_file, exdir = paste0("./", year))
@@ -212,8 +211,17 @@ get_data <- function(str_data_name, year, uf, br_archive, ascii, encoding, expor
     downlaod_file(str_remote_file_location, str_file_name)
   } else {
     str_file_name <- paste0(str_data_path, "/", str_file_name)
+  
     if (!file.exists(str_file_name)) {
       downlaod_file(str_remote_file_location, str_file_name)
+    }
+
+    if (remote_file_is_newer(str_remote_file_location, str_file_name)) {
+      print (sprintf("Existe uma nova versao do arquivo %s. Deseja atualizar o arquivo local? [y/n]", basename(str_file_name)))
+      str_response <- readline()
+      if (tolower(str_response) != 'n') {
+        downlaod_file(str_remote_file_location, str_file_name)
+      }
     }
   }
   
@@ -242,10 +250,18 @@ get_data <- function(str_data_name, year, uf, br_archive, ascii, encoding, expor
   return(banco)
 }
 
-downlaod_file <- function(str_url_part, str_data_path) {
-  str_url_base <- 'http://agencia.tse.jus.br/estatistica/sead/%s'
+downlaod_file <- function(str_url, str_data_path) {
   message(sprintf("Downloading data to: %s", str_data_path))
-  download.file(sprintf(str_url_base, str_url_part), str_data_path)
+  download.file(str_url, str_data_path)
+}
+
+remote_file_is_newer <- function(str_file_remote_url, str_file_local_path) {
+  response <- httr::HEAD(str_file_remote_url)
+  
+  dt_remote <- httr::parse_http_date(response$headers$`last-modified`)
+  file_info <- file.info(str_file_local_path)
+  
+  return(dt_remote >= file_info$mtime)
 }
 
 # Avoid the R CMD check note about magrittr's dot
