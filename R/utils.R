@@ -183,7 +183,7 @@ get_file_remote_location <- function(str_file_name) {
 
 download_and_unzip_datafile <- function(str_endpoint, year) {
   tmp_data_file <- tempfile()
-  download.file(sprintf(str_base_url, str_endpoint), tmp_data_file)
+  download.file(str_endpoint, tmp_data_file)
   unzip(tmp_data_file, exdir = paste0("./", year))
   unlink(tmp_data_file)
 }
