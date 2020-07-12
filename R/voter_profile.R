@@ -45,21 +45,19 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252", export
   if(!year %in% seq(1994, 2020, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
   test_encoding(encoding)
   
-  # Download data
-  dados <- tempfile()
+  if (year == 2020) {
+    urldir <-
+      "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip"
+  } else {
+    urldir <-
+      sprintf(
+        "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip",
+        year
+      )
+  }
+  
+  download_and_unzip_datafile(urldir, year)
 
-  if(year == 2020){
-    urldir <- "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip"
-  } else{
-     urldir <- sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) 
-    
-    }
-  
-  urldir %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-  
   # Join data
   message("Processing the data...")
     

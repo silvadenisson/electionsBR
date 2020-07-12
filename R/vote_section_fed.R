@@ -56,49 +56,27 @@
 
 vote_section_fed <- function(year, uf = "AC", ascii = FALSE, encoding = "latin1", export = FALSE){
   
-  
+  if(tolower(uf) == "all") {
+    stop("'uf' is invalid. Please, check the documentation and try again.")
+  }
+
   # Test the inputs
   test_encoding(encoding)
   test_fed_year(year)
   stopifnot(is.character(uf))
-  if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)
-  
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-  
-  message("Processing the data...")
-  
-  # Clean the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, FALSE)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
-  
-  # Change variable names
+
+  # Variable names
   if(year < 2014){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF", "SIGLA_UE",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF", "SIGLA_UE",
                       "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", "DESCRICAO_CARGO",
                       "NUM_VOTAVEL", "QTDE_VOTOS")
   } else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO", "NUM_TURNO",       
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO", "NUM_TURNO",       
                       "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF", "SIGLA_UE", "NOME_UE",  
                       "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", "DESCRICAO_CARGO",
                       "NUM_VOTAVEL", "NOME_VOTAVEL", "QTDE_VOTOS")
   }
 
-    
-
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
-  
-  # Export
-  if(export) export_data(banco)
-  
-  message("Done.\n")
-  return(banco)
+  get_data('votacao_secao', year, uf, FALSE, ascii, encoding, export, data_names)
 }

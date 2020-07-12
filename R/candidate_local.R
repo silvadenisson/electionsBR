@@ -92,25 +92,10 @@ candidate_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1"
   test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
-  
-  # Downloads the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-
-  message("Processing the data...")
-
-  # Cleans the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, FALSE)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
 
   # Changes variables names
   if(year < 2012){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "DESCRICAO_UE", "CODIGO_CARGO", "DESCRICAO_CARGO",
                       "NOME_CANDIDATO", "SEQUENCIAL_CANDIDATO", "NUMERO_CANDIDATO", "CPF_CANDIDATO",
                       "NOME_URNA_CANDIDATO", "COD_SITUACAO_CANDIDATURA", "DES_SITUACAO_CANDIDATURA",
@@ -122,9 +107,8 @@ candidate_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1"
                       "DESCRICAO_NACIONALIDADE", "SIGLA_UF_NASCIMENTO", "CODIGO_MUNICIPIO_NASCIMENTO",
                       "NOME_MUNICIPIO_NASCIMENTO", "DESPESA_MAX_CAMPANHA", "COD_SIT_TOT_TURNO",
                       "DESC_SIT_TOT_TURNO")
-
   } else if(year == 2012) {
-    names(banco) <-c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+    data_names <-c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                      "SIGLA_UF", "SIGLA_UE", "DESCRICAO_UE", "CODIGO_CARGO", "DESCRICAO_CARGO",
                      "NOME_CANDIDATO", "SEQUENCIAL_CANDIDATO", "NUMERO_CANDIDATO", "CPF_CANDIDATO",
                      "NOME_URNA_CANDIDATO", "COD_SITUACAO_CANDIDATURA", "DES_SITUACAO_CANDIDATURA",
@@ -136,10 +120,8 @@ candidate_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1"
                      "DESCRICAO_NACIONALIDADE", "SIGLA_UF_NASCIMENTO", "CODIGO_MUNICIPIO_NASCIMENTO",
                      "NOME_MUNICIPIO_NASCIMENTO", "DESPESA_MAX_CAMPANHA", "COD_SIT_TOT_TURNO",
                      "DESC_SIT_TOT_TURNO", "EMAIL_CANDIDATO")
-    
   } else {
-    
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",
+    data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",
                       "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", 
                       "SIGLA_UF", "SIGLA_UE", "DESCRICAO_UE", "CODIGO_CARGO", "DESCRICAO_CARGO", 
                       "SEQUENCIAL_CANDIDATO", "NUMERO_CANDIDATO", "NOME_CANDIDATO", "NOME_URNA_CANDIDATO", 
@@ -154,15 +136,7 @@ candidate_local <- function(year, uf = "all", ascii = FALSE, encoding = "latin1"
                       "DESCRICAO_OCUPACAO", "DESPESA_MAX_CAMPANHA", "COD_SIT_TOT_TURNO", "DESC_SIT_TOT_TURNO",
                       "SITUACAO_REELEICAO", "SITUACAO_DECLARAR_BENS", "NUMERO_PROTOCOLO_CANDIDATURA", 
                       "NUMERO_PROCESSO")
-    
   }
-  
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
-  
-  # Export
-  if(export) export_data(banco)
-  
-  message("Done.\n")
-  return(banco)
+
+  get_data('consulta_cand', year, uf, FALSE, ascii, encoding, export, data_names)
 }

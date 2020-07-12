@@ -55,87 +55,35 @@
 #' }
 
 vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin1", export = FALSE){
-  
-  
+
+  if(tolower(uf) == "all") {
+    stop("'uf' is invalid. Please, check the documentation and try again.") 
+  }
+
   # Test the inputs
   test_encoding(encoding)
   test_local_year(year)
   stopifnot(is.character(uf))
-  if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)
+
+  # Variable names
+  data_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
+                  "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", 
+                  "DESCRICAO_CARGO","NUM_VOTAVEL", "QTDE_VOTOS")
   
-  if(year < 2012){
-    
-    # Download the data
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
-    
-    message("Processing the data...")
-    
-    # Clean the data
-    setwd(as.character(year))
-    banco <- juntaDados(uf, encoding, FALSE)
-    setwd("..")
-    unlink(as.character(year), recursive = T)
-    
-  } else{
-    message("Download the data One...")
-    
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_1t_%s.zip", uf) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
-    
-    message("Processing the data one...")
-    
-    # Clean the data
-    setwd(as.character(year))
-    banco1 <- juntaDados(uf, encoding, FALSE)
-    setwd("..")
-    unlink(as.character(year), recursive = T)
-    
+  
+  if (year < 2012) {
+    banco <- get_data('votacao_secao', year, uf, FALSE, ascii, encoding, export, data_names)
+  } else {
+    banco <- get_data('vsec_1t', year, uf, FALSE, ascii, encoding, export, data_names)
     
     if(!(uf %in% c("AL", "DF", "GO", "PE", "RR", "SE", "TO"))){
-      
-      message("Download the data two...")
-      
-      dados2 <- tempfile()
-      sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_2t_%s_30102012194527.zip", uf) %>%
-        download.file(dados2)
-      unzip(dados2, exdir = paste0("./", year, "2"))
-      unlink(dados2)
-      
-      message("Processing the data two...")
-      
-      # Clean the data
-      setwd(paste0("./", year, "2"))
-      banco2 <- juntaDados(uf, encoding, FALSE)
-      setwd("..")
-      unlink(paste0("./", year, "2"), recursive = T)
-      
-    }else{
-      banco2 <- NULL
-    }
-    
-    banco <- rbind(banco1, banco2)
-  }
-  
-  # Change variable names
-  names(vts_local) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
-                        "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", 
-                        "DESCRICAO_CARGO","NUM_VOTAVEL", "QTDE_VOTOS")
 
-  
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
-  
-  # Export
-  if(export) export_data(banco)
-  
-  message("Done.\n")
+      banco2 <- get_data('vsec_2t_', year, uf, FALSE, ascii, encoding, export, data_names)
+      
+      banco <- rbind(banco, banco2)
+    }
+  }
+
   return(banco)
 }

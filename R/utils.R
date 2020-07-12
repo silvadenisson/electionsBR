@@ -35,13 +35,15 @@ parties_br <- function() {
 
 # Reads and rbinds multiple data.frames in the same directory
 #' @import dplyr
-juntaDados <- function(uf, encoding, br_archive){
-
-   archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
-      .[grepl(uf, .)] %>%
-      file.info() %>%
-      .[.$size > 200, ] %>%
-      row.names()
+juntaDados <- function(str_file_path, uf, encoding, br_archive){
+  str_file_path <- gsub(pattern = '(^.*?)(\\/$)',
+                        replacement = '\\1',
+                        x = str_file_path)
+  archive <- Sys.glob(paste0(str_file_path, "/*"))[grepl(".pdf", Sys.glob(paste0(str_file_path, "/*"))) == FALSE] %>%
+    .[grepl(uf, .)] %>%
+    file.info() %>%
+    .[.$size > 200,] %>%
+    row.names()
    
    if(!br_archive){
      
@@ -159,7 +161,108 @@ export_data <- function(df) {
   message(paste0("Electoral data files were saved on: ", getwd(), ".\n"))
 }
 
+get_file_remote_location <- function(str_file_name) {
+  lst_file <- list(
+    list("name" = "consulta_cand", "url" = "odsele/consulta_cand/consulta_cand_%year%.zip"),
+    list("name" = "votacao_candidato_munzona", "url" = "odsele/votacao_candidato_munzona/votacao_candidato_munzona_%year%.zip"),
+    list("name" = "consulta_vagas", "url" = "odsele/consulta_vagas/consulta_vagas_%year%.zip"),
+    list("name" = "consulta_legendas", "url" = "odsele/consulta_legendas/consulta_legendas_%year%.zip"),
+    list("name" = "consulta_coligacao", "url" = "odsele/consulta_coligacao/consulta_coligacao_%year%.zip"),
+    list("name" = "votacao_partido_munzona", "url" = "odsele/votacao_partido_munzona/votacao_partido_munzona_%year%.zip"),
+    list("name" = "detalhe_votacao_munzona", "url" = "odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_%year%.zip"),
+    list("name" = "votacao_secao", "url" = "odsele/votacao_secao/votacao_secao_%year%_%uf%.zip"),
+    list("name" = "vsec_1t", "url" = "eleicoes/eleicoes2012/votosecao/vsec_1t_%year%.zip"),
+    list("name" = "vsec_2t", "url" = "eleicoes/eleicoes2012/votosecao/vsec_2t_%uf%_30102012194527.zip"),
+    list("name" = "bem_candidato", "url" = "odsele/bem_candidato/bem_candidato_%year%.zip")
+  )
+  df_file <- do.call(rbind, lapply(lst_file, data.frame))
+  df_file$url <- as.character(df_file$url)
+  df_file$url <- paste0('http://agencia.tse.jus.br/estatistica/sead/', df_file$url)
+  return(df_file[df_file$name == str_file_name, c('url')])
+}
+
+download_and_unzip_datafile <- function(str_endpoint, year) {
+  tmp_data_file <- tempfile()
+  download.file(str_endpoint, tmp_data_file)
+  unzip(tmp_data_file, exdir = paste0("./", year))
+  unlink(tmp_data_file)
+}
+
+get_data <- function(str_data_name, year, uf, br_archive, ascii, encoding, export, data_names = NULL) {
+  str_data_path <- getOption('electionsBR-data-path')
+
+  str_remote_file_location <- get_file_remote_location(str_data_name)
+  str_remote_file_location <- gsub(pattern = '%year%', replacement = year, x = str_remote_file_location)
+  str_remote_file_location <- gsub(pattern = '%uf%', replacement = uf, x = str_remote_file_location)
+
+  str_tmp_dir <- tempdir()
+  str_file_name <- basename(str_remote_file_location)
+  
+  if (is.null(str_data_path)) {
+    message(
+      paste(
+        "Downloading data file to temporary path.",
+        "To customize data file location set option electionsBR-data-path",
+        "E.g. options('electionsBR-data-path' = 'my_data_path')",
+        sep = " \n"
+      )
+    )
+    str_file_name <- paste0(str_tmp_dir, "/", str_file_name)
+    downlaod_file(str_remote_file_location, str_file_name)
+  } else {
+    str_file_name <- paste0(str_data_path, "/", str_file_name)
+  
+    if (!file.exists(str_file_name)) {
+      downlaod_file(str_remote_file_location, str_file_name)
+    }
+
+    if (remote_file_is_newer(str_remote_file_location, str_file_name)) {
+      print (sprintf("Existe uma nova versao do arquivo %s. Deseja atualizar o arquivo local? [y/n]", basename(str_file_name)))
+      str_response <- readline()
+      if (tolower(str_response) != 'n') {
+        downlaod_file(str_remote_file_location, str_file_name)
+      }
+    }
+  }
+  
+  br_archive <- (br_archive & (str_data_name %in% c("consulta_cand", "votacao_partido_munzona",
+                                                    "bem_candidato", "consulta_vagas",
+                                                    "detalhe_votacao_munzona", "consulta_legendas")))
+
+  message("Processing the data...")
+  tmp_sub_dir <- paste0(str_tmp_dir, "/", year)
+  unzip(str_file_name, exdir = tmp_sub_dir)
+  
+  banco <- juntaDados(tmp_sub_dir, uf, encoding, br_archive)
+  
+  on.exit(unlink(str_tmp_dir, recursive = T))
+
+  if (!is.null(data_names)) {
+    names(banco) <- data_names
+  }
+  # Change to ascii
+  if(ascii == T) banco <- to_ascii(banco, encoding)
+  
+  # Export
+  if(export) export_data(banco)
+  
+  message("Done.\n")
+  return(banco)
+}
+
+downlaod_file <- function(str_url, str_data_path) {
+  message(sprintf("Downloading data to: %s", str_data_path))
+  download.file(str_url, str_data_path)
+}
+
+remote_file_is_newer <- function(str_file_remote_url, str_file_local_path) {
+  response <- httr::HEAD(str_file_remote_url)
+  
+  dt_remote <- httr::parse_http_date(response$headers$`last-modified`)
+  file_info <- file.info(str_file_local_path)
+  
+  return(dt_remote >= file_info$mtime)
+}
 
 # Avoid the R CMD check note about magrittr's dot
 utils::globalVariables(".")
-
