@@ -119,7 +119,7 @@ vote_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FAL
                         "NUM_TIPO_ELEICAO","NR_TURNO","CD_ELEICAO",
                         "DS_ELEICAO","DT_ELEICAO","TP_ABRANGENCIA",
                         "SG_UF", "SG_UE", "NM_UE", "CD_MUNICIPIO",
-                        "NM_MUNICIPIO", "NR_ZONA", "CD_CARGO", "DS_CARGO",
+                        "NM_MUNICIPIO", "NR_ZONA", "CD_CARGO", "DESCRICAO_CARGO",
                         "SQ_CANDIDATO", "NR_CANDIDATO", "NM_CANDIDATO",
                         "NM_URNA_CANDIDATO", "NM_SOCIAL_CANDIDATO", "CD_SITUACAO_CANDIDATURA", 
                         "DS_SITUACAO_CANDIDATURA", "CD_DETALHE_SITUACAO_CAND", "DS_DETALHE_SITUACAO_CAND", "TP_AGREMIACAO", "NR_PARTIDO", "SG_PARTIDO",
