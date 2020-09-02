@@ -4,8 +4,13 @@
 \alias{vote_section_local}
 \title{Download data on candidate electoral results in local elections in Brazil by electoral section}
 \usage{
-vote_section_local(year, uf = "AC", ascii = FALSE,
-  encoding = "latin1", export = FALSE)
+vote_section_local(
+  year,
+  uf = "AC",
+  ascii = FALSE,
+  encoding = "latin1",
+  export = FALSE
+)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
