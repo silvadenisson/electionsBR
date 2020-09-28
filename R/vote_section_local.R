@@ -81,7 +81,9 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
     setwd("..")
     unlink(as.character(year), recursive = T)
     
-  } else{
+  } 
+  
+  if(year == 2012) {
     message("Download the data One...")
     
     dados <- tempfile()
@@ -124,8 +126,23 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
     banco <- rbind(banco1, banco2)
   }
   
+  if(year == 2016) {
+        message("Download the data One...")
+        dados <- tempfile()
+        sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_%s.zip", 
+                uf) %>% download.file(dados)
+        unzip(dados, exdir = paste0("./", year))
+        unlink(dados)
+        message("Processing 2016 data...")
+        setwd(as.character(year))
+        banco <- juntaDados(uf, encoding, FALSE)
+        setwd("..")
+        unlink(as.character(year), recursive = T)
+        
+    }
+  
   # Change variable names
-  names(vts_local) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
+  names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
                         "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", 
                         "DESCRICAO_CARGO","NUM_VOTAVEL", "QTDE_VOTOS")
 
