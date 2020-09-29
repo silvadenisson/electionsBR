@@ -48,14 +48,13 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252", export
   # Download data
   dados <- tempfile()
 
-  if(year == 2020){
-    urldir <- "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip"
-  } else{
-     urldir <- sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) 
-    
-    }
+  #if(year == 2020){
+  #  urldir <- "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip"
+  #} else{
+  #   urldir <- sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) 
+  #  }
   
-  urldir %>%
+  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) %>%
     download.file(dados)
   unzip(dados, exdir = paste0("./", year))
   unlink(dados)
@@ -77,7 +76,7 @@ voter_profile <- function(year, ascii = FALSE, encoding = "windows-1252", export
   }
   
   banco <- readr::read_delim(archive, col_names = test_col_names, delim = ";", locale = readr::locale(encoding = encoding), col_types = readr::cols(), progress = F) %>%
-    dplyr::as.tbl()
+    dplyr::as_tibble()
   
   setwd("..")
   unlink(as.character(year), recursive = T)
