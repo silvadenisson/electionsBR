@@ -16,7 +16,7 @@ Description: Offers a set of functions to easily download and clean
 License: GPL (>= 2)
 Depends: R (>= 3.1.2)
 Imports: magrittr,
-    dplyr (>= 0.5.0),
+    dplyr (>= 1.0.0),
     data.table (>= 1.9.8),
     haven (>= 1.0.0),
     readr,

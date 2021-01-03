@@ -61,7 +61,7 @@ juntaDados <- function(uf, encoding, br_archive){
   lapply(archive, function(x) tryCatch(suppressWarnings(readr::read_delim(x, col_names = test_col_names, delim = ";", locale = readr::locale(encoding = encoding), col_types = readr::cols(), progress = F)), 
                                 error = function(e) NULL)) %>%
   data.table::rbindlist() %>%
-  dplyr::as.tbl()
+  dplyr::as_tibble()
 
 }
 
@@ -157,6 +157,28 @@ export_data <- function(df) {
   haven::write_dta(df, "electoral_data.dta")
   haven::write_sav(df, "electoral_data.sav")
   message(paste0("Electoral data files were saved on: ", getwd(), ".\n"))
+}
+
+
+# elections download
+download_unzip <- function(url, dados, filenames, year){
+  
+  if(!file.exists(dados)){
+    
+    sprintf(url, filenames) %>%
+      download.file(dados)
+    
+    message("Processing the data...")
+    
+    unzip(dados, exdir = paste0("./", year))
+    
+  } else{
+    
+    message("Processing the data...")
+    
+    unzip(dados, exdir = paste0("./", year))
+    
+  }
 }
 
 
