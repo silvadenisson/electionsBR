@@ -21,6 +21,8 @@
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
+#' 
+#' @param temp (\code{logical}). If \code{TRUE} keep temporary compressed file
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -82,7 +84,12 @@
 #' df <- details_mun_zone_fed(2002)
 #' }
 
-details_mun_zone_fed <- function(year, uf = "all", br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
+details_mun_zone_fed <- function(year, uf = "all", 
+                                 br_archive = FALSE, 
+                                 ascii = FALSE, 
+                                 encoding = "latin1",
+                                 export = FALSE,
+                                 temp = TRUE){
 
 
   # Input tests
@@ -91,14 +98,17 @@ details_mun_zone_fed <- function(year, uf = "all", br_archive = FALSE, ascii = F
   uf <- test_uf(uf)
   test_br(br_archive)
 
+  filenames  <- paste0("/detalhe_votacao_munzona_", year, ".zip")
+  dados <- paste0(file.path(tempdir()), filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona%s"
+  
   # Downloads the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
-
-  message("Processing the data...")
+  download_unzip(url, dados, filenames, year)
+  
+  # remover temp file
+  if(temp == FALSE){
+    unlink(dados)
+  }
 
   # Cleans the data
   setwd(as.character(year))

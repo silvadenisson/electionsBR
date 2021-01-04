@@ -10,7 +10,8 @@ personal_finances_fed(
   br_archive = FALSE,
   ascii = FALSE,
   encoding = "latin1",
-  export = FALSE
+  export = FALSE,
+  temp = TRUE
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ other, it recoverns only electoral data for presidential elections, absent in ot
 when \code{ascii = TRUE}.}
 
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
+
+\item{temp}{(\code{logical}). If \code{TRUE} keep temporary compressed file}
 }
 \value{
 \code{assets_candidate_local()} returns a \code{data.frame} with the following variables:

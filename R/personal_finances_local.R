@@ -4,7 +4,7 @@
 #'
 #' @note For the elections prior to 2000, some information may be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
+#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012, 2016 and 2020
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -15,6 +15,8 @@
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
+#' 
+#' @param temp (\code{logical}). If \code{TRUE} keep temporary compressed file
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -46,22 +48,28 @@
 #' df <- personal_finances_local(2000)
 #' }
 
-personal_finances_local <- function(year, uf = "all",  ascii = FALSE, encoding = "latin1", export = FALSE){
+personal_finances_local <- function(year, uf = "all",  ascii = FALSE, 
+                                    encoding = "latin1",
+                                    export = FALSE,
+                                    temp = TRUE){
   
   
   # Input tests
   test_encoding(encoding)
   test_local_year(year)
   uf <- test_uf(uf)
+
+  filenames  <- paste0("/bem_candidato_", year, ".zip")
+  dados <- paste0(file.path(tempdir()), filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato%s"
   
   # Downloads the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  download_unzip(url, dados, filenames, year)
   
-  message("Processing the data...")
+  # remover temp file
+  if(temp == FALSE){
+    unlink(dados)
+  }
   
   # Cleans the data
   setwd(as.character(year))

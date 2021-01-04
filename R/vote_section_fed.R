@@ -17,6 +17,8 @@
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
+#' 
+#' @param temp (\code{logical}). If \code{TRUE} keep temporary compressed file
 #'
 #' @details If export is set to \code{TRUE}, the data is saved as .dta and .sav
 #'  files in the working directory.
@@ -54,7 +56,10 @@
 #' df <- vote_section_fed(2002)
 #' }
 
-vote_section_fed <- function(year, uf = "AC", ascii = FALSE, encoding = "latin1", export = FALSE){
+vote_section_fed <- function(year, uf = "AC", ascii = FALSE, 
+                             encoding = "latin1", 
+                             export = FALSE,
+                             temp = TRUE){
   
   
   # Test the inputs
@@ -64,14 +69,17 @@ vote_section_fed <- function(year, uf = "AC", ascii = FALSE, encoding = "latin1"
   if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)
   
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  filenames  <- paste0("/votacao_secao_", year, "_", uf, ".zip")
+  dados <- paste0(file.path(tempdir()), filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao%s"
   
-  message("Processing the data...")
+  # Downloads the data
+  download_unzip(url, dados, filenames, year)
+  
+  # remover temp file
+  if(temp == FALSE){
+    unlink(dados)
+  }
   
   # Clean the data
   setwd(as.character(year))

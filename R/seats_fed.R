@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2000, some information can be incomplete.
 #'
-#' @param year Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012 and 2016
+#' @param year Election year. For this function, only the years of 1998, 2002, 2006, 2010, 2014 and 2018
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character} vector).
@@ -21,6 +21,8 @@
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
+#' 
+#' @param temp (\code{logical}). If \code{TRUE} keep temporary compressed file
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -62,14 +64,17 @@ seats_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, enco
   uf <- test_uf(uf)
   test_br(br_archive)
   
-  # Download the data
-  dados <- tempfile()
-  sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_%s.zip", year) %>%
-    download.file(dados)
-  unzip(dados, exdir = paste0("./", year))
-  unlink(dados)
+  filenames  <- paste0("/consulta_vagas_", year, ".zip")
+  dados <- paste0(file.path(tempdir()), filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas%s"
   
-  message("Processing the data...")
+  # Downloads the data
+  download_unzip(url, dados, filenames, year)
+  
+  # remover temp file
+  if(temp == FALSE){
+    unlink(dados)
+  }
   
   # Cleans the data
   setwd(as.character(year))

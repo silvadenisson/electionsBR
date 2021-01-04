@@ -9,7 +9,8 @@ legend_local(
   uf = "all",
   ascii = FALSE,
   encoding = "latin1",
-  export = FALSE
+  export = FALSE,
+  temp = TRUE
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ are available.}
 when \code{ascii = TRUE}.}
 
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
+
+\item{temp}{(\code{logical}). If \code{TRUE} keep temporary compressed file}
 }
 \value{
 \code{legend_local()} returns a \code{data.frame} with the following variables:

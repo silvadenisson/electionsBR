@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2002, some information can be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012 and 2016
+#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012, 2016 and 2020
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).
@@ -17,6 +17,8 @@
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
+#' 
+#' @param temp (\code{logical}). If \code{TRUE} keep temporary compressed file
 #'
 #' @details If export is set to \code{TRUE}, the data is saved as .dta and .sav
 #'  files in the working directory.
@@ -54,7 +56,10 @@
 #' df <- vote_section_local(2000)
 #' }
 
-vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin1", export = FALSE){
+vote_section_local <- function(year, uf = "AC", ascii = FALSE, 
+                               encoding = "latin1",
+                               export = FALSE,
+                               temp = TRUE){
   
   
   # Test the inputs
@@ -66,14 +71,19 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
   
   if(year < 2012){
     
-    # Download the data
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_%s_%s.zip", year, uf) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
+    filenames  <- paste0("/votacao_secao_", year, "_", uf, ".zip")
+    dados <- paste0(file.path(tempdir()), filenames)
+    url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao%s"
     
-    message("Processing the data...")
+    # Downloads the data
+    download_unzip(url, dados, filenames, year)
+    
+    message("Download the data One...")
+    
+    # remover temp file
+    if(temp == FALSE){
+      unlink(dados)
+    }
     
     # Clean the data
     setwd(as.character(year))
@@ -84,13 +94,17 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
   } else{
     message("Download the data One...")
     
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_1t_%s.zip", uf) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
-    unlink(dados)
+    filenames  <- paste0("/vsec_1t_", uf, ".zip")
+    dados <- paste0(file.path(tempdir()), filenames)
+    url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votosecao%s"
     
-    message("Processing the data one...")
+    # Downloads the data
+    download_unzip(url, dados, filenames, year)
+    
+    # remover temp file
+    if(temp == FALSE){
+      unlink(dados)
+    }
     
     # Clean the data
     setwd(as.character(year))
@@ -103,11 +117,18 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE, encoding = "latin
       
       message("Download the data two...")
       
-      dados2 <- tempfile()
-      sprintf("http://agencia.tse.jus.br/estatistica/sead/eleicoes/eleicoes2012/votosecao/vsec_2t_%s_30102012194527.zip", uf) %>%
-        download.file(dados2)
-      unzip(dados2, exdir = paste0("./", year, "2"))
-      unlink(dados2)
+      filenames  <- paste0("/vsec_2t_", uf, "_30102012194527.zip")
+      dados2 <- paste0(file.path(tempdir()), filenames)
+      url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votosecao%s"
+      
+      # Downloads the data
+      download_unzip(url, dados2, filenames, year)
+      
+      # remover temp file
+      if(temp == FALSE){
+        unlink(dados2)
+      }
+      
       
       message("Processing the data two...")
       

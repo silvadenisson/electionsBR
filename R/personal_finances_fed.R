@@ -18,6 +18,8 @@
 #' when \code{ascii = TRUE}.
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
+#' 
+#' @param temp (\code{logical}). If \code{TRUE} keep temporary compressed file
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -62,7 +64,12 @@
 #' df <- personal_finances_fed(2006)
 #' }
 
-personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
+personal_finances_fed <- function(year, uf = "all",
+                                  br_archive = FALSE, 
+                                  ascii = FALSE, 
+                                  encoding = "latin1", 
+                                  export = FALSE,
+                                  temp = TRUE){
   
   # Input tests
   test_encoding(encoding)
@@ -72,14 +79,17 @@ personal_finances_fed <- function(year, uf = "all",  br_archive = FALSE, ascii =
   
   if(year < 2006) stop("Not disponible. Please, check the documentation and try again.\n")
     
-    # Downloads the data
-    dados <- tempfile()
-    sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_%s.zip", year) %>%
-      download.file(dados)
-    unzip(dados, exdir = paste0("./", year))
+  filenames  <- paste0("/bem_candidato_", year, ".zip")
+  dados <- paste0(file.path(tempdir()), filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato%s"
+  
+  # Downloads the data
+  download_unzip(url, dados, filenames, year)
+  
+  # remover temp file
+  if(temp == FALSE){
     unlink(dados)
-    
-    message("Processing the data...")
+  }
     
     # Cleans the data
     setwd(as.character(year))
