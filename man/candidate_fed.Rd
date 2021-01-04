@@ -31,7 +31,7 @@ when \code{ascii = TRUE}.}
 
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 
-\item{temp}{(\code{logical}). If \code{TRUE} keep temporary compressed file}
+\item{temp}{(\code{logical}). elections_rda}
 }
 \value{
 \code{candidate_fed()} returns a \code{tbl, data.frame} with the following variables:

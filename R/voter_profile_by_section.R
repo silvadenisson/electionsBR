@@ -1,6 +1,6 @@
-#' Download data on the voters' profile by section
+#' Download data on the voters' profile by vote section
 #'
-#' \code{voter_profile()} downloads and cleans data on the voters' profile aggregated by state, city and electoral zone.
+#' \code{voter_profile_by_section()} downloads and cleans data on the voters' profile aggregated by voting section (i.e., voting stations).
 #' The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
 #'
 #' @param year Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
@@ -13,7 +13,7 @@
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
 #' 
-#' @param temp (\code{logical}). If \code{TRUE} keep temporary compressed file
+#' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -61,13 +61,13 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' df <- voter_profile_place(2016)
+#' df <- voter_profile_by_section(2016)
 #' }
 
-voter_profile_place <- function(year, ascii = FALSE, 
-                                encoding = "windows-1252",
-                                export = FALSE,
-                                temp = TRUE){
+voter_profile_by_section <- function(year, ascii = FALSE, 
+                                     encoding = "windows-1252",
+                                     export = FALSE,
+                                     temp = TRUE){
   
   
   # Inputs

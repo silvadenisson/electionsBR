@@ -26,10 +26,12 @@ uf_br <- function() {
 
 parties_br <- function() {
   
-  c("PPS", "PSB", "PSOL", "PP", "PSL", "PR", "PSDB", "PDT", "PSDC", 
-    "PHS", "PT", "PROS", "PTC", "PSC", "PC do B", "PRB", "PMDB", 
-    "DEM", "PMB", "PTB", "PEN", "PTN", "SD", "PMN", "PT do B", "PSD", 
-    "PV", "PRP", "REDE", "PPL", "PRTB", "PSTU", "PCB", "PCO", "NOVO")
+  c("AVANTE", "CIDADANIA", "DC", "DEM", "MDB", "NOVO", "PATRIOTA", 
+    "PC do B", "PCB", "PCO", "PDT", "PEN", "PHS", "PMB", "PMN", "PODE", 
+    "PP", "PPL", "PPS", "PR", "PRB", "PROS", "PRP", "PRTB", "PSB", 
+    "PSC", "PSD", "PSDB", "PSDC", "PSL", "PSOL", "PSTU", "PT", "PT do B", 
+    "PTB", "PTC", "PTN", "PV", "REDE", "REPUBLICANOS", "SD", "SOLIEDARIEDADE", 
+    "UP")
 }
 
 
@@ -160,7 +162,7 @@ export_data <- function(df) {
 }
 
 
-# elections download
+# Data download
 download_unzip <- function(url, dados, filenames, year){
   
   if(!file.exists(dados)){
@@ -169,15 +171,12 @@ download_unzip <- function(url, dados, filenames, year){
       download.file(dados)
     
     message("Processing the data...")
-    
     unzip(dados, exdir = paste0("./", year))
     
   } else{
     
     message("Processing the data...")
-    
     unzip(dados, exdir = paste0("./", year))
-    
   }
 }
 

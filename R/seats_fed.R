@@ -55,7 +55,12 @@
 #' df <- seats_fed(2000)
 #' }
 
-seats_fed <- function(year, uf = "all",  br_archive = FALSE, ascii = FALSE, encoding = "latin1", export = FALSE){
+seats_fed <- function(year, uf = "all",  
+                      br_archive = FALSE, 
+                      ascii = FALSE, 
+                      encoding = "latin1", 
+                      export = FALSE,
+                      temp = TRUE){
   
   
   # Input tests

@@ -10,7 +10,8 @@ seats_fed(
   br_archive = FALSE,
   ascii = FALSE,
   encoding = "latin1",
-  export = FALSE
+  export = FALSE,
+  temp = TRUE
 )
 }
 \arguments{

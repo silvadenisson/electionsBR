@@ -6,8 +6,8 @@
 \alias{electionsBR-package}
 \title{R functions to download and clean Brazilian electoral Data}
 \description{
-electionsBR is used to easily pull and clean several different Brazilian electoral data:
-election results; candidates' party affiliation, personal and professional backgrounds;
+electionsBR provides a set of tools to easily pull and clean several different Brazilian electoral data:
+election results; candidates' partisan affiliations, personal and professional backgrounds;
 Brazilian parties' electoral performances; composition of electoral coalitions; among many
 others.
 }
