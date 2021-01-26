@@ -29,38 +29,38 @@ when \code{ascii = TRUE}.}
 \code{voter_profile()} returns a \code{data.frame} with the following variables:
 
 \itemize{
-  \item  DT_GERACAO
-  \item  HH_GERACAO
-  \item  AA_ELEICAO    
-  \item  DT_ELEICAO            
-  \item  DS_ELEICAO
-  \item  SG_UF              
-  \item  CD_MUNICIPIO      
-  \item  NM_MUNICIPIO         
-  \item  NR_ZONA        
-  \item  NR_SECAO             
-  \item  CD_TIPO_SECAO_AGREGADA
-  \item  DS_TIPO_SECAO_AGREGADA
-  \item  NR_LOCAL_VOTACAO 
-  \item  NM_LOCAL_VOTACAO   
-  \item  CD_TIPO_LOCAL    
-  \item  DS_TIPO_LOCAL        
-  \item  DS_ENDERECO    
-  \item  NM_BAIRRO        
-  \item  NR_CEP             
-  \item  NR_TELEFONE_LOCAL   
-  \item  NR_LATITUDE
-  \item  NR_LONGITUDE          
-  \item  CD_SITU_LOCAL_VOTACAO
-  \item  DS_SITU_LOCAL_VOTACAO 
-  \item  CD_SITU_ZONA        
-  \item  DS_SITU_ZONA       
-  \item  CD_SITU_SECAO    
-  \item  DS_SITU_SECAO      
-  \item  CD_SITU_LOCALIDADE
-  \item  DS_SITU_LOCALIDADE   
-  \item  QT_ELEITOR
-  \item  QT_ELEITOR_ELEICAO"   
+  \item  DT_GERACAO The date when the file was created.
+  \item  HH_GERACAO The time when the file was created, Brasilia Timezone (GMT-3).
+  \item  AA_ELEICAO Election year.    
+  \item  DT_ELEICAO Election date.          
+  \item  DS_ELEICAO Election description (i.e., indicates electoral round or supplementary elections).
+  \item  SG_UF Brazilian state acronym.             
+  \item  CD_MUNICIPIO Brazilian municipality identification code (created by the TSE).      
+  \item  NM_MUNICIPIO Brazilian municipality name.         
+  \item  NR_ZONA Electoral zone number.       
+  \item  NR_SECAO Voting section number.            
+  \item  CD_TIPO_SECAO_AGREGADA Voting section type code.
+  \item  DS_TIPO_SECAO_AGREGADA Voting section type (i.e., main section or aggregated).
+  \item  NR_LOCAL_VOTACAO Voting station number.
+  \item  NM_LOCAL_VOTACAO Voting station name.   
+  \item  CD_TIPO_LOCAL Type of voting station code.   
+  \item  DS_TIPO_LOCAL Type of voting station.       
+  \item  DS_ENDERECO Address of voting station.   
+  \item  NM_BAIRRO Voting station neighborhood name.       
+  \item  NR_CEP Voting station zip code.             
+  \item  NR_TELEFONE_LOCAL Voting station local phone number.  
+  \item  NR_LATITUDE Voting station latitude (might be missing).
+  \item  NR_LONGITUDE Voting station longitude (might be missing).        
+  \item  CD_SITU_LOCAL_VOTACAO Voting station situation code.
+  \item  DS_SITU_LOCAL_VOTACAO Voting station situation.
+  \item  CD_SITU_ZONA Electoral zone situation code.     
+  \item  DS_SITU_ZONA Electoral zone situation.       
+  \item  CD_SITU_SECAO Voting section situation code. 
+  \item  DS_SITU_SECAO Voting section situation.     
+  \item  CD_SITU_LOCALIDADE Locality situation code.
+  \item  DS_SITU_LOCALIDADE Locality situation.   
+  \item  QT_ELEITOR Total number of registered voters.
+  \item  QT_ELEITOR_ELEICAO Total number of registered voters in the given electoral.   
   
 }
 }
