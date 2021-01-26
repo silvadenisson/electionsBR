@@ -60,7 +60,12 @@ juntaDados <- function(uf, encoding, br_archive){
      test_col_names <- FALSE
    }
    
-  lapply(archive, function(x) tryCatch(suppressWarnings(readr::read_delim(x, col_names = test_col_names, delim = ";", locale = readr::locale(encoding = encoding), col_types = readr::cols(), progress = F)), 
+  lapply(archive, function(x) tryCatch(
+    suppressWarnings(readr::read_delim(x, col_names = test_col_names, 
+                                       delim = ";",
+                                       locale = readr::locale(encoding = encoding), 
+                                       col_types = readr::cols(), progress = F,
+                                       escape_double = F)), 
                                 error = function(e) NULL)) %>%
   data.table::rbindlist() %>%
   dplyr::as_tibble()

@@ -107,7 +107,7 @@ voter_profile_by_section <- function(year, ascii = FALSE,
   
   banco <- readr::read_delim(archive, col_names = test_col_names, delim = ";", 
                              locale = readr::locale(encoding = encoding), 
-                             col_types = readr::cols(), progress = F) %>%
+                             col_types = readr::cols(), progress = F, escape_double = F) %>%
     dplyr::as_tibble()
   
   setwd("..")
