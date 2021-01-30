@@ -35,7 +35,7 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ## How to use
 
-No previous experience with `R` is required to use the `electionsBR` package. In fact, it takes only two lines of code to download, clean and export (to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For example, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
+No previous experience with `R` is required to use the `electionsBR` package. In fact, it takes only two lines of code to download, clean and export (to [Stata](https://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For example, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
 
 ```{r, eval=FALSE}
 install.packages("electionsBR")

@@ -54,4 +54,4 @@ citation("electionsBR")
 
 ### Authors
 
-[Denisson Silva](http://denissonsilva.com), [Fernando Meireles](http://fmeireles.com), and Beatriz Costa.
+[Denisson Silva](https://denissonsilva.com/), [Fernando Meireles](https://fmeireles.com/), and Beatriz Costa.
