@@ -35,7 +35,7 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ## How to use
 
-No previous experience with `R` is required to use the `electionsBR` package. In fact, it takes only two lines of code to download, clean and export (to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For example, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
+No previous experience with `R` is required to use the `electionsBR` package. In fact, it takes only two lines of code to download, clean and export (to [Stata](https://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) formats) Brazilian electoral data. For example, here is how we get a full, cleaned dataset with electoral results for the 2010 Federal election:
 
 ```{r, eval=FALSE}
 install.packages("electionsBR")
@@ -44,7 +44,7 @@ electionsBR::vote_mun_zone_fed(2010, export = TRUE)
 
 By setting the `export` argument to `TRUE` in the `vote_mun_zone_fed` function, the package will download and clean the relevant data directly from the TSE website and save it in the `R` working directory (the function automatically tells the user where this directory is located) in two different files:
 
-1. `electoral_data.dta`, to be used with [Stata](http://www.stata.com/);
+1. `electoral_data.dta`, to be used with [Stata](https://www.stata.com/);
 2. `electoral_data.sav`, to be used with [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/).
 
 ## Data on elections results
@@ -167,7 +167,7 @@ seats_local(year)
 
 ### Exporting Brazilian electoral data
 
-Most `electionsBR`'s functions accept an `export` argument (`logical`, must be `TRUE` or `FALSE`; defaults to the latter) controlling whether the functions should export the retrieved data to [Stata](http://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) files or not.
+Most `electionsBR`'s functions accept an `export` argument (`logical`, must be `TRUE` or `FALSE`; defaults to the latter) controlling whether the functions should export the retrieved data to [Stata](https://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) files or not.
 
 ```{r, eval=FALSE}
 df <- party_mun_zone_fed(2010, export = TRUE)
