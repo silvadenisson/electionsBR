@@ -1,5 +1,4 @@
-This is a new version with minor improvements and bug fixes -- this time we 
-fixed all http's and missing trailing slashes from URLs.
+This is a new version with minor improvements and bug fixes -- finally all http's and missing trailing slashes from URLs are correct. Sorry about that.
 
 ## Test environments
 

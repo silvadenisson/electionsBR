@@ -4,3 +4,5 @@
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^CRAN-RELEASE$
+^doc$
+^Meta$
