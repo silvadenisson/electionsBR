@@ -97,20 +97,19 @@ parties_br <- function(year) {
     result <- c("PSB", "PSDB", "PT do B", "PC do B", "PSD", "PHS", "DEM", "PDT", "PP",
                 "PT", "PRP", "PTN", "PRB", "PSDC", "PSOL", "PEN", "PV", "PPS", "SD",
                 "PR", "PPL", "PMN", "PSC", "PTC", "PMDB", "PSL", "PTB", "PROS",
-                "PRTB", "PCB", "PSTU", "PODE", "REDE", "PCO")
+                "PRTB", "PCB", "PSTU", "REDE", "PCO")
 
   } else if (year == 2016) {
     result <- c("PTC", "PR", "REDE", "PSDC", "PTN", "PC do B", "PRB", "PSD", "DEM",
                 "PHS", "PT", "PSB", "PROS", "PMDB", "PSL", "PSDB", "PDT", "PP", "PRP",
                 "PMB", "PV", "PSC", "PTB", "PSOL", "PMN", "SD", "PPS", "PT do B",
-                "PATRIOTA", "PRTB", "PPL", "PSTU", "PODE", "MDB", "PCB", "PCO", "PL",
-                "SOLIDARIEDADE", "DC", "NOVO", "CIDADANIA", "AVANTE", "REPUBLICANOS")
+                "PRTB", "PPL", "PSTU", "PCB", "PCO", "SOLIDARIEDADE", "NOVO")
 
   } else if (year == 2018) {
     result <- c("PTC", "DEM", "PT", "PR", "PSL", "PSDB", "PSB", "MDB", "PSOL", "PDT",
                 "PTB", "REDE", "PRTB", "SOLIDARIEDADE", "PPS", "PMB", "PRB", "PROS", "PPL",
                 "PP", "PRP", "PHS", "PMN", "PSD", "PSC", "PV", "PODE", "DC", "PATRIOTA",
-                "AVANTE", "PC do B", "PCO", "PSTU", "NOVO", "PCB", "PL", "CIDADANIA")
+                "AVANTE", "PC do B", "PCO", "PSTU", "NOVO", "PCB", "PL")
 
   } else if (year == 2020) {
     result <- c("MDB", "PL", "PSD", "PT", "PSDB", "PROS", "PP", "PDT", "PSB", "SOLIDARIEDADE",
