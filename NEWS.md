@@ -1,5 +1,10 @@
 # electionsBR 0.3.2
 
+This is a minor update fixing the functions to download and clean electoral data by voting sections in municipal elections. We also added support to continuous integrations tests with GitHub Actions. 
+
+
+# electionsBR 0.3.2
+
 This is a long due minor update that (1) fixes a few bugs and improve a couple of functions, and (2) adds new functions and document others better.
 
 * Added the voter_profile_by_section function to extract and clean voters' profile information aggregated by voting sections.

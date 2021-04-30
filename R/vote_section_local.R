@@ -69,84 +69,27 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE,
   if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)
   
-  if(year < 2012){
-    
-    filenames  <- paste0("/votacao_secao_", year, "_", uf, ".zip")
-    dados <- paste0(file.path(tempdir()), filenames)
-    url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao%s"
-    
-    # Downloads the data
-    download_unzip(url, dados, filenames, year)
-    
-    message("Download the data One...")
-    
-    # remover temp file
-    if(temp == FALSE){
-      unlink(dados)
-    }
-    
-    # Clean the data
-    setwd(as.character(year))
-    banco <- juntaDados(uf, encoding, FALSE)
-    setwd("..")
-    unlink(as.character(year), recursive = T)
-    
-  } else{
-    message("Download the data One...")
-    
-    filenames  <- paste0("/vsec_1t_", uf, ".zip")
-    dados <- paste0(file.path(tempdir()), filenames)
-    url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votosecao%s"
-    
-    # Downloads the data
-    download_unzip(url, dados, filenames, year)
-    
-    # remover temp file
-    if(temp == FALSE){
-      unlink(dados)
-    }
-    
-    # Clean the data
-    setwd(as.character(year))
-    banco1 <- juntaDados(uf, encoding, FALSE)
-    setwd("..")
-    unlink(as.character(year), recursive = T)
-    
-    
-    if(!(uf %in% c("AL", "DF", "GO", "PE", "RR", "SE", "TO"))){
-      
-      message("Download the data two...")
-      
-      filenames  <- paste0("/vsec_2t_", uf, "_30102012194527.zip")
-      dados2 <- paste0(file.path(tempdir()), filenames)
-      url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votosecao%s"
-      
-      # Downloads the data
-      download_unzip(url, dados2, filenames, year)
-      
-      # remover temp file
-      if(temp == FALSE){
-        unlink(dados2)
-      }
-      
-      
-      message("Processing the data two...")
-      
-      # Clean the data
-      setwd(paste0("./", year, "2"))
-      banco2 <- juntaDados(uf, encoding, FALSE)
-      setwd("..")
-      unlink(paste0("./", year, "2"), recursive = T)
-      
-    }else{
-      banco2 <- NULL
-    }
-    
-    banco <- rbind(banco1, banco2)
+  filenames  <- paste0("/votacao_secao_", year, "_", uf, ".zip")
+  dados <- paste0(file.path(tempdir()), filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao%s"
+  
+  # Downloads the data
+  download_unzip(url, dados, filenames, year)
+  message("Download the data...")
+  
+  # remover temp file
+  if(temp == FALSE){
+    unlink(dados)
   }
   
+  # Clean the data
+  setwd(as.character(year))
+  banco <- juntaDados(uf, encoding, FALSE)
+  setwd("..")
+  unlink(as.character(year), recursive = T)
+  
   # Change variable names
-  names(vts_local) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
+  names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
                         "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", 
                         "DESCRICAO_CARGO","NUM_VOTAVEL", "QTDE_VOTOS")
 
