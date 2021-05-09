@@ -20,18 +20,106 @@ uf_br <- function() {
 
 #' Returns a vector with the abbreviations of all Brazilian parties
 #'
-#' The character vector includes only parties that ran in elections in 2016.
-#' 
+#' The character vector includes only parties that ran in elections from 1994 to 2020.
+#'
+#' @param year Election year. For this function, only the years of 1994, 1996, 1998,
+#' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, and 2020 are available.
+#'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' parties_election2002 <- parties_br(year = 2002)
+#' }
 
-parties_br <- function() {
-  
-  c("AVANTE", "CIDADANIA", "DC", "DEM", "MDB", "NOVO", "PATRIOTA", 
-    "PC do B", "PCB", "PCO", "PDT", "PEN", "PHS", "PMB", "PMN", "PODE", 
-    "PP", "PPL", "PPS", "PR", "PRB", "PROS", "PRP", "PRTB", "PSB", 
-    "PSC", "PSD", "PSDB", "PSDC", "PSL", "PSOL", "PSTU", "PT", "PT do B", 
-    "PTB", "PTC", "PTN", "PV", "REDE", "REPUBLICANOS", "SD", "SOLIEDARIEDADE", 
-    "UP")
+parties_br <- function(year) {
+
+  # Input test
+  test_year(year)
+
+  if (year == 1994) {
+    result <- c("PPR", "PT", "PMDB", "PRONA", "PL", "PDT", "PTB", "PSTU", "PFL",
+                "PP", "PSB", "PV", "PSDB", "PC DO B", "PPS", "PMN", "PSC", "PRN",
+                "PSD", "PRP", "PT DO B", "PTRB")
+
+  } else if (year == 1996) {
+    result <- c("PPB", "PT", "PMDB", "PSDB", "PFL", "PC DO B", "PSL", "PDT", "PMN",
+                "PT DO B", "PTB", "PL", "PSB", "PV", "PSD", "PRP", "PRN", "PSTU",
+                "PST", "PSC", "PPS", "PRTB", "PRONA", "PSDC", "PAN", "PCO", "PGT",
+                "PCB", "PSN", "PTN")
+
+  } else if (year == 1998) {
+    result <- c("PT", "PMDB", "PFL", "PRONA", "PPB", "PSDB", "PDT", "PSTU", "PL",
+                "PMN", "PSB", "PC do B", "PT do B", "PTB", "PPS", "PV", "PSL",
+                "PRN", "PSD", "PAN", "PTN", "PRTB", "PSN", "PSC", "PRP", "PST",
+                "PSDC", "PCB", "PGT", "PCO")
+
+  } else if (year == 2000) {
+    result <- c("PFL", "PSDB", "PPB", "PT", "PPS", "PRTB", "PMN", "PSB", "PV",
+                "PC do B", "PMDB", "PTB", "PDT", "PT do B", "PSTU", "PL", "PRONA",
+                "PSL", "PST", "PTN", "PSDC", "PRP", "PGT", "PSD", "PSC", "PRN",
+                "PHS", "PAN", "PCB", "PCO")
+
+  } else if (year == 2002) {
+    result <- c("PT", "PMDB", "PSL", "PPS", "PRTB", "PTB", "PSB", "PSDB", "PPB",
+                "PDT", "PST", "PSC", "PL", "PFL", "PMN", "PV", "PC do B", "PSDC",
+                "PT do B", "PSTU", "PTN", "PAN", "PGT", "PHS", "PTC", "PRP",
+                "PRONA", "PSD", "PCB", "PCO")
+
+  } else if (year == 2004) {
+    result <- c("PTB", "PT", "PSDB", "PMDB", "PSB", "PFL", "PDT", "PPS", "PMN",
+                "PV", "PC do B", "PP", "PL", "PSDC", "PT do B", "PSL", "PSC", "PTN",
+                "PRTB", "PRP", "PRONA", "PAN", "PTC", "PHS", "PSTU", "PCB", "PCO")
+
+  } else if (year == 2006) {
+    result <- c("PT", "PAN", "PSDC", "PRONA", "PSOL", "PPS", "PSDB", "PP", "PDT",
+                "PFL", "PMDB", "PTB", "PRP", "PL", "PV", "PSB", "PC do B", "PRTB",
+                "PMN", "PTN", "PTC", "PHS", "PT do B", "PCB", "PSC", "PSTU", "PRB",
+                "PCO", "PSL")
+
+  } else if (year == 2008) {
+    result <- c("PT", "PSDB", "PP", "PMDB", "PRP", "PR", "PSB", "PMN", "PV", "PC do B",
+                "PRB", "PTN", "PSOL", "PTC", "PPS", "DEM", "PSDC", "PT do B", "PHS",
+                "PSC", "PTB", "PDT", "PSL", "PRTB", "PCB", "PSTU", "PCO")
+
+  } else if (year == 2010) {
+    result <- c("PRTB", "PSDB", "PT", "PP", "PPS", "PSOL", "PC do B", "PMDB", "PMN",
+                "PSC", "PR", "PTN", "PRP", "PSDC", "PTC", "PV", "PDT", "PSB", "DEM",
+                "PTB", "PRB", "PHS", "PT do B", "PSL", "PCB", "PSTU", "PCO")
+
+  } else if (year == 2012) {
+    result <- c("DEM", "PMN", "PDT", "PP", "PMDB", "PSDC", "PC do B", "PT", "PSDB",
+                "PTB", "PRP", "PPS", "PSD", "PSB", "PR", "PSL", "PRB", "PV", "PTN",
+                "PSC", "PT do B", "PPL", "PRTB", "PHS", "PTC", "PSOL", "PSTU",
+                "PCB", "SD", "PCO")
+
+  } else if (year == 2014) {
+    result <- c("PSB", "PSDB", "PT do B", "PC do B", "PSD", "PHS", "DEM", "PDT", "PP",
+                "PT", "PRP", "PTN", "PRB", "PSDC", "PSOL", "PEN", "PV", "PPS", "SD",
+                "PR", "PPL", "PMN", "PSC", "PTC", "PMDB", "PSL", "PTB", "PROS",
+                "PRTB", "PCB", "PSTU", "REDE", "PCO")
+
+  } else if (year == 2016) {
+    result <- c("PTC", "PR", "REDE", "PSDC", "PTN", "PC do B", "PRB", "PSD", "DEM",
+                "PHS", "PT", "PSB", "PROS", "PMDB", "PSL", "PSDB", "PDT", "PP", "PRP",
+                "PMB", "PV", "PSC", "PTB", "PSOL", "PMN", "SD", "PPS", "PT do B",
+                "PRTB", "PPL", "PSTU", "PCB", "PCO", "SOLIDARIEDADE", "NOVO")
+
+  } else if (year == 2018) {
+    result <- c("PTC", "DEM", "PT", "PR", "PSL", "PSDB", "PSB", "MDB", "PSOL", "PDT",
+                "PTB", "REDE", "PRTB", "SOLIDARIEDADE", "PPS", "PMB", "PRB", "PROS", "PPL",
+                "PP", "PRP", "PHS", "PMN", "PSD", "PSC", "PV", "PODE", "DC", "PATRIOTA",
+                "AVANTE", "PC do B", "PCO", "PSTU", "NOVO", "PCB", "PL")
+
+  } else if (year == 2020) {
+    result <- c("MDB", "PL", "PSD", "PT", "PSDB", "PROS", "PP", "PDT", "PSB", "SOLIDARIEDADE",
+                "PSL", "CIDADANIA", "PSC", "PTB", "PC do B", "REPUBLICANOS", "DEM",
+                "PSOL", "PATRIOTA", "PCO", "AVANTE", "PODE", "DC", "PMB", "PV",
+                "PMN", "PCB", "PRTB", "REDE", "PTC", "UP", "PSTU", "NOVO")
+
+  }
+
+  return(result)
 }
 
 
@@ -79,6 +167,13 @@ to_ascii <- function(banco, encoding){
   
   if(encoding == "Latin-1") encoding <- "latin1"
   dplyr::mutate_if(banco, is.character, dplyr::funs(iconv(., from = encoding, to = "ASCII//TRANSLIT")))
+}
+
+
+# Tests election year inputs
+test_year <- function(year){
+
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1994, 2020, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
