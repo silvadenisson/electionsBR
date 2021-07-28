@@ -173,7 +173,8 @@ download_unzip <- function(url, dados, filenames, year){
   if(!file.exists(dados)){
     
     sprintf(url, filenames) %>%
-      download.file(dados)
+      httr::GET(httr::write_disk(path = dados, overwrite = TRUE),
+                httr::progress())
     
     message("Processing the data...")
     unzip(dados, exdir = paste0("./", year))

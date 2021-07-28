@@ -1,3 +1,8 @@
+# electionsBR 0.3.3
+
+* Implement httr's GET to download files to avoid TSE's server instability
+* Fix the function vote_section_local and vote_mun_zone_fed
+
 # electionsBR 0.3.2
 
 This is a minor update fixing the functions to download and clean electoral data by voting sections in municipal elections. We also added support to continuous integrations tests with GitHub Actions. 
