@@ -15,12 +15,14 @@ Description: Offers a set of functions to easily download and clean
     state, city, and electoral zones. 
 License: GPL (>= 2)
 Depends: R (>= 3.1.2)
-Imports: magrittr,
+Imports: 
+    magrittr,
     dplyr (>= 1.0.0),
     data.table (>= 1.9.8),
     haven (>= 1.0.0),
     readr,
-    stats
+    stats,
+    httr
 LazyData: TRUE
 URL: http://electionsbr.com/
 BugReports: https://github.com/silvadenisson/electionsBR/issues
