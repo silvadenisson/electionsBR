@@ -117,7 +117,7 @@ details_mun_zone_fed <- function(year, uf = "all",
   unlink(as.character(year), recursive = T)
 
   # Changes variables names
-  if(year < 2014){
+  if(year < 2010){
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "QTD_APTOS", "QTD_SECOES", "QTD_SECOES_AGREGADAS",
@@ -125,23 +125,30 @@ details_mun_zone_fed <- function(year, uf = "all",
                       "QTD_VOTOS_NOMINAIS", "QTD_VOTOS_BRANCOS", "QTD_VOTOS_NULOS", "QTD_VOTOS_LEGENDA",
                       "QTD_VOTOS_ANULADOS_APU_SEP", "DATA_ULT_TOTALIZACAO", "HORA_ULT_TOTALIZACAO")
 
-  } else if( year == 2014 ) {
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
-                      "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
-                      "CODIGO_CARGO", "DESCRICAO_CARGO", "QTD_APTOS", "QTD_SECOES", "QTD_SECOES_AGREGADAS",
-                      "QTD_APTOS_TOT", "QTD_SECOES_TOT", "QTD_COMPARECIMENTO", "QTD_ABSTENCOES",
-                      "QTD_VOTOS_NOMINAIS", "QTD_VOTOS_BRANCOS", "QTD_VOTOS_NULOS", "QTD_VOTOS_LEGENDA",
-                      "QTD_VOTOS_ANULADOS_APU_SEP", "DATA_ULT_TOTALIZACAO", "HORA_ULT_TOTALIZACAO", "TRANSITO",
-                      "VAR_NAO_DECLARADA_DOC_TSE")
+  } else if(year == 2014) {
+    names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                      "NOME_TIPO_ELEICAO", "NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                      "DATA_ELEICAO",	"ABRANGENCIA", "SIGLA_UF",	"SIGLA_UE",	"NOME_UE",
+                      "CODIGO_MUNICIPIO",	"NOME_MUNICIPIO",	"NUMERO_ZONA",	"CODIGO_CARGO",
+                      "DESCRICAO_CARGO",	"QTD_APTOS",	"QTD_SECOES",	"QTD_SECOES_AGREGADAS",
+                      "QTD_APTOS_TOT",  "QTD_SECOES_TOT",	"QTD_COMPARECIMENTO",	"QTD_ABSTENCOES",
+                      "SIT_VOTO_EM_TRANSITO", "QTD_VOTOS_NOMINAIS",	"QTD_VOTOS_BRANCOS",
+                      "QTD_VOTOS_NULOS",	"QTD_VOTOS_LEGENDA", "QTD_VOTOS_PENDENTES",
+                      "QTD_VOTOS_ANULADOS",	"HH_ULTIMA_TOTALIZACAO",	"DT_ULTIMA_TOTALIZACAO")
     
-  } else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",     
-                      "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF",
-                      "SIGLA_UE", "NOME_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "CODIGO_CARGO",
-                      "DESCRICAO_CARGO", "QTD_APTOS", "QTD_SECOES", "QTD_SECOES_AGREGADAS", "QTD_APTOS_TOT",
-                      "QTD_SECOES_TOT", "QTD_COMPARECIMENTO", "QTD_ABSTENCOES", "TRANSITO", "QTD_VOTOS_NOMINAIS",
-                      "QTD_VOTOS_BRANCOS", "QTD_VOTOS_NULOS", "QTD_VOTOS_LEGENDA", "QTD_VOTOS_PENDENTES",
-                      "QTD_VOTOS_ANULADOS", "HORA_ULT_TOTALIZACAO", "DATA_ULT_TOTALIZACAO")
+    
+    
+  } else {
+    names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                      "NOME_TIPO_ELEICAO", "NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                      "DATA_ELEICAO",	"ABRANGENCIA", "SIGLA_UF",	"SIGLA_UE",	"NOME_UE",
+                      "CODIGO_MUNICIPIO",	"NOME_MUNICIPIO",	"NUMERO_ZONA",	"CODIGO_CARGO",
+                      "DESCRICAO_CARGO",	"QTD_APTOS",	"QTD_SECOES",	"QTD_SECOES_AGREGADAS",
+                      "QTD_APTOS_TOT",  "QTD_SECOES_TOT",	"QTD_COMPARECIMENTO",	"QTD_ABSTENCOES",
+                      "SIT_VOTO_EM_TRANSITO", "QTD_VOTOS_NOMINAIS",	"QTD_VOTOS_BRANCOS",
+                      "QTD_VOTOS_NULOS",	"QTD_VOTOS_LEGENDA", "QTD_VOTOS_PENDENTES",
+                      "QTD_VOTOS_ANULADOS",	"QTD_VOTOS_NULO_TECNICO",	"QTD_VOTOS_ANULADO_SUB_JUDICE",
+                      "QTD_VOTOS_SEM_CAND_P_VOTAR",	"HH_ULTIMA_TOTALIZACAO",	"DT_ULTIMA_TOTALIZACAO")
   }
   
   # Change to ascii
