@@ -79,7 +79,7 @@ vote_mun_zone_local <- function(year, uf = "all",
   
 
   filenames  <- paste0( year, ".zip")
-  dados <- paste0(file.path(tempdir()), filenames)
+  dados <- paste0(file.path(tempdir()), "/", filenames)
   url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_%s"
   
   

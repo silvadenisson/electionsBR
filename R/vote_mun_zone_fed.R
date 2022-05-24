@@ -93,9 +93,9 @@ vote_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE,
   uf <- test_uf(uf)
   test_br(br_archive)
 
-  filenames  <- paste0("/votacao_candidato_munzona_", year, ".zip")
-  dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona%s"
+  filenames  <- paste0(year, ".zip")
+  dados <- paste0(file.path(tempdir()), "/", filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_%s"
   
   # Downloads the data
   download_unzip(url, dados, filenames, year)
@@ -112,7 +112,7 @@ vote_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE,
   unlink(as.character(year), recursive = T)
 
   # Change variable names
-  if(year < 2014){
+  if(year < 2010){
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "NUMERO_CANDIDATO", "SQ_CANDIDATO", "NOME_CANDIDATO", "NOME_URNA_CANDIDATO",
@@ -121,29 +121,17 @@ vote_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE,
                       "SIGLA_PARTIDO", "NOME_PARTIDO", "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
                       "TOTAL_VOTOS")
 
-  }else if(year == 2014) { 
-      names(banco) <- c("DT_GERACAO", "HH_GERACAO","ANO_ELEICAO","CD_TIPO_ELEICAO",
-                        "NUM_TIPO_ELEICAO","NR_TURNO","CD_ELEICAO",
-                        "DS_ELEICAO","DT_ELEICAO","TP_ABRANGENCIA",
-                        "SIGLA_UF", "SG_UE", "NOME_UE", "CD_MUNICIPIO",
-                        "NOME_MUNICIPIO", "NUMERO_ZONA", "CD_CARGO", "DESCRICAO_CARGO",
-                        "SQ_CANDIDATO", "NUMERO_CANDIDATO", "NOME_CANDIDATO",
-                        "NM_URNA_CANDIDATO", "NM_SOCIAL_CANDIDATO", "CD_SITUACAO_CANDIDATURA", 
-                        "DS_SITUACAO_CANDIDATURA", "CD_DETALHE_SITUACAO_CAND", "DS_DETALHE_SITUACAO_CAND", "TP_AGREMIACAO", "NR_PARTIDO", "SG_PARTIDO",
-                        "NOME_PARTIDO", "SQ_COLIGACAO", "NOME_COLIGACAO", "DS_COMPOSICAO_COLIGACAO","CD_SIT_TOT_TURNO", "DS_SIT_TOT_TURNO",
-                        "ST_VOTO_EM_TRANSITO", "QT_VOTOS_NOMINAIS")
-  } else{
-      names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO",         
-                        "NOME_TIPO_ELEICAO", "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO",              
-                        "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF", "SIGLA_UE", "NOME_UE",                   
-                        "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "CODIGO_CARGO",                
-                        "DESCRICAO_CARGO", "SQ_CANDIDATO", "NUMERO_CANDIDATO",  "NOME_CANDIDATO",          
-                        "NOME_URNA_CANDIDATO", "NOME_SOCIAL_CANDIDATO", "CODIGO_SIT_CANDIDATO", 
-                        "DESC_SIT_CANDIDATO", "COD_SIT_CAND_SUPERIOR", "DESC_SIT_CAND_SUPERIOR",
-                        "TIPO_AGREMIACAO", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO",          
-                        "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA", 
-                        "CODIGO_SIT_CAND_TOT", "DESC_SIT_CAND_TOT", "TRANSITO", "TOTAL_VOTOS")
-  }
+  }else  { 
+      names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",	"NOME_TIPO_ELEICAO",
+                        "NUM_TURNO", "COD_ELEICAO",	"DESCRICAO_ELEICAO",	"DATA_ELEICAO",	"ABRANGENCIA", "SIGLA_UF",
+                        "SIGLA_UE",	"NOME_UE", "CODIGO_MUNICIPIO",	"NOME_MUNICIPIO",	"NUMERO_ZONA", "CODIGO_CARGO",
+                        "DESCRICAO_CARGO",	"SQ_CANDIDATO",	"NUMERO_CANDIDATO",	"NOME_CANDIDATO",	"NOME_URNA_CANDIDATO",
+                        "NOME_SOCIAL_CANDIDATO",	"CODIGO_SIT_CANDIDATO",	"DESC_SIT_CANDIDATO",	"COD_SIT_CAND_SUPERIOR",
+                        "DESC_SIT_CAND_SUPERIOR",	"TIPO_AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",	"NOME_PARTIDO",	
+                        "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO",	"COMPOSICAO_LEGENDA",	"CODIGO_SIT_CAND_TOT", 
+                        "DESC_SIT_CAND_TOT",	"VOTO_EM_TRANSITO",	"TOTAL_VOTOS")
+      
+  } 
   
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
