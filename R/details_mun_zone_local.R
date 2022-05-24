@@ -84,6 +84,7 @@ details_mun_zone_local <- function(year, uf = "all",
   dados <- paste0(file.path(tempdir()), filenames)
   url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona%s"
   
+  
   # Downloads the data
   download_unzip(url, dados, filenames, year)
   
@@ -99,7 +100,7 @@ details_mun_zone_local <- function(year, uf = "all",
   unlink(as.character(year), recursive = T)
 
   # Changes variables names
-  if(year <= 2012){
+  if(year < 2012){
      names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                        "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                        "CODIGO_CARGO", "DESCRICAO_CARGO", "QTD_APTOS", "QTD_SECOES", "QTD_SECOES_AGREGADAS",
