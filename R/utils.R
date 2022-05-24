@@ -174,7 +174,8 @@ download_unzip <- function(url, dados, filenames, year){
     
     sprintf(url, filenames) %>%
       httr::GET(httr::write_disk(path = dados, overwrite = TRUE),
-                httr::progress())
+                httr::progress(),
+                httr::user_agent(sorteia_user_agent()))
     
     message("Processing the data...")
     unzip(dados, exdir = paste0("./", year))
@@ -184,6 +185,22 @@ download_unzip <- function(url, dados, filenames, year){
     message("Processing the data...")
     unzip(dados, exdir = paste0("./", year))
   }
+}
+
+
+# Função para sortear diferentes user agents
+sorteia_user_agent <- function(){
+  
+  usrs <- c("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9",
+            "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1",
+            "Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36")
+  
+  sample(usrs, 1)
 }
 
 
