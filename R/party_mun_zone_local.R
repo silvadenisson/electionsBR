@@ -95,7 +95,7 @@ party_mun_zone_local <- function(year, uf = "all", ascii = FALSE,
   unlink(as.character(year), recursive = T)
 
   # Change variable names
-  if(year <= 2012){
+  if(year <= 2008){
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
                       "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
