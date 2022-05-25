@@ -70,11 +70,10 @@ legend_local <- function(year, uf = "all",
   test_local_year(year)
   uf <- test_uf(uf)
   
-  if(year > 2004){
     
-    filenames  <- paste0("/consulta_legendas_", year, ".zip")
+    filenames  <- paste0("/consulta_coligacao_", year, ".zip")
     dados <- paste0(file.path(tempdir()), filenames)
-    url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas%s"
+    url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao%s"
     
     # Downloads the data
     download_unzip(url, dados, filenames, year)
@@ -91,10 +90,12 @@ legend_local <- function(year, uf = "all",
     unlink(as.character(year), recursive = T)
     
     # Change variable names
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
-                      "SIGLA_UF", "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO",
-                      "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
-                      "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
+    names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                      "NOME_TIPO_ELEICAO",	"NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                      "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_MUNICIPIO",	"CODIGO_CARGO",
+                      "DESCRICAO_CARGO",	"AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",
+                      "NOME_PARTIDO",	"SEQUENCIAL_COLIGACAO",	"NOME_COLIGACAO",
+                      "COMPOSICAO_COLIGACAO",	"COD_SITUACAO_LEGENDA",	"DES_SITUACAO")
     
     # Change to ascii
     if(ascii == T) banco <- to_ascii(banco, encoding)
@@ -104,9 +105,7 @@ legend_local <- function(year, uf = "all",
     
     message("Done.\n")
     return(banco)
-  }else{
-    message("Not disponible. Please, check the documentation and try again.\n")
-  }
+  
 
  
 }
