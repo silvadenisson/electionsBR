@@ -98,18 +98,13 @@ personal_finances_fed <- function(year, uf = "all",
     unlink(as.character(year), recursive = T)
     
     # Changes variables names
-    if(year < 2014){
-      names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
-                        "SIGLA_UF", "SQ_CANDIDATO", "CD_TIPO_BEM_CANDIDATO", "DS_TIPO_BEM_CANDIDATO",
-                        "DETALHE_BEM", "VALOR_BEM", "DATA_ULT_TOTALIZACAO", "HORA_ULT_TOTALIZACAO")
-    } else{
-      names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",      
-                         "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "SIGLA_UF", "SIGLA_UE",               
-                         "NOME_UE", "SQ_CANDIDATO", "NUMERO_ORDEM_CANDIDATO", "CD_TIPO_BEM_CANDIDATO",
-                         "DS_TIPO_BEM_CANDIDATO", "DETALHE_BEM", "VALOR_BEM", "DT_ULTIMA_ATUALIZACAO",
-                         "HH_ULTIMA_ATUALIZACAO")
-    }
-    
+      names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                        "NOME_TIPO_ELEICAO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                        "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_UE",
+                        "SQ_CANDIDATO",	"NUMERO_ORDEM_CANDIDATO",	"COD_TIPO_BEM_CANDIDATO",
+                        "DES_TIPO_BEM_CANDIDATO",	"DES_BEM_CANDIDATO",	"VALOR_BEM",
+                        "DT_ULTIMA_ATUALIZACAO",	"HH_ULTIMA_ATUALIZACAO")
+
     
     # Change to ascii
     if(ascii == T) banco <- to_ascii(banco, encoding)
