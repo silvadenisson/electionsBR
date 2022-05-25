@@ -78,16 +78,8 @@ legend_fed <- function(year, uf = "all", br_archive = FALSE,
   test_br(br_archive)
   
   
-  if(year < 2018) {
-    
-    endereco <- "http://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_%s.zip"
-    
-    filenames  <- paste0("/consulta_legendas_", year, ".zip")
-    
-  } else{
-    endereco <- "http://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_%s.zip"
-    filenames  <- paste0("/consulta_coligacao_", year, ".zip")
-  }
+  endereco <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao%s"
+  filenames  <- paste0("/consulta_coligacao_", year, ".zip")
 
   dados <- paste0(file.path(tempdir()), filenames)
 
@@ -106,18 +98,14 @@ legend_fed <- function(year, uf = "all", br_archive = FALSE,
   unlink(as.character(year), recursive = T)
 
   # Change variable names
-  if(year < 2018) {
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
-                      "SIGLA_UF", "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO",
-                      "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SIGLA_COLIGACAO",
-                      "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO", "SEQUENCIAL_COLIGACAO")
-  } else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NM_TIPO_ELEICAO",
-                      "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "SIGLA_UF",
-                      "SIGLA_UE", "NOME_MUNICIPIO", "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA",
-                      "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO", "SEQUENCIAL_COLIGACAO",
-                      "NOME_COLIGACAO", "COMPOSICAO_COLIGACAO")
-  }
+
+    names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                      "NOME_TIPO_ELEICAO",	"NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                      "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_MUNICIPIO",	"CODIGO_CARGO",
+                      "DESCRICAO_CARGO",	"AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",
+                      "NOME_PARTIDO",	"SEQUENCIAL_COLIGACAO",	"NOME_COLIGACAO",
+                      "COMPOSICAO_COLIGACAO",	"COD_SITUACAO_LEGENDA",	"DES_SITUACAO")
+   
   
   
   # Change to ascii
