@@ -89,9 +89,16 @@ vote_section_local <- function(year, uf = "AC", ascii = FALSE,
   unlink(as.character(year), recursive = T)
   
   # Change variable names
-  names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF",
-                        "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", 
-                        "DESCRICAO_CARGO","NUM_VOTAVEL", "QTDE_VOTOS")
+  if(year < 2012){
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF", "SIGLA_UE",
+                      "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", "DESCRICAO_CARGO",
+                      "NUM_VOTAVEL", "QTDE_VOTOS")
+  } else{
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "TIPO_ELEICAO", "NUM_TURNO",       
+                      "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF", "SIGLA_UE", "NOME_UE",  
+                      "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", "DESCRICAO_CARGO",
+                      "NUM_VOTAVEL", "NOME_VOTAVEL", "QTDE_VOTOS", "NUMERO_LOCAL_VOTACAO")
+  }
 
   
   # Change to ascii
