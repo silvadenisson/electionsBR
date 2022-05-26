@@ -50,11 +50,6 @@ voter_profile <- function(year, ascii = FALSE,
   if(!year %in% seq(1994, 2020, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
   test_encoding(encoding)
   
-  #if(year == 2020){
-  #  urldir <- "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip"
-  #} else{
-  #   urldir <- sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) 
-  #  }
   
   filenames  <- paste0("/perfil_eleitorado_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
@@ -88,12 +83,6 @@ voter_profile <- function(year, ascii = FALSE,
   setwd("..")
   unlink(as.character(year), recursive = T)
 
-  
-  # Change variable names
-  if(year < 2016){
-    names(banco) <- c("PERIODO", "UF", "MUNICIPIO", "COD_MUNICIPIO_TSE", "NR_ZONA",
-                      "SEXO", "FAIXA_ETARIA", "GRAU_DE_ESCOLARIDADE", "QTD_ELEITORES_NO_PERFIL")
-  } 
   
   
   # Change to ascii

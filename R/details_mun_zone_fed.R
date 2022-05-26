@@ -136,8 +136,6 @@ details_mun_zone_fed <- function(year, uf = "all",
                       "QTD_VOTOS_NULOS",	"QTD_VOTOS_LEGENDA", "QTD_VOTOS_PENDENTES",
                       "QTD_VOTOS_ANULADOS",	"HH_ULTIMA_TOTALIZACAO",	"DT_ULTIMA_TOTALIZACAO")
     
-    
-    
   } else {
     names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
                       "NOME_TIPO_ELEICAO", "NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",

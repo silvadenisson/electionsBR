@@ -118,6 +118,7 @@ candidate_local <- function(year, uf = "all", ascii = FALSE,
   unlink(as.character(year), recursive = T)
 
   # Changes variables names
+  
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO",             
                       "NOME_TIPO_ELEICAO", "NUM_TURNO",  "COD_ELEICAO", "DESCRICAO_ELEICAO",                   
                       "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF", "SIGLA_UE", "DESCRICAO_UE",
@@ -139,6 +140,8 @@ candidate_local <- function(year, uf = "all", ascii = FALSE,
                       "CODIGO_SITUACAO_CANDIDATO_PLEITO",  "DS_SITUACAO_CANDIDATO_PLEITO", 
                       "CODIGO_SITUACAO_CANDIDATO_URNA", "DESCRICAO__SITUACAO_CANDIDATO_URNA",   
                       "SIT_CANDIDATO_INSERIDO_URNA" )
+  
+  
     
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)

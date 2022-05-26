@@ -64,27 +64,26 @@
 #' df <- voter_profile_by_section(2016)
 #' }
 
-voter_profile_by_section <- function(year, ascii = FALSE, 
+voter_profile_by_section <- function(year, 
+                                     uf = "AC",
+                                     ascii = FALSE, 
                                      encoding = "windows-1252",
                                      export = FALSE,
                                      temp = TRUE){
   
   
   # Inputs
-  if(!year %in% seq(2016, 2020, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
+  if(!year %in% seq(2008, 2020, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
   test_encoding(encoding)
+  if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
+  uf <- test_uf(uf)
   
-  #if(year == 2020){
-  #  urldir <- "http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip"
-  #} else{
-  #   urldir <- sprintf("http://agencia.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_%s.zip", year) 
-  #  }
 
-  filenames  <- paste0("/eleitorado_local_votacao_", year, ".zip")
+  filenames  <- paste0(year, "_", uf,".zip")
   dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao%s"
-  
-  # Downloads the data
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_%s"
+
+    # Downloads the data
   download_unzip(url, dados, filenames, year)
   
   # remover temp file
