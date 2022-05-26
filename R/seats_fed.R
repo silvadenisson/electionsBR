@@ -88,16 +88,10 @@ seats_fed <- function(year, uf = "all",
   unlink(as.character(year), recursive = T)
   
   # Change variable names
-  if(year < 2014){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "DESCRICAO_ELEICAO",
-                      "SIGLA_UF", "SIGLA_UE", "NOME_UE", "CODIGO_CARGO", "DESCRICAO_CARGO",
-                      "QTDE_VAGAS")
-  }else{
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", 
                       "NOME_TIPO_ELEICAO", "COD_ELEICAO", "DESCRICAO_ELEICAO", 
                       "DATA_ELEICAO", "DATA_POSSE", "SIGLA_UF", "SIGLA_UE", "NOME_UE",        
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "QTDE_VAGAS" )
-  }
 
   
   # Change to ascii
