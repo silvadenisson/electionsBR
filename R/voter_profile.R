@@ -4,7 +4,7 @@
 #' The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
 #'
 #' @param year Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
-#' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018 and 2020.
+#' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020 and 2022.
 #' 
 #' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
@@ -47,7 +47,7 @@ voter_profile <- function(year, ascii = FALSE,
   
   
   # Inputs
-  if(!year %in% seq(1994, 2020, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
+  if(!year %in% seq(1994, 2022, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
   test_encoding(encoding)
   
   
