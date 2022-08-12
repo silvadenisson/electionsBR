@@ -14,7 +14,7 @@ voter_profile(
 }
 \arguments{
 \item{year}{Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
-2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018 and 2020.}
+2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020 and 2022.}
 
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 

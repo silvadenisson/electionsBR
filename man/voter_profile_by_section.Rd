@@ -6,6 +6,7 @@
 \usage{
 voter_profile_by_section(
   year,
+  uf = "AC",
   ascii = FALSE,
   encoding = "windows-1252",
   export = FALSE,

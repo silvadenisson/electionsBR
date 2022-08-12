@@ -2,6 +2,7 @@
 
 export("%>%")
 export(candidate_fed)
+export(candidate_fed_social_media)
 export(candidate_local)
 export(details_mun_zone_fed)
 export(details_mun_zone_local)
