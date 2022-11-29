@@ -119,7 +119,9 @@ candidate_local <- function(year, uf = "all", ascii = FALSE,
 
   # Changes variables names
   
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO",             
+  if(year < 2020){
+    
+  names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO",             
                       "NOME_TIPO_ELEICAO", "NUM_TURNO",  "COD_ELEICAO", "DESCRICAO_ELEICAO",                   
                       "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF", "SIGLA_UE", "DESCRICAO_UE",
                       "CODIGO_CARGO", "DESCRICAO_CARGO", "SQ_CANDIDATO", "NUMERO_CANDIDATO",
@@ -140,8 +142,33 @@ candidate_local <- function(year, uf = "all", ascii = FALSE,
                       "CODIGO_SITUACAO_CANDIDATO_PLEITO",  "DS_SITUACAO_CANDIDATO_PLEITO", 
                       "CODIGO_SITUACAO_CANDIDATO_URNA", "DESCRICAO__SITUACAO_CANDIDATO_URNA",   
                       "SIT_CANDIDATO_INSERIDO_URNA" )
+  } else{
+    
+  names(banco) <- c("DATA_GERACAO","HORA_GERACAO","ANO_ELEICAO", "COD_TIPO_ELEICAO",
+                      "NOME_TIPO_ELEICAO","NUM_TURNO","COD_ELEICAO","DESCRICAO_ELEICAO",
+                      "DATA_ELEICAO", "ABRANGENCIA","SIGLA_UF","SIGLA_UE",
+                      "DESCRICAO_UE","CODIGO_CARGO","DESCRICAO_CARGO","SQ_CANDIDATO",
+                      "NUMERO_CANDIDATO","NOME_CANDIDATO","NOME_URNA_CANDIDATO","NOME_SOCIAL_CANDIDATO",
+                      "CPF_CANDIDATO","NOME_EMAIL","COD_SITUACAO_CANDIDATURA","DES_SITUACAO_CANDIDATURA",
+                      "COD_DETALHE_SITUACAO_CAND", "DES_DETALHE_SITUACAO_CAND",
+                      "TIPO_AGREMIACAO","NUMERO_PARTIDO","SIGLA_PARTIDO", "NOME_PARTIDO",
+                      "NUMERO_FEDERACAO", "NOME_FEDERACAO","SIGLA_FEDERACAO","DES_COMPOSICAO_FEDERACAO",
+                      "SQ_COLIGACAO", "NOME_COLIGACAO","COMPOSICAO_COLIGACAO",
+                      "COD_NACIONALIDADE","DES_NACIONALIDADE","SIGLA_UF_NASCIMENTO",
+                      "COD_MUNICIPIO_NASCIMENTO","NOME_MUNICIPIO_NASCIMENTO","DATA_NASCIMENTO",
+                      "IDADE_DATA_POSSE","NUM_TITULO_ELEITORAL_CANDIDATO",
+                      "CODIGO_SEXO","DESCRICAO_SEXO","COD_GRAU_INSTRUCAO","DESCRICAO_GRAU_INSTRUCAO",
+                      "CODIGO_ESTADO_CIVIL","DESCRICAO_ESTADO_CIVIL",
+                      "CODIGO_COR_RACA",  "DESCRICAO_COR_RACA","CODIGO_OCUPACAO",
+                      "DESCRICAO_OCUPACAO","VALOR_DESPESA_MAX_CAMPANHA",
+                      "CODIGO_SIT_TOT_TURNO","DESCRICAO__SIT_TOT_TURNO","SIT_REELEICAO",
+                      "SIT_DECLARAR_BENS","NUM_PROTOCOLO_CANDIDATURA","NUM_PROCESSO",
+                      "CODIGO_SITUACAO_CANDIDATO_PLEITO","DS_SITUACAO_CANDIDATO_PLEITO",
+                      "CODIGO_SITUACAO_CANDIDATO_URNA","DESCRICAO__SITUACAO_CANDIDATO_URNA",
+                      "SIT_CANDIDATO_INSERIDO_URNA","NOME_TIPO__DESTINACAO_VOTOS",
+                      "COD_SITUACAO_CANDIDATO_TOT","DES_SITUACAO_CANDIDATO_TOT", "SIT_PREST_CONTAS")
   
-  
+  }
     
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)
