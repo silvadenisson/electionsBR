@@ -17,6 +17,8 @@ voter_profile_by_section(
 \item{year}{Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018 and 2020.}
 
+\item{uf}{Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).}
+
 \item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
 
 \item{encoding}{Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
