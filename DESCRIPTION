@@ -24,6 +24,7 @@ Imports:
     stats,
     httr
 LazyData: TRUE
+Encoding: UTF-8
 URL: http://electionsbr.com/
 BugReports: https://github.com/silvadenisson/electionsBR/issues
 RoxygenNote: 7.2.0
