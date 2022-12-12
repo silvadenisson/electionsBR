@@ -145,8 +145,8 @@ uf_br()
 
 A `character` vector with a list os party abbreviations, valid for 2016 elections, can be obtained with:
 
-```{r}
-parties_br()
+```
+parties_br(year)
 ```
 
 ## Other functions

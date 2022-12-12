@@ -4,8 +4,17 @@
 \alias{parties_br}
 \title{Returns a vector with the abbreviations of all Brazilian parties}
 \usage{
-parties_br()
+parties_br(year)
+}
+\arguments{
+\item{year}{Election year (\code{integer}). For this function, only from 1994 to 2022
+are available.}
 }
 \description{
-The character vector includes only parties that ran in elections in 2016.
+The character vector includes only parties that ran in elections from 1994 to 2022.
+}
+\examples{
+\dontrun{
+parties_election2002 <- parties_br(2002)
+}
 }

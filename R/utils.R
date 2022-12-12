@@ -20,16 +20,16 @@ uf_br <- function() {
 
 #' Returns a vector with the abbreviations of all Brazilian parties
 #'
-#' The character vector includes only parties that ran in elections from 1994 to 2020.
+#' The character vector includes only parties that ran in elections from 1994 to 2022.
 #'
-#' @param year Election year. For this function, only the years of 1994, 1996, 1998,
-#' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, and 2020 are available.
-#'
+#' @param year Election year (\code{integer}). For this function, only from 1994 to 2022
+#' are available.
+#' 
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' parties_election2002 <- parties_br(year = 2002)
+#' parties_election2002 <- parties_br(2002)
 #' }
 
 parties_br <- function(year) {
