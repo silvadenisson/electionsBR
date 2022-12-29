@@ -108,7 +108,7 @@ details_mun_zone_local <- function(year, uf = "all",
                        "QTD_VOTOS_NOMINAIS", "QTD_VOTOS_BRANCOS", "QTD_VOTOS_NULOS", "QTD_VOTOS_LEGENDA",
                        "QTD_VOTOS_ANULADOS_APU_SEP", "DATA_ULT_TOTALIZACAO", "HORA_ULT_TOTALIZACAO")
 
-  } else {
+  } else if(year < 2020) {
     
     names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",     
                       "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF",
@@ -117,6 +117,23 @@ details_mun_zone_local <- function(year, uf = "all",
                       "QTD_SECOES_TOT", "QTD_COMPARECIMENTO", "QTD_ABSTENCOES", "TRANSITO", "QTD_VOTOS_NOMINAIS",
                       "QTD_VOTOS_BRANCOS", "QTD_VOTOS_NULOS", "QTD_VOTOS_LEGENDA", "QTD_VOTOS_PENDENTES",
                       "QTD_VOTOS_ANULADOS", "HORA_ULT_TOTALIZACAO", "DATA_ULT_TOTALIZACAO")
+  } else {
+    
+    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",     
+                      "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF",
+                      "SIGLA_UE", "NOME_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "CODIGO_CARGO",
+                      "DESCRICAO_CARGO", "QTD_APTOS", "QTD_SECOES", "QTD_SECOES_AGREGADAS", "QTD_SECOES_NAO_INSTALADAS",
+                      "QTD_TOTAL_SECOES", "QTD_COMPARECIMENTO", "QTD_ELEITORES_SECOES_NAO_INSTALADAS",
+                      "QTD_ABSTENCOES", "TRANSITO", "QTD_VOTOS", "QTD_VOTOS_CONCORRENTES",
+                      "QTD_VOTOS_VALIDOS", "QT_VOTOS_NOMINAIS_VALIDOS",
+                      "QTD_TOTAL_VOTOS_LEG_VALIDOS", "QTD_VOTOS_LEGENDA_VALIDOS",
+                      "QTD_VOTOS_NOMINAIS_CONVR_LEG", "QTD_TOTAL_VOTOS_ANULADOS",
+                      "QTD_VOTOS_NOMINAIS_ANULADOS", "QTD_VOTOS_LEGENDA_ANULADOS",
+                      "QTD_TOTAL_VOTOS_ANUL_SUBJUD", "QTD_VOTOS_NOMINAIS_ANUL_SUBJUD",
+                      "QTD_VOTOS_LEGENDA_ANUL_SUBJUD",
+                      "QTD_VOTOS_BRANCOS", "QTD_TOTAL_VOTOS_NULOS", "QTD_VOTOS_NULOS", 
+                      "QTD_VOTOS_NULO_TECNICO", "QTD_VOTOS_ANULADOS_APU_SEP",
+                      "HORA_ULT_TOTALIZACAO", "DATA_ULT_TOTALIZACAO")
   }
   
   # Change to ascii

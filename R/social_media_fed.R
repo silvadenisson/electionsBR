@@ -1,11 +1,11 @@
-#' Download data on the candidates' backgrounds in federal elections
+#' Download data on the candidates' links social media in federal elections
 #'
-#' \code{candidate_fed_social_media()} downloads and aggregates data on the candidates' background who ran in
+#' \code{social_media_fed()} downloads data on the candidates' link social média 
 #' federal elections in Brazil. The function returns a \code{data.frame} where each observation
-#' corresponds to a candidate.
+#' corresponds to a candidates' links.
 #'
 #'
-#' @param year Election year (\code{integer}). For this function, only the years 2020
+#' @param year Election year (\code{integer}). For this function, only the years 2022
 #' are available.
 #' 
 #' 
@@ -22,33 +22,32 @@
 #'  files in the current directory.
 #'  
 #'
-#' @return \code{candidate_fed_social_media()} returns a \code{tbl, data.frame} with the following variables:
+#' @return \code{social_media_fed()} returns a \code{tbl, data.frame} with the following variables:
 #'
 #' \itemize{
-#'   \item DATA_GERACAO: Generation date of the file (when the data was collected).
-#'   \item HORA_GERACAO: Generation time of the file (when the data was collected), Brasilia Time.
+#'   \item DT_GERACAO: Generation date of the file (when the data was collected).
+#'   \item HH_GERACAO: Generation time of the file (when the data was collected), Brasilia Time.
 #'   \item ANO_ELEICAO: Election year.
 #'   \item CD_TIPO_ELEICAO:
 #'   \item NM_TIPO_ELEICAO:
 #'   \item CD_ELEICAO:
-#'   \item DESCRICAO_ELEICAO: Description of the election.
-#'   \item SEQUENCIAL_CANDIDATO: Candidate's sequence number generated internally by the electoral
+#'   \item DS_ELEICAO: Description of the election.
+#'   \item SQ_CANDIDATO: Candidate's sequence number generated internally by the electoral
 #'   systems. It is not the candidate's campaign number.
 #'   \item NR_ORDEM:
 #'   \item DS_URL:
 #' }
 #' 
-#' @seealso \code{\link{candidate_local}} for local elections in Brazil.
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"
 #' @export
 #' @examples
 #' \dontrun{
-#' df <- candidate_fed_social_media(2022)
+#' df <- social_media_fed(2022)
 #' }
 
-candidate_fed_social_media <- function(year,
+social_media_fed <- function(year,
                           ascii = FALSE, encoding = "latin1", 
                           export = FALSE, temp = TRUE){
   #provisorio

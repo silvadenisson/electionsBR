@@ -90,12 +90,25 @@ legend_local <- function(year, uf = "all",
     unlink(as.character(year), recursive = T)
     
     # Change variable names
-    names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
-                      "NOME_TIPO_ELEICAO",	"NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
-                      "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_MUNICIPIO",	"CODIGO_CARGO",
-                      "DESCRICAO_CARGO",	"AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",
-                      "NOME_PARTIDO",	"SEQUENCIAL_COLIGACAO",	"NOME_COLIGACAO",
-                      "COMPOSICAO_COLIGACAO",	"COD_SITUACAO_LEGENDA",	"DES_SITUACAO")
+    if(year < 2020){
+      
+      names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                        "NOME_TIPO_ELEICAO",	"NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                        "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_MUNICIPIO",	"CODIGO_CARGO",
+                        "DESCRICAO_CARGO",	"AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",
+                        "NOME_PARTIDO",	"SEQUENCIAL_COLIGACAO",	"NOME_COLIGACAO",
+                        "COMPOSICAO_COLIGACAO",	"COD_SITUACAO_LEGENDA",	"DES_SITUACAO")
+    } else{
+      
+      names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                        "NOME_TIPO_ELEICAO",	"NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                        "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_UE",	"CODIGO_CARGO",
+                        "DESCRICAO_CARGO",	"AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",
+                        "NOME_PARTIDO",	"NUM_FEDERACAO", "NOME_FEDERACAO", "SIGLA_FEDERACAO",
+                        "DESCRICAO_COMPOSICAO_FEDERACAO", "SEQUENCIAL_COLIGACAO",	"NOME_COLIGACAO",
+                        "COMPOSICAO_COLIGACAO",	"COD_SITUACAO_LEGENDA",	"DES_SITUACAO")
+    }
+    
     
     # Change to ascii
     if(ascii == T) banco <- to_ascii(banco, encoding)
