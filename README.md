@@ -26,23 +26,23 @@ devtools::install_github("silvadenisson/electionsBR")
 
 ### How does it work?
 
-To download data from a given election, only the `year` argument must be passed to the function call:
+To download data from a given election, only the `year` and type argument must be passed to the function call:
 
 ``` {.r}
 library(electionsBR)
-df <- candidate_fed(year = 2002)
+df <- elections_tse(year = 2002, type = "candidate")
 ```
 
 You may also export Brazilian electoral data to Stata and SPSS by setting the `export` optional argument to `TRUE`:
 
 ``` {.r}
-df <- candidate_fed(2002, export = TRUE)
+df <- elections_tse(year = 2002, type = "candidate", export = TRUE)
 ```
 
 As well as subset your results by state using the `uf` argument:
 
 ``` {.r}
-df <- vote_mun_zone_fed(2002, uf = "RS")
+df <- elections_tse(year = 2002, type = "vote_mun_zone", uf = "RS")
 ```
 
 For more information on how the package works and for a complete list of functions, see the vignette.

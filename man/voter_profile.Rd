@@ -26,19 +26,7 @@ when \code{ascii = TRUE}.}
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
 }
 \value{
-\code{voter_profile()} returns a \code{data.frame} with the following variables:
-
-\itemize{
-  \item PERIODO: Election year.
-  \item UF: Units of the Federation's acronym in which occurred the election.
-  \item MUNICIPIO: Municipality name.
-  \item COD_MUNICIPIO_TSE: Municipal's Supreme Electoral Court code (number).
-  \item NR_ZONA: Electoral zone's Supreme Electoral Court code (number).
-  \item SEXO: Voters' sex.
-  \item FAIXA_ETARIA: Voters' age group.
-  \item GRAU_DE_ESCOLARIDADE: Voters' education degree.
-  \item QTD_ELEITORES_NO_PERFIL: Absolute number of voters.
-}
+\code{voter_profile()} returns a \code{data.frame}.
 }
 \description{
 \code{voter_profile()} downloads and cleans data on the voters' profile aggregated by state, city and electoral zone.

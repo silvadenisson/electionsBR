@@ -4,14 +4,7 @@
 \alias{vote_section_fed}
 \title{Download data on candidate electoral results in federal elections in Brazil by electoral section}
 \usage{
-vote_section_fed(
-  year,
-  uf = "AC",
-  ascii = FALSE,
-  encoding = "latin1",
-  export = FALSE,
-  temp = TRUE
-)
+vote_section_fed(year, uf = "AC", encoding = "latin1", temp = TRUE)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -19,38 +12,13 @@ are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).}
 
-\item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
-
 \item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
-
-\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
 }
 \value{
-\code{vote_section_fed()} returns a \code{data.frame} with the following variables:
-
-\itemize{
-  \item DATA_GERACAO: Generation date of the file (when the data was collected).
-  \item HORA_GERACAO: Generation time of the file (when the data was collected), Brasilia Time.
-  \item ANO_ELEICAO: Election year.
-  \item NUM_TURNO: Round number.
-  \item DESCRICAO_ELEICAO: Description of the election.
-  \item SIGLA_UF: Units of the Federation's acronym in which occurred the election.
-  \item SIGLA_UE: Units of the Federation's acronym (In case of major election is the FU's
-  acronym in which the candidate runs for (text) and in case of municipal election is the
-  municipal's Supreme Electoral Court code (number)). Assume the special values BR, ZZ and
-  VT to designate, respectively, Brazil, Overseas and Absentee Ballot.
-  \item CODIGO_MUNICIPIO: Supreme Electoral code from the city where occurred the election.
-  \item NOME_MUNICIPIO: Name of the city where occurred the election.
-  \item NUMERO_ZONA: Zone number.
-  \item NUMERO_SECAO: Electoral section number.
-  \item CODIGO_CARGO: Code of the position that the candidate runs for.
-  \item DESCRICAO_CARGO: Description of the position that the candidate runs for.
-  \item NUM_VOTAVEL: Candidate's number in the ballot box.
-  \item QTDE_VOTOS: Number of votes.
- }
+\code{vote_section_fed()} returns a \code{data.frame}.
 }
 \description{
 \code{vote_section_fed()} downloads and cleans data on the verification of federal elections in Brazil,
@@ -68,7 +36,4 @@ For the elections prior to 2002, some information can be incomplete.
 \dontrun{
 df <- vote_section_fed(2002)
 }
-}
-\seealso{
-\code{\link{vote_section_local}} for local elections in Brazil.
 }

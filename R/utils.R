@@ -173,7 +173,7 @@ to_ascii <- function(banco, encoding){
 # Tests election year inputs
 test_year <- function(year){
 
-  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1994, 2020, 2)) stop("Invalid input. Please, check the documentation and try again.")
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1994, 2022, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
@@ -188,6 +188,21 @@ test_fed_year <- function(year){
 test_local_year <- function(year){
 
   if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1996, 2020, 4)) stop("Invalid input. Please, check the documentation and try again.")
+}
+
+test_type <- function(type){
+  
+  if(!is.character(type) | length(type) != 1 | !type %in% c("candidate",
+                                                            "vote_mun_zone",
+                                                            "details_mun_zone",
+                                                            "legend",
+                                                            "party_mun_zone",
+                                                            "personal_finances",
+                                                            "seats",
+                                                            "vote_section",
+                                                            "vote_profile_by_section",
+                                                            "vote_profile",
+                                                            "social_media")) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
