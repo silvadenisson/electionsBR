@@ -18,19 +18,9 @@
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
 #'
-#' @return \code{voter_profile()} returns a \code{data.frame} with the following variables:
+#' @return \code{voter_profile()} returns a \code{data.frame}.
 #'
-#' \itemize{
-#'   \item PERIODO: Election year.
-#'   \item UF: Units of the Federation's acronym in which occurred the election.
-#'   \item MUNICIPIO: Municipality name.
-#'   \item COD_MUNICIPIO_TSE: Municipal's Supreme Electoral Court code (number).
-#'   \item NR_ZONA: Electoral zone's Supreme Electoral Court code (number).
-#'   \item SEXO: Voters' sex.
-#'   \item FAIXA_ETARIA: Voters' age group.
-#'   \item GRAU_DE_ESCOLARIDADE: Voters' education degree.
-#'   \item QTD_ELEITORES_NO_PERFIL: Absolute number of voters.
-#' }
+#' 
 #'
 #' @import utils
 #' @importFrom magrittr "%>%"

@@ -1,15 +1,33 @@
 #' function elections
 #'
-#' \code{elections_tse()} downloads and aggregates data on the verification of federal elections in Brazil,
-#' disaggregated by cities and electoral zone. The function returns a \code{data.frame} where each observation
-#' corresponds to a city/zone.
+#' \code{elections_tse()} data download from TSE repository
 #'
 #' @note For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variable are available.
 #'
-#' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, 2014, and 2018
+#' @param year Election year. From 1996 to 2022.
 #' are available.
 #' 
 #' @param type tipo de dados 
+#' 
+#' \itemize{
+#'   \item candidate: downloads the data on the candidates'. 
+#'   Where each observation corresponds to a candidate.
+#'   \item vote_mun_zone: downloads data on the verification, disaggregated by cities and electoral zone.
+#'    Where each observation corresponds to a city/zone.
+#'   \item details_mun_zone: downloads THE data on disaggregated by town and electoral zone.
+#'   Where each observation corresponds to a town/zone.
+#'   \item legends: downloads the data on the party denomination (coalitions or parties), disaggregated bi cities. 
+#'   Where each observation corresponds to a city.
+#'   \item party_mun_zone: downloads the data on the polls by parties, disaggregated by cities and electoral zones. 
+#'   Where each observation corresponds to a city/zone.
+#'   \item personal_finances: download the data on personal financial disclosures. 
+#'   Where each observation corresponds to a candidate's property.
+#'   \item seats: download data on the number of seats under dispute in elections
+#'   \item vote_section: download data on candidate electoral results in elections in Brazil by electoral section
+#'   \item vote_profile_by_section: download data on the voters' profile by vote section
+#'   \item vote_profile: download data on the voters' profile
+#'   \item social_media: download data on the candidates' links social media in federal elections
+#' }
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
 #' 
