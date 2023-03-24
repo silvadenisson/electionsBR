@@ -61,7 +61,7 @@ personal_finances_local <- function(year, uf = "all",  ascii = FALSE,
   
   if(year < 2008) stop("Not disponible. Please, check the documentation and try again.\n")
   
-
+  
   filenames  <- paste0("/bem_candidato_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
   url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato%s"
@@ -88,7 +88,7 @@ personal_finances_local <- function(year, uf = "all",  ascii = FALSE,
                     "DES_TIPO_BEM_CANDIDATO",	"DES_BEM_CANDIDATO",	"VALOR_BEM",
                     "DT_ULTIMA_ATUALIZACAO",	"HH_ULTIMA_ATUALIZACAO")
   
- 
+  
   
   # Change to ascii
   if(ascii == T) banco <- to_ascii(banco, encoding)

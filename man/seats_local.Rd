@@ -4,14 +4,7 @@
 \alias{seats_local}
 \title{Download data on the number of seats under dispute in local elections}
 \usage{
-seats_local(
-  year,
-  uf = "all",
-  ascii = FALSE,
-  encoding = "latin1",
-  export = FALSE,
-  temp = TRUE
-)
+seats_local(year, uf = "all", encoding = "latin1", temp = TRUE)
 }
 \arguments{
 \item{year}{Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, 2012, 2016 and 2020
@@ -19,33 +12,13 @@ are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
 
-\item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
-
 \item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
-
-\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
 }
 \value{
-\code{seats_local()} returns a \code{data.frame} with the following variables:
-
-\itemize{
-  \item DATA_GERACAO: Generation date of the file (when the data was collected).
-  \item HORA_GERACAO: Generation time of the file (when the data was collected), Brasilia Time.
-  \item ANO_ELEICAO: Election year.
-  \item DESCRICAO_ELEICAO: Description of the election.
-  \item SIGLA_UF: Units of the Federation's acronym in which occurred the election.
-  \item SIGLA_UE: Units of the Federation's acronym (In case of major election is the FU's
-  acronym in which the candidate runs for (text) and in case of municipal election is the
-  municipal's Supreme Electoral Court code (number)). Assume the special values BR, ZZ and
-  VT to designate, respectively, Brazil, Overseas and Absentee Ballot.
-  \item NOME_UE: Description of the Electoral Unit.
-  \item CODIGO_CARGO: Code of the position that the candidate runs for.
-  \item DESCRICAO_CARGO: Description of the position that the candidate runs for.
-  \item QTDE_VAGAS: number of seats under dispute.
-}
+\code{seats_local()} returns a \code{data.frame}.
 }
 \description{
 \code{seats_local()} downloads and aggregates data on the number of seats under dispute in
@@ -63,7 +36,4 @@ For the elections prior to 2000, some information can be incomplete.
 \dontrun{
 df <- seats_local(2000)
 }
-}
-\seealso{
-\code{\link{seats_fed}} for federal elections in Brazil.
 }

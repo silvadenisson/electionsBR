@@ -67,65 +67,15 @@
 #' }
 
 vote_mun_zone_local <- function(year, uf = "all",  
-                                ascii = FALSE, 
-                                encoding = "latin1", 
+                                ascii = FALSE, encoding = "latin1", 
                                 export = FALSE, temp = TRUE){
 
 
-  # Test the input
-  test_encoding(encoding)
-  test_local_year(year)
-  uf <- test_uf(uf)
+  .Deprecated("elections_tse", msg = "vote_mun_zone_local is deprecated. Please use the elections_tse function")
   
-
-  filenames  <- paste0( year, ".zip")
-  dados <- paste0(file.path(tempdir()), "/", filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_%s"
+  answer <- vote_mun_zone(year, uf, 
+                          ascii, encoding, 
+                          export, temp)
+  return(answer)
   
-  
-  # Downloads the data
-  download_unzip(url, dados, filenames, year)
-  
-  # remover temp file
-  if(temp == FALSE){
-    unlink(dados)
-  }
-
-  # Clean the data
-  setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, FALSE)
-  setwd("..")
-  unlink(as.character(year), recursive = T)
-
-  # Change variable names
-  if(year <= 2012){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
-                      "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
-                      "CODIGO_CARGO", "NUMERO_CAND", "SQ_CANDIDATO", "NOME_CANDIDATO", "NOME_URNA_CANDIDATO",
-                      "DESCRICAO_CARGO", "COD_SIT_CAND_SUPERIOR", "DESC_SIT_CAND_SUPERIOR", "CODIGO_SIT_CANDIDATO",
-                      "DESC_SIT_CANDIDATO", "CODIGO_SIT_CAND_TOT", "DESC_SIT_CAND_TOT", "NUMERO_PARTIDO",
-                      "SIGLA_PARTIDO", "NOME_PARTIDO", "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
-                      "TOTAL_VOTOS")
-  
-  } else {
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO",         
-                      "NOME_TIPO_ELEICAO", "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO",              
-                      "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF", "SIGLA_UE", "NOME_UE",
-                      "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "CODIGO_CARGO",
-                      "DESCRICAO_CARGO", "SQ_CANDIDATO", "NUMERO_CAND", "NOME_CANDIDATO",
-                      "NOME_URNA_CANDIDATO", "NOME_SOCIAL_CANDIDATO", "CODIGO_SIT_CANDIDATO", 
-                      "DESC_SIT_CANDIDATO", "COD_SIT_CAND_SUPERIOR", "DESC_SIT_CAND_SUPERIOR",
-                      "TIPO_AGREMIACAO", "NUMERO_PARTIDO", "SIGLA_PARTIDO", "NOME_PARTIDO",
-                      "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
-                      "CODIGO_SIT_CAND_TOT", "DESC_SIT_CAND_TOT", "TRANSITO","TOTAL_VOTOS" )
-}
-
-  # Change to ascii
-  if(ascii == T) banco <- to_ascii(banco, encoding)
-  
-  # Export
-  if(export) export_data(banco)
-
-  message("Done.\n")
-  return(banco)
 }

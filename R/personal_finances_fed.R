@@ -78,7 +78,7 @@ personal_finances_fed <- function(year, uf = "all",
   test_br(br_archive)
   
   if(year < 2006) stop("Not disponible. Please, check the documentation and try again.\n")
-    
+  
   filenames  <- paste0("/bem_candidato_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
   url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato%s"
@@ -90,30 +90,29 @@ personal_finances_fed <- function(year, uf = "all",
   if(temp == FALSE){
     unlink(dados)
   }
-    
-    # Cleans the data
-    setwd(as.character(year))
-    banco <- juntaDados(uf, encoding, br_archive)
-    setwd("..")
-    unlink(as.character(year), recursive = T)
-    
-    # Changes variables names
-      names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
-                        "NOME_TIPO_ELEICAO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
-                        "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_UE",
-                        "SQ_CANDIDATO",	"NUMERO_ORDEM_CANDIDATO",	"COD_TIPO_BEM_CANDIDATO",
-                        "DES_TIPO_BEM_CANDIDATO",	"DES_BEM_CANDIDATO",	"VALOR_BEM",
-                        "DT_ULTIMA_ATUALIZACAO",	"HH_ULTIMA_ATUALIZACAO")
-
-    
-    # Change to ascii
-    if(ascii == T) banco <- to_ascii(banco, encoding)
-    
-    # Export
-    if(export) export_data(banco)
-    
-    message("Done.\n")
-    return(banco)
+  
+  # Cleans the data
+  setwd(as.character(year))
+  banco <- juntaDados(uf, encoding, br_archive)
+  setwd("..")
+  unlink(as.character(year), recursive = T)
+  
+  # Changes variables names
+  names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
+                    "NOME_TIPO_ELEICAO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
+                    "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_UE",
+                    "SQ_CANDIDATO",	"NUMERO_ORDEM_CANDIDATO",	"COD_TIPO_BEM_CANDIDATO",
+                    "DES_TIPO_BEM_CANDIDATO",	"DES_BEM_CANDIDATO",	"VALOR_BEM",
+                    "DT_ULTIMA_ATUALIZACAO",	"HH_ULTIMA_ATUALIZACAO")
+  
+  
+  # Change to ascii
+  if(ascii == T) banco <- to_ascii(banco, encoding)
+  
+  # Export
+  if(export) export_data(banco)
+  
+  message("Done.\n")
+  return(banco)
 } 
 
-  
