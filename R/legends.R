@@ -22,6 +22,8 @@
 #' 
 #' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
 #'
+#' @param readme_pdf original readme
+#'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
 #'
@@ -39,7 +41,8 @@ legends <- function(year,
                     uf = "all", 
                     br_archive = FALSE, 
                     encoding = "latin1",
-                    temp = TRUE){
+                    temp = TRUE,
+                    readme_pdf = FALSE){
   
   
   # Test the input
@@ -66,28 +69,10 @@ legends <- function(year,
   setwd(as.character(year))
   banco <- juntaDados(uf, encoding, br_archive)
   setwd("..")
-  unlink(as.character(year), recursive = T)
-  
-  # Change variable names
-  if(year < 2022){
-    
-    names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
-                      "NOME_TIPO_ELEICAO",	"NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
-                      "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_MUNICIPIO",	"CODIGO_CARGO",
-                      "DESCRICAO_CARGO",	"AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",
-                      "NOME_PARTIDO",	"SEQUENCIAL_COLIGACAO",	"NOME_COLIGACAO",
-                      "COMPOSICAO_COLIGACAO",	"COD_SITUACAO_LEGENDA",	"DES_SITUACAO")
-  } else{
-    
-    names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
-                      "NOME_TIPO_ELEICAO",	"NUM_TURNO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
-                      "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_UE",	"CODIGO_CARGO",
-                      "DESCRICAO_CARGO",	"AGREMIACAO",	"NUMERO_PARTIDO",	"SIGLA_PARTIDO",
-                      "NOME_PARTIDO",	"NUM_FEDERACAO", "NOME_FEDERACAO", "SIGLA_FEDERACAO",
-                      "DESCRICAO_COMPOSICAO_FEDERACAO", "SEQUENCIAL_COLIGACAO",	"NOME_COLIGACAO",
-                      "COMPOSICAO_COLIGACAO",	"COD_SITUACAO_LEGENDA",	"DES_SITUACAO")
+  if(readme_pdf){
+    file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_legends_", year,".pdf"))
   }
-  
+  unlink(as.character(year), recursive = T)
   
   message("Done.\n")
   return(banco)

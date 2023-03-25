@@ -9,7 +9,8 @@ party_mun_zone(
   uf = "all",
   br_archive = FALSE,
   encoding = "latin1",
-  temp = TRUE
+  temp = TRUE,
+  readme_pdf = FALSE
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ other, it recoverns only electoral data for presidential elections, absent in ot
 when \code{ascii = TRUE}.}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
+
+\item{readme_pdf}{original readme}
 }
 \value{
 \code{party_mun_zone()} returns a \code{data.frame}.

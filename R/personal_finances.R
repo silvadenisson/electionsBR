@@ -4,7 +4,7 @@
 #'
 #' @note For the elections prior to 2000, some information may be incomplete.
 #'
-#' @param year Election year. For this function, only the years 2006, 2010, 2014 and 2018 are available.
+#' @param year Election year. For this function, only the years 2006, 2010, 2014, 2018 and 2022 are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
 #' 
@@ -17,6 +17,8 @@
 #' when \code{ascii = TRUE}.
 #'  
 #' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
+#' 
+#' @param readme_pdf original readme
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -33,7 +35,8 @@
 personal_finances <- function(year, uf = "all",
                                   br_archive = FALSE, 
                                   encoding = "latin1", 
-                                  temp = TRUE){
+                                  temp = TRUE,
+                              readme_pdf = FALSE){
   
   # Input tests
   test_encoding(encoding)
@@ -41,7 +44,7 @@ personal_finances <- function(year, uf = "all",
   uf <- test_uf(uf)
   test_br(br_archive)
   
-  if(year < 2006) stop("Not disponible. Please, check the documentation and try again.\n")
+  if(year < 2006) stop("Not disponible. Please, only from 2006.\n")
     
   filenames  <- paste0("/bem_candidato_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
@@ -59,16 +62,11 @@ personal_finances <- function(year, uf = "all",
     setwd(as.character(year))
     banco <- juntaDados(uf, encoding, br_archive)
     setwd("..")
+    if(readme_pdf){
+      file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_personal_finances_", year,".pdf"))
+    }
     unlink(as.character(year), recursive = T)
     
-    # Changes variables names
-      names(banco) <- c("DATA_GERACAO",	"HORA_GERACAO",	"ANO_ELEICAO",	"COD_TIPO_ELEICAO",
-                        "NOME_TIPO_ELEICAO",	"COD_ELEICAO",	"DESCRICAO_ELEICAO",
-                        "DATA_ELEICAO",	"SIGLA_UF",	"SIGLA_UE",	"NOME_UE",
-                        "SQ_CANDIDATO",	"NUMERO_ORDEM_CANDIDATO",	"COD_TIPO_BEM_CANDIDATO",
-                        "DES_TIPO_BEM_CANDIDATO",	"DES_BEM_CANDIDATO",	"VALOR_BEM",
-                        "DT_ULTIMA_ATUALIZACAO",	"HH_ULTIMA_ATUALIZACAO")
-
     message("Done.\n")
     return(banco)
 } 

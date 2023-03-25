@@ -37,7 +37,7 @@ vote_section <- function(year, uf = "AC",
   
   # Test the inputs
   test_encoding(encoding)
-  test_fed_year(year)
+  test_year(year)
   stopifnot(is.character(uf))
   if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
   uf <- test_uf(uf)

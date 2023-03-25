@@ -15,14 +15,14 @@
 #' within a single file by setting this argument to \code{TRUE} (may not work in for some elections and, in 
 #' other, it recoverns only electoral data for presidential elections, absent in other files).
 #'
-#' @param ascii (\code{logical}). Should the text be transformed from Latin-1 to ASCII format?
 #'
 #' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
-#' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
 #' 
 #' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
+#' 
+#' @param readme_pdf original readme
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -37,15 +37,21 @@
 #' df <- vote_mun_zone_fed(2002)
 #' }
 
-vote_mun_zone_fed <- function(year, uf = "all",  br_archive = FALSE, 
-                              ascii = FALSE, encoding = "latin1", 
-                              export = FALSE, temp = TRUE){
+vote_mun_zone_fed <- function(year, 
+                              uf = "all", 
+                              br_archive = FALSE, 
+                              encoding = "latin1", 
+                              temp = TRUE,
+                              readme_pdf = FALSE){
   
   
   .Deprecated("elections_tse", msg = "vote_mun_zone_fed is deprecated. Please use the elections_tse function")
   
-  answer <- vote_mun_zone(year, uf, br_archive, 
-                          ascii, encoding, 
-                          export, temp)
+  answer <- vote_mun_zone(year, 
+                          uf,
+                          br_archive, 
+                          encoding, 
+                          temp,
+                          readme_pdf)
   return(answer)
 }

@@ -12,11 +12,13 @@ elections_tse(
   ascii = FALSE,
   encoding = "latin1",
   export = FALSE,
-  temp = TRUE
+  temp = TRUE,
+  data_table = FALSE,
+  readme_pdf = FALSE
 )
 }
 \arguments{
-\item{year}{Election year. From 1996 to 2022.
+\item{year}{Election year. From 1998 to 2022.
 are available.}
 
 \item{type}{tipo de dados 
@@ -55,6 +57,10 @@ when \code{ascii = TRUE}.}
 \item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
+
+\item{data_table}{for data.table}
+
+\item{readme_pdf}{is original readme}
 }
 \value{
 \code{elections_tse()} returns a \code{data.frame} with the following variables:

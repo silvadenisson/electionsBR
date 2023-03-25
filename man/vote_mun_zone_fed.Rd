@@ -8,10 +8,9 @@ vote_mun_zone_fed(
   year,
   uf = "all",
   br_archive = FALSE,
-  ascii = FALSE,
   encoding = "latin1",
-  export = FALSE,
-  temp = TRUE
+  temp = TRUE,
+  readme_pdf = FALSE
 )
 }
 \arguments{
@@ -24,14 +23,12 @@ are available.}
 within a single file by setting this argument to \code{TRUE} (may not work in for some elections and, in 
 other, it recoverns only electoral data for presidential elections, absent in other files).}
 
-\item{ascii}{(\code{logical}). Should the text be transformed from Latin-1 to ASCII format?}
-
 \item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 
-\item{export}{(\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?}
-
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
+
+\item{readme_pdf}{original readme}
 }
 \value{
 \code{vote_mun_zone_fed()} returns a \code{data.frame} with the following variables:

@@ -139,7 +139,7 @@ juntaDados <- function(uf, encoding, br_archive){
      
    } else {
      
-     archive <- archive[grepl("BR", archive) == TRUE]
+     archive <- archive[grepl("BR\\.", archive) == TRUE]
    }
    
    if(grepl(".csv", archive[1])){
@@ -148,15 +148,15 @@ juntaDados <- function(uf, encoding, br_archive){
      test_col_names <- FALSE
    }
    
-  lapply(archive, function(x) tryCatch(
-    suppressWarnings(readr::read_delim(x, col_names = test_col_names, 
-                                       delim = ";",
-                                       locale = readr::locale(encoding = encoding), 
-                                       col_types = readr::cols(), progress = F,
-                                       escape_double = F)), 
-                                error = function(e) NULL)) %>%
-  data.table::rbindlist() %>%
-  dplyr::as_tibble()
+   lapply(archive, function(x) tryCatch(
+     suppressWarnings(readr::read_delim(x, col_names = test_col_names, 
+                                        delim = ";",
+                                        locale = readr::locale(encoding = encoding), 
+                                        col_types = readr::cols(), progress = F,
+                                        escape_double = F)), 
+     error = function(e) NULL)) %>%
+     data.table::rbindlist() %>%
+     dplyr::as_tibble()
 
 }
 
@@ -173,29 +173,17 @@ to_ascii <- function(banco, encoding){
 # Tests election year inputs
 test_year <- function(year){
 
-  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1994, 2022, 2)) stop("Invalid input. Please, check the documentation and try again.")
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2022, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
-# Tests federal election year inputs
-test_fed_year <- function(year){
-
-  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1994, 2022, 4)) stop("Invalid input. Please, check the documentation and try again.")
-}
-
-
-# Tests federal election year inputs
-test_local_year <- function(year){
-
-  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1996, 2020, 4)) stop("Invalid input. Please, check the documentation and try again.")
-}
 
 test_type <- function(type){
   
   if(!is.character(type) | length(type) != 1 | !type %in% c("candidate",
                                                             "vote_mun_zone",
                                                             "details_mun_zone",
-                                                            "legend",
+                                                            "legends",
                                                             "party_mun_zone",
                                                             "personal_finances",
                                                             "seats",
@@ -205,25 +193,6 @@ test_type <- function(type){
                                                             "social_media")) stop("Invalid input. Please, check the documentation and try again.")
 }
 
-
-# Test federal positions
-#test_fed_position <- function(position){
-#  position <- tolower(position)
-#  if(!is.character(position) | length(position) != 1 | !position %in% c("presidente",
-#                                                                        "governador",
-#                                                                        "senador",
-#                                                                        "deputado federal",
-#                                                                        "deputado estadual",
-#                                                                        "deputado distrital")) stop("Invalid input. Please, check the documentation and try again.")
-#}
-
-
-# Test federal positions
-#test_local_position <- function(position){
-#  position <- tolower(position)
-#  if(!is.character(position) | length(position) != 1 | !position %in% c("prefeito",
-#                                                                        "vereador")) stop("Invalid input. Please, check the documentation and try again.")
-#}
 
 
 # Converts electoral data from Latin-1 to ASCII
@@ -255,18 +224,7 @@ test_uf <- function(uf) {
   else return(paste(uf, collapse = "|"))
 }
 
-# Replace position by cod position
-# replace_position_cod <- function(position){
-#  position <- tolower(position)
-#  return(switch(position, "presidente" = 1,
-#         "governador" = 3,
-#         "senador" = 5,
-#         "deputado federal" = 6,
-#         "deputado estadual" = 7,
-#         "deputado distrital" = 8,
-#         "prefeito" = 11,
-#         "vereador" = 13))
-# }
+
 
 # Function to export data to .dta and .sav
 export_data <- function(df) {

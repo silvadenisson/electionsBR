@@ -22,6 +22,8 @@
 #' 
 #' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
 #'
+#' @param readme_pdf original readme
+#'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
 #'
@@ -36,10 +38,11 @@
 #' }
 
 party_mun_zone <- function(year, 
-                               uf = "all",
-                               br_archive = FALSE,
-                               encoding = "latin1", 
-                               temp = TRUE){
+                           uf = "all",
+                           br_archive = FALSE,
+                           encoding = "latin1", 
+                           temp = TRUE,
+                           readme_pdf = FALSE){
   
   
   # Test the input
@@ -64,35 +67,11 @@ party_mun_zone <- function(year,
   setwd(as.character(year))
   banco <- juntaDados(uf, encoding, br_archive)
   setwd("..")
+  if(readme_pdf){
+    file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_party_mun_zone_", year,".pdf"))
+  }
   unlink(as.character(year), recursive = T)
   
-  # Change variable names
-  if(year < 2010){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
-                      "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
-                      "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
-                      "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO", "QTDE_VOTOS_NOMINAIS",
-                      "QTDE_VOTOS_LEGENDA", "SEQUENCIAL_LEGENDA")
-  } else if(year < 2018) {
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "NOME_TIPO_ELEICAO",
-                      "NUM_TURNO", "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA",
-                      "SIGLA_UF", "SIGLA_UE", "NOME_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
-                      "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NUMERO_PARTIDO", "SIGLA_PARTIDO",
-                      "NOME_PARTIDO", "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA", 
-                      "TRANSITO", "QTDE_VOTOS_NOMINAIS", "QTDE_VOTOS_LEGENDA")
-  } else {
-    names(banco) <- c("DATA_GERACAO","HORA_GERACAO","ANO_ELEICAO","COD_TIPO_ELEICAO",
-                      "NOME_TIPO_ELEICAO","NUM_TURNO","COD_ELEICAO","DESCRICAO_ELEICAO",
-                      "DATA_ELEICAO","ABRANGENCIA","SIGLA_UF","SIGLA_UE","NOME_UE",
-                      "CODIGO_MUNICIPIO","NOME_MUNICIPIO","NUMERO_ZONA","CODIGO_CARGO",
-                      "DESCRICAO_CARGO","TIPO_LEGENDA","NUMERO_PARTIDO","SIGLA_PARTIDO","NOME_PARTIDO",
-                      "NUMERO_FEDERACAO", "NOME_FEDERACAO","SIGLA_FEDERACAO","DES_COMPOSICAO_FEDERACAO",
-                      "SEQUENCIAL_LEGENDA","NOME_COLIGACAO","COMPOSICAO_LEGENDA",
-                      "TRANSITO","QTDE_VOTOS_LEGENDA_VALIDOS","QTDE_VOTOS_NOMINAIS_CONVR_LEG",
-                      "QTDE_TOTAL_VOTOS_LEG_VALIDOS","QTDE_VOTOS_NOMINAIS_VALIDOS",
-                      "QTDE_VOTOS_LEGENDA_ANUL_SUBJUD","QTDE_VOTOS_NOMINAIS_ANUL_SUBJUD"
-    )
-  }
   
   message("Done.\n")
   return(banco)

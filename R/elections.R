@@ -4,7 +4,7 @@
 #'
 #' @note For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variable are available.
 #'
-#' @param year Election year. From 1996 to 2022.
+#' @param year Election year. From 1998 to 2022.
 #' are available.
 #' 
 #' @param type tipo de dados 
@@ -43,6 +43,10 @@
 #' @param export (\code{logical}). Should the downloaded data be saved in .dta and .sav in the current directory?
 #' 
 #' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
+#' 
+#' @param data_table for data.table
+#' 
+#' @param readme_pdf is original readme 
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -59,9 +63,11 @@
 #' df <- elections_tse(2002, type = "candidate")
 #' }
 
-elections_tse <- function(year, type, uf = "all", br_archive = FALSE,
-                      ascii = FALSE, encoding = "latin1", 
-                      export = FALSE, temp = TRUE){
+elections_tse <- function(year, type,
+                          uf = "all", br_archive = FALSE,
+                          ascii = FALSE, encoding = "latin1", 
+                          export = FALSE, temp = TRUE, 
+                          data_table = FALSE, readme_pdf = FALSE){
   
   # test type
   test_type(type)
@@ -69,79 +75,100 @@ elections_tse <- function(year, type, uf = "all", br_archive = FALSE,
   # type
     if(type == "candidate"){
       
-      banco <- candidate(year, uf, 
+      banco <- candidate(year, 
+                         uf, 
                          br_archive,
-                             encoding, 
-                             temp)
+                         encoding, 
+                         temp,
+                         readme_pdf)
       
     } else if(type == "vote_mun_zone"){
       
-      banco <- vote_mun_zone(year, uf, 
+      banco <- vote_mun_zone(year, 
+                             uf, 
                              br_archive,
-                         encoding, 
-                         temp)
+                             encoding, 
+                             temp,
+                             readme_pdf)
       
     } else if(type == "details_mun_zone"){
       
-      banco <- details_mun_zone(year, uf, 
-                               br_archive, 
-                               encoding,
-                               temp)
+      banco <- details_mun_zone(year, 
+                                uf, 
+                                br_archive, 
+                                encoding,
+                                temp,
+                                readme_pdf)
       
     } else if(type == "legends"){
       
-      banco <- legends(year, uf, 
-                     br_archive,
-                     encoding,
-                     temp)
+      banco <- legends(year, 
+                       uf, 
+                       br_archive,
+                       encoding,
+                       temp,
+                       readme_pdf)
       
     } else if(type == "party_mun_zone"){
       
-      banco <- party_mun_zone(year, uf,
-                             br_archive,
-                             encoding,
-                             temp)
+      banco <- party_mun_zone(year, 
+                              uf,
+                              br_archive,
+                              encoding,
+                              temp,
+                              readme_pdf)
       
     } else if(type == "personal_finances"){
       
-      banco <- personal_finances(year, uf,
+      banco <- personal_finances(year, 
+                                 uf,
                                  br_archive,
                                  encoding, 
-                                 temp)
+                                 temp,
+                                 readme_pdf)
       
     } else if(type == "seats"){
       
-      banco <- seats(year, uf,  
-                    br_archive, #verificar necessitosidade desse argumento
-                    encoding, 
-                    temp)
+      banco <- seats(year, 
+                     uf,  
+                     br_archive, #verificar necessitosidade desse argumento
+                     encoding, 
+                     temp,
+                     readme_pdf)
       
     } else if(type == "vote_section"){
       
-      banco <- vote_section(year, uf, 
-                           encoding, 
-                           temp)
+      banco <- vote_section(year, 
+                            uf, 
+                            encoding, 
+                            temp,
+                            readme_pdf)
       
     } else if(type == "vote_profile_by_section"){
       
       banco <- voter_profile_by_section(year, 
-                                       uf, 
-                                       encoding,
-                                       temp)
+                                        uf, 
+                                        encoding,
+                                        temp,
+                                        readme_pdf)
     } else if(type == "vote_profile"){
       
       banco <- voter_profile(year,  
-                            encoding,
-                            temp)
+                             encoding,
+                             temp,
+                             readme_pdf)
       
     } else if(type == "social_media"){
       
       banco <- social_media(year,
-                           encoding,
-                           temp)
+                            encoding,
+                            temp,
+                            readme_pdf)
       
     }
-    
+  
+  # for data.table
+  if(data_table) banco <- data.table::data.table(banco)
   
   # Change to ascii
   if(ascii) banco <- to_ascii(banco, encoding)

@@ -9,7 +9,8 @@ details_mun_zone(
   uf = "all",
   br_archive = FALSE,
   encoding = "latin1",
-  temp = TRUE
+  temp = TRUE,
+  readme_pdf = FALSE
 )
 }
 \arguments{
@@ -25,7 +26,9 @@ other, it recoverns only electoral data for presidential elections, absent in ot
 \item{encoding}{Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}
 
-\item{temp}{(\code{logical}). elections_rda}
+\item{temp}{(\code{logical}). temp}
+
+\item{readme_pdf}{original readme}
 }
 \value{
 \code{details_mun_zone()} returns a \code{data.frame}.

@@ -9,11 +9,12 @@ personal_finances(
   uf = "all",
   br_archive = FALSE,
   encoding = "latin1",
-  temp = TRUE
+  temp = TRUE,
+  readme_pdf = FALSE
 )
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 2006, 2010, 2014 and 2018 are available.}
+\item{year}{Election year. For this function, only the years 2006, 2010, 2014, 2018 and 2022 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
 
@@ -25,6 +26,8 @@ other, it recoverns only electoral data for presidential elections, absent in ot
 when \code{ascii = TRUE}.}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
+
+\item{readme_pdf}{original readme}
 }
 \value{
 \code{personal_finances()} returns a \code{data.frame}.

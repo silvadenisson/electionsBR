@@ -4,7 +4,14 @@
 \alias{legends}
 \title{Download data on federal election coalitions in Brazil}
 \usage{
-legends(year, uf = "all", br_archive = FALSE, encoding = "latin1", temp = TRUE)
+legends(
+  year,
+  uf = "all",
+  br_archive = FALSE,
+  encoding = "latin1",
+  temp = TRUE,
+  readme_pdf = FALSE
+)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014 and 2018
@@ -20,6 +27,8 @@ other, it recoverns only electoral data for presidential elections, absent in ot
 when \code{ascii = TRUE}.}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
+
+\item{readme_pdf}{original readme}
 }
 \value{
 \code{legend_fed()} returns a \code{data.frame}.

@@ -10,7 +10,6 @@
 #' and \code{seats}, to download data on available seats.
 #' 
 #' @import utils
-#' @export
 #' @examples
 #' \dontrun{
 #' df <- elections_rda(2018)
@@ -18,12 +17,8 @@
 
 elections_rda <- function(year, level = "fed", archive = "candidate"){
   
-   if(level == "fed"){
-     test_fed_year(year)
-   } else{
-     test_local_year(year)
-   }
-  
+  test_year(year)
+ 
   if(!(archive %in% c("candidate", "vote_mun_zone", "legend",
                       "party_mun_zone", "personal_finances", 
                       "details_mun_zone", "seats"))) stop("Invalid 'archive'. Please check the documentation and try again.")
