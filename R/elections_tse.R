@@ -1,4 +1,4 @@
-#' function elections
+#' function elections data from TSE repository
 #'
 #' \code{elections_tse()} data download from TSE repository
 #'

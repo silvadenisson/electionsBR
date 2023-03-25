@@ -2,7 +2,7 @@
 % Please edit documentation in R/elections_tse.R
 \name{elections_tse}
 \alias{elections_tse}
-\title{function elections}
+\title{function elections data from TSE repository}
 \usage{
 elections_tse(
   year,
