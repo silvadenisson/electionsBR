@@ -11,12 +11,12 @@
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).
 #'
-#'
 #' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
-#' 
 #' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
+#'
+#' @param readme_pdf original file
 #'
 #' @details If export is set to \code{TRUE}, the data is saved as .dta and .sav
 #'  files in the working directory.
@@ -30,16 +30,18 @@
 #' df <- vote_section(2002)
 #' }
 
-vote_section <- function(year, uf = "AC",
-                             encoding = "latin1", 
-                             temp = TRUE){
+vote_section <- function(year,
+                         uf = "AC",
+                         encoding = "latin1", 
+                         temp = TRUE,
+                         readme_pdf = FALSE){
   
   
   # Test the inputs
   test_encoding(encoding)
   test_year(year)
   stopifnot(is.character(uf))
-  if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
+  if(tolower(uf) == "all") stop("'uf' is invalid. 'all' not allowed in this function, choose one or more UF")
   uf <- test_uf(uf)
   
   filenames  <- paste0("/votacao_secao_", year, "_", uf, ".zip")
@@ -58,20 +60,10 @@ vote_section <- function(year, uf = "AC",
   setwd(as.character(year))
   banco <- juntaDados(uf, encoding, FALSE)
   setwd("..")
-  unlink(as.character(year), recursive = T)
-  
-  # Change variable names
-  if(year < 2010){
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO", "SIGLA_UF", "SIGLA_UE",
-                      "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", "DESCRICAO_CARGO",
-                      "NUM_VOTAVEL", "QTDE_VOTOS")
-  } else{
-    names(banco) <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "COD_TIPO_ELEICAO", "TIPO_ELEICAO", "NUM_TURNO",       
-                      "COD_ELEICAO", "DESCRICAO_ELEICAO", "DATA_ELEICAO", "ABRANGENCIA", "SIGLA_UF", "SIGLA_UE", "NOME_UE",  
-                      "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA", "NUMERO_SECAO", "CODIGO_CARGO", "DESCRICAO_CARGO",
-                      "NUM_VOTAVEL", "NOME_VOTAVEL", "QTDE_VOTOS", "NUMERO_LOCAL_VOTACAO")
+  if(readme_pdf){
+    file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_vote_section_", year,".pdf"))
   }
-  
+  unlink(as.character(year), recursive = T)
   
   message("Done.\n")
   return(banco)

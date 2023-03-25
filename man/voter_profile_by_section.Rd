@@ -8,11 +8,12 @@ voter_profile_by_section(
   year,
   uf = "AC",
   encoding = "windows-1252",
-  temp = TRUE
+  temp = TRUE,
+  readme_pdf = FALSE
 )
 }
 \arguments{
-\item{year}{Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
+\item{year}{Election year (\code{integer}). For this function, the following years are available:  1998,
 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018 and 2020.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).}
@@ -21,6 +22,8 @@ voter_profile_by_section(
 when \code{ascii = TRUE}.}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
+
+\item{readme_pdf}{original readme}
 }
 \value{
 \code{voter_profile()} returns a \code{data.frame} with the following variables:

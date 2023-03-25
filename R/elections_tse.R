@@ -24,8 +24,8 @@
 #'   Where each observation corresponds to a candidate's property.
 #'   \item seats: download data on the number of seats under dispute in elections
 #'   \item vote_section: download data on candidate electoral results in elections in Brazil by electoral section
-#'   \item vote_profile_by_section: download data on the voters' profile by vote section
-#'   \item vote_profile: download data on the voters' profile
+#'   \item voter_profile_by_section: download data on the voters' profile by vote section
+#'   \item voter_profile: download data on the voters' profile
 #'   \item social_media: download data on the candidates' links social media in federal elections
 #' }
 #' 
@@ -144,14 +144,14 @@ elections_tse <- function(year, type,
                             temp,
                             readme_pdf)
       
-    } else if(type == "vote_profile_by_section"){
+    } else if(type == "voter_profile_by_section"){
       
       banco <- voter_profile_by_section(year, 
                                         uf, 
                                         encoding,
                                         temp,
                                         readme_pdf)
-    } else if(type == "vote_profile"){
+    } else if(type == "voter_profile"){
       
       banco <- voter_profile(year,  
                              encoding,

@@ -5,15 +5,16 @@
 #' corresponds to a candidates' links.
 #'
 #'
-#' @param year Election year (\code{integer}). For this function, only the years 2022
+#' @param year Election year (\code{integer}). For this function, only the years 2020 and 2022
 #' are available.
 #' 
 #'
 #' @param encoding Data original encoding (defaults to 'latin1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
-#' 
-#' @param temp (\code{logical}). elections_rda
+#' @param temp (\code{logical}). temp
+#'
+#' @param readme_pdf original readme
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -30,15 +31,13 @@
 
 social_media <- function(year,
                          encoding = "latin1", 
-                         temp = TRUE){
-  #provisorio
-  uf = "all"
-  br_archive = FALSE
-  
+                         temp = TRUE,
+                         readme_pdf = FALSE){
   # Input tests
   test_encoding(encoding)
   test_year(year)
-
+  
+  if(year < 2020) stop("Not disponible. Please, only from 2020.\n")
 
   filenames  <- paste0("/rede_social_candidato_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
@@ -54,8 +53,13 @@ social_media <- function(year,
   
   # Cleans the data
   setwd(as.character(year))
-  banco <- juntaDados(uf, encoding, br_archive)
+  #provisorio
+  
+  banco <- juntaDados(uf = "all", encoding, br_archive = FALSE)
   setwd("..")
+  if(readme_pdf){
+    file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_social_media_", year,".pdf"))
+  }
   unlink(as.character(year), recursive = T)
   
   message("Done.\n")

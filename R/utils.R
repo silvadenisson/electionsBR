@@ -188,8 +188,8 @@ test_type <- function(type){
                                                             "personal_finances",
                                                             "seats",
                                                             "vote_section",
-                                                            "vote_profile_by_section",
-                                                            "vote_profile",
+                                                            "voter_profile_by_section",
+                                                            "voter_profile",
                                                             "social_media")) stop("Invalid input. Please, check the documentation and try again.")
 }
 

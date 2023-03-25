@@ -4,7 +4,13 @@
 \alias{vote_section}
 \title{Download data on candidate electoral results in federal elections in Brazil by electoral section}
 \usage{
-vote_section(year, uf = "AC", encoding = "latin1", temp = TRUE)
+vote_section(
+  year,
+  uf = "AC",
+  encoding = "latin1",
+  temp = TRUE,
+  readme_pdf = FALSE
+)
 }
 \arguments{
 \item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
@@ -16,6 +22,8 @@ are available.}
 when \code{ascii = TRUE}.}
 
 \item{temp}{(\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)}
+
+\item{readme_pdf}{original file}
 }
 \value{
 \code{vote_section()} returns a \code{data.frame}.

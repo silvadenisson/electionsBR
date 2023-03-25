@@ -3,17 +3,17 @@
 #' \code{voter_profile_by_section()} downloads and cleans data on the voters' profile aggregated by voting section (i.e., voting stations).
 #' The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
 #'
-#' @param year Election year (\code{integer}). For this function, the following years are available: 1994, 1996, 1998,
+#' @param year Election year (\code{integer}). For this function, the following years are available:  1998,
 #' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018 and 2020.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).
-#' 
 #'
 #' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
-#' 
 #' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended)
+#'
+#' @param readme_pdf original readme
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
@@ -31,13 +31,14 @@
 voter_profile_by_section <- function(year, 
                                      uf = "AC",
                                      encoding = "windows-1252",
-                                     temp = TRUE){
+                                     temp = TRUE,
+                                     readme_pdf = FALSE){
   
   
   # Inputs
-  if(!year %in% seq(2008, 2020, by = 2)) stop("Invalid 'year'. Please check the documentation and try again.")
+  if(year < 2008) stop("Not disponible. Please, only from 2008.\n")
   test_encoding(encoding)
-  if(tolower(uf) == "all") stop("'uf' is invalid. Please, check the documentation and try again.")
+  if(tolower(uf) == "all") stop("'uf' is invalid. 'all' not allowed in this function, choose one or more UF")
   uf <- test_uf(uf)
   
 
@@ -72,6 +73,9 @@ voter_profile_by_section <- function(year,
     dplyr::as_tibble()
   
   setwd("..")
+  if(readme_pdf){
+    file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_voter_profile_by_section_", year,".pdf"))
+  }
   unlink(as.character(year), recursive = T)
   
   message("Done.\n")
