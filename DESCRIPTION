@@ -21,7 +21,8 @@ Imports:
     data.table (>= 1.9.8),
     haven (>= 1.0.0),
     readr,
-    httr
+    httr,
+    curl
 LazyData: TRUE
 Encoding: UTF-8
 URL: http://electionsbr.com/

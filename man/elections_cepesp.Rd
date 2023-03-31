@@ -10,7 +10,7 @@ elections_cepesp(year, type, position, data_table = FALSE)
 \item{year}{From 1998 to 2018 for President, Governor, Senator, Federal Deputy, 
 State Deputy or District Deputy , and  from 2000 to 2016 for Mayor or Councillor}
 
-\item{type}{data type, candidate, vote}
+\item{type}{data type: candidate, vote}
 
 \item{position}{President, Governor, Senator, Federal Deputy, State Deputy,
 District Deputy, Mayor or Councillor}
