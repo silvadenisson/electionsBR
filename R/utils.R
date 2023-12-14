@@ -139,7 +139,7 @@ juntaDados <- function(uf, encoding, br_archive){
      
    } else {
      
-     archive <- archive[grepl("BR\\.", archive) == TRUE]
+     archive <- archive[grepl("BR\\.|BRASIL", archive) == TRUE]
    }
    
    if(grepl(".csv", archive[1])){
