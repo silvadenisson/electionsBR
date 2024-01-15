@@ -1,6 +1,6 @@
-#' function elections data from TSE repository
+#' Function to download electoral data from TSE repository
 #'
-#' \code{elections_tse()} data download from TSE repository
+#' \code{elections_tse()} is a wrapper function that downloads electoral data from the TSE repository. 
 #'
 #' @note For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variable are available.
 #'
