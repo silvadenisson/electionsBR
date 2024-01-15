@@ -1,16 +1,16 @@
-#' function elections data from cepesp API
+#' Retrieve electoral data from the cepesp API.
 #' 
-#' @param year From 1998 to 2018 for President, Governor, Senator, Federal Deputy, 
-#' State Deputy or District Deputy , and  from 2000 to 2016 for Mayor or Councillor
+#' @param year The election year. Valid options are between 1998 to 2018 for positions such as President, Governor, Senator, Federal Deputy, State Deputy, and District Deputy. For Mayor or Councillor positions, valid options range from 2000 to 2016.
 #' 
-#' @param type data type: candidate, vote
+#' @param type The type of data to retrieve. Valid options are "candidate" or "vote".
 #' 
-#' @param position President, Governor, Senator, Federal Deputy, State Deputy,
-#' District Deputy, Mayor or Councillor
+#' @param position The position for which the data is requested. Valid options are President, Governor, Senator, Federal Deputy, State Deputy, District Deputy, Mayor, or Councillor.
 #' 
-#' @param data_table return a data.table
+#' @param data_table If set to TRUE, the function will return the data as a data.table object. Default is FALSE.
 #' 
-#'  @return \code{elections_tse()} returns a \code{tibble}.
+#' @return The function returns a tibble containing the requested elections data.
+#' 
+#' @note The function is a wrapper for the cepesp API. To learn more about the API, please visit cepespdata.io.
 #' 
 #' @import utils
 #' @importFrom magrittr "%>%"
@@ -18,9 +18,8 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' df <- elections_cepesp(2018, type = "candidate", "President")
+#' df <- elections_cepesp(2018, type = "candidate", position = "President")
 #' }
-
 
 elections_cepesp <- function(year, type, position, data_table = FALSE){
   
