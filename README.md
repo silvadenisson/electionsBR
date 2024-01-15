@@ -1,5 +1,4 @@
-electionsBR
-=====
+# electionsBR
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/electionsBR)](https://cran.r-project.org/package=electionsBR)
 [![R-CMD-check](https://github.com/silvadenisson/electionsBR/workflows/R-CMD-check/badge.svg)](https://github.com/silvadenisson/electionsBR/actions)
@@ -9,7 +8,7 @@ electionsBR
 
 `electionsBR` provides a comprehensive set of functions for effortlessly retrieving and cleaning Brazilian electoral data from the Brazilian Superior Electoral Court (TSE) [website](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais). The package allows you to access data on local and federal elections for various positions, including city councilors, mayors, state deputies, federal deputies, governors, and presidents. The data is aggregated by state, city, and electoral zones.
 
-### Installation
+## Installation
 
 `electionsBR` is on CRAN and can be installed with:
 
@@ -24,7 +23,7 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("silvadenisson/electionsBR")
 ```
 
-### How does it work?
+## How does it work?
 
 To download data from a specific election, simply provide the `year` and `type` arguments in the function call. For instance, to retrieve data on candidates from the 2002 election, use the following code:
 
@@ -55,7 +54,7 @@ df <- elections_tse(year = 2000, type = "vote_mun_zone", uf = "RS")
 For more information on how the package works and for a complete list of functions, see the package vignette.
 
 
-### Available data
+## Available data
 
 The `elections_tse` function allows you to download the following data (by setting the `type` argument to the corresponding value in the table below, e.g., `type = "candidate"`):
 
@@ -75,7 +74,7 @@ The `elections_tse` function allows you to download the following data (by setti
 | `social_media`            | Downloads data on the candidates' links to social media in federal elections.                        |
 
 
-### CEPESP Data Integration
+## CEPESP Data Integration
 
 The package also provides an alternative API to download data from the TSE website. Using the `elections_cepesp` function, you can retrieve data from the [CEPESP Data](http://www.cepesp.io/) project, including information on candidates, electoral results, and voters' profiles. To download data on candidates in the 2018 presidential election, simply use the following code:
 ``` {.r}
@@ -90,14 +89,18 @@ Valid `type` and `position` arguments are:
 | `candidate`, `vote`               | `President`, `Governor`, `Senator`, `Federal Deputy`, `State Deputy`                      |
 
 
-### Citation
+## Citation
 
-To cite `electionsBR` in publications, please use:
+If you have found `electionsBR` helpful for your work and would like to acknowledge it in a resulting publication, please consider citing it using:
 
 ``` {.r}
 citation("electionsBR")
 ```
 
-### Authors
+## Authors
 
 [Denisson Silva](https://denissonsilva.com/), [Fernando Meireles](https://fmeireles.com/), and Beatriz Costa.
+
+## Contributors
+
+[Willber Nascimento](https://github.com/willbernascimento), [Ian Araujo](https://github.com/ianaraujo), [Guilherme Duarte Jardim](https://github.com/duarteguilherme), [Robert Myles McDonnel](https://github.com/RobertMyles), [Lucas Gelape](https://github.com/lgelape).
