@@ -2,7 +2,7 @@
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/electionsBR)](https://cran.r-project.org/package=electionsBR)
 [![R-CMD-check](https://github.com/silvadenisson/electionsBR/workflows/R-CMD-check/badge.svg)](https://github.com/silvadenisson/electionsBR/actions)
-[![Travis-CI Build Status](https://travis-ci.org/silvadenisson/electionsBR.svg?branch=master)](https://travis-ci.org/silvadenisson/electionsBR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/silvadenisson/electionsBR?branch=master&svg=true)](https://ci.appveyor.com/project/silvadenisson/electionsBR)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/silvadenisson/electionsBR?branch=master&svg=true)](https://ci.appveyor.com/project/silvadenisson/electionsBR)
 [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/electionsBR?color=blue)](https://r-pkg.org/pkg/electionsBR)
 
 
