@@ -1,8 +1,6 @@
-#' Download data on the candidates' links social media in federal elections
+#' Download data on the candidates' social media links in federal elections
 #'
-#' \code{social_media()} downloads data on the candidates' link social média 
-#' federal elections in Brazil. The function returns a \code{data.frame} where each observation
-#' corresponds to a candidates' links.
+#' \code{social_media()} is a function that allows you to download data on the social media handles of candidates participating in federal and municipal elections in Brazil. The function returns a \code{data.frame} where each observation corresponds to a candidate's social media handles (i.e., usernames).
 #'
 #'
 #' @param year Election year (\code{integer}). For this function, only the years 2020 and 2022
@@ -12,9 +10,9 @@
 #' @param encoding Data original encoding (defaults to 'latin1'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.
 #' 
-#' @param temp (\code{logical}). temp
+#' @param temp (\code{logical}). Whether to keep the temporary data files for future use (recommended).
 #'
-#' @param readme_pdf original readme
+#' @param readme_pdf should the original README file be saved as a PDF in the working directory? Defaults to FALSE.
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.

@@ -37,11 +37,11 @@
 #' 
 #' @param export (\code{logical}). Should the downloaded data be saved as .dta and .sav files in the current directory?
 #' 
-#' @param temp (\code{logical}). If \code{TRUE}, keep the temporary compressed file for future use (recommended).
+#' @param temp (\code{logical}). If \code{TRUE}, keep the temporary files for future use (recommended).
 #' 
-#' @param data_table for data.table.
+#' @param data_table should the returned object be a data.table? Defaults to FALSE.
 #' 
-#' @param readme_pdf is the original readme.
+#' @param readme_pdf should the original README file be saved as a PDF in the working directory? Defaults to FALSE.
 #'
 #' @details If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
 #'  files in the current directory.
