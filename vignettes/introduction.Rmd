@@ -69,7 +69,7 @@ df <- elections_tse(year = 2014, type = "vote_mun_zone")
 
 ### CEPESP Data Integration
 
-The package also provides an alternative API to download data from the TSE website. Using the `elections_cepesp` function, you can retrieve data from the [CEPESP Data](https://cepespdata.io/) project, including information on candidates, electoral results, and voters' profiles. To download data on candidates in the 2018 presidential election, simply use the following code:
+The package also provides an alternative API for downloading data from the [CEPESP Data](https://cepespdata.io/) project, including information on candidates, electoral results, and voters' profiles. To download data on candidates in the 2018 presidential election, simply use the following code:
 
 ``` {r, eval=FALSE}
 df <- elections_cepesp(year = 2018, type = "candidate", position = "President")
