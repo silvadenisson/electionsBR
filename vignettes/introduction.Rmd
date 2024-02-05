@@ -17,7 +17,7 @@ In what follows, we provide a brief overview of the package's main features. For
 
 ## How to install
 
-Since version `0.1.1`, the easist way to install `electionsBR` is to use the `install.packages` function:
+Since version `0.1.1`, the easiest way to install `electionsBR` is to use the `install.packages` function:
 
 ```{r, eval=FALSE}
 install.packages("electionsBR")
@@ -90,7 +90,7 @@ To obtain a list of party abbreviations, use:
 parties_br(year)
 ```
 
-In recent years, the TSE has made available data on presidential elections in separete files (indicated by the `BR` or `_BR` suffix). To download these files, use the `br_archive` argument as follows:
+In recent years, the TSE has made available data on presidential elections in separate files (indicated by the `BR` or `_BR` suffix). To download these files, use the `br_archive` argument as follows:
 
 ```{r, eval=FALSE}
 # Download electoral results for 2014 federal elections
@@ -115,7 +115,7 @@ df <- elections_tse(2010, export = TRUE)
 
 ### Removing UTF-8 special characters from texts
 
-By default, `electionsBR`'s functions maintain data's original encoding (`Latin-1`) in special characters. To convert strings to `ASCII`, set the `ascii` argument to `TRUE`.
+By default, `electionsBR`'s functions maintain original encoding (`Latin-1`) in special characters. To convert strings to `ASCII`, set the `ascii` argument to `TRUE`.
 
 ```{r, eval=FALSE}
 df <- elections_tse(2010, ascii = TRUE)

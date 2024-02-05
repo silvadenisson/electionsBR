@@ -21,7 +21,7 @@ when \code{ascii = TRUE}.}
 \code{legend_local()} returns a \code{data.frame}.
 }
 \description{
-\code{legend_local()} downloads and aggregates the party denomonations (coalitions or parties) from the local elections in Brazil,
+\code{legend_local()} downloads and aggregates the party denominations (coalitions or parties) from the local elections in Brazil,
 disaggregated by cities. The function returns a \code{data.frame} where each observation
 corresponds to a city.
 }

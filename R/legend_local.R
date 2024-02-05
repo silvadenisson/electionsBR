@@ -1,6 +1,6 @@
 #' Download data on local election coalitions in Brazil
 #'
-#' \code{legend_local()} downloads and aggregates the party denomonations (coalitions or parties) from the local elections in Brazil,
+#' \code{legend_local()} downloads and aggregates the party denominations (coalitions or parties) from the local elections in Brazil,
 #' disaggregated by cities. The function returns a \code{data.frame} where each observation
 #' corresponds to a city.
 #'

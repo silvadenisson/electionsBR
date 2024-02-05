@@ -1,6 +1,6 @@
 #' Download data on federal election coalitions in Brazil
 #'
-#' \code{legends()} downoads and aggregates the data on the party denomination (coalitions or parties) from the federal elections in Brazil,
+#' \code{legends()} downloads and aggregates the data on the party denomination (coalitions or parties) from the federal elections in Brazil,
 #' disaggregated bi cities. The function returns a \code{data.frame} where each observation
 #' corresponds to a city.
 #'
@@ -13,7 +13,7 @@
 #' 
 #' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
 #' within a single file by setting this argument to \code{TRUE} (may not work in for some elections and, in 
-#' other, it recoverns only electoral data for presidential elections, absent in other files).
+#' other, it recovers only electoral data for presidential elections, absent in other files).
 #'
 #'
 #' @param encoding Data original encoding (defaults to 'Latin-1'). This can be changed to avoid errors

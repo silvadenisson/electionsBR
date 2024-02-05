@@ -34,7 +34,7 @@ when \code{ascii = TRUE}.}
 \code{legend_fed()} returns a \code{data.frame}.
 }
 \description{
-\code{legends()} downoads and aggregates the data on the party denomination (coalitions or parties) from the federal elections in Brazil,
+\code{legends()} downloads and aggregates the data on the party denomination (coalitions or parties) from the federal elections in Brazil,
 disaggregated bi cities. The function returns a \code{data.frame} where each observation
 corresponds to a city.
 }
