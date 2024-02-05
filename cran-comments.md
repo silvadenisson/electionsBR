@@ -1,4 +1,4 @@
-This is a new minor version thta introduces a new software API, with a single function (elections_tse), to handle downloading and processing data. This will make it easier to maintain the package in the future. We also added support to get electoral data from a different data source, cepespdata.io, a project maintained by the Center for Politics and Economics of the Public Sector (CEPESP) at the Getulio Vargas Foundation (FGV). Finally, we fixed a few bugs and improved the documentation and vignette.
+This is a new minor version that introduces a new software API, with a single function (elections_tse), for handling the downloading and processing of data. This will make it easier to maintain the package in the future. We have also added support for retrieving electoral data from a different data source, cepespdata.io, which is a project maintained by the Center for Politics and Economics of the Public Sector (CEPESP) at the Getulio Vargas Foundation (FGV). Additionally, we have fixed a few bugs, improved the documentation, and enhanced the vignette.
 
 ## Test environments
 
@@ -16,4 +16,4 @@ This is a new minor version thta introduces a new software API, with a single fu
 
 ## Reverse dependencies
 
-There are currently no reverse dependencies for this package.
+There are no reverse dependencies for this package.
