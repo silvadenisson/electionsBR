@@ -3,7 +3,7 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/electionsBR)](https://cran.r-project.org/package=electionsBR)
 [![R-CMD-check](https://github.com/silvadenisson/electionsBR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/silvadenisson/electionsBR/actions/workflows/R-CMD-check.yaml)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/silvadenisson/electionsBR?branch=master&svg=true)](https://ci.appveyor.com/project/silvadenisson/electionsBR)
-[![downloads](http://cranlogs.r-pkg.org/badges/grand-total/electionsBR?color=blue)](https://r-pkg.org/pkg/electionsBR)
+[![downloads](http://cranlogs.r-pkg.org/badges/grand-total/electionsBR?color=green)](https://r-pkg.org/pkg/electionsBR)
 
 > 6 years in and over 40,000+ downloads! 🎉
 
