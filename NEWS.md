@@ -1,11 +1,11 @@
 # electionsBR 0.4.0
 
-In this new minor release, we unified the functions to download and clean electoral data using a few, improved internal functions. In addition to that, we also added support to get data from CepespData's API (cepespdata.io), that allows users to download electoral data from 1998 to 2018. With this update, we hope the package will be more robust and easier to maintain.
+In this new minor release, we unified the functions to download and clean electoral data using a few improved internal functions. In addition to that, we also added support to get data from CepespData's API (cepespdata.io), which allows users to download electoral data from 1998 to 2018. With this update, we hope the package will be more robust and easier to maintain.
 
 ## Major changes
 
 * Implemented httr's GET to download files, avoiding TSE's server instability.
-* Wrapped all functions to download and clean electoral data in a single function, `elections_tse()`, that caslls appropriate internal functions; original functions now return deprectation warnings.
+* Wrapped all functions to download and clean electoral data in a single function, `elections_tse()`, that calls appropriate internal functions; original functions now return deprectation warnings.
 * Added support to download data from CepespData's API using the `elections_cepesp()` function.
 * Added functionality to download candidates' personal financial data and social media information using the `elections_tse()` function.
 
@@ -15,6 +15,7 @@ In this new minor release, we unified the functions to download and clean electo
 * Fixed the `br_archive` argument to handle different file naming conventions.
 * Added httr as a backend to download files and track progress.
 * Updated README and documentation.
+* Updated citation file.
 
 # electionsBR 0.3.2
 

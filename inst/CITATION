@@ -1,14 +1,13 @@
-citHeader("To cite electionsBR in publications, please use:")
-
-
-citEntry(entry = "Manual",
+bibentry(
+    bibtype = "Manual",
     title = "{electionsBR}: {R} Functions to Download and Clean {B}razilian Electoral Data",
-    author = personList(as.person("Fernando Meireles"), 
-	                      as.person("Denisson Silva"),
-                        as.person("Beatriz Costa")),
+    author = c(person(given = "Fernando", family = "Meireles"),
+               person(given = "Denisson", family = "Silva"),
+               person(given = "Beatriz", family = "Costa")),
     year = "2016",
     url = "http://electionsbr.com/",
     textVersion  = paste("Meireles, Fernando; Silva, Denisson; Costa, Beatriz. (2016).",
         "electionsBR: R functions to download and clean Brazilian electoral data.",
-        "URL: http://electionsbr.com/")
+        "URL: http://electionsbr.com/"),
+    encoding = "UTF-8"
 )
