@@ -23,7 +23,6 @@ Imports:
     readr,
     httr,
     curl
-LazyData: TRUE
 Encoding: UTF-8
 URL: http://electionsbr.com/
 BugReports: https://github.com/silvadenisson/electionsBR/issues
