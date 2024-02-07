@@ -1,0 +1,47 @@
+url: https://electionsbr.com/
+template:
+  bootstrap: 5
+
+home:
+  title: An R package for downloading Brazilian electoral data
+  description: Easily pull data from the Brazilian Superior Electoral Court (TSE) and Cepesp's electoral data repositories
+
+reference:
+- title: "General functions"
+  desc: >
+    These are the main workhorse functions for retrieving data from the TSE and Cepesp data repositories.
+  contents: 
+  - elections_tse
+  - elections_cepesp
+  - elections_rda
+- title: "Electoral results"
+  desc: "Functions to retrieve electoral results from the TSE data repository."
+  contents:
+  - details_mun_zone
+  - party_mun_zone
+  - seats
+  - vote_mun_zone
+  - vote_section
+- title: "Candidates, parties, and voters"
+  desc: "Functions to retrieve candidate data from the TSE data repository."
+  contents:
+  - candidate
+  - legends
+  - personal_finances
+  - social_media
+  - vote_section
+  - voter_profile
+  - voter_profile_by_section
+- title: "Convenience functions"
+  desc: "Utility functions for common data tasks."
+  contents:
+  - uf_br
+  - parties_br
+  - electionsBR
+- title: "Deprecated functions"
+  desc: >
+   Functions used to retrieve electoral data from the TSE repositories. These functions are deprecated and will be removed in future versions of the package.
+  contents:
+  - ends_with("_fed")
+  - ends_with("_local")
+
