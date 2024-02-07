@@ -9,10 +9,13 @@ This is a new minor version that introduces a new software API, with a single fu
 * Windows (release), using GitHub Actions
 * Windows Server 2012 R2 x64 (4.3.2 Patched), using Appveyor
 * Win-builder (release and devel)
+* R-hub (Windows Server, Ubuntu, Fedora)
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
+
+* There is only one note on R-hub: `Found the following files/directories: NULL`, which we ignored following <https://github.com/r-hub/rhub/issues/560>.
 
 ## Reverse dependencies
 
