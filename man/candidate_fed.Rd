@@ -13,14 +13,14 @@ candidate_fed(
 )
 }
 \arguments{
-\item{year}{Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, 2012, 2016, and 2020
+\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012, 2016, and 2020
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
 
 \item{br_archive}{In the TSE's data repository, some results can be obtained for the whole country by loading a single
 within a single file by setting this argument to \code{TRUE} (may not work in for some elections and, in 
-other, it recoverns only electoral data for presidential elections, absent in other files).}
+other, it recovers only electoral data for presidential elections, absent in other files).}
 
 \item{encoding}{Data original encoding (defaults to 'latin1'). This can be changed to avoid errors
 when \code{ascii = TRUE}.}

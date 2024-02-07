@@ -7,7 +7,7 @@
 seats_local(year, uf = "all", encoding = "latin1", temp = TRUE)
 }
 \arguments{
-\item{year}{Election year. For this function, onlye the years of 1996, 2000, 2004, 2008, 2012, 2016 and 2020
+\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012, 2016 and 2020
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}

@@ -56,7 +56,7 @@ when \code{ascii = TRUE}.}
   \item SIGLA_PARTIDO: Party's acronym.
   \item NOME_PARTIDO: Party name.
   \item SEQUENCIAL_LEGENDA: Coalition's sequential number, generated internally by the electoral justice.
-  \item NOME_COLIGACAO: COalition name.
+  \item NOME_COLIGACAO: Coalition name.
   \item COMPOSICAO_LEGENDA: Coalition's composition.
   \item TOTAL_VOTOS: Total of votes.
   \item TRANSITO: Electoral result outside the candidates' district? (N for no).
