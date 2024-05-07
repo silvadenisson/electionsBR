@@ -127,13 +127,6 @@ parties_br <- function(year) {
 #' @import dplyr
 juntaDados <- function(uf, encoding, br_archive){
 
-  if(length(Sys.glob("*")) < 3){
-    archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
-      file.info() %>%
-      .[.$size > 200, ] %>%
-      row.names()
-  } else {
-    
    archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
       .[grepl(uf, .)] %>%
       file.info() %>%
@@ -149,7 +142,7 @@ juntaDados <- function(uf, encoding, br_archive){
      archive <- archive[grepl("BR\\.|BRASIL", archive) == TRUE]
    }
 
-  }
+ 
    
    if(grepl(".csv", archive[1])){
      test_col_names <- TRUE

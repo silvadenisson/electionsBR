@@ -32,6 +32,7 @@ social_media <- function(year,
                          temp = TRUE,
                          readme_pdf = FALSE){
   # Input tests
+  uf <- test_uf("all")
   test_encoding(encoding)
   test_year(year)
   
@@ -53,7 +54,7 @@ social_media <- function(year,
   setwd(as.character(year))
   #provisorio
   
-  banco <- juntaDados(uf = "all", encoding, br_archive = FALSE)
+  banco <- juntaDados(uf, encoding, br_archive = FALSE)
   setwd("..")
   if(readme_pdf){
     file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_social_media_", year,".pdf"))
