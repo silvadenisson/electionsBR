@@ -175,21 +175,21 @@ to_ascii <- function(banco, encoding){
 # Tests election year inputs
 test_year <- function(year){
 
-  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2022, 2)) stop("Invalid input. Please, check the documentation and try again.")
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2024, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
 # Tests federal election year inputs
 test_fed_year <- function(year){
   
-  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2018, 4)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2022, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
-# Tests federal election year inputs
+# Tests local election year inputs
 test_local_year <- function(year){
   
-  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(2000, 2016, 4)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(2000, 2024, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
