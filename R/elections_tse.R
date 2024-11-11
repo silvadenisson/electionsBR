@@ -1,10 +1,10 @@
 #' Function for downloading electoral data from the TSE repository
 #'
-#' The \code{elections_tse()} function is a wrapper that allows users to download and clean electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2022. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
+#' The \code{elections_tse()} function is a wrapper that allows users to download and clean electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2024. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
 #'
 #' @note For elections prior to 2002, some information may be incomplete. For the 2014 and 2018 elections, additional columns are available. It is also important to note that in recent years, the TSE has changed the format of some data files, using CSV format with a header.
 #'
-#' @param year Election year. Valid options are 1998, 2002, 2006, 2010, 2014, 2018, and 2022 for federal elections; and 1996, 2000, 2004, 2008, 2012, 2016, and 2020 for municipal elections.
+#' @param year Election year. Valid options are 1998, 2002, 2006, 2010, 2014, 2018, and 2022 for federal elections; and 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024 for municipal elections.
 #' 
 #' @return The \code{elections_tse()} function returns a \code{data.frame} with the requested electoral data.
 #' 

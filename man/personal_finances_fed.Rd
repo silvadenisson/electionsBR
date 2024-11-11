@@ -13,7 +13,7 @@ personal_finances_fed(
 )
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 2006, 2010, 2014 and 2018 are available.}
+\item{year}{Election year. For this function, only the years 2006, 2010, 2014, 2018, and 2022 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
 

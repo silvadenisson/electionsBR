@@ -4,9 +4,9 @@
 #' disaggregated by town and electoral zone. The function returns a \code{data.frame} where each observation
 #' corresponds to a town/zone.
 #'
-#' @note For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variables are available.
+#' @note For the elections prior to 2002, some information can be incomplete. For the 2014, 2018, and 2022 elections, more variables are available.
 #'
-#' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014 and 2018
+#' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014, 2018, and 2022
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -41,7 +41,7 @@ details_mun_zone_fed <- function(year,
                                  temp = TRUE){
 
 
-  .Deprecated("elections_tse", msg = "details_mun_zone_fed is deprecated. Please use the elections_tse function")
+  .Deprecated("elections_tse", msg = "details_mun_zone_fed is deprecated and will no longer be supported in electionsBR 1.0.0. Please use the elections_tse function")
   
   answer <- details_mun_zone(year,
                               uf, 

@@ -7,7 +7,7 @@
 social_media(year, encoding = "latin1", temp = TRUE, readme_pdf = FALSE)
 }
 \arguments{
-\item{year}{Election year (\code{integer}). For this function, only the years 2020 and 2022
+\item{year}{Election year (\code{integer}). For this function, only the years 2020, 2022, and 2024
 are available.}
 
 \item{encoding}{Data original encoding (defaults to 'latin1'). This can be changed to avoid errors

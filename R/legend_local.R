@@ -5,7 +5,7 @@
 #' corresponds to a city.
 #'
 #'
-#' @param year Election year. For this function, only the years  2008, 2012 and 2016
+#' @param year Election year. For this function, only the years  2008, 2012, 2016, 2020, and 2024
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -36,7 +36,7 @@ legend_local <- function(year,
                          temp = TRUE){
 
 
-  .Deprecated("elections_tse", msg = "legend_local is deprecated. Please use the elections_tse function")
+  .Deprecated("elections_tse", msg = "legend_local is deprecated and will no longer be supported in electionsBR 1.0.0. Please use the elections_tse function")
   
   answer <- legends(year, 
                       uf,

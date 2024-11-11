@@ -39,7 +39,7 @@ details_mun_zone_local <- function(year,
 
 
  
-  .Deprecated("elections_tse", msg = "details_mun_zone_local is deprecated. Please use the elections_tse function")
+  .Deprecated("elections_tse", msg = "details_mun_zone_local is deprecated and will no longer be supported in electionsBR 1.0.0. Please use the elections_tse function")
   
   answer <- details_mun_zone(year,
                              uf, 

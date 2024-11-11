@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2000, some information can be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012, 2016 and 2020
+#' @param year Election year. For this function, only the years 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -71,7 +71,7 @@ vote_mun_zone_local <- function(year, uf = "all",
                                 export = FALSE, temp = TRUE){
 
 
-  .Deprecated("elections_tse", msg = "vote_mun_zone_local is deprecated. Please use the elections_tse function")
+  .Deprecated("elections_tse", msg = "vote_mun_zone_local is deprecated and will no longer be supported in electionsBR 1.0.0. Please use the elections_tse function")
   
   answer <- vote_mun_zone(year, uf, 
                           ascii, encoding, 

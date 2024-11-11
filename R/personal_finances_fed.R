@@ -4,7 +4,7 @@
 #'
 #' @note For the elections prior to 2000, some information may be incomplete.
 #'
-#' @param year Election year. For this function, only the years 2006, 2010, 2014 and 2018 are available.
+#' @param year Election year. For this function, only the years 2006, 2010, 2014, 2018, and 2022 are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
 #' 
@@ -37,7 +37,7 @@ personal_finances_fed <- function(year, uf = "all",
                                   encoding = "latin1", 
                                   temp = TRUE){
   
-  .Deprecated("elections_tse", msg = "personal_finances_fed is deprecated. Please use the elections_tse function")
+  .Deprecated("elections_tse", msg = "personal_finances_fed is deprecated and will no longer be supported in electionsBR 1.0.0. Please use the elections_tse function")
   
   answer <- personal_finances(year, 
                            uf,

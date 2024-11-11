@@ -13,8 +13,7 @@ voter_profile_by_section(
 )
 }
 \arguments{
-\item{year}{Election year (\code{integer}). For this function, the following years are available:  1998,
-2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018 and 2020.}
+\item{year}{Election year (\code{integer}). For this function, the following years are available:  2008, 2010, 2012, 2014, 2016, 2018 and 2020.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).}
 

@@ -3,8 +3,7 @@
 #' \code{voter_profile_by_section()} downloads and cleans data on the voters' profile aggregated by voting section (i.e., voting stations).
 #' The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
 #'
-#' @param year Election year (\code{integer}). For this function, the following years are available:  1998,
-#' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018 and 2020.
+#' @param year Election year (\code{integer}). For this function, the following years are available:  2008, 2010, 2012, 2014, 2016, 2018 and 2020.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).
 #'
@@ -36,7 +35,7 @@ voter_profile_by_section <- function(year,
   
   
   # Inputs
-  if(year < 2008) stop("Not disponible. Please, only from 2008.\n")
+  if(year < 2008) stop("Not available Please, only from 2008.\n")
   test_encoding(encoding)
   if(tolower(uf) == "all") stop("'uf' is invalid. 'all' not allowed in this function, choose one or more UF")
   uf <- test_uf(uf)

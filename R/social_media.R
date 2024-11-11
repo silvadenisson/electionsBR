@@ -3,7 +3,7 @@
 #' \code{social_media()} is a function that allows you to download data on the social media handles of candidates participating in federal and municipal elections in Brazil. The function returns a \code{data.frame} where each observation corresponds to a candidate's social media handles (i.e., usernames).
 #'
 #'
-#' @param year Election year (\code{integer}). For this function, only the years 2020 and 2022
+#' @param year Election year (\code{integer}). For this function, only the years 2020, 2022, and 2024
 #' are available.
 #' 
 #'

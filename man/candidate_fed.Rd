@@ -2,7 +2,7 @@
 % Please edit documentation in R/candidate_fed.R
 \name{candidate_fed}
 \alias{candidate_fed}
-\title{Download data on the candidates' background in local elections}
+\title{Download data on the candidates' background in federal elections}
 \usage{
 candidate_fed(
   year,
@@ -13,7 +13,7 @@ candidate_fed(
 )
 }
 \arguments{
-\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012, 2016, and 2020
+\item{year}{Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014, 2018, and 2022
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
@@ -31,8 +31,8 @@ when \code{ascii = TRUE}.}
 \code{candidate_local()} returns a \code{data.frame}
 }
 \description{
-\code{candidate_fed()} downloads and aggregates the data on the candidates' background who vied
-local elections in Brazil. The function returns a \code{data.frame} where each observation
+\code{candidate_fed()} downloads and aggregates the data on the candidates' background who competed in the
+federal elections in Brazil. The function returns a \code{data.frame} where each observation
 corresponds to a candidate.
 }
 \details{
@@ -40,7 +40,7 @@ If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
-For the elections prior to 2000, some information can be incomplete.
+For the elections prior to 2002, some information can be incomplete. For the 2014, 2018, and 2022 elections, more variables are available.
 }
 \examples{
 \dontrun{

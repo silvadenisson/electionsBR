@@ -5,7 +5,7 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/silvadenisson/electionsBR?branch=master&svg=true)](https://ci.appveyor.com/project/silvadenisson/electionsBR)
 [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/electionsBR?color=green)](https://r-pkg.org/pkg/electionsBR)
 
-> 6 years in and over 40,000+ downloads! 🎉
+> 6 years in and over 44,000+ downloads!
 
 `electionsBR` provides a comprehensive set of functions for effortlessly retrieving and cleaning Brazilian electoral data from the Brazilian Superior Electoral Court (TSE) [website](https://dadosabertos.tse.jus.br/). The package allows you to access several datasets on local and federal elections for various positions, including city councilors, mayors, state deputies, federal deputies, governors, and presidents, as well as data on voters' profiles, candidates' social media, and personal financial disclosures. The package also provides an alternative API to download data from the [CEPESP Data](https://cepespdata.io/) project. 
 

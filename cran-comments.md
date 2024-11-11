@@ -1,8 +1,8 @@
-This is a new minor version that introduces a new software API, with a single function (elections_tse), for handling the downloading and processing of data. This will make it easier to maintain the package in the future. We have also added support for retrieving electoral data from a different data source, cepespdata.io, which is a project maintained by the Center for Politics and Economics of the Public Sector (CEPESP) at the Getulio Vargas Foundation (FGV). Additionally, we have fixed a few bugs, improved the documentation, and enhanced the vignette.
+This a minor update to the package. It updates code and documentation to add 2024 as a valid year for the functions.
 
 ## Test environments
 
-* Fedora 38 (R 4.3.2), personal computer
+* Fedora 40 (R 4.4.1), personal computer
 * macOS 13.6.3 (R 4.3.2), personal computer
 * Ubuntu 20.04 (release and devel), using GitHub Actions
 * macOS-latest (release), using GitHub Actions
@@ -14,8 +14,6 @@ This is a new minor version that introduces a new software API, with a single fu
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
-
-* There is only one note on R-hub: `Found the following files/directories: NULL`, which we ignored following <https://github.com/r-hub/rhub/issues/560>.
 
 ## Reverse dependencies
 

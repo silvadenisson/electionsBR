@@ -1,12 +1,12 @@
-#' Download data on the candidates' background in local elections
+#' Download data on the candidates' background in federal elections
 #'
-#' \code{candidate_fed()} downloads and aggregates the data on the candidates' background who vied
-#' local elections in Brazil. The function returns a \code{data.frame} where each observation
+#' \code{candidate_fed()} downloads and aggregates the data on the candidates' background who competed in the
+#' federal elections in Brazil. The function returns a \code{data.frame} where each observation
 #' corresponds to a candidate.
 #'
-#' @note For the elections prior to 2000, some information can be incomplete.
+#' @note For the elections prior to 2002, some information can be incomplete. For the 2014, 2018, and 2022 elections, more variables are available.
 #'
-#' @param year Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012, 2016, and 2020
+#' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014, 2018, and 2022
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -39,7 +39,7 @@ candidate_fed <- function(year,
                           encoding = "latin1", 
                           temp = TRUE){
   
-  .Deprecated("elections_tse", msg = "candidate_fed is deprecated. Please use the elections_tse function")
+  .Deprecated("elections_tse", msg = "candidate_fed is deprecated and will no longer be supported in electionsBR 1.0.0. Please use the elections_tse function")
   
   answer <- candidate(year, 
                       uf,

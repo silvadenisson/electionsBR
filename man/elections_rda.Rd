@@ -7,8 +7,8 @@
 elections_rda(year, level = "fed", archive = "candidate")
 }
 \arguments{
-\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012 and 2016
-are available for local level. 1994, 1998, 2002, 2006, 2010, 2014, 2018 are available for the federal level.}
+\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024
+are available for local level. 1994, 1998, 2002, 2006, 2010, 2014, 2018, and 2022 are available for the federal level.}
 
 \item{level}{Election level podem ser fed (default) or local.}
 

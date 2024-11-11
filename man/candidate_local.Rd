@@ -7,7 +7,7 @@
 candidate_local(year, uf = "all", encoding = "latin1", temp = TRUE)
 }
 \arguments{
-\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012, 2016, and 2020
+\item{year}{Election year. For this function, only the years of 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
@@ -21,7 +21,7 @@ when \code{ascii = TRUE}.}
 \code{candidate_local()} returns a \code{data.frame} with the following variables:
 }
 \description{
-\code{candidate_local()} downloads and aggregates the data on the candidates' background who vied
+\code{candidate_local()} downloads and aggregates the data on the candidates' background who competed in the
 local elections in Brazil. The function returns a \code{data.frame} where each observation
 corresponds to a candidate.
 }

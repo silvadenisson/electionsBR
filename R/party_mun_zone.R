@@ -4,9 +4,9 @@
 #' disaggregated by cities and electoral zones. The function returns a \code{data.frame} where each observation
 #' corresponds to a city/zone.
 #'
-#' @note For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variable are available.
+#' @note For the elections prior to 2002, some information can be incomplete. For the 2014, 2018, and 2022 elections, more variable are available.
 #'
-#' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014 and 2018
+#' @param year Election year. For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014, 2018, and 2022
 #' are available.
 #' 
 #' @param uf Filter results by Federation Unit acronym (\code{character vector}).

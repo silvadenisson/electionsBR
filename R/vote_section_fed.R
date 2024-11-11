@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2002, some information can be incomplete.
 #'
-#' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
+#' @param year Election year. For this function, only the years 1998, 2002, 2006, 2010, 2014, 2018, and 2022
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).
@@ -36,7 +36,7 @@ vote_section_fed <- function(year,
                              temp = TRUE){
   
   
-  .Deprecated("elections_tse", msg = "vote_section_fed is deprecated. Please use the elections_tse function")
+  .Deprecated("elections_tse", msg = "vote_section_fed is deprecated and will no longer be supported in electionsBR 1.0.0. Please use the elections_tse function")
   
   answer <- vote_section(year, 
                               uf,

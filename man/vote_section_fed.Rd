@@ -7,7 +7,7 @@
 vote_section_fed(year, uf = "AC", encoding = "latin1", temp = TRUE)
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, and 2014
+\item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, 2014, 2018, and 2022
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).}

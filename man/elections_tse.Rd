@@ -18,7 +18,7 @@ elections_tse(
 )
 }
 \arguments{
-\item{year}{Election year. Valid options are 1998, 2002, 2006, 2010, 2014, 2018, and 2022 for federal elections; and 1996, 2000, 2004, 2008, 2012, 2016, and 2020 for municipal elections.}
+\item{year}{Election year. Valid options are 1998, 2002, 2006, 2010, 2014, 2018, and 2022 for federal elections; and 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024 for municipal elections.}
 
 \item{type}{Requested data type. Valid options are:
 
@@ -61,7 +61,7 @@ The \code{elections_tse()} function returns a \code{data.frame} with the request
 \code{elections_tse()} returns a \code{data.frame} with the following variables:
 }
 \description{
-The \code{elections_tse()} function is a wrapper that allows users to download and clean electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2022. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
+The \code{elections_tse()} function is a wrapper that allows users to download and clean electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2024. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
 }
 \details{
 If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav

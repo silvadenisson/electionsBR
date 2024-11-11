@@ -116,8 +116,23 @@ parties_br <- function(year) {
                 "PSL", "CIDADANIA", "PSC", "PTB", "PC do B", "REPUBLICANOS", "DEM",
                 "PSOL", "PATRIOTA", "PCO", "AVANTE", "PODE", "DC", "PMB", "PV",
                 "PMN", "PCB", "PRTB", "REDE", "PTC", "UP", "PSTU", "NOVO")
+ 
+  } else if (year == 2022) {
 
+    result <- c("PSB", "PC do B", "SOLIDARIEDADE", "PT", "PSOL", "PODE", "DC", 
+                "PATRIOTA", "CIDADANIA", "PL", "PDT", "AGIR", "PMN", "PROS", 
+                "MDB", "PSDB", "PSD", "REPUBLICANOS", "UNIAO", "PP", "PV", "REDE", 
+                "PSC", "PTB", "PCO", "AVANTE", "PRTB", "PMB", "UP", "PSTU", "NOVO", 
+                "PCB")
+
+  } else if (year == 2024) {
+
+    result <- c("UNIAO", "PSDB", "SOLIDARIEDADE", "MDB", "REPUBLICANOS", "PL", 
+                "PP", "PDT", "PODE", "CIDADANIA", "PT", "PSD", "PSOL", "PC do B", 
+                "PRD", "DC", "PV", "REDE", "PSB", "AGIR", "NOVO", "AVANTE", "PMB", 
+                "PCO", "UP", "MOBILIZA", "PRTB", "PSTU", "PCB")
   }
+
 
   return(result)
 }
