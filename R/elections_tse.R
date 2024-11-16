@@ -13,6 +13,7 @@
 #' The \code{elections_tse()} function supports the following types of data downloads:
 #' 
 #' * \code{candidate}: Downloads data on the candidates. Each observation corresponds to a candidate.
+#' * \code{candidate_add_infor}: Downloads data on the candidates - Addtional information. Each observation corresponds to a candidate, available for 2024.
 #' * \code{vote_mun_zone}: Downloads data on the verification, disaggregated by cities and electoral zones. Each observation corresponds to a city/zone.
 #' * \code{details_mun_zone}: Downloads data on the details, disaggregated by town and electoral zone. Each observation corresponds to a town/zone.
 #' * \code{legends}: Downloads data on the party denomination (coalitions or parties), disaggregated by cities. Each observation corresponds to a city.

@@ -1,12 +1,12 @@
-#' Download data on the candidates' backgrounds in elections
+#' Downloads data on the candidates - Addtional information
 #'
-#' \code{candidate()} downloads and aggregates data on the candidates' background who ran in
+#' \code{candidate_add_infor()} downloads and aggregates data on the candidates' background who ran in
 #' elections in Brazil. The function returns a \code{data.frame} where each observation
 #' corresponds to a candidate.
 #'
-#' @note For the elections prior to 2002, some information can be incomplete. For the 2014 and 2018 elections, more variables are available.
+#' @note For the elections prior to 2024.
 #'
-#' @param year Election year (\code{integer}). For this function, only the years 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022, 2024
+#' @param year Election year (\code{integer}). For this function, only the years 2024
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}).
@@ -28,7 +28,7 @@
 #'  files in the current directory.
 #'  
 #'
-#' @return \code{candidate} returns a \code{tbl, data.frame} with the following variables:
+#' @return \code{candidate_add_infor} returns a \code{tbl, data.frame} with the following variables:
 #'
 #' 
 #' @import utils
@@ -36,28 +36,28 @@
 #' 
 #' @examples
 #' \dontrun{
-#' df <- candidate(2002)
+#' df <- candidate_add_infor(2024)
 #' }
 
-candidate <- function(year, 
+candidate_add_infor <- function(year, 
                       uf = "all", 
                       br_archive = FALSE,
                       encoding = "latin1", 
                       temp = TRUE,
                       readme_pdf = FALSE
-                      ){
-
+){
+  
   # Test the input
   test_encoding(encoding)
-  test_year(year)
+  test_year_cand_add_infor(year)
   uf <- test_uf(uf)
   test_br(br_archive)
-
-
-  filenames  <- paste0("/consulta_cand_", year, ".zip")
-  dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand%s"
   
+  
+  filenames  <- paste0("/consulta_cand_complementar_", year, ".zip")
+  dados <- paste0(file.path(tempdir()), filenames)
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar%s"
+
   # Downloads the data
   download_unzip(url, dados, filenames, year)
   
@@ -65,7 +65,7 @@ candidate <- function(year,
   if(temp == FALSE){
     unlink(dados)
   }
-
+  
   # data row bind
   setwd(as.character(year))
   banco <- juntaDados(uf, encoding, br_archive)
@@ -74,7 +74,7 @@ candidate <- function(year,
     file.rename(paste0(year ,"/leiame.pdf"), paste0("readme_candidate_", year,".pdf"))
   }
   unlink(as.character(year), recursive = T)
-
+  
   message("Done.\n")
   return(banco)
 }

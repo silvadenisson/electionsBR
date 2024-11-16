@@ -3,7 +3,7 @@
 #' \code{voter_profile_by_section()} downloads and cleans data on the voters' profile aggregated by voting section (i.e., voting stations).
 #' The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
 #'
-#' @param year Election year (\code{integer}). For this function, the following years are available:  2008, 2010, 2012, 2014, 2016, 2018 and 2020.
+#' @param year Election year (\code{integer}). For this function, the following years are available:  2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022 and 2024.
 #' 
 #' @param uf Federation Unit acronym (\code{character vector}). Defaults to \code{'AC'} (Acre).
 #'

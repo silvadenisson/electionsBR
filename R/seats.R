@@ -6,7 +6,7 @@
 #'
 #' @note For the elections prior to 2000, some information can be incomplete.
 #'
-#' @param year Election year. For this function, only the years of 1998, 2002, 2006, 2010, 2014, 2018, and 2022
+#' @param year Election year. For this function, only the years of 1998, 2002, 2006, 2010, 2014, 2018, 2022 and 2024
 #' are available.
 #' 
 #' @param uf Federation Unit acronym (\code{character} vector).

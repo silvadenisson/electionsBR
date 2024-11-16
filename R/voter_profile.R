@@ -4,7 +4,7 @@
 #' The function returns a \code{data.frame} where each observation corresponds to a voter profile type.
 #'
 #' @param year Election year (\code{integer}). For this function, the following years are available: 1998,
-#' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020 and 2022.
+#' 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, and 2024.
 #' 
 #' @param encoding Data original encoding (defaults to 'windows-1252'). This can be changed to avoid errors
 #' when \code{ascii = TRUE}.

@@ -14,7 +14,7 @@ vote_mun_zone(
 )
 }
 \arguments{
-\item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, 2014, 2018, and 2022
+\item{year}{Election year. For this function, only the years 1998, 2002, 2006, 2010, 2014, 2018, 2022 and 2024
 are available.}
 
 \item{uf}{Federation Unit acronym (\code{character vector}).}
@@ -43,7 +43,7 @@ If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
  files in the current directory.
 }
 \note{
-For the elections prior to 2002, some information can be incomplete. For the 2014, 2018, and 2022 elections, more variable are available.
+For the elections prior to 2002, some information can be incomplete. For the 2014, 2018, 2022, and 2024 elections, more variable are available.
 }
 \examples{
 \dontrun{

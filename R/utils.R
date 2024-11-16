@@ -193,6 +193,12 @@ test_year <- function(year){
   if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2024, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
+# Tests election year inputs
+test_year_cand_add_infor <- function(year){
+  
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(2024, 2024, 2)) stop("Invalid input. Please, check the documentation and try again.")
+}
+
 
 # Tests federal election year inputs
 test_fed_year <- function(year){
@@ -211,6 +217,7 @@ test_local_year <- function(year){
 test_type <- function(type){
   
   if(!is.character(type) | length(type) != 1 | !type %in% c("candidate",
+                                                            "candidate_add_infor",
                                                             "vote_mun_zone",
                                                             "details_mun_zone",
                                                             "legends",
