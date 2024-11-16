@@ -79,6 +79,15 @@ elections_tse <- function(year, type,
                          temp,
                          readme_pdf)
       
+    } else if(type == "candidate_add_infor"){
+      
+      banco <- candidate_add_infor(year, 
+                             uf, 
+                             br_archive,
+                             encoding, 
+                             temp,
+                             readme_pdf)
+      
     } else if(type == "vote_mun_zone"){
       
       banco <- vote_mun_zone(year, 
