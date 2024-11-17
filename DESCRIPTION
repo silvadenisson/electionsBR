@@ -8,7 +8,7 @@ Authors@R: c(
     person("Beatriz", "Costa", ,"bea.s.costa@gmail.com", "ctb")
     )
 Description: Offers a set of functions to easily download and clean 
-    Brazilian electoral data from the Superior Electoral Court and CepespData websites. 
+    Brazilian electoral data from the Superior Electoral Court and 'CepespData' websites. 
     Among other features, the package retrieves data on local and
     federal elections for all positions (city councilor, mayor, state deputy,
     federal deputy, governor, and president) aggregated by
