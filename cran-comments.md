@@ -3,7 +3,7 @@ This a minor update to the package. It updates code and documentation to add 202
 ## Test environments
 
 * Fedora 40 (R 4.4.1), personal computer
-* macOS X.X (R X.X.X), personal computer
+* macOS 13.7 (R 4.4.1), personal computer
 * Ubuntu 22.04.5 (release and devel), using GitHub Actions
 * macOS-latest (release), using GitHub Actions
 * Windows (release), using GitHub Actions
