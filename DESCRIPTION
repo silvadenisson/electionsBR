@@ -24,7 +24,7 @@ Imports:
     httr,
     curl
 Encoding: UTF-8
-URL: http://electionsbr.com/
+URL: http://electionsbr.com/novo
 BugReports: https://github.com/silvadenisson/electionsBR/issues
 RoxygenNote: 7.3.2
 Suggests: knitr,

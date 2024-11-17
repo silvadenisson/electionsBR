@@ -5,9 +5,9 @@ bibentry(
                person(given = "Denisson", family = "Silva"),
                person(given = "Beatriz", family = "Costa")),
     year = "2016",
-    url = "http://electionsbr.com/",
+    url = "http://electionsbr.com/novo",
     textVersion  = paste("Meireles, Fernando; Silva, Denisson; Costa, Beatriz. (2016).",
         "electionsBR: R functions to download and clean Brazilian electoral data.",
-        "URL: http://electionsbr.com/"),
+        "URL: http://electionsbr.com/novo"),
     encoding = "UTF-8"
 )
