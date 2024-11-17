@@ -150,7 +150,6 @@ Notice that the input must be a `character` vector -- with case insensitive stat
 ## How Elections in Brazil Work
 
 
-All the data retrieved by `electionsBR` is made available online by the [Brazilian Superior Electoral Court (TSE)](https://international.tse.jus.br/en). As stated on the [English version of the TSE website](https://international.tse.jus.br/en), elections in Brazil are organized in the following way:
 
 - Federal elections and state elections are conducted simultaneously, including the election of the president and vice president, senators and alternates, governors and vice governors, federal deputies, and state deputies. Two years later, municipal elections are held for mayors, vice mayors, and city councils. It is important to note that the distinction is based on the federal level, not on the branches of government. The executive and legislative representatives are elected at the same time.
 
