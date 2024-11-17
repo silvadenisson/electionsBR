@@ -9,7 +9,7 @@ vignette: >
     %\VignetteEncoding{UTF-8}
 ---
 
-Thanks to the [Superior Electoral Court (TSE)](https://dadosabertos.tse.jus.br/), any person with an internet connection can access a wide range of Brazil's electoral data. However, the TSE website used to lack a user-friendly interface, and the data was not available in a tidy format until very recently, which made it difficult to use these data in `R` for research purposes. In a nutshell, this was our main motivation to develop the `electionsBR`, an `R` package specifically designed to retrieve and clean Brazilian electoral data directly from the TSE website, making it easy and fast to obtain electoral data in a tidy format.
+Thanks to the Superior Electoral Court (TSE), any person with an internet connection can access a wide range of Brazil's electoral data. However, the TSE website used to lack a user-friendly interface, and the data was not available in a tidy format until very recently, which made it difficult to use these data in `R` for research purposes. In a nutshell, this was our main motivation to develop the `electionsBR`, an `R` package specifically designed to retrieve and clean Brazilian electoral data directly from the TSE website, making it easy and fast to obtain electoral data in a tidy format.
 
 At its core, `electionsBR` provides a comprehensive set of functions that download and clean various types of information using modern backends available in `R` to handle data retrieving, importing, and transforming. With this, users can access data that includes candidates' personal and professional backgrounds, parties' electoral performances, electoral coalitions, available seats under dispute, and voters' profiles.
 
@@ -161,7 +161,7 @@ Notice that the input must be a `character` vector -- with case insensitive stat
 ### Official documentation
 
 
-The internal documentation of the `electionsBR` package is based entirely on the official documentation provided by the TSE in the [Repositório de Dados Eleitorais](https://dadosabertos.tse.jus.br/). To access the documentation for each type of electoral data, set the `readme_pdf` argument in the `elections_tse` to `TRUE` and the package will save the relevant documentation in PDF format.
+The internal documentation of the `electionsBR` package is based entirely on the official documentation provided by the TSE in the Repositório de Dados Eleitorais. To access the documentation for each type of electoral data, set the `readme_pdf` argument in the `elections_tse` to `TRUE` and the package will save the relevant documentation in PDF format.
 
 
 ## Disclaimer
