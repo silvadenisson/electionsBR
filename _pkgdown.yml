@@ -26,6 +26,7 @@ reference:
   desc: "Functions to retrieve candidate data from the TSE data repository."
   contents:
   - candidate
+  - candidate_add_infor
   - legends
   - personal_finances
   - social_media
