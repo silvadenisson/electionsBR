@@ -37,7 +37,7 @@ The \code{elections_tse()} function supports the following types of data downloa
 * \code{voter_profile}: Downloads data on the voters' profile.
 * \code{social_media}: Downloads data on the candidates' links to social media in federal elections.}
 
-\item{uf}{Federation Unit acronym (\code{character}).}
+\item{uf}{Federation Unit acronym (\code{character}). In federal elections to obtain information about the president's position, insert the character "BR" in the parameter}
 
 \item{br_archive}{In the TSE's data repository, some results can be obtained for the whole country by loading a single
 file by setting this argument to \code{TRUE} (may not work for some elections and, in 
