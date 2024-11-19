@@ -141,6 +141,12 @@ parties_br <- function(year) {
 # Reads and rbinds multiple data.frames in the same directory
 #' @import dplyr
 juntaDados <- function(uf, encoding, br_archive){
+  
+  if(uf == "ALL"){
+    uf <- uf[uf != "BR"]
+  } else if(uf == "BR"){
+    br_archive <- TRUE
+  }
 
    archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
       .[grepl(uf, .)] %>%
@@ -255,7 +261,7 @@ test_uf <- function(uf) {
   
   uf <- match.arg(uf, c("AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", 
                         "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", 
-                        "RO", "RR", "RS", "SC", "SE", "SP", "TO", "ALL"), several.ok = T)
+                        "RO", "RR", "RS", "SC", "SE", "SP", "TO", 'BR', "ALL"), several.ok = T)
   
   if("ALL" %in% uf) return(".")
   else return(paste(uf, collapse = "|"))
