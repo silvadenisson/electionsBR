@@ -1,3 +1,7 @@
+# electionsBR 0.5.1
+
+Inclusion of the BR option in the uf parameter so that it is possible to access the president's information in the case of federal elections.
+
 # electionsBR 0.5.0
 
 In this new minor release, and inclusion of an additional function for candidate data, for the TSE created a new file referring to applications with additional information. In addition to allows users to download electoral data from 1998 to 2024. 

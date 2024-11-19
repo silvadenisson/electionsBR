@@ -25,7 +25,7 @@
 #' * \code{voter_profile}: Downloads data on the voters' profile.
 #' * \code{social_media}: Downloads data on the candidates' links to social media in federal elections.
 #' 
-#' @param uf Federation Unit acronym (\code{character}).
+#' @param uf Federation Unit acronym (\code{character}). In federal elections to obtain information about the president's position, insert the character "BR" in the parameter 
 #' 
 #' @param br_archive In the TSE's data repository, some results can be obtained for the whole country by loading a single
 #' file by setting this argument to \code{TRUE} (may not work for some elections and, in 
