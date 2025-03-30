@@ -1,7 +1,7 @@
 Package: electionsBR
 Type: Package
 Title: R Functions to Download and Clean Brazilian Electoral Data
-Version: 0.5.0
+Version: 0.5.1
 Authors@R: c(
     person("Denisson", "Silva", , "denissoncsol@gmail.com", c("aut", "cre")),
     person("Fernando", "Meireles", , "fmeireles@ufmg.br", "aut"),
@@ -22,11 +22,15 @@ Imports:
     haven (>= 1.0.0),
     readr,
     httr,
-    curl
+    curl,
+    osfr
 Encoding: UTF-8
 URL: https://electionsbr.com/novo/
 BugReports: https://github.com/silvadenisson/electionsBR/issues
 RoxygenNote: 7.3.2
-Suggests: knitr,
-    rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3
