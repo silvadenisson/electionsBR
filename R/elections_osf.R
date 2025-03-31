@@ -1,16 +1,16 @@
-#' Function for downloading electoral data from the TSE repository
+#' Function for downloading electoral data from the TSE repository, by backup salve in platform OSF.
 #'
-#' The \code{elections_tse()} function is a wrapper that allows users to download and clean electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2024. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
+#' The \code{elections_osf()} function is a wrapper that allows users to download electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2024. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
 #'
 #' @note For elections prior to 2002, some information may be incomplete. For the 2014 and 2018 elections, additional columns are available. It is also important to note that in recent years, the TSE has changed the format of some data files, using CSV format with a header.
 #'
 #' @param year Election year. Valid options are 1998, 2002, 2006, 2010, 2014, 2018, and 2022 for federal elections; and 1996, 2000, 2004, 2008, 2012, 2016, 2020, and 2024 for municipal elections.
 #' 
-#' @return The \code{elections_tse()} function returns a \code{data.frame} with the requested electoral data.
+#' @return The \code{elections_osf()} function returns a \code{data.frame} with the requested electoral data.
 #' 
 #' @param type Requested data type. Valid options are:
 #' 
-#' The \code{elections_tse()} function supports the following types of data downloads:
+#' The \code{elections_osf()} function supports the following types of data downloads:
 #' 
 #' * \code{candidate}: Downloads data on the candidates. Each observation corresponds to a candidate.
 #' * \code{candidate_add_infor}: Downloads data on the candidates - Addtional information. Each observation corresponds to a candidate, available for 2024.
@@ -69,22 +69,28 @@ elections_osf <- function(year, type,
   
   arq <- arquivos[arquivos$name == paste0(type, year, ".Rds"), ]
   
-  message("Processing the data...")
-  down <- osfr::osf_download(arq, conflicts = T)
-  
-  banco <- readRDS(down$local_path)
-  
-  file.remove(down$local_path)
-  
-  
-  if(readme_pdf == TRUE){
+  if(length(arq) != 0){
     
-    arqread <- arquivos[arquivos$name == paste0("readme_", type, ".pdf"), ]
+    message("Processing the data...")
     
-    osfr::osf_download(arqread, conflicts = T)
+    down <- osfr::osf_download(arq, conflicts = T)
     
+    banco <- readRDS(down$local_path)
+    
+    unlink(down$local_path,  recursive = T)
+    
+    
+    if(readme_pdf == TRUE){
+      
+      arqread <- arquivos[arquivos$name == paste0("readme_", type, ".pdf"), ]
+      
+      osfr::osf_download(arqread, conflicts = T)
+      
+    }
+  } else{
+    
+    message("Invalid input. Please, check the documentation and try again.")
   }
-  
   
   # for data.table
   if(data_table) banco <- data.table::data.table(banco)
@@ -92,7 +98,7 @@ elections_osf <- function(year, type,
   # Export
   if(export) export_data(banco)
   
-  return(banco)
   message("Done.\n")
-  
+  return(banco)
+
 }
