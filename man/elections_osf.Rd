@@ -2,7 +2,7 @@
 % Please edit documentation in R/elections_osf.R
 \name{elections_osf}
 \alias{elections_osf}
-\title{Function for downloading electoral data from the TSE repository}
+\title{Function for downloading electoral data from the TSE repository, by backup salve in platform OSF.}
 \usage{
 elections_osf(
   year,
@@ -18,7 +18,7 @@ elections_osf(
 
 \item{type}{Requested data type. Valid options are:
 
-The \code{elections_tse()} function supports the following types of data downloads:
+The \code{elections_osf()} function supports the following types of data downloads:
 
 * \code{candidate}: Downloads data on the candidates. Each observation corresponds to a candidate.
 * \code{candidate_add_infor}: Downloads data on the candidates - Addtional information. Each observation corresponds to a candidate, available for 2024.
@@ -44,12 +44,12 @@ others, it only retrieves electoral data for presidential elections, which are a
 \item{readme_pdf}{should the original README file be saved as a PDF in the working directory? Defaults to FALSE.}
 }
 \value{
-The \code{elections_tse()} function returns a \code{data.frame} with the requested electoral data.
+The \code{elections_osf()} function returns a \code{data.frame} with the requested electoral data.
 
 \code{elections_osf()} returns a \code{data.frame} with the following variables:
 }
 \description{
-The \code{elections_tse()} function is a wrapper that allows users to download and clean electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2024. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
+The \code{elections_osf()} function is a wrapper that allows users to download electoral data from Brazil's TSE repository. This function provides data on candidates, electoral results, personal finances, and other election-related information from 1998 to 2024. The returned \code{data.frame} contains observations corresponding to candidates, cities, or electoral zones.
 }
 \details{
 If export is set to \code{TRUE}, the downloaded data is saved as .dta and .sav
