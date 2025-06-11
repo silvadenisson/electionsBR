@@ -1,6 +1,7 @@
 # electionsBR
 
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/electionsBR)](https://cran.r-project.org/package=electionsBR)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-ago/electionsBR)](https://cran.r-project.org/package=electionsBR)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/cpgfR)](https://CRAN.R-project.org/package=cpgfR)
 [![R-CMD-check](https://github.com/silvadenisson/electionsBR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/silvadenisson/electionsBR/actions/workflows/R-CMD-check.yaml)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/silvadenisson/electionsBR?branch=master&svg=true)](https://ci.appveyor.com/project/silvadenisson/electionsBR)
 [![downloads](https://cranlogs.r-pkg.org/badges/grand-total/electionsBR?color=green)](https://r-pkg.org/pkg/electionsBR)
