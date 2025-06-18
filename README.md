@@ -4,6 +4,7 @@
 [![R-CMD-check](https://github.com/silvadenisson/electionsBR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/silvadenisson/electionsBR/actions/workflows/R-CMD-check.yaml)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/silvadenisson/electionsBR?branch=master&svg=true)](https://ci.appveyor.com/project/silvadenisson/electionsBR)
 [![downloads](https://cranlogs.r-pkg.org/badges/grand-total/electionsBR?color=green)](https://r-pkg.org/pkg/electionsBR)
+[![DOI](https://zenodo.org/badge/65867056.svg)](https://doi.org/10.5281/zenodo.15690720)
 
 > 8 years in and over 44,000+ downloads!
 
