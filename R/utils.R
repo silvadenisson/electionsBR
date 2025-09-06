@@ -202,7 +202,7 @@ test_year <- function(year){
 # Tests election year inputs
 test_year_cand_add_infor <- function(year){
   
-  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(2024, 2024, 2)) stop("Invalid input. Please, check the documentation and try again.")
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(2018, 2024, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
