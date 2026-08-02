@@ -20,9 +20,9 @@ uf_br <- function() {
 
 #' Returns a vector with the abbreviations of all Brazilian parties
 #'
-#' The character vector includes only parties that ran in elections from 1994 to 2022.
+#' The character vector includes only parties that ran in elections from 1994 to 2026.
 #'
-#' @param year Election year (\code{integer}). For this function, only from 1994 to 2022
+#' @param year Election year (\code{integer}). For this function, only from 1994 to 2026
 #' are available.
 #' 
 #' @export
@@ -196,20 +196,20 @@ to_ascii <- function(banco, encoding){
 # Tests election year inputs
 test_year <- function(year){
 
-  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2024, 2)) stop("Invalid input. Please, check the documentation and try again.")
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2026, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 # Tests election year inputs
 test_year_cand_add_infor <- function(year){
   
-  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(2018, 2024, 2)) stop("Invalid input. Please, check the documentation and try again.")
+  if (!is.numeric(year) | length(year) != 1 | !year %in% seq(2018, 2026, 2)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
 # Tests federal election year inputs
 test_fed_year <- function(year){
   
-  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2022, 4)) stop("Invalid input. Please, check the documentation and try again.")
+  if(!is.numeric(year) | length(year) != 1 | !year %in% seq(1998, 2026, 4)) stop("Invalid input. Please, check the documentation and try again.")
 }
 
 
