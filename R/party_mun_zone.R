@@ -51,9 +51,9 @@ party_mun_zone <- function(year,
   uf <- test_uf(uf)
   test_br(br_archive)
   
-  filenames  <- paste0("/votacao_partido_munzona_", year, ".zip")
+  filenames  <- paste0("votacao_partido_munzona_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona%s"
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/%s"
   
   # Downloads the data
   download_unzip(url, dados, filenames, year)
