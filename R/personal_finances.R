@@ -46,9 +46,9 @@ personal_finances <- function(year, uf = "all",
   
   if(year < 2006) stop("Not disponible. Please, only from 2006.\n")
     
-  filenames  <- paste0("/bem_candidato_", year, ".zip")
+  filenames  <- paste0("bem_candidato_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato%s"
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/%s"
   
   # Downloads the data
   download_unzip(url, dados, filenames, year)
