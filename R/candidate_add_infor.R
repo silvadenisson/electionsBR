@@ -54,9 +54,9 @@ candidate_add_infor <- function(year,
   test_br(br_archive)
   
   
-  filenames  <- paste0("/consulta_cand_complementar_", year, ".zip")
+  filenames  <- paste0("consulta_cand_complementar_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar%s"
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/%s"
 
   # Downloads the data
   download_unzip(url, dados, filenames, year)
