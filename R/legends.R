@@ -52,8 +52,8 @@ legends <- function(year,
   test_br(br_archive)
   
   
-  endereco <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao%s"
-  filenames  <- paste0("/consulta_coligacao_", year, ".zip")
+  endereco <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/%s"
+  filenames  <- paste0("consulta_coligacao_", year, ".zip")
   
   dados <- paste0(file.path(tempdir()), filenames)
   
