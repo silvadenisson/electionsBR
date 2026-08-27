@@ -148,11 +148,13 @@ juntaDados <- function(uf, encoding, br_archive){
     br_archive <- TRUE
   }
 
-   archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
-      .[grepl(uf, .)] %>%
-      file.info() %>%
-      .[.$size > 200, ] %>%
-      row.names()
+  archive <- Sys.glob("*")[grepl(".pdf", Sys.glob("*")) == FALSE] %>%
+    .[grepl("desktop\\.ini", ., ignore.case = TRUE) == FALSE] %>% 
+    .[grepl(uf, .)] %>%
+    file.info() %>%
+    .[.$size > 200, ] %>%
+    row.names()
+   
    
    if(!br_archive){
      
