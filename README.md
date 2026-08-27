@@ -22,8 +22,8 @@ install.packages("electionsBR")
 `electionsBR` is also available on [GitHub](https://github.com/). You can install pre-release versions via:
 
 ``` {.r}
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("silvadenisson/electionsBR")
+if (!require("remotes")) install.packages("remotes")
+remotes::install_github()("silvadenisson/electionsBR")
 ```
 
 ## How does it work?
