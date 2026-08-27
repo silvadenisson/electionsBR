@@ -44,9 +44,9 @@ vote_section <- function(year,
   if(tolower(uf) == "all") stop("'uf' is invalid. 'all' not allowed in this function, choose one or more UF")
   uf <- test_uf(uf)
   
-  filenames  <- paste0("/votacao_secao_", year, "_", uf, ".zip")
+  filenames  <- paste0("votacao_secao_", year, "_", uf, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao%s"
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/%s"
   
   # Downloads the data
   download_unzip(url, dados, filenames, year)
