@@ -38,9 +38,9 @@ social_media <- function(year,
   
   if(year < 2020) stop("Not disponible. Please, only from 2020.\n")
 
-  filenames  <- paste0("/rede_social_candidato_", year, ".zip")
+  filenames  <- paste0("rede_social_candidato_", year, ".zip")
   dados <- paste0(file.path(tempdir()), filenames)
-  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand%s"
+  url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/%s"
   
   # Downloads the data
   download_unzip(url, dados, filenames, year)
