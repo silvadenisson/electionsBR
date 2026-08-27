@@ -23,7 +23,7 @@ install.packages("electionsBR")
 
 ``` {.r}
 if (!require("remotes")) install.packages("remotes")
-remotes::install_github()("silvadenisson/electionsBR")
+remotes::install_github("silvadenisson/electionsBR")
 ```
 
 ## How does it work?
