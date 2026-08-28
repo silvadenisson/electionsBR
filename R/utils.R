@@ -285,19 +285,27 @@ download_unzip <- function(url, dados, filenames, year){
   
   if(!file.exists(dados)){
     
-    sprintf(url, filenames) %>%
-      httr::GET(httr::write_disk(path = dados, overwrite = TRUE),
+  endr <- sprintf(url, filenames) 
+  
+  
+   rep <-   httr::GET(endr,
+                httr::write_disk(path = dados, overwrite = TRUE),
+                httr::add_headers(
+                  "Referer" = "https://dadosabertos.tse.jus.br/",
+                  "Accept"           = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                  "Accept-Language"  = "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+                  "Connection"       = "keep-alive"
+                ),
                 httr::progress(),
+                httr::config(ssl_verifypeer = FALSE),
                 httr::user_agent(sorteia_user_agent()))
     
-    message("Processing the data...")
-    unzip(dados, exdir = paste0("./", year))
-    
-  } else{
+   httr::stop_for_status(rep)
+  } 
     
     message("Processing the data...")
     unzip(dados, exdir = paste0("./", year))
-  }
+
 }
 
 

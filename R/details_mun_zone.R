@@ -52,7 +52,7 @@ details_mun_zone <- function(year,
   test_br(br_archive)
   
   filenames  <- paste0("detalhe_votacao_munzona_", year, ".zip")
-  dados <- paste0(file.path(tempdir()), filenames)
+  dados <- paste0(file.path(tempdir()), "/", filenames)
   url <- "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/%s"
   
   # Downloads the data
